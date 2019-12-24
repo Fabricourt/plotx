@@ -1,0 +1,46 @@
+class Buyer(models.Model):
+    """Model representing an Realtor."""
+    first_name = models.CharField(max_length=100, blank=True, null=True)
+    last_name = models.CharField(max_length=100, blank=True, null=True)
+    town = models.ManyToManyField(Town, blank=True, help_text="Select the town where this realtor is found")
+    location = models.ManyToManyField(Location, blank=True,  help_text="Select The exact Location where this Company  is found in the choosen Town")
+    plot_number = models.CharField(max_length=100, blank=True, null=True)
+    about_realtor = models.TextField(max_length=1000, help_text="Enter a brief description of the Realtor.")
+    email = models.CharField(max_length=100, blank=True, null=True)
+    phone = models.CharField(max_length=100, blank=True, null=True)
+    address = models.CharField(max_length=100, blank=True, null=True)
+    facebook = models.CharField(max_length=100, blank=True, null=True)
+    twitter = models.CharField(max_length=100, blank=True, null=True)
+    website = models.CharField(max_length=100, blank=True, null=True)
+    Instagram = models.CharField(max_length=100, blank=True, null=True)
+    created_on = models.DateField(null=True, blank=True)
+    
+    def display_plot(self):
+        """Creates a string for the Plot. This is required to display plot in Admin."""
+        return ', '.join([plot.name for plot in self.plot.all()[:3]])
+
+    display_plot.short_description = 'Plot'
+
+    def display_town(self):
+        """Creates a string for the Town. This is required to display town in Admin."""
+        return ', '.join([town.name for town in self.town.all()[:3]])
+
+    display_town.short_description = 'Town'
+
+    def display_location(self):
+        """Creates a string for the Location. This is required to display location in Admin."""
+        return ', '.join([location.name for location in self.location.all()[:3]])
+
+    display_location.short_description = 'Location'
+
+    class Meta:
+        ordering = ['last_name', 'first_name', 'phone']
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular realtor instance."""
+        return reverse('realtor-detail', args=[str(self.id)])
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return '{0}, {1}'.format(self.last_name, self.first_name)
+
