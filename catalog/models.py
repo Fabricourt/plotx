@@ -25,7 +25,7 @@ class Payment_plan(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.type
+        return self.name
 
 class Town(models.Model):
     name = models.CharField(max_length=100)
