@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>realtor List</h1>
+
+{% if realtor_list %}
+  <ul>
+
+  {% for realtor in realtor_list %}
+    <li>
+      <a href="{{ realtor.get_absolute_url }}">
+      {{ realtor }} ({{realtor.create_on}} - {% if realtor.create_on %}{{realtor.created_on}}{% endif %})
+      </a>
+    </li>
+  {% endfor %}
+
+ </ul>
+{% else %}
+  <p>There are no realtors available.</p>
+{% endif %}
+        
+        
+        
+{% endblock %}

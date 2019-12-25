@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Plot List</h1>
+
+    {% if plot_list %}
+    <ul>
+
+      {% for plot in plot_list %}
+      <li>
+        <a href="{{ plot.get_absolute_url }}">{{ plot.title }}</a> ({{plot.realtor}}-{{plot.Company}})
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>There are no plots in the library.</p>
+    {% endif %}       
+{% endblock %}

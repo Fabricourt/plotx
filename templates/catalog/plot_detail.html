@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Title: {{ plot.title }}</h1>
+<h4>Town {{ plot.Town }} {{ plot.Location }}</h4>
+
+<p><strong>Realtor:</strong> <a href="{% url 'realtor-detail' plot.realtor.pk %}">{{ plot.realtor }}</a></p>
+<p><strong>Company:</strong> <a href="{% url 'company-detail' plot.company.pk %}">{{ plot.company }}</a></p>
+<p><strong>Summary:</strong> {{ Plot.description }}</p>
+<p><strong>Price:</strong> {{ plot.price }}</p> 
+<p><strong>Installments:</strong> {{ plot.payment_plan }}</p>  
+<p><strong>Water:</strong> {{ plot.water }}</p>  
+
+<div style="margin-left:20px;margin-top:20px">
+<h4>Plots in the same piece of land</h4>
+
+{% for copy in plot.plotinstance_set.all %}
+<hr>
+<p class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'd' %}text-danger{% else %}text-warning{% endif %}">{{ copy.get_status_display }}</p>
+{% if copy.status != 'a' %}<p><strong>Due to be paid:</strong> {{copy.next_payment_due_when }}</p>{% endif %}
+<p><strong>Plot_number:</strong> {{copy.plot_number}}</p>
+<p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+
+{% endfor %}
+</div>
+{% endblock %}

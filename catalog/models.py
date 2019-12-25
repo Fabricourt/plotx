@@ -75,7 +75,7 @@ class Realtor(models.Model):
     facebook = models.CharField(max_length=100, blank=True, null=True)
     twitter = models.CharField(max_length=100, blank=True, null=True)
     website = models.CharField(max_length=100, blank=True, null=True)
-    Instagram = models.CharField(max_length=100, blank=True, null=True)
+    instagram = models.CharField(max_length=100, blank=True, null=True)
     created_on = models.DateField(null=True, blank=True)
     
       

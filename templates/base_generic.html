@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% load static %}
+{% block title %}<title>Local Library</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-win8.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-food.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2019.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-camo.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2019.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-red.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-highway.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Add additional CSS in static file -->
+
+
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
+
+
+    <!-- Open Sans Font -->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,900' rel='stylesheet' type='text/css'>
+
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!--Bootsrap-theme.css-->
+
+    <!-- Custom -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Lightbox -->
+    <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+    <!-- Color -->
+    <link rel="stylesheet" href="{% static 'css/w3-theme-brown.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w3-colors-highway.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w3-colors-ios.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w3-colors-win8.css' %}">
+
+    <!-- w3.css -->
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+
+    <!--favicon-->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
+
+
+
+ 
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<div class="container-fluid">
+
+<div class="row">
+  <div class="col-sm-2">
+  {% block sidebar %}
+  <ul class="sidebar-nav">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li><a href="{% url 'plots' %}">All Plots</a></li>
+    <li><a href="{% url 'realtors' %}">All realtors</a></li>
+    <li><a href="{% url 'companys' %}">All companies</a></li>
+  </ul>
+ 
+  <ul class="sidebar-nav">
+   {% if user.is_authenticated %}
+     <li>User: {{ user.get_username }}</li>
+     <li><a href="{% url 'all-loaned' %}">Loaned Plots</a></li>
+     <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>   
+   {% else %}
+     <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>   
+   {% endif %} 
+  </ul>
+  
+   {% if user.is_staff %}
+   <hr />
+   <ul class="sidebar-nav">
+   <li>Staff</li>
+   {% if perms.catalog.can_mark_returned %}
+   <li><a href="{% url 'all-loaned' %}">All borrowed</a></li>
+   {% endif %}
+   </ul>
+    {% endif %}
+ 
+{% endblock %}
+  </div>
+  <div class="col-sm-10 ">
+  {% block content %}{% endblock %}
+  
+  {% block pagination %}
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+  {% endblock %} 
+  
+  
+  </div>
+</div>
+
+</div>
+</body>
+</html>

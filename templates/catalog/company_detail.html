@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Company: {{ company }} </h1>
+<p>{{company.created_on}} </p>
+
+<div style="margin-left:20px;margin-top:20px">
+<h4>Plots</h4>
+
+<dl>
+{% for plot in company.plot_set.all %}
+  <dt><a href="{% url 'plot-detail' plot.pk %}">{{plot}}</a> ({{plot.plotinstance_set.all.count}})</dt>
+  <dd>{{plot.description}}</dd>
+{% endfor %}
+</dl>
+
+</div>
+{% endblock %}

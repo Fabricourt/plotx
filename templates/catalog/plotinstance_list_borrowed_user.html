@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Loaned plots</h1>
+
+    {% if plotinstance_list %}
+    <ul>
+
+      {% for plotinst in plotinstance_list %} 
+      <li class="{% if plotinst.is_overdue %}text-danger{% endif %}">
+        <a href="{% url 'plot-detail' plotinst.plot.pk %}">{{plotinst.plot.title}}</a> ({{ plotinst.due_back }})        
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no Plots Loaned.</p>
+    {% endif %}       
+{% endblock %}
