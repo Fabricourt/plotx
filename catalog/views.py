@@ -5,7 +5,7 @@ import datetime
 from django.urls import reverse
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import permission_required
@@ -15,12 +15,16 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from catalog.forms import TruckloanPlotForm
 
 # Create your views here.
-from .models import Plot_size, Plot_type, Payment_plan, Town, Location, Road, Population, Development, Neighbor, Realtor, Company, Plot, PlotInstance
+from .models import Plot_size, Plot_type, Payment_plan, Road, Population, Development, Neighbor, Realtor, Company, Plot, PlotInstance
+from towns.models import Town
+from locations.models import Location
 
 def index(request):
     """View function for home page of site."""
     # Generate counts of some of the main objects
     num_plots = Plot.objects.all().count()
+    num_towns = Town.objects.all().count()
+    num_locations = Location.objects.all().count()
     num_instances = PlotInstance.objects.all().count()
     # Available copies of plots
     num_instances_available = PlotInstance.objects.filter(status__exact='a').count()
@@ -29,19 +33,48 @@ def index(request):
     # Number of visits to this view, as counted in the session variable.
     num_visits = request.session.get('num_visits', 0)
     request.session['num_visits'] = num_visits+1
+
+
     
+    towns = Town.objects.order_by('name').filter(is_published=True)
+
     # Render the HTML template index.html with the data in the context variable.
     return render(
         request,
         'index.html',
         context={
             'num_plots':num_plots,
+            'num_towns':num_towns,
+            'num_locations':num_locations,
             'num_instances':num_instances,'num_instances_available':num_instances_available,
             'num_companys':num_companys,
             'num_realtors':num_realtors,
-            'num_visits':num_visits
+            'num_visits':num_visits,
+            'towns':towns,
+           
             },
     )
+
+
+
+class TownListView(generic.ListView):
+    """Generic class-based view for a list of plots."""
+    model = Town
+    paginate_by = 10
+
+
+class TownDetailView(generic.DetailView):
+    """Generic class-based detail view for a plot."""
+    model = Town
+
+class LocationListView(generic.ListView):
+    """Generic class-based view for a list of plots."""
+    model = Location
+    paginate_by = 10
+    
+class LocationDetailView(generic.DetailView):
+    """Generic class-based detail view for a plot."""
+    model = Location
 
 class PlotListView(generic.ListView):
     """Generic class-based view for a list of plots."""
@@ -76,7 +109,7 @@ class CompanyDetailView(generic.DetailView):
 class LoanedPlotsByUserListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view listing books on loan to current user."""
     model = PlotInstance
-    template_name ='catalog/plotinstance_list_borrowed_user.html'
+    template_name ='catalog/plotinstance_list_loaned_user.html'
     paginate_by = 10
     
     def get_queryset(self):
@@ -98,11 +131,11 @@ def renew_loaninstallment_secretary(request, pk):
     """View function for renewing  a specific PlotInstance by secretary."""
     plot_instance = get_object_or_404(PlotInstance, pk = pk)
 
-    # If this is a POST request then process the Form data
-    if request.method == 'POST':
+    # If this is a town request then process the Form data
+    if request.method == 'town':
 
         # Create a form instance and populate it with data from the request (binding):
-        form = TruckloanPlotForm(request.POST)
+        form = TruckloanPlotForm(request.town)
 
         # Check if the form is valid:
         if form.is_valid():
@@ -170,6 +203,38 @@ class PlotUpdate(PermissionRequiredMixin, UpdateView):
     permission_required = 'catalog.can_mark_paid'
 
 class PlotDelete(PermissionRequiredMixin, DeleteView):
+    model = Plot
+    success_url = reverse_lazy('plots')
+    permission_required = 'catalog.can_mark_paid'
+
+# Classes created for the forms challenge
+class TownCreate(PermissionRequiredMixin, CreateView):
+    model = Plot
+    fields = '__all__'
+    permission_required = 'catalog.can_mark_paid'
+
+class TownUpdate(PermissionRequiredMixin, UpdateView):
+    model = Plot
+    fields = '__all__'
+    permission_required = 'catalog.can_mark_paid'
+
+class TownDelete(PermissionRequiredMixin, DeleteView):
+    model = Plot
+    success_url = reverse_lazy('plots')
+    permission_required = 'catalog.can_mark_paid'
+
+# Classes created for the forms challenge
+class LocationCreate(PermissionRequiredMixin, CreateView):
+    model = Plot
+    fields = '__all__'
+    permission_required = 'catalog.can_mark_paid'
+
+class LocationUpdate(PermissionRequiredMixin, UpdateView):
+    model = Plot
+    fields = '__all__'
+    permission_required = 'catalog.can_mark_paid'
+
+class LocationDelete(PermissionRequiredMixin, DeleteView):
     model = Plot
     success_url = reverse_lazy('plots')
     permission_required = 'catalog.can_mark_paid'

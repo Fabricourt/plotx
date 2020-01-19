@@ -2,8 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Plot_size, Plot_type, Payment_plan, Town, Location, Road, Population, Development, Neighbor, Realtor, Company, Plot, PlotInstance
-
+from .models import Plot_size, Plot_type, Payment_plan, Road, Population, Development, Neighbor, Realtor, Company, Plot, PlotInstance
+from towns.models import Town
+from locations.models import Location
 
 
 admin.site.register(Plot_size)
@@ -31,8 +32,8 @@ class RealtorAdmin(admin.ModelAdmin):
      - adds inline addition of plots in Realtor view (inlines)
     """
     list_display = ('last_name', 'first_name', 'phone', 'created_on')
-    fields = ['first_name', 'last_name', ('created_on', 'phone', 'email')]
-    inlines = [PlotsInline]
+   
+    
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
@@ -43,8 +44,24 @@ class CompanyAdmin(admin.ModelAdmin):
      - adds inline addition of plots in company view (inlines)
     """
     list_display = ('company_name', 'contact_person', 'phone_1', 'created_on')
-    fields = ['first_name', 'last_name', ('created_on', 'phone_1', 'email')]
-    inlines = [PlotsInline]
+    fieldsets = (
+        ('Standard info', {
+            'fields': ('company_name', 'contact_person', 'logo', 'about_company')
+        }),
+        ('Location info', {
+            'fields': ('location', 'town')
+        }),
+        ('Contact info', {
+            'fields': ('website', 
+                ('email_1', 'email_2'),
+                ('phone_1', 'phone_2')
+                )
+        }),
+        ('Social info', {
+            'fields': ('facebook', 'twitter', 'Instagram')
+        }),
+    )
+    
 
 
 

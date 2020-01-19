@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_user_agents',
+    'tracking_analyzer',
     'ckeditor',
     'catalog',
+    'locations',
+    'towns'
 ]
 
 MIDDLEWARE = [
@@ -128,6 +132,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'plotx/static')
 ]
+
+GEOIP_PATH = '/path/to/your/geoip/datafiles'
+
 
 # Media Folder Settings
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

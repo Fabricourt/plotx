@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Location: {{ location }} </h1>
+<p>{{location.created_on}} </p>
+
+<div style="margin-left:20px;margin-top:20px">
+    <h2>Plots</h2>
+   
+        <dl>
+            {% for plot in location.plot_set.all %}
+                <dt><a href="{% url 'plot-detail' plot.pk %}">{{plot}}</a></dt>
+                <dd>{{plot.description}}</dd>
+            {% endfor %}
+    </dl>
+
+    <h2>Companies</h2>
+    <dl>
+        {% for company in location.company_set.all %}
+            <dt><a href="{% url 'company-detail' company.pk %}">{{company}}</a></dt>
+            <dd>{{company.description}}</dd>
+        {% endfor %}
+    </dl>
+
+    <h2>Realtors</h2>
+    <dl>
+        {% for realtor in location.realtor_set.all %}
+            <dt><a href="{% url 'realtor-detail' realtor.pk %}">{{realtor}}</a></dt>
+            <dd>{{plot.description}}</dd>
+        {% endfor %}
+    </dl>
+    </div>
+{% endblock %}

@@ -5,6 +5,9 @@ from datetime import datetime
 from django.urls import reverse
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+from towns.models import Town
+from locations.models import Location
+
 
 # Create your models here.
 
@@ -27,17 +30,7 @@ class Payment_plan(models.Model):
     def __str__(self):
         return self.name
 
-class Town(models.Model):
-    name = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.name
-
-class Location(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
 
 class Road(models.Model):
     type = models.CharField(max_length=100)
@@ -63,12 +56,16 @@ class Neighbor(models.Model):
     def __str__(self):
         return self.name
 
+
+
+
 class Realtor(models.Model):
     """Model representing an Realtor."""
-    town = models.ManyToManyField(Town, blank=True, help_text="Select the town where this realtor is found")
-    location = models.ManyToManyField(Location, blank=True,  help_text="Select The exact Location where this Company  is found in the choosen Town")
+    town = models.ManyToManyField(Town, blank=True, help_text="Select the towns where this realtor is found")
+    location = models.ManyToManyField(Location, blank=True,  help_text="Select The  Locations where this realtor  is found in the choosen Town")
     first_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
+    profile = models.ImageField(default='avatar.jpg', upload_to='profiles/%Y/%m/%d/', blank=True)
     about_realtor = models.TextField(max_length=1000, help_text="Enter a brief description of the Realtor.")
     email = models.CharField(max_length=100, blank=True, null=True)
     phone = models.CharField(max_length=100, blank=True, null=True)
@@ -77,6 +74,8 @@ class Realtor(models.Model):
     website = models.CharField(max_length=100, blank=True, null=True)
     instagram = models.CharField(max_length=100, blank=True, null=True)
     created_on = models.DateField(null=True, blank=True)
+    is_published = models.BooleanField(default=True)
+    
     
       
     def display_town(self):
@@ -105,10 +104,11 @@ class Realtor(models.Model):
 class Company(models.Model):
     """Model representing an Realtor."""
     company_name = models.CharField(max_length=100, blank=True, null=True)
+    logo = models.ImageField(default='logo.png', upload_to='logos/%Y/%m/%d/', blank=True)
     about_company = models.TextField(max_length=1000, help_text="Enter a brief description of the company.")
     contact_person = models.CharField(max_length=100, blank=False, null=True)
-    town = models.ManyToManyField(Town, blank=True,  help_text="Select The exact Town this company is located.")
-    location = models.ManyToManyField(Location, blank=True, help_text="Select The exact Location where this Company  is found in the choosen Town")
+    town = models.ManyToManyField(Town, blank=True,  help_text="Select The exact towns this company is located.")
+    location = models.ManyToManyField(Location, blank=True, help_text="Select The exact locations where this Company  is found in the choosen Town")
     email_1 = models.CharField(max_length=100, blank=True, null=True)
     email_2 = models.CharField(max_length=100, blank=True, null=True)
     phone_1 = models.CharField(max_length=100, blank=True, null=True)
@@ -119,6 +119,7 @@ class Company(models.Model):
     website = models.CharField(max_length=100, blank=True, null=True)
     Instagram = models.CharField(max_length=100, blank=True, null=True)
     created_on = models.DateField(null=True, blank=True)
+    is_published = models.BooleanField(default=True)
     
     
     def display_town(self):
@@ -138,11 +139,11 @@ class Company(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a particular company instance."""
-        return reverse('realtor-detail', args=[str(self.id)])
+        return reverse('company-detail', args=[str(self.id)])
 
     def __str__(self):
         """String for representing the Model object."""
-        return '{0}, {1}'.format(self.last_name, self.first_name)
+        return self.company_name
 
 
 class Plot(models.Model):
@@ -174,13 +175,13 @@ class Plot(models.Model):
     list_date = models.DateTimeField(blank=True, null=True)
     
 
-def get_absolute_url(self):
-    """Returns the url to access a particular book instance."""
-    return reverse('book-detail', args=[str(self.id)])
+    def get_absolute_url(self):
+        """Returns the url to access a particular company instance."""
+        return reverse('plot-detail', args=[str(self.id)])
 
-def __str__(self):
-    """String for representing the Model object."""
-    return self.title
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.title
 
 class PlotInstance(models.Model):
     """Model representing a specific plot (i.e. that can be bought)."""

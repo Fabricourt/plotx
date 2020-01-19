@@ -1,20 +1,82 @@
 {% extends "base_generic.html" %}
 
+
+
 {% block content %}
-    <h1>Plot List</h1>
+<header class="">
+  <div class="w3-theme-l5 jumbotron   ">
+    <div class="w3-border-theme w3-bottombar" style="width:350px;">
+      <h1 class="w3-jumbo"> Plots</h1>
+      <h5 class=" ">Available Plots For Sale</h5>
+    </div>
+  </div>
+</header>
 
-    {% if plot_list %}
-    <ul>
+<div class="container col-sm-8">
+ 
+  {% if plot_list %}
+  
+  <ul class="w3-ul w3-text-black ">
+    {% for plot in plot_list %}
+    <li class="w3-bar w3-white w3-margin-bottom w3-margin-left w3-border w3-hover-shadow">
+      <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+      {% if plot.company.logo.url %}
+      <span><img src="{{ plot.company.logo.url }}" class="w3-bar-item w3-circle" style="width:85px"></span>
+      {% endif %}
+      {% if plot.realtor.profile.url %}
+      <span><img src="{{ plot.realtor.profile.url }}" class="w3-bar-item w3-circle " style="width:85px"></span>
+      {% endif %}
+      <div class="w3-bar-item">
 
-      {% for plot in plot_list %}
-      <li>
-        <a href="{{ plot.get_absolute_url }}">{{ plot.title }}</a> ({{plot.realtor}}-{{plot.Company}})
-      </li>
-      {% endfor %}
+        {% if plot.title %}
+        <span class="w3-large">{{ plot.title }}</span>
+        {% endif %}
+        -
+        {% if plot.plot_size %}
+        <span class=" w3-green badge">{{ plot.plot_size }}</span>
+        {% endif %}
 
-    </ul>
+        {% if plot.price %}
+        <span class="badge w3-amber">Ksh-{{ plot.price }}</span>
+        {% endif %}
 
-    {% else %}
-      <p>There are no plots in the library.</p>
-    {% endif %}       
+        <br>
+        
+        {% if plot.company %}
+        <span>{{plot.company}}</span> 
+        {% endif %}
+        
+        {% if plot.company.phone_1 %}
+        <span>{{plot.company.phone_1}}</span>
+        {% endif %}
+
+        <br>
+
+        {% if plot.realtor %}
+        <span>{{plot.realtor}}</span> 
+        {% endif %}
+        
+        {% if plot.realtor.phone %}
+        <span>{{plot.realtor.phone}}</span>
+        {% endif %}
+        
+        <br>
+
+        <span class=""> <a href="{{ plot.get_absolute_url }}"><button class="btn-outline-success ">view more</button></a></span>
+
+      </div>
+     
+    
+
+    </li>
+    {% endfor %}
+
+  </ul>
+{% else %}
+  <p>There are no plots in katata catalog.</p>
+{% endif %} 
+</div>
+
+    
+
 {% endblock %}

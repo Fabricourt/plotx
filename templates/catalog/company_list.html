@@ -1,25 +1,94 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+<header class="">
+  <div class="w3-theme-l5 jumbotron   ">
+    <div class="w3-border-theme w3-bottombar" style="width:350px;">
+      <h1 class="w3-jumbo"> Company</h1>
+      <h5 class=" "> Companies Selling Plots</h5>
+    </div>
+  </div>
+</header>
 
-<h1>Company List</h1>
+
+  
 
 {% if company_list %}
-  <ul>
 
+<div class="row">
+ 
   {% for company in company_list %}
-    <li>
-      <a href="{{ company.get_absolute_url }}">
-      {{ company }} ({{company.created_on}} 
-      </a>
-    </li>
+ 
+  <!-- Company Profile -->
+  <div class="w3-margin w3-border w3-hover-shadow w3-hide-small  w3-white" style="width:28%">
+    <div class="w3-container">
+     <h4 class="w3-center"></h4>
+     <p class="w3-center">
+       <img src="{{ company.logo.url }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+     
+      <div class="col-sm w3-center w3-large">
+        <span>
+          <a href=""><i class="fa fa-facebook fa-fw w3-text-blue"></i></a>
+        </span>
+        <span>
+          <a href=""><i class="fa fa-instagram fa-fw w3-text-orange"></i></a>
+        </span>
+        <span>
+          <a href=""><i class="fa fa-twitter fa-fw w3-text-light-blue"></i></a>
+        </span>
+        <span>
+          <a href=""><i class="fa fa-youtube fa-fw w3-text-red"></i></a>
+        </span>
+      </div>
+     <p class="w3-border-top w3-margin"><i class="fa fa-bank fa-fw w3-margin-right w3-text-theme"></i> {{ company }}</p>
+     <p class="w3-border-top w3-margin"><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i> {{ company.phone_1 }}</p>
+     <p class="w3-border-top w3-margin"><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i> {{ company.email_1 }}</p>
+     <p class="w3-border-top w3-margin"><i class="fa fa-globe fa-fw w3-margin-right w3-text-theme"></i> {{ company.website }}</p>
+     <p class=" w3-margin"><i class="fa fa-link fa-fw w3-margin-right w3-text-green"></i> <a href="{{ company.get_absolute_url }}" class="badge w3-hover-white w3-hover-text-green card-link w3-green w3-right">View Our Plots</a></p>
+ 
+    </div>
+  </div>
+
+  <div class="w3-margin w3-border w3-hover-shadow w3-hide-large w3-hide-medium  w3-white" style="width:100%">
+    <div class="w3-container">
+      <h4 class="w3-center"></h4>
+      <p class="w3-center">
+        <img src="{{ company.logo.url }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+      
+       <div class="col-sm w3-center w3-large">
+         <span>
+           <a href=""><i class="fa fa-facebook fa-fw w3-text-blue"></i></a>
+         </span>
+         <span>
+           <a href=""><i class="fa fa-instagram fa-fw w3-text-orange"></i></a>
+         </span>
+         <span>
+           <a href=""><i class="fa fa-twitter fa-fw w3-text-light-blue"></i></a>
+         </span>
+         <span>
+           <a href=""><i class="fa fa-youtube fa-fw w3-text-red"></i></a>
+         </span>
+       </div>
+      <p class="w3-border-top w3-margin"><i class="fa fa-bank fa-fw w3-margin-right w3-text-theme"></i> {{ company }}</p>
+      <p class="w3-border-top w3-margin"><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i> {{ company.phone_1 }}</p>
+      <p class="w3-border-top w3-margin"><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i> {{ company.email_1 }}</p>
+      <p class="w3-border-top w3-margin"><i class="fa fa-globe fa-fw w3-margin-right w3-text-theme"></i> {{ company.website }}</p>
+      <p class=" w3-margin"><i class="fa fa-link fa-fw w3-margin-right w3-text-green"></i> <a href="{{ company.get_absolute_url }}" class="badge w3-hover-white w3-hover-text-green card-link w3-green w3-right">View Our Plots</a></p>
+  
+     </div>
+   </div>
+  <br>
+  
+
+ 
   {% endfor %}
 
- </ul>
+
 {% else %}
   <p>There are no companys available.</p>
 {% endif %}
         
-        
-        
+</div>
+
+
 {% endblock %}

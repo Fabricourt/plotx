@@ -2,15 +2,23 @@
 
 {% block content %}
 
-<h1>Realtor: {{ Realtor }} </h1>
+<h1>Realtor: {{ realtor }} </h1>
+
+<p>{{realtor.created_on}} </p>
+
+<h5>Towns i am operating in</h5>
+{% for town in realtor.town.all %}{{town}}{% if not forloop.last %}, {% endif %}{% endfor %}<br>
+
+<h5>Locations i am operating in</h5>
+{% for location in realtor.location.all %}{{location}}{% if not forloop.last %}, {% endif %}{% endfor %}
 
 
 <div style="margin-left:20px;margin-top:20px">
-<h4>Plots</h4>
+<h4>Plots For sale by {{realtor.first_name}}</h4>
 
 <dl>
 {% for plot in realtor.plot_set.all %}
-  <dt><a href="{% url 'plot-detail' plot.pk %}">{{book}}</a> ({{book.bookinstance_set.all.count}})</dt>
+  <dt><a href="{{plot..get_absolute_url }}">{{plot}}</a> </dt>
   <dd>{{plot.description}}</dd>
 {% endfor %}
 </dl>

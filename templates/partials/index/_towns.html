@@ -1,0 +1,30 @@
+{% load static %}
+
+<div class="  w3-large ">
+   <div class="w3-content ">
+    <h3>Towns</h3>
+    <hr class="w3-border w3-bottombar  w3-border-theme" style="width:100%">
+    {% if towns %}
+    
+    <ol>
+    <div class="row  w3-margin">
+      {% for town in towns %}
+      <div class="col-sm-2 w3-bar-item w3-border-theme  w3-border-bottom ">
+      <li>
+        <a href="{{ town.get_absolute_url }}"><span class="w3-text-black w3-hover-text-green">{{ town.name }}</span></a> 
+       
+        
+      </li>
+    </div>
+      {% endfor %}
+    </div>
+    </ol>
+    
+    
+    {% else %}
+      <p>There are no towns.</p>
+    {% endif %} 
+    <br><br>      
+    </div>
+</div>
+    

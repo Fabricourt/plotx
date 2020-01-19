@@ -1,0 +1,37 @@
+{% load static %}
+<header class='section w3-padding'>
+  <div class="container jumbotron w3-theme-l5 w3-center">
+    
+    <div class="row w3-text-black ">
+      <div class="col-sm-12 w3-center">
+        <h1 >KATATA  CATALOG</h1>
+        <p>Welcome {{ user.username|capfirst }} To Your <span class="badge  w3-circle  w3-theme"> {{ num_visits }} </span>Visit</p>
+      </div>
+      <div class = "col-sm-2 w3-hover-shadow    w3-margin-left  w3-border w3-border-theme">
+        <br>
+        <p class="w3-center"><strong>Number of <br>Plots:</strong><br> <span class="w3-circle w3-margin badge w3-theme">{{ num_plots }}</span></p>
+      </div>
+
+      <div class = "col-sm-2 w3-hover-shadow w3-border w3-margin-left w3-border-theme">
+        <br>
+        <p class="w3-center"><strong>Number of Companys:</strong><br><span class="w3-circle w3-margin badge w3-theme">{{ num_companys }}</span> </p>
+      </div>
+      <div class = "col-sm-2  w3-hover-shadow  w3-margin-left   w3-border  w3-border-theme">
+        <br>
+        <p class="w3-center"><strong>Number of Realtors:</strong><br><span class="w3-circle w3-margin badge w3-theme">{{ num_realtors }}</span> </p>
+      </div>
+      <div class = "col-sm-2 w3-hover-shadow  w3-margin-left  w3-border  w3-border-theme">
+        <br>
+        <p class="w3-center"><strong>Number of Towns:</strong><br><span class="w3-circle w3-margin badge w3-theme">{{ num_towns }}</span> </p>
+      </div>
+      <div class = "col-sm-2 w3-hover-shadow  w3-margin-left   w3-border w3-border-theme">
+        <br>
+        <p class="w3-center"><strong>Number of Locations:</strong><br><span class="w3-circle btn w3-margin badge w3-theme">{{ num_locations }}</span> </p>
+      </div>
+     
+
+
+    </div>
+  </div>
+</header>
+

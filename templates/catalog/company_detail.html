@@ -5,6 +5,10 @@
 <h1>Company: {{ company }} </h1>
 <p>{{company.created_on}} </p>
 
+{% for town in company.town.all %}{{town}}{% if not forloop.last %}, {% endif %}{% endfor %}<br>
+{% for location in company.location.all %}{{location}}{% if not forloop.last %}, {% endif %}{% endfor %}
+
+
 <div style="margin-left:20px;margin-top:20px">
 <h4>Plots</h4>
 

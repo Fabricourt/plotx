@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Town List</h1>
+    <div>Total plots : <span> {{ plots }}</span></div> 
+    {% if town_list %}
+    <ul>
+
+      {% for town in town_list %}
+      <li>
+        <a href="{{ town.get_absolute_url }}">{{ town.name }}</a> 
+
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>There are no towns.</p>
+    {% endif %}       
+{% endblock %}
