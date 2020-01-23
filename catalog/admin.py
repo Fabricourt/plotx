@@ -19,7 +19,7 @@ admin.site.register(Neighbor)
 
 
 class PlotsInline(admin.TabularInline):
-    """Defines format of inline plot insertion (used in AuthorAdmin)"""
+    """Defines format of inline plot insertion (used in Realtor & Company Admin)"""
     model = Plot
 
 
@@ -32,7 +32,7 @@ class RealtorAdmin(admin.ModelAdmin):
      - adds inline addition of plots in Realtor view (inlines)
     """
     list_display = ('last_name', 'first_name', 'phone', 'created_on')
-   
+ 
     
 
 @admin.register(Company)
@@ -46,7 +46,7 @@ class CompanyAdmin(admin.ModelAdmin):
     list_display = ('company_name', 'contact_person', 'phone_1', 'created_on')
     fieldsets = (
         ('Standard info', {
-            'fields': ('company_name', 'contact_person', 'logo', 'about_company')
+            'fields': ('company_name', 'contact_person', 'logo', 'about_company', 'about_pic')
         }),
         ('Location info', {
             'fields': ('location', 'town')
@@ -61,7 +61,7 @@ class CompanyAdmin(admin.ModelAdmin):
             'fields': ('facebook', 'twitter', 'Instagram')
         }),
     )
-    
+
 
 
 
@@ -76,7 +76,6 @@ class PlotAdmin(admin.ModelAdmin):
      - adds inline addition of plot instances in plot view (inlines)
     """
     list_display = ('title', 'realtor', 'company', 'town','location')
-    inlines = [PlotsInstanceInline]
 
 admin.site.register(Plot, PlotAdmin)
 

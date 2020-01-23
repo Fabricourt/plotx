@@ -12,71 +12,75 @@
   </div>
 </header>
 
-<div class="container col-sm-8">
- 
+<div class="container">
+ <div class="row">
   {% if plot_list %}
-  
-  <ul class="w3-ul w3-text-black ">
-    {% for plot in plot_list %}
-    <li class="w3-bar w3-white w3-margin-bottom w3-margin-left w3-border w3-hover-shadow">
-      <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
-      {% if plot.company.logo.url %}
-      <span><img src="{{ plot.company.logo.url }}" class="w3-bar-item w3-circle" style="width:85px"></span>
-      {% endif %}
-      {% if plot.realtor.profile.url %}
-      <span><img src="{{ plot.realtor.profile.url }}" class="w3-bar-item w3-circle " style="width:85px"></span>
-      {% endif %}
-      <div class="w3-bar-item">
+  <div class="col-sm-6">
+    <ul class="w3-ul w3-text-black ">
+      {% for plot in plot_list %}
+      <li class="w3-bar w3-white w3-margin-bottom w3-margin-left w3-border w3-hover-shadow ">
+          <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+          {% if plot.company.logo.url %}
+          <span><img src="{{ plot.company.logo.url }}" class="w3-bar-item w3-circle" data-placement="bottom" title="View More From Our Company" style="width:85px"></span>
+          {% endif %}
+          {% if plot.realtor.profile.url %}
+          <span><img src="{{ plot.realtor.profile.url }}" class="w3-bar-item w3-circle data-placement="bottom" title="View More From Me"" style="width:85px"></span>
+          {% endif %}
+          <div class="w3-bar-item">
 
-        {% if plot.title %}
-        <span class="w3-large">{{ plot.title }}</span>
-        {% endif %}
-        -
-        {% if plot.plot_size %}
-        <span class=" w3-green badge">{{ plot.plot_size }}</span>
-        {% endif %}
+            {% if plot.title %}
+            <span class="w3-large">{{ plot.title }}</span>
+            {% endif %}
+            -
+            {% if plot.plot_size %}
+            <span class=" w3-green badge">{{ plot.plot_size }}</span>
+            {% endif %}
 
-        {% if plot.price %}
-        <span class="badge w3-amber">Ksh-{{ plot.price }}</span>
-        {% endif %}
+            {% if plot.price %}
+            <span class="badge w3-amber">Ksh-{{ plot.price }}</span>
+            {% endif %}
 
-        <br>
-        
-        {% if plot.company %}
-        <span>{{plot.company}}</span> 
-        {% endif %}
-        
-        {% if plot.company.phone_1 %}
-        <span>{{plot.company.phone_1}}</span>
-        {% endif %}
+            <br>
+            
+            {% if plot.company %}
+            <span>{{plot.company}}</span> 
+            {% endif %}
+            
+            {% if plot.company.phone_1 %}
+            <span>{{plot.company.phone_1}}</span>
+            {% endif %}
 
-        <br>
+            <br>
 
-        {% if plot.realtor %}
-        <span>{{plot.realtor}}</span> 
-        {% endif %}
-        
-        {% if plot.realtor.phone %}
-        <span>{{plot.realtor.phone}}</span>
-        {% endif %}
-        
-        <br>
-
-        <span class=""> <a href="{{ plot.get_absolute_url }}"><button class="btn-outline-success ">view more</button></a></span>
-
-      </div>
-     
-    
-
-    </li>
-    {% endfor %}
-
-  </ul>
-{% else %}
-  <p>There are no plots in katata catalog.</p>
-{% endif %} 
+            {% if plot.realtor %}
+            <span>{{plot.realtor}}</span> 
+            {% endif %}
+            
+            {% if plot.realtor.phone %}
+            <span>{{plot.realtor.phone}}</span>
+            {% endif %}
+            
+            <br>
+            {% if plot.location %}
+            <span class="w3-blue">Location:{{plot.location}}..</span>
+            {% endif %}
+            <span class=""> <a href="{{ plot.get_absolute_url }}"><button class="btn-outline-success ">view more</button></a></span>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no plots in katata catalog.</p>
+    {% endif %}
+    </div>
+  </div> 
 </div>
 
     
 
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  </script>
 {% endblock %}

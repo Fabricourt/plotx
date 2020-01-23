@@ -1,27 +1,95 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+<div class="container" style="margin-left:20px;margin-top:20px">
+  <h3>Realtor: {{realtor}} </h3>
+<div class="container col-sm-11">
+  <div class="row">
+    <div class="col-sm-5">
+      <h5 class="w3-text-theme "><strong>Towns i am operating in</strong></h5>
+      {% for town in realtor.town.all %}<span class="w3-border  btn"> {{town}}</span>{% if not forloop.last %}, {% endif %}{% endfor %}<br>
+      <h5 class="w3-text-theme  "><strong>Areas the plots are:</strong></h5>
+      {% for location in realtor.location.all %}<span class="w3-border  btn"> {{location}}</span>{% if not forloop.last %}, {% endif %}{% endfor %}
+      </div>
+      <div class="col-sm-6 w3-border">
+        <span>advert spot</span>
+      </div>
+  </div>
+</div>
+<br><br>
+<!--Plots-->
+<div class="w3-margin-bottom col-sm-6 container">
+  <h3><strong class="w3-text-theme">  All My Plots </strong> </h3>
+  <ul class="w3-ul w3-text-black ">
+    {% for plot in realtor.plot_set.all %}
+  <li class="w3-bar w3-white w3-margin-bottom  w3-border w3-hover-shadow">
+    <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
+    {% if plot.company.logo.url %}
+    <span><a href="{{ company.get_absolute_url }}"></a><img src="{{ plot.company.logo.url }}" class="w3-bar-item w3-circle" 
+      data-placement="bottom" title="View More From Our Company"  style="width:85px"></a></span>
+    {% endif %}
+    {% if plot.realtor.profile.url %}
+    <span><a href="{{ realtor.get_absolute_url }}"></a><img src="{{ plot.realtor.profile.url }}" class="w3-bar-item w3-circle " style="width:85px"></a></span>
+    {% endif %}
+    <div class="w3-bar-item">
 
-<h1>Realtor: {{ realtor }} </h1>
+      {% if plot.title %}
+      <span class="w3-large">{{ plot.title }}</span>
+      {% endif %}
+      -
+      {% if plot.plot_size %}
+      <span class=" w3-green badge">{{ plot.plot_size }}</span>
+      {% endif %}
 
-<p>{{realtor.created_on}} </p>
+      {% if plot.price %}
+      <span class="badge w3-amber">Ksh-{{ plot.price }}</span>
+      {% endif %}
 
-<h5>Towns i am operating in</h5>
-{% for town in realtor.town.all %}{{town}}{% if not forloop.last %}, {% endif %}{% endfor %}<br>
+      <br>
+      
+      {% if plot.company %}
+      <span>{{plot.company}}</span> 
+      {% endif %}
+      
+      {% if plot.company.phone_1 %}
+      <span>{{plot.company.phone_1}}</span>
+      {% endif %}
 
-<h5>Locations i am operating in</h5>
-{% for location in realtor.location.all %}{{location}}{% if not forloop.last %}, {% endif %}{% endfor %}
+      <br>
+
+      {% if plot.realtor %}
+      <span>{{plot.realtor}}</span> 
+      {% endif %}
+      
+      {% if plot.realtor.phone %}
+      <span>{{plot.realtor.phone}}</span>
+      {% endif %}
+      
+      <br>
+      {% if plot.location %}
+      <span class="w3-blue">Location:{{plot.location}}</span>
+      {% endif %}
+      <span class=""> <a href="{{ plot.get_absolute_url }}"><button class="btn-outline-success ">view more</button></a></span>
+
+    </div>
+  </li>
+  {% endfor %}
+
+</ul>
+      </div>
+
+      <div class="col-sm-5 ">
+        <div>
+          <br><br>
+          <img src="{{realtor.about_pic.url}}" alt="about pic" class="w3-margin-top" style="height:200px;">
+        </div>
+        <h2 class="w3-center">About Us</h2>
+        <div>
+          {{realtor.about_realtor|safe}}
+        </div>
+    </div>
 
 
-<div style="margin-left:20px;margin-top:20px">
-<h4>Plots For sale by {{realtor.first_name}}</h4>
-
-<dl>
-{% for plot in realtor.plot_set.all %}
-  <dt><a href="{{plot..get_absolute_url }}">{{plot}}</a> </dt>
-  <dd>{{plot.description}}</dd>
-{% endfor %}
-</dl>
 
 </div>
 {% endblock %}

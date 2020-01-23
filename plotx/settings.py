@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_user_agents',
     'tracking_analyzer',
+    'abouts',
     'ckeditor',
     'catalog',
     'locations',

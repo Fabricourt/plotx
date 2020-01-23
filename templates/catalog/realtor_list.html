@@ -11,16 +11,17 @@
 </header>
 
 
-  
+   <!-- realtor Profile -->
+  <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="myFunction()">
 
 {% if realtor_list %}
 
 <div class="row">
- 
+
   {% for realtor in realtor_list %}
  
-  <!-- realtor Profile -->
-  <div class="w3-margin w3-border w3-hover-shadow w3-hide-small  w3-white" style="width:28%">
+ 
+   <div  class="col-sm-3 w3-margin w3-border w3-hover-shadow w3-hide-small  w3-white" ">
     <div class="w3-container">
      <h4 class="w3-center"></h4>
      <p class="w3-center">
@@ -56,7 +57,8 @@
  
     </div>
   </div>
-
+</li> 
+<li class="w3-hide-large w3-hide-medium">
   <div class="w3-margin w3-border w3-hover-shadow w3-hide-large w3-hide-medium  w3-white" style="width:100%">
     <div class="w3-container">
       <h4 class="w3-center"></h4>
@@ -94,6 +96,7 @@
   
      </div>
    </div>
+  </li>
   <br>
   
 
@@ -104,8 +107,25 @@
 {% else %}
   <p>There are no realtors available.</p>
 {% endif %}
-        
+ 
 </div>
 
 
+<script>
+  function myFunction() {
+    var input, filter, div, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+      txtValue = li[i].textContent || li[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+  </script>
 {% endblock %}

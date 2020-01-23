@@ -1,20 +1,44 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Location List</h1>
 
+<div class="w3-container">
+    <h3 class="w3-padding w3-text-red ">Areas You Can Find Plots In</h3>
+    <div class="col-sm-11 w3-padding container">
+      <div style="width:295px">     
+      <input class="w3-input col-sm-10 w3-yellow col-sm-11 w3-border w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="myFunction()">
+    </div>
+    </div> 
+    <br>
     {% if location_list %}
-    <ul>
-
+    <ul class="w3-ul w3-margin-top" id="myUL">
       {% for location in location_list %}
-      <li>
-        <a href="{{ location.get_absolute_url }}">{{ location.name }}</a> 
+      <li class="col-sm-3 btn w3-hover-yellow w3-white w3-large w3-border w3-hover-shadow w3-margin-left w3-margin-bottom w3-text-black">
+        <a href="{{ location.get_absolute_url }}"><span class="w3-text-black">{{ location.name }}</span></a> 
       </li>
       {% endfor %}
-
     </ul>
 
     {% else %}
-      <p>There are no locations in the library.</p>
-    {% endif %}       
+      <p>There are no locations.</p>
+    {% endif %}
+</div>
+<script>
+  function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+      txtValue = li[i].textContent || li[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }
+    }
+  }
+  </script>       
 {% endblock %}
+

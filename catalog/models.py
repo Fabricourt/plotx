@@ -67,6 +67,7 @@ class Realtor(models.Model):
     last_name = models.CharField(max_length=100, blank=True, null=True)
     profile = models.ImageField(default='avatar.jpg', upload_to='profiles/%Y/%m/%d/', blank=True)
     about_realtor = models.TextField(max_length=1000, help_text="Enter a brief description of the Realtor.")
+    about_pic = models.ImageField(upload_to='photos/%Y/%m/%d/',null=True, blank=False)
     email = models.CharField(max_length=100, blank=True, null=True)
     phone = models.CharField(max_length=100, blank=True, null=True)
     facebook = models.CharField(max_length=100, blank=True, null=True)
@@ -105,7 +106,8 @@ class Company(models.Model):
     """Model representing an Realtor."""
     company_name = models.CharField(max_length=100, blank=True, null=True)
     logo = models.ImageField(default='logo.png', upload_to='logos/%Y/%m/%d/', blank=True)
-    about_company = models.TextField(max_length=1000, help_text="Enter a brief description of the company.")
+    about_company = RichTextField(max_length=1500, blank=False, null=True, help_text="Max 200 words")
+    about_pic = models.ImageField(upload_to='photos/%Y/%m/%d/',null=True, blank=False)
     contact_person = models.CharField(max_length=100, blank=False, null=True)
     town = models.ManyToManyField(Town, blank=True,  help_text="Select The exact towns this company is located.")
     location = models.ManyToManyField(Location, blank=True, help_text="Select The exact locations where this Company  is found in the choosen Town")

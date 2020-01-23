@@ -25,10 +25,10 @@
     <li class="w3-bar w3-white w3-margin-bottom  w3-border w3-hover-shadow">
       <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
       {% if plot.company.logo.url %}
-      <span><img src="{{ plot.company.logo.url }}" class="w3-bar-item w3-circle" style="width:85px"></span>
+      <span><a href="{{ company.get_absolute_url }}"></a><img src="{{ plot.company.logo.url }}" class="w3-bar-item w3-circle" data-toggle="tooltip" data-placement="bottom" title="View More From Our Company" style="width:85px"></span>
       {% endif %}
       {% if plot.realtor.profile.url %}
-      <span><img src="{{ plot.realtor.profile.url }}" class="w3-bar-item w3-circle " style="width:85px"></span>
+      <span><a href="{{ realtor.get_absolute_url }}"></a><img src="{{ plot.realtor.profile.url }}" class="w3-bar-item w3-circle" data-toggle="tooltip" data-placement="bottom" title="View More From Me" style="width:85px"></span>
       {% endif %}
       <div class="w3-bar-item">
 

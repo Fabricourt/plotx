@@ -60,7 +60,7 @@ def index(request):
 class TownListView(generic.ListView):
     """Generic class-based view for a list of plots."""
     model = Town
-    paginate_by = 10
+    paginate_by = 100
 
 
 class TownDetailView(generic.DetailView):
@@ -70,7 +70,7 @@ class TownDetailView(generic.DetailView):
 class LocationListView(generic.ListView):
     """Generic class-based view for a list of plots."""
     model = Location
-    paginate_by = 10
+    paginate_by = 100
     
 class LocationDetailView(generic.DetailView):
     """Generic class-based detail view for a plot."""
