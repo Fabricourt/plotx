@@ -1,0 +1,53 @@
+{% extends "base_generic.html" %}
+
+{% load crispy_forms_tags %}
+{% block title %}  | {{ user.username|capfirst }}  {% endblock %}
+
+{% block content %}
+    <div class="w3-content  ">
+      <br><br>
+     
+       
+        <div class="w3-container w3-card-4 w3-dark-grey ">
+           
+            <form method="POST" enctype="multipart/form-data" >
+              {% csrf_token %}
+              <fieldset class="form-group ">
+                  <legend class="border-bottom mb-4">Make sure you update your information here incase of any changes</legend>
+                  <img class="rounded-circle account-img w3-border w3-card-4 w3-right" src="{{ user.profile.image.url }}" style="width:100px; height:100px;">
+                  <p>NB: only use a facial picture for ease of identification</p>
+                  <section  class="py-5 text-white">
+                      <div class="container w3-card-4 w3-white w3-border w3-padding ">
+                        <div class="row text-center w3-margin   w3-text-black">
+                          <div class="col-md-12">
+                              
+                            
+                            <p class="lead w3-xxlarge">{{ user.email }} 
+                              <br>
+                         {{user.profile.phone}}
+                         
+                            <hr class="w3-amber" style="width:100%">
+                            Manage your Profile account</p>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  {{ u_form|crispy }}
+              </fieldset>
+              <fieldset class="form-group">
+                  <legend class="border-bottom mb-4">Change Your Picture here</legend>
+                  <img class="rounded-circle account-img w3-border w3-card-4 w3-right" src="{{ user.profile.image.url }}" style="width:100px; height:100px;">
+                  {{ p_form|crispy }}
+              </fieldset>
+
+              <div class="form-group">
+                  <button class="btn btn-outline-warning" type="submit">Update</button>
+              </div>
+             
+          </form>
+        </div>
+      </div>
+  
+        <br><br>
+  
+{% endblock content %}

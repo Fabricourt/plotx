@@ -4,6 +4,9 @@ from towns.models import Town
 from locations.models import Location
 
 urlpatterns = [
+
+    path('dashboard', views.Dashboard, name='dashboard'),
+
     path('', views.index, name='index'),
     path('plots/', views.PlotListView.as_view(), name='plots'),
     path('plot/<int:pk>', views.PlotDetailView.as_view(), name='plot-detail'),

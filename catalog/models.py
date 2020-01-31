@@ -9,8 +9,6 @@ from towns.models import Town
 from locations.models import Location
 
 
-# Create your models here.
-
 
 class Plot_size(models.Model):
     size = models.CharField(max_length=100)

@@ -14,7 +14,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 #from .forms import RenewBookForm
 from catalog.forms import TruckloanPlotForm
 
-# Create your views here.
 from .models import Plot_size, Plot_type, Payment_plan, Road, Population, Development, Neighbor, Realtor, Company, Plot, PlotInstance
 from towns.models import Town
 from locations.models import Location
@@ -238,3 +237,7 @@ class LocationDelete(PermissionRequiredMixin, DeleteView):
     model = Plot
     success_url = reverse_lazy('plots')
     permission_required = 'catalog.can_mark_paid'
+
+
+def Dashboard(request):
+    return render(request, 'dashboard.html') 

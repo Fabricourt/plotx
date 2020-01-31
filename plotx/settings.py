@@ -37,13 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_user_agents',
-    'tracking_analyzer',
+  
+    # Local
     'abouts',
-    'ckeditor',
     'catalog',
     'locations',
-    'towns'
+    'towns',
+    'users',
+
+    # Third-party
+    'django_user_agents',
+    'tracking_analyzer',
+    'crispy_forms',
+    'ckeditor',
+
+
+    
 ]
 
 MIDDLEWARE = [
@@ -147,6 +156,12 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 # Email config
 #EMAIL_HOST = 'smtp.gmail.com'

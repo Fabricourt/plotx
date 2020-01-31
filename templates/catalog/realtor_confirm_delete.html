@@ -1,14 +1,14 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+<div class="w3-margin container">
 <h1>Delete Realtor</h1>
 
 <p>Are you sure you want to delete the realtor: {{ realtor }}?</p>
 
 <form action="" method="POST">
   {% csrf_token %}
-  <input type="submit" action="" value="Yes, delete." />
+  <input class="btn w3-border w3-hover-shadow w3-hover-border-theme"type="submit" action="" value="Yes, delete." />
 </form>
-
+</div>
 {% endblock %}
