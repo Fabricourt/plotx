@@ -6,10 +6,13 @@ from locations.models import Location
 urlpatterns = [
 
     path('dashboard', views.Dashboard, name='dashboard'),
+    path('mobile/', views.mobile, name='mobile'),
+    path('tablet/', views.tablet, name='tablet'),
 
     path('', views.index, name='index'),
     path('plots/', views.PlotListView.as_view(), name='plots'),
     path('plot/<int:pk>', views.PlotDetailView.as_view(), name='plot-detail'),
+    path('plot/<int:pk>', views.CompanyPlotDetailView.as_view(), name='companyplot-detail'),
     path('plot/create/', views.PlotCreate.as_view(), name='plot_create'),
     path('plot/<int:pk>/update/', views.PlotUpdate.as_view(), name='plot_update'),
     path('plot/<int:pk>/delete/', views.PlotDelete.as_view(), name='plot_delete'),

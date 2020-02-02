@@ -1,0 +1,54 @@
+
+
+
+{% block content %}
+
+
+<div class="container" style="margin-left:20px;margin-top:20px">
+  <h3>Company: {{ company }}</h3>
+<div class="container col-sm-11">
+  <div class="row">
+    <div class="col-sm-5">
+      <h5 class="w3-text-theme "><strong>Towns we are operating in</strong></h5>
+      {% for town in company.town.all %}<span class="w3-border  btn"> {{town|capfirst}}</span> {% if not forloop.last %} {% endif %}{% endfor %}<br>
+      <h5 class="w3-text-theme  "><strong>Areas the plots are:</strong></h5>
+      {% for location in company.location.all %}<span class="w3-border  btn"> {{location|capfirst}}</span> {% if not forloop.last %} {% endif %}{% endfor %}
+      </div>
+      <div class="col-sm-6 w3-border" style="height:150px;">
+        <span>advert spot</span>
+      </div>
+  </div>
+</div>
+<br><br>
+<!--Plots-->
+<div class="w3-margin-bottom col-sm-12 container">
+  <h3><strong class="w3-text-theme">  All My Plots </strong> </h3>
+  <ul class="w3-ul w3-text-black " id="myUL">
+    {% include 'partials/search/_plotsearch.html' %}
+    {% for plot in company.plot_set.all %}
+    <li>
+      {% include 'partials/plots/_ploti.html' %}
+    </li>
+  {% endfor %}
+
+</ul>
+      </div>
+  <div class="col-sm-12 ">
+    <div>
+      <br><br>
+      <img src="{{company.about_pic.url}}" alt="about pic" class="w3-margin-top" style="height:200px;">
+    </div>
+    <h2 class="w3-center">About Us</h2>
+    <div>
+      {{company.about_company|safe}}
+    </div>
+</div>
+</div>
+
+
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+  </script>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "base_company.html" %}
+{% load static %}
+{% block content %}
+<style>
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+</style>
+
+<header>
+<br><br>
+<span class="w3-large w3-padding w3-center"> {{ plot.title }} </span>
+<span class="w3-large w3-padding w3-badge w3-red w3-center">Size: {{ plot.plot_size }} </span>
+<span class="w3-large w3-padding w3-center"><b>Listed on</b> {{ plot.list_date }} </span>
+<span class="w3-large w3-padding w3-center"><a href="{% url 'company-detail' plot.company.pk %}"><div class="w3-right pill sticky btn w3-large w3-border-white w3-red w3-padding-16"><i class="fas fa-chevron-left w3-sticky"></i> Back To {{plot.company}}</div></a></span>
+<hr class="w3-theme-l4 " style="width:95%; padding:1px;">
+<div class="row ">
+<div class="col-sm-3">
+{% if plot.company.logo.url %}
+<span><a href="{% url 'company-detail' plot.company.pk %}"><img src="{{ plot.company.logo.url }}" class="w3-bar-item w3-circle" style="width:85px"></a></span>
+{% endif %}
+{% if plot.realtor.profile.url %}
+<span><a href="{% url 'realtor-detail' plot.realtor.pk %}"><img src="{{ plot.realtor.profile.url }}" class="w3-bar-item w3-circle " data-placement="bottom" title="View More From Me" style="width:85px"></a></span>
+{% endif %}
+</div>
+<div class="col-sm-7 w3-border">
+ advert strip
+</div>
+</div>
+<br><br>
+<div class="row">
+<div class="col-sm-3 w3-hover-shadow w3-border-left">
+    <p></p>
+    <p><strong>Company</strong><a href="{% url 'company-detail' plot.company.pk %}"> {{ plot.company }}</a></p>
+    <p><strong>Realtor</strong><a href="{% url 'realtor-detail' plot.realtor.pk %}"> {{ plot.realtor.first_name }}
+    <i class=" fa fa-phone w3-border w3-large w3-circle w3-red w3-text-white"></i>{{plot.realtor.phone}}</a></p>
+</div>
+<div class="col-sm-3 w3-hover-shadow w3-border-left">
+    <p></p>
+    <p><span class="badge w3-amber"><strong>Price:</strong> Kes: {{ plot.price }}</span> </p> 
+    <p><span class="badge w3-blue"><strong>Installments:</strong>  {{ plot.payment_plan }}</span></p> 
+</div>
+<div class="col-sm-3 w3-hover-shadow w3-border-left">
+    <p></p>
+    <p><strong>Town:</strong> <a href="{% url 'town-detail' plot.town.pk %}">{{ plot.town }}</a></p>
+    <p><strong>Closest Center:</strong> <a href="{% url 'location-detail' plot.location.pk %}">{{ plot.location }}</a></p>
+</div>
+<div class="col-sm-3 w3-hover-shadow w3-border-left">
+    <p class="w3-text-theme"></p>
+    <p><strong>Water:</strong> <i class="fas fa-tint w3-text-blue"></i> {{ plot.water }}</p>
+    <p><strong>Electricity:</strong> <i class="fas fa-lightbulb w3-text-amber"></i> {{ plot.electricity }}</p>
+</div>
+<br><br>
+<hr class="w3-theme-l4 " style="width:95%; padding:1px;">
+<div class="col-sm-2 w3-hover-shadow w3-border-left">
+    <p class="w3-text-theme"><strong>Type of Road</strong></p>
+    <p><i class="fas fa-road w3-text-black"></i> {{ plot.roads }}</p>
+</div>
+<div class="col-sm-2 w3-hover-shadow w3-border-left">
+    <p class="w3-text-theme"><strong>Residence Type</strong></p>
+    <p><i class="fab fa-houzz w3-text-pink"></i> {{ plot.plot_type }}</p>
+</div>
+<div class="col-sm-3 w3-hover-shadow w3-border-left">
+    <p class="w3-text-theme"><strong>Development:</strong></p>
+    <p>{{ plot.development }}</p>
+</div>
+<div class="col-sm-2 w3-hover-shadow w3-border-left">
+    <p class="w3-text-theme"><strong>Population:</strong></p>
+    <p> <i class="fas fa-users w3-text-theme"></i> {{ plot.population}}</p>
+</div>
+<div class="col-sm-2 w3-hover-shadow w3-border-left">
+    <p class="w3-text-theme"><strong>closest neighbour:</strong></p>
+    <p><i class="fas fa-user-friends w3-text-green"></i> {{plot.neighbor}}</p>
+
+</div>
+<br><br>
+</div>
+
+</header>
+
+
+<div class="row">
+    <div class="col-sm-11" >
+        <hr class="w3-theme-l4 " style="width:100%; padding:1px;">
+        <h4 class="w3-center">In Pictures</h4>
+        {% include 'partials/plots/_pdc.html' %}
+
+    <div class="col-sm-7  w3-margin-top">
+        <p><strong>Summary:</strong> {{ plot.description|safe }}</p>
+    </div>
+    
+    <div class="col-sm-4  w3-margin-top">
+        {% if plot.company.logo.url %}
+        <span><a href="{% url 'company-detail' plot.company.pk %}"><img src="{{ plot.company.logo.url }}" class="w3-bar-item w3-circle" style="width:85px"></a></span>
+        {% endif %}
+        {% if plot.realtor.profile.url %}
+        <span><a href="{% url 'realtor-detail' plot.realtor.pk %}"><img src="{{ plot.realtor.profile.url }}" class="w3-bar-item w3-circle " style="width:85px"></a></span>
+        {% endif %}
+    </div>
+    </div>
+</div>
+
+
+{% endblock %}

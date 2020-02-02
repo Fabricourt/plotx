@@ -1,99 +1,118 @@
-{% extends "base_generic.html" %}
+{% extends "base_company.html" %}
+{% load static %}
+
 
 {% block content %}
+<!--style realtors-->
+{% include 'partials/realtors/_realtorcss.html' %}
 
+<!-- Sidebar (hidden by default) -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()"
+  class="w3-bar-item w3-button">Close Menu</a>
+  <a href="{% url 'companys' %}" onclick="w3_close()" class="w3-bar-item w3-button">{{ company }}</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+</nav>
 
-<div class="container" style="margin-left:20px;margin-top:20px">
-  <h3>Company: {{ company }}</h3>
-<div class="container col-sm-11">
-  <div class="row">
-    <div class="col-sm-5">
-      <h5 class="w3-text-theme "><strong>Towns we are operating in</strong></h5>
-      {% for town in company.town.all %}<span class="w3-border  btn"> {{town|capfirst}}</span> {% if not forloop.last %} {% endif %}{% endfor %}<br>
-      <h5 class="w3-text-theme  "><strong>Areas the plots are:</strong></h5>
-      {% for location in company.location.all %}<span class="w3-border  btn"> {{location|capfirst}}</span> {% if not forloop.last %} {% endif %}{% endfor %}
-      </div>
-      <div class="col-sm-6 w3-border">
-        <span>advert spot</span>
-      </div>
+<!-- Top menu -->
+<div class="w3-top">
+  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
+    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
+    <a href="{% url 'companys' %}"><div class="w3-right pill  btn w3-large w3-border-white w3-red w3-padding-16"><i class="fas fa-chevron-left "></i> Back</div></a>
+    <div class="w3-center w3-padding-16"><h2>{{ company|capfirst }}</h1></div>
   </div>
 </div>
-<br><br>
-<!--Plots-->
-<div class="w3-margin-bottom col-sm-5 container">
-  <h3><strong class="w3-text-theme">  All My Plots </strong> </h3>
-  <ul class="w3-ul w3-text-black ">
-    {% for plot in company.plot_set.all %}
-  <li class="w3-bar w3-white w3-margin-bottom  w3-border w3-hover-shadow">
-    <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
-    {% if plot.company.logo.url %}
-    <span><a href="{{ company.get_absolute_url }}"><img src="{{ plot.company.logo.url }}" class="w3-bar-item w3-circle" style="width:85px"></a></span>
-    {% endif %}
-    {% if plot.realtor.profile.url %}
-    <span><a href="{{ realtor.get_absolute_url }}"><img src="{{ plot.realtor.profile.url }}" class="w3-bar-item w3-circle" data-toggle="tooltip" data-placement="right" title="View More From Me"  style="width:85px"></a></span>
-    {% endif %}
-    <div class="w3-bar-item">
+  
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
-      {% if plot.title %}
-      <span class="w3-large">{{ plot.title }}</span>
-      {% endif %}
-      -
-      {% if plot.plot_size %}
-      <span class=" w3-green badge">{{ plot.plot_size }}</span>
-      {% endif %}
-
-      {% if plot.price %}
-      <span class="badge w3-amber">Ksh-{{ plot.price }}</span>
-      {% endif %}
-
-      <br>
-      
-      {% if plot.company %}
-      <span>{{plot.company}}</span> 
-      {% endif %}
-      
-      {% if plot.company.phone_1 %}
-      <span>{{plot.company.phone_1}}</span>
-      {% endif %}
-
-      <br>
-
-      {% if plot.realtor %}
-      <span>{{plot.realtor}}</span> 
-      {% endif %}
-      
-      {% if plot.realtor.phone %}
-      <span>{{plot.realtor.phone}}</span>
-      {% endif %}
-      
-      <br>
-      {% if plot.location %}
-      <span class="w3-blue">Location:{{plot.location}}..</span>
-      {% endif %}
-      <span class=""> <a href="{{ plot.get_absolute_url }}"><button class="btn-outline-success ">view more</button></a></span>
-
-    </div>
-  </li>
-  {% endfor %}
-
-</ul>
+    <div class="w3-margin-bottom w3-padding-large col-sm-12 container">
+        
+        <ul class="w3-text-black " style="list-style-type: none;" id="myUL">
+          <h3><strong>Find Plots</strong></h3>
+          {% include 'partials/search/_plotsearch.html' %}
+        <div class="col-sm-12">
+          
+          <br>
+          {% for plot in company.plot_set.all %}
+            <li>
+              {% include 'partials/plots/_ploti.html' %}
+            </li>
+          {% endfor %}
+        <br>
       </div>
-  <div class="col-sm-5 ">
-    <div>
-      <br><br>
-      <img src="{{company.about_pic.url}}" alt="about pic" class="w3-margin-top" style="height:200px;">
+    </ul>
+
+
     </div>
-    <h2 class="w3-center">About Us</h2>
-    <div>
+   
+      {% block pagination %}
+      {% if is_paginated %}
+          <div class="pagination">
+              <span class="page-links">
+                  {% if page_obj.has_previous %}
+                      <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                  {% endif %}
+                  <span class="page-current">
+                      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                  </span>
+                  {% if page_obj.has_next %}
+                      <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                  {% endif %}
+              </span>
+          </div>
+      {% endif %}
+    {% endblock %} 
+  
+ 
+  
+ 
+
+ 
+  
+  <hr id="about">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64 w3-margin-top" id="about">
+    <div class="w3-col m6 w3-padding w3-hide-small">
+     <img src="{{company.about_pic.url}}" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>
+
+    <div class="w3-col l6 m6 w3-padding">
+      <h1 class="w3-center">About {{company|capfirst}}</h1><br>
+     <div>
       {{company.about_company|safe}}
+     </div>
     </div>
+  </div>
+  
+  <hr>
+  
+  <!-- Menu Section -->
+  <div class="w3-row w3-padding" id="menu">
+    <div class="w3-col l5 w3-padding">
+     <div>{{ company.services|safe }}</div><br>
+    </div>
+    
+    <div class="w3-col l7 w3-padding">
+      <img src="{{ company.service_pic.url }}" class="w3-round w3-image w3-opacity-min " alt="Menu" style="width:100%">
+    </div>
+  </div>
+
+  <hr>
+  <div class=" container w3-margin">
+    <h3 class="w3-center"><strong>Our Realtors</strong></h3><br>
+    <ul class="w3-text-black row" style="list-style-type: none;" id="myUL">
+      
+      {% for realtor in company.realtor.all %}
+      <li>
+        {% include 'partials/realtors/_realtor.html' %}
+      </li>
+      {% endfor %}
+      </ul>
+    </div>
+  <!-- End page content -->
 </div>
 </div>
 
-
-<script>
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-  </script>
-{% endblock %}
+  {% endblock %}

@@ -46,7 +46,13 @@ class CompanyAdmin(admin.ModelAdmin):
     list_display = ('company_name', 'contact_person', 'phone_1', 'created_on')
     fieldsets = (
         ('Standard info', {
-            'fields': ('company_name', 'contact_person', 'logo', 'about_company', 'about_pic')
+            'fields': ('company_name', 'contact_person', 'logo', 'company_pic', 'about_company', 'about_pic')
+        }),
+        ('Realtors info', {
+            'fields': ('realtor',)
+        }),
+        ('Services info', {
+            'fields': ('services', 'service_pic')
         }),
         ('Location info', {
             'fields': ('location', 'town')

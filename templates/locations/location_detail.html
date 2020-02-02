@@ -2,66 +2,24 @@
 
 {% block content %}
 
+<!--style-->
+{% include 'partials/companies/_cocardscss.html' %}
+{% include 'partials/realtors/_realtorcss.html' %}
+
 <h1 class=" w3-margin w3-center w3-padding">{{ location|capfirst }} </h1>
 
 
-<div class="container w3-margin ">
+<div class="container  ">
     
-   
+<div class="w3-container ">
+    <div class="row">
 <!--Plots-->
-    <div class="w3-margin-bottom col-sm-8 container">
-    <h3><strong class="w3-text-theme">Plots In {{location|capfirst}}</strong> </h3>
-    <ul class="w3-ul w3-text-black ">
+    <div class="w3-margin-bottom col-sm-4 container">
+    <h3 class="w3-center"><strong class="w3-text-theme">Plots In {{location|capfirst}}</strong> </h3>
+    <ul class="row w3-text-black" style="list-style-type: none;">
     {% for plot in location.plot_set.all %}
-    <li class="w3-bar w3-white w3-margin-bottom  w3-border w3-hover-shadow">
-      <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span>
-      {% if plot.company.logo.url %}
-      <span><a href="{{ company.get_absolute_url }}"><img src="{{ plot.company.logo.url }}" class="w3-bar-item w3-circle"  data-toggle="tooltip" data-placement="bottom" title="View More From Our Company" style="width:85px"></a></span>
-      {% endif %}
-      {% if plot.realtor.profile.url %}
-      <span><a href="{{ realtor.get_absolute_url }}"><img src="{{ plot.realtor.profile.url }}" class="w3-bar-item w3-circle" data-toggle="tooltip" data-placement="bottom" title="View More From Me" style="width:85px"></a></span>
-      {% endif %}
-      <div class="w3-bar-item">
-
-        {% if plot.title %}
-        <span class="w3-large">{{ plot.title }}</span>
-        {% endif %}
-        -
-        {% if plot.plot_size %}
-        <span class=" w3-green badge">{{ plot.plot_size }}</span>
-        {% endif %}
-
-        {% if plot.price %}
-        <span class="badge w3-amber">Ksh-{{ plot.price }}</span>
-        {% endif %}
-
-        <br>
-        
-        {% if plot.company %}
-        <span>{{plot.company}}</span> 
-        {% endif %}
-        
-        {% if plot.company.phone_1 %}
-        <span>{{plot.company.phone_1}}</span>
-        {% endif %}
-
-        <br>
-
-        {% if plot.realtor %}
-        <span>{{plot.realtor}}..</span> 
-        {% endif %}
-        
-        {% if plot.realtor.phone %}
-        <span>{{plot.realtor.phone}}..</span>
-        {% endif %}
-        
-        <br>
-        {% if plot.location %}
-        <span class="w3-blue">Location:{{plot.location}}..</span>
-        {% endif %}
-        <span class=""> <a href="{{ plot.get_absolute_url }}"><button class="btn-outline-success ">view more</button></a></span>
-
-      </div>
+    <li class=" w3-margin-bottom ">
+        {% include 'partials/plots/_ploti.html' %}
     </li>
     {% endfor %}
 
@@ -70,163 +28,39 @@
   
 
 <!--Company-->
-    <div class="w3-margin-bottom col-sm-11 container">
-        <h3><strong class="w3-text-theme">Plot Companies selling land in {{location|capfirst}}</strong></h3>
+    <div class="w3-margin-bottom col-sm-3 ">
+        <h3 class="w3-center"><strong class="w3-text-theme">Plot Companies in <br> {{location|capfirst}}</strong></h3>
         <div class="row">
             {% for company in location.company_set.all %}
-            <div class="w3-margin w3-border w3-hover-shadow w3-hide-small  w3-white col-sm-4">
-                <div class="w3-container">
-                 <h4 class="w3-center"></h4>
-                 <p class="w3-center">
-                   <img src="{{ company.logo.url }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-                 
-                  <div class="col-sm w3-center w3-large">
-                    <span>
-                      <a href=""><i class="fa fa-facebook fa-fw w3-text-blue"></i></a>
-                    </span>
-                    <span>
-                      <a href=""><i class="fa fa-instagram fa-fw w3-text-orange"></i></a>
-                    </span>
-                    <span>
-                      <a href=""><i class="fa fa-twitter fa-fw w3-text-light-blue"></i></a>
-                    </span>
-                    <span>
-                      <a href=""><i class="fa fa-youtube fa-fw w3-text-theme"></i></a>
-                    </span>
-                  </div>
-                 <p class="w3-border-top w3-margin"><i class="fa fa-bank fa-fw w3-margin-right w3-text-theme"></i> {{ company }}</p>
-                 <p class="w3-border-top w3-margin"><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i> {{ company.phone_1 }}</p>
-                 <p class="w3-border-top w3-margin"><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i> {{ company.email_1 }}</p>
-                 <p class="w3-border-top w3-margin"><i class="fa fa-globe fa-fw w3-margin-right w3-text-theme"></i> {{ company.website }}</p>
-                 <p class=" w3-margin"><i class="fa fa-link fa-fw w3-margin-right w3-text-theme"></i> <a href="{{ company.get_absolute_url }}" class="badge w3-hover-white w3-hover-text-green card-link w3-green w3-right">View Our Plots</a></p>
-             
-                </div>
-              </div>
-            
-              <div class="w3-margin w3-border w3-hover-shadow w3-hide-large w3-hide-medium  w3-white" style="width:100%">
-                <div class="w3-container">
-                  <h4 class="w3-center"></h4>
-                  <p class="w3-center">
-                    <img src="{{ company.logo.url }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-                  
-                   <div class="col-sm w3-center w3-large">
-                     <span>
-                       <a href=""><i class="fa fa-facebook fa-fw w3-text-blue"></i></a>
-                     </span>
-                     <span>
-                       <a href=""><i class="fa fa-instagram fa-fw w3-text-orange"></i></a>
-                     </span>
-                     <span>
-                       <a href=""><i class="fa fa-twitter fa-fw w3-text-light-blue"></i></a>
-                     </span>
-                     <span>
-                       <a href=""><i class="fa fa-youtube fa-fw w3-text-theme"></i></a>
-                     </span>
-                   </div>
-                  <p class="w3-border-top w3-margin"><i class="fa fa-bank fa-fw w3-margin-right w3-text-theme"></i> {{ company }}</p>
-                  <p class="w3-border-top w3-margin"><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i> {{ company.phone_1 }}</p>
-                  <p class="w3-border-top w3-margin"><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i> {{ company.email_1 }}</p>
-                  <p class="w3-border-top w3-margin"><i class="fa fa-globe fa-fw w3-margin-right w3-text-theme"></i> {{ company.website }}</p>
-                  <p class=" w3-margin"><i class="fa fa-link fa-fw w3-margin-right w3-text-theme"></i> <a href="{{ company.get_absolute_url }}" class="badge w3-hover-white w3-hover-text-green card-link w3-green w3-right">View Our Plots</a></p>
-              
-                 </div>
-               </div>
-              <br>
-              
-            
+             <!--card-->
+                {% include 'partials/companies/_cocards.html' %}        
+                <br>
             {% endfor %}
         </div>         
     </div>
 
 <!--Realtor-->
-    <div class="w3-margin-bottom container col-sm-11" >
-        <h3><strong class="w3-text-theme">Plots Realtors selling land in {{location|capfirst}}</strong></h3>
-        <div class="row">
+    <div class="w3-margin-bottom  col-sm-4" >
+        <h3 class="w3-center"><strong class="w3-text-theme">Plots Realtors in {{location|capfirst}}</strong></h3>
+        <ul class="row" style="list-style-type: none;">
             {% for realtor in location.realtor_set.all %}
             <!-- realtor Profile -->
-            <div class="w3-margin w3-border w3-hover-shadow w3-hide-small  w3-white col-sm-4">
-                <div class="w3-container">
-                <h4 class="w3-center"></h4>
-                <p class="w3-center">
-                <img src="{{ realtor.profile.url }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-                
-                <div class="col-sm w3-center w3-large">
-                    <span>
-                    <a href=""><i class="fa fa-facebook fa-fw w3-text-blue"></i></a>
-                    </span>
-                    <span>
-                    <a href=""><i class="fa fa-instagram fa-fw w3-text-orange"></i></a>
-                    </span>
-                    <span>
-                    <a href=""><i class="fa fa-twitter fa-fw w3-text-light-blue"></i></a>
-                    </span>
-                    <span>
-                    <a href=""><i class="fa fa-youtube fa-fw w3-text-theme"></i></a>
-                    </span>
-                </div>
-                {% if realtor %}
-                <p class="w3-border-top w3-margin"><i class="fa fa-bank fa-fw w3-margin-right w3-text-theme"></i> {{ realtor }}</p>
-                {% endif %}
-                {% if realtor.phone %}
-                <p class="w3-border-top w3-margin"><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i> {{ realtor.phone }}</p>
-                {% endif %}
-                {% if realtor.email %}
-                <p class="w3-border-top w3-margin"><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i> {{ realtor.email }}</p>
-                {% endif %}
-                {% if realtor.website %}
-                <p class="w3-border-top w3-margin"><i class="fa fa-globe fa-fw w3-margin-right w3-text-theme"></i> {{ realtor.website }}</p>
-                {% endif %}
-                <p class=" w3-margin"><i class="fa fa-link fa-fw w3-margin-right w3-text-theme"></i> <a href="{{ realtor.get_absolute_url }}" class="badge w3-hover-white w3-hover-text-green card-link w3-green w3-right">View My Plots</a></p>
-            
-                </div>
-            </div>
-
-            <div class="w3-margin w3-border w3-hover-shadow w3-hide-large w3-hide-medium  w3-white" style="width:100%">
-                <div class="w3-container">
-                <h4 class="w3-center"></h4>
-                <p class="w3-center">
-                    <img src="{{ realtor.profile.url }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-                
-                <div class="col-sm w3-center w3-large">
-                    <span>
-                    <a href=""><i class="fa fa-facebook fa-fw w3-text-blue"></i></a>
-                    </span>
-                    <span>
-                    <a href=""><i class="fa fa-instagram fa-fw w3-text-orange"></i></a>
-                    </span>
-                    <span>
-                    <a href=""><i class="fa fa-twitter fa-fw w3-text-light-blue"></i></a>
-                    </span>
-                    <span>
-                    <a href=""><i class="fa fa-youtube fa-fw w3-text-theme"></i></a>
-                    </span>
-                </div>
-                {% if realtor %}
-                <p class="w3-border-top w3-margin"><i class="fa fa-bank fa-fw w3-margin-right w3-text-theme"></i> {{ realtor }}</p>
-                {% endif %}
-                {% if realtor.phone %}
-                <p class="w3-border-top w3-margin"><i class="fa fa-phone fa-fw w3-margin-right w3-text-theme"></i> {{ realtor.phone }}</p>
-                {% endif %}
-                {% if realtor.email %}
-                <p class="w3-border-top w3-margin"><i class="fa fa-envelope fa-fw w3-margin-right w3-text-theme"></i> {{ realtor.email }}</p>
-                {% endif %}
-                {% if realtor.website %}
-                <p class="w3-border-top w3-margin"><i class="fa fa-globe fa-fw w3-margin-right w3-text-theme"></i> {{ realtor.website }}</p>
-                {% endif %}
-                <p class=" w3-margin"><i class="fa fa-link fa-fw w3-margin-right w3-text-theme"></i> <a href="{{ realtor.get_absolute_url }}" class="badge w3-hover-white w3-hover-text-green card-link w3-green w3-right">View My Plots</a></p>  
-                
-                </div>
-            </div>
-  <br>
+            <li>
+                {% include 'partials/realtors/_realtor.html' %}
+            </li>
+            <br>
             {% endfor %}  
-        </div>          
+        </ul>          
     </div>
 </div>
+</div>
+</div>
+  <!--js-->
+  {% include 'partials/companies/_cocardsextra.html' %}
 
-
-<script>
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
   </script>
 {% endblock %}

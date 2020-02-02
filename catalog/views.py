@@ -84,6 +84,10 @@ class PlotDetailView(generic.DetailView):
     """Generic class-based detail view for a plot."""
     model = Plot
 
+class CompanyPlotDetailView(generic.DetailView):
+    """Generic class-based detail view for a plot."""
+    model = Plot
+
 class RealtorListView(generic.ListView):
     """Generic class-based list view for a list of realtors."""
     model = Realtor
@@ -241,3 +245,10 @@ class LocationDelete(PermissionRequiredMixin, DeleteView):
 
 def Dashboard(request):
     return render(request, 'dashboard.html') 
+
+
+def mobile(request):
+    return render(request, 'catalog/mobile.html') 
+
+def tablet(request):
+    return render(request, 'catalog/tablet.html') 

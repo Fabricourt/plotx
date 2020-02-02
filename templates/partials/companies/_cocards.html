@@ -1,0 +1,20 @@
+<div id="card-1" class="card rounded w3-card-4  w3-round" >
+    <a href="{{ company.get_absolute_url }}">
+      <div class="card__overlay">
+      </div>
+      <div class="card__image w3-display-container">
+          {% if company.company_pic.url %}
+          <img src="{{ company.company_pic.url }}" alt="Company Header Photo" />
+          {% endif %}
+          <div class="w3-display-topleft">
+          {% if company.logo.url %}
+              <img src="{{ company.logo.url }}" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
+          {% endif %}
+          </div>
+      </div>
+      <div class="card__heading">
+          <span class="small"></span>
+          <h4 class="btn w3-normal w3-yellow w3-hover-yellow">{{company}}</h4>
+      </div>
+    </a>
+  </div>
