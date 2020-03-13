@@ -1,0 +1,36 @@
+{% include 'partials/plots/_plotcss.html' %}
+<div class="container-fluid">
+    <h3 class="w3-text-theme w3-margin-left w3-wide mb-3">Available Plots</h4>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner row w-100 mx-auto">
+        <div class="carousel-item col-md-4 active">
+         
+            <img class="card-img-top snip1456  w3-border img-fluid" style="width:325px; height:325px; padding:8px;" src="{{ company.company_pic.url }}" alt="Card image cap">
+        
+          
+        </div>
+
+        {% for plot in company.plot_set.all %}
+        <div class="carousel-item col-md-4">
+            {% include 'partials/plots/_ploti.html' %}
+        </div>
+        {% endfor %}
+        {% for plot in company.plot_set.all %}
+        <div class="carousel-item col-md-4">
+            {% include 'partials/plots/_ploti.html' %}
+        </div>
+        {% endfor %}
+        
+
+ 
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon w3-blue w3-xxlarge" aria-hidden="true"></span>
+        <span class="sr-only ">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon w3-blue w3-xxlarge " aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>

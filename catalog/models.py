@@ -2,12 +2,52 @@ from django.db import models
 import uuid  # Required for unique book instances
 from datetime import date
 from datetime import datetime
+from django.utils import timezone
 from django.urls import reverse
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
+from django.utils import timezone
 from towns.models import Town
 from locations.models import Location
+from django.shortcuts import render, get_object_or_404
 
+class Bg_color(models.Model):
+    color = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.color
+
+class Color(models.Model):
+    color = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.color
+
+class Hover_color(models.Model):
+    color = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.color
+
+class Border_color(models.Model):
+    color = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.color
+
+
+
+class Text_color(models.Model):
+    color = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.color
+
+class Footer_color(models.Model):
+    color = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.color
 
 
 class Plot_size(models.Model):
@@ -15,6 +55,12 @@ class Plot_size(models.Model):
 
     def __str__(self):
         return self.size
+
+class Plot_status(models.Model):
+    status = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.status
 
 class Plot_type(models.Model):
     type = models.CharField(max_length=100)
@@ -66,6 +112,7 @@ class Realtor(models.Model):
     profile = models.ImageField(default='avatar.jpg', upload_to='profiles/%Y/%m/%d/', blank=True)
     statement=models.CharField(max_length=400, blank=True, null=True)
     about_realtor = models.TextField(max_length=1000, help_text="Enter a brief description of the Realtor.")
+    advert_pic = models.ImageField(upload_to='photos/%Y/%m/%d/',null=True, blank=False)
     about_pic = models.ImageField(upload_to='photos/%Y/%m/%d/',null=True, blank=False)
     email = models.CharField(max_length=100, blank=True, null=True)
     phone = models.CharField(max_length=100, blank=True, null=True)
@@ -104,10 +151,18 @@ class Realtor(models.Model):
 class Company(models.Model):
     """Model representing an Realtor."""
     company_name = models.CharField(max_length=100, blank=True, null=True)
+    company_created_on = models.DateField(null=True, blank=True)
+    company_slogan = models.CharField(max_length=200, blank=True, null=True)
     company_pic =  models.ImageField(upload_to='photos/%Y/%m/%d/',null=True, blank=False)
     logo = models.ImageField(default='logo.png', upload_to='logos/%Y/%m/%d/', blank=True)
     about_company = RichTextField(max_length=1500, blank=False, null=True, help_text="Max 200 words")
     about_pic = models.ImageField(upload_to='photos/%Y/%m/%d/',null=True, blank=False)
+    bg_color = models.ForeignKey(Bg_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    hover_color = models.ForeignKey(Hover_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    border_color = models.ForeignKey(Border_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    color = models.ForeignKey(Color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    text_color = models.ForeignKey(Text_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    footer_color = models.ForeignKey(Footer_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
     service_pic = models.ImageField(upload_to='photos/%Y/%m/%d/',null=True, blank=False)
     services = RichTextField(max_length=1500, blank=False, null=True, help_text="Max 200 words")
     contact_person = models.CharField(max_length=100, blank=False, null=True)
@@ -125,8 +180,8 @@ class Company(models.Model):
     realtor = models.ManyToManyField(Realtor,  blank=True, help_text='realtors')
     created_on = models.DateField(null=True, blank=True)
     is_published = models.BooleanField(default=True)
-    
-    
+
+ 
     def display_town(self):
         """Creates a string for the Town. This is required to display town in Admin."""
         return ', '.join([town.name for town in self.town.all()[:5]])
@@ -151,11 +206,40 @@ class Company(models.Model):
         return self.company_name
 
 
+
+class Contactus(models.Model):
+    company = models.ForeignKey(Company,on_delete=models.CASCADE,related_name='messages')
+    name = models.CharField(max_length=80)
+    mobile = models.CharField(max_length=100)
+    header = models.CharField(max_length=400, blank=True, null=True)
+    email = models.EmailField()
+    message = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    approved_contactus = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved_contactus = True
+        self.save()
+
+    def __str__(self):
+        return self.company
+
+    class Meta:
+        ordering = ['created_on']
+
+
+
 class Plot(models.Model):
     """Model representing a plot (but not a specific plot)."""
     title = models.CharField(max_length=200, blank=False, null=True)
+    plot_status =  models.ForeignKey(Plot_status, on_delete=models.DO_NOTHING,  blank=False, null=True)
     realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
     company = models.ForeignKey(Company, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    bg_color = models.ForeignKey(Bg_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    hover_color = models.ForeignKey(Hover_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    border_color = models.ForeignKey(Border_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    color = models.ForeignKey(Color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    text_color = models.ForeignKey(Text_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
     town = models.ForeignKey(Town, on_delete=models.DO_NOTHING,  blank=False, null=True)
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING,  blank=False, null=True, help_text='add a location closet to the plot in the picked town' )
     description = RichTextField(blank=False, null=True)

@@ -1,8 +1,13 @@
 {% load static %}
-  <figure class="snip0078 red "><img src="{{ realtor.profile.url }}" alt="realtor" style="height:280px; width:300px" />
+<a href="{{ realtor.get_absolute_url }}">
+  <figure class="snip0078 red  "><img src="{{ realtor.profile.url }}" alt="realtor" style="height:280px; width:300px" />
+   
     <figcaption  style="height:100px;">
-      <h4>{{realtor.first_name|capfirst}} <span>{{realtor.last_name|capfirst}}</span></h4>
-      <p>{{realtor.phone}}</p>
+      <h5 class="w3-text-white">{{realtor.first_name|capfirst}} <span>{{realtor.last_name|capfirst}}</span></h4>
+      <p><i class="fa fa-phone w3-circle w3-border w3-border-white w3-large w3-text-white"></i> {{realtor.phone}}</p>
     </figcaption>
-    <a href="#"></a>
+  
   </figure>
+</a>
+
+

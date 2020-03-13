@@ -2,13 +2,18 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Plot_size, Plot_type, Payment_plan, Road, Population, Development, Neighbor, Realtor, Company, Plot, PlotInstance
+from .models import Bg_color, Color, Text_color, Hover_color, Border_color, Plot_size, Plot_status, Plot_type, Payment_plan, Road, Population, Development, Neighbor, Realtor, Contactus, Company, Plot, PlotInstance
 from towns.models import Town
 from locations.models import Location
 
-
+admin.site.register(Bg_color)
+admin.site.register(Hover_color)
+admin.site.register(Border_color)
+admin.site.register(Color)
+admin.site.register(Text_color)
 admin.site.register(Plot_size)
 admin.site.register(Plot_type)
+admin.site.register(Plot_status)
 admin.site.register(Payment_plan)
 admin.site.register(Town)
 admin.site.register(Location)
@@ -33,7 +38,15 @@ class RealtorAdmin(admin.ModelAdmin):
     """
     list_display = ('last_name', 'first_name', 'phone', 'created_on')
  
-    
+@admin.register(Contactus)
+class ContactusAdmin(admin.ModelAdmin):
+    list_display = ('name', 'header', 'message', 'company', 'created_on', 'approved_contactus')
+    list_filter = ('approved_contactus', 'created_on')
+    search_fields = ('name', 'email', 'message')
+    approved_contactus = ['approve_messages']
+
+    def approve_messages(self, request, queryset):
+        queryset.update(active=True)
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
@@ -46,7 +59,10 @@ class CompanyAdmin(admin.ModelAdmin):
     list_display = ('company_name', 'contact_person', 'phone_1', 'created_on')
     fieldsets = (
         ('Standard info', {
-            'fields': ('company_name', 'contact_person', 'logo', 'company_pic', 'about_company', 'about_pic')
+            'fields': ('company_name', 'company_slogan', 'company_created_on', 'contact_person', 'logo', 'company_pic', 'about_company', 'about_pic', )
+        }),
+        ('Colors info', {
+            'fields': ('bg_color','hover_color', 'border_color', 'color','text_color','footer_color' )
         }),
         ('Realtors info', {
             'fields': ('realtor',)
@@ -75,6 +91,7 @@ class PlotsInstanceInline(admin.TabularInline):
     """Defines format of inline book instance insertion (used in BookAdmin)"""
     model = PlotInstance
 
+@admin.register(Plot)
 class PlotAdmin(admin.ModelAdmin):
     """Administration object for Plot models. 
     Defines:
@@ -82,26 +99,15 @@ class PlotAdmin(admin.ModelAdmin):
      - adds inline addition of plot instances in plot view (inlines)
     """
     list_display = ('title', 'realtor', 'company', 'town','location')
-
-admin.site.register(Plot, PlotAdmin)
-
-
-@admin.register(PlotInstance)
-class PlotnstanceAdmin(admin.ModelAdmin):
-    """Administration object for PlotInstance models. 
-    Defines:
-     - fields to be displayed in list view (list_display)
-     - filters that will be displayed in sidebar (list_filter)
-     - grouping of fields into sections (fieldsets)
-    """
-    list_display = ('plot', 'status', 'buyer','next_payment_due_when', 'id')
-    list_filter = ('status', 'next_payment_due_when')
-    
     fieldsets = (
-        (None, {
-            'fields': ('Plot','Plot_number', 'id')
+    ('standard info', {
+            'fields': ('title', 'realtor', 'company', 'town','location' )
         }),
-        ('Availability', {
-            'fields': ('status', 'next_payment_due_when','buyer')
+    ('Colors info', {
+            'fields': ('bg_color','hover_color', 'border_color', 'color','text_color', )
         }),
     )
+
+
+
+

@@ -1,0 +1,42 @@
+
+
+<figure class="snip1456 ">
+    {% if plot.photo_main.url %}
+  <img src="{{plot.photo_main.url}}" alt="sample50" style="height:320px; width:100%"/>
+    {% endif %}
+      <div class="title">
+        <div>
+          {% if plot.town %}
+          <h3>{{plot.town}} </h3>
+          {% else %}
+          <p class="{{company.bg_color}}"><span class="w3-text-white">Type of plot:</span>{{plot.plot_type}}</p>
+          <h3>{{plot.location}}</h3>
+          {% endif %}
+          {% if plot.plot_status %}
+          <h4 class="w3-normal">{{plot.plot_status}}</h4>
+          {% endif %}
+          {% if plot.plot_size %}
+          <span class=" w3-green badge">{{ plot.plot_size }}</span>
+          {% endif %}
+          {% if plot.price %}
+          <span class="badge w3-amber">Ksh-{{ plot.price }}</span>
+          {% endif %}
+        </div>
+      </div>
+      <figcaption >
+        
+        <p class="{{company.bg_color}}"><span class="w3-text-white">Area in {{plot.town}}:</span> {{plot.location}}</p>
+        <p class="{{company.bg_color}}"><span class="w3-text-white">Payment Plan:</span> {{plot.payment_plan}}</p>
+        <h6 class=" {{company.bg_color}}  ">{{plot.company}} </h6>
+        <h6 class="w3-amber w3-hover-yellow w3-text-black">view more details</h6>
+        <p class="w3-large"><span class="w3-blue badge ">{{plot.realtor.first_name}}</span>:<span class="badge w3-red">{{plot.realtor.phone}}</span></p>
+       
+      </figcaption>
+      <a href="{{ plot.get_absolute_url }}"></a>
+    </figure>
+    
+  
+    
+  
+    
+  

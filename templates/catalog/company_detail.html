@@ -3,116 +3,154 @@
 
 
 {% block content %}
-<!--style realtors-->
-{% include 'partials/realtors/_realtorcss.html' %}
+{% include 'partials/companies/_navbar.html' %}
+{% include 'partials/companies/_topbar.html' %}
+{% include 'partials/companies/realtor/_realtorcss.html' %}
 
-<!-- Sidebar (hidden by default) -->
-<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()"
-  class="w3-bar-item w3-button">Close Menu</a>
-  <a href="{% url 'companys' %}" onclick="w3_close()" class="w3-bar-item w3-button">{{ company }}</a>
-  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
-</nav>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- Top menu -->
-<div class="w3-top">
-  <div class="w3-white w3-xlarge" style="max-width:1200px;margin:auto">
-    <div class="w3-button w3-padding-16 w3-left" onclick="w3_open()">☰</div>
-    <a href="{% url 'companys' %}"><div class="w3-right pill  btn w3-large w3-border-white w3-red w3-padding-16"><i class="fas fa-chevron-left "></i> Back</div></a>
-    <div class="w3-center w3-padding-16"><h2>{{ company|capfirst }}</h1></div>
+<style>
+  a:link {
+  text-decoration: none;
+}
+</style>
+
+
+<div id="home">
+
+
+{% include 'partials/companies/index/_headercss.html' %}
+{% include 'partials/companies/index/_header.html' %}
+</div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content" style="max-width:100%;" id="plots">
+
+<!--company plots-->  
+
+<div  id="plot">
+<div class="w3-container" >
+  <h3 class="w3-xlarge w3-wide {{company.text_color}}">{{company|upper}} PLOTS</h3>
+  <p class="w3-large">Prime Property Locations</p>
+</div>
+<br>
+  {% include 'partials/companies/plots/_ploticss.html' %}
+
+
+<div class="w3-row-padding">
+  {% for plot in company.plot_set.all %}
+  <div class="w3-col l3 m6 w3-margin-bottom">
+    {% include 'partials/companies/plots/_ploti.html' %}
+  </div>
+  {% endfor %}
+
+</div>
+
+  
+
+  
+<!-- About Section -->
+<section class="">
+<div class="w3-container" style="padding:68px 16px" id="about">
+  <h2 class="w3-center {{company.text_color}}">ABOUT {{company|upper}}</h3>
+  <p class="w3-center w3-large">Key features of our company</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
+      <i class="fa fa-desktop {{company.text_color}}  w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large ">Responsive</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
+      <i class="fa fa-heart {{company.text_color}} w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Passion</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
+      <i class="fa fa-diamond {{company.text_color}}  w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Design</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
+      <i class="fa fa-cog {{company.text_color}}  w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Support</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
   </div>
 </div>
-  
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
+</section>
 
-    <div class="w3-margin-bottom w3-padding-large col-sm-12 container">
-        
-        <ul class="w3-text-black " style="list-style-type: none;" id="myUL">
-          <h3><strong>Find Plots</strong></h3>
-          {% include 'partials/search/_plotsearch.html' %}
-        <div class="col-sm-12">
-          
-          <br>
-          {% for plot in company.plot_set.all %}
-            <li>
-              {% include 'partials/plots/_ploti.html' %}
-            </li>
-          {% endfor %}
-        <br>
-      </div>
-    </ul>
-
-
+  <!-- about services  Section -->
+<section class="">
+  <div class="w3-row section w3-padding " id="services" style="margin-top:10px;" id="services">
+    <br>
+    <div class="w3-col l6 m6 ">
+     
+    <div class="w3-center w3-margin {{company.text_color}} "> {{ company.services|safe }}</div><br>
     </div>
-   
-      {% block pagination %}
-      {% if is_paginated %}
-          <div class="pagination">
-              <span class="page-links">
-                  {% if page_obj.has_previous %}
-                      <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
-                  {% endif %}
-                  <span class="page-current">
-                      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                  </span>
-                  {% if page_obj.has_next %}
-                      <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
-                  {% endif %}
-              </span>
-          </div>
-      {% endif %}
-    {% endblock %} 
-  
- 
-  
- 
+    
+    <div class="w3-col l6 m6 ">
+      <img src="{{ company.service_pic.url }}" class="w3-round w3-xxxlarge w3-image  w3-border-white w3-opacity-min " alt="Menu" style="padding:10px; width:100%; height:100%">
+    </div>
+  </div>
+</section>
 
- 
-  
-  <hr id="about">
 
-  <!-- About Section -->
-  <div class="w3-row w3-padding-64 w3-margin-top" id="about">
-    <div class="w3-col m6 w3-padding w3-hide-small">
-     <img src="{{company.about_pic.url}}" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+
+
+
+  <!-- Team Section -->
+  <section class="">
+  <div class="w3-row 4" id="team" style="margin-bottom:0px;">
+   <br><br><br>
+    <div class="w3-col m6 w3-hide-small ">
+     <img src="{{company.about_pic.url}}" class="w3-round w3-xxxlarge w3-image w3-border-white w3-opacity-min" alt="Table Setting" style="padding:10px; width:100%; height:100%">
     </div>
 
-    <div class="w3-col l6 m6 w3-padding">
-      <h1 class="w3-center">About {{company|capfirst}}</h1><br>
-     <div>
+    <div class="w3-col l6 m6">
+      <h2 class="w3-center {{company.text_color}} ">About Our Team <br>
+      {{company|capfirst}}
+      </h2>
+     <div class="w3-margin" style="font-size: 14px;">
       {{company.about_company|safe}}
      </div>
     </div>
   </div>
-  
-  <hr>
-  
-  <!-- Menu Section -->
-  <div class="w3-row w3-padding" id="menu">
-    <div class="w3-col l5 w3-padding">
-     <div>{{ company.services|safe }}</div><br>
-    </div>
-    
-    <div class="w3-col l7 w3-padding">
-      <img src="{{ company.service_pic.url }}" class="w3-round w3-image w3-opacity-min " alt="Menu" style="width:100%">
-    </div>
-  </div>
+</section>
 
-  <hr>
-  <div class=" container w3-margin">
-    <h3 class="w3-center"><strong>Our Realtors</strong></h3><br>
-    <ul class="w3-text-black row" style="list-style-type: none;" id="myUL">
-      
-      {% for realtor in company.realtor.all %}
-      <li>
-        {% include 'partials/realtors/_realtor.html' %}
-      </li>
-      {% endfor %}
-      </ul>
+
+<div id="realtor"></div>
+
+  <section class=" w3-padding-64" style="width: 100%; height: 100vh;" >
+    
+    <div class=" w3-margin-bottom " id="realtor">
+          {% include 'partials/companies/realtor/_realtor.html' %}
     </div>
+  </section>
+
+ <div id="contact"></div>
+
+  <section class="w3-padding-64">
+    <div>
+      <h1 class="w3-xxlarge {{company.text_color}} w3-center">CONTACT</h1> 
+      <p class="w3-center">send us a message we would love to hear from you</p>
+ 
+    
+    </div>
+    <div class="container">
+      {% include 'partials/companies/contact/_ccontact.html' %}
+    </div>
+  </section>
+
+  <section class="{{company.bg_color}}">
+ 
+    {% include 'partials/companies/footer/_footer.html' %}
+
+  </section>
+
   <!-- End page content -->
 </div>
 </div>
+{% include 'partials/companies/plots/_plotijs.html' %}
+
+  
 
   {% endblock %}

@@ -1,26 +1,36 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+{% include 'partials/plots/_plotcss.html' %}
+{% include 'partials/realtors/_carouselcss.html' %}
 <div class="container" style="margin-left:20px;margin-top:20px">
-  <h3>Realtor: {{realtor}} </h3>
-<div class="container col-sm-11">
+  <h3 class=>Realtor: {{realtor}} </h3>
+<div class="container col-sm-12">
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-4">
+      {% if realtor.profile.url %}
+      <span
+        <img src="{{ realtor.profile.url }}" alt="realtor" style="height:280px; width:300px" />
+      </span>
+      {% endif %}
       <h5 class="w3-text-theme "><strong>Towns i am operating in</strong></h5>
       {% for town in realtor.town.all %}<span class="w3-border  btn"> {{town}}</span>{% if not forloop.last %}, {% endif %}{% endfor %}<br>
       <h5 class="w3-text-theme  "><strong>Areas the plots are:</strong></h5>
       {% for location in realtor.location.all %}<span class="w3-border  btn"> {{location}}</span>{% if not forloop.last %}, {% endif %}{% endfor %}
       </div>
-      <div class="col-sm-6 w3-border">
-        <span>advert spot</span>
+      <div class="col-sm-7">
+        {% if advert_pic %}
+        <img src="{{realtor.advert_pic.url}}" alt="" style="height:230px; width:100%">
+        {% endif %}
       </div>
   </div>
 </div>
 <br><br>
 <!--Plots-->
-<div class="w3-margin-bottom col-sm-8 container">
+
+<div class="w3-margin-bottom col-sm-12 container">
   <h3><strong class="w3-text-theme">  All My Plots </strong> </h3>
-  <ul class="w3-ul row w3-text-black ">
+  <ul class=" row w3-text-black ">
     {% for plot in realtor.plot_set.all %}
   <li>
     {% include 'partials/plots/_ploti.html' %}
@@ -29,11 +39,16 @@
 
 </ul>
       </div>
+ 
+      {% include 'partials/realtors/_carousel.html' %}
+  
 
       <div class="col-sm-8 w3-padding-large">
         <div>
           <br><br>
+          {% if about_pic %}
           <img src="{{realtor.about_pic.url}}" alt="about pic" class="w3-margin-top" style="height:200px;">
+          {% endif %}
         </div>
         <h2 class="w3-center">About Me</h2>
         <div>
@@ -44,4 +59,6 @@
 <br><br>
 
 </div>
+{% include 'partials/realtors/_carouseljs.html' %}
+{% include 'partials/plots/_plotjs.html' %}
 {% endblock %}

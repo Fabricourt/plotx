@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views import generic
-
 import datetime
 from django.urls import reverse
 from django.urls import reverse_lazy
@@ -10,13 +9,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import permission_required
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
-#from .forms import RenewBookForm
-from catalog.forms import TruckloanPlotForm
-
-from .models import Plot_size, Plot_type, Payment_plan, Road, Population, Development, Neighbor, Realtor, Company, Plot, PlotInstance
+from .models import Contactus, Plot_size, Plot_type, Payment_plan, Road, Population, Development, Neighbor, Realtor, Company, Plot, PlotInstance
 from towns.models import Town
 from locations.models import Location
+from .forms import ContactusForm
 
 def index(request):
     """View function for home page of site."""
@@ -78,7 +74,7 @@ class LocationDetailView(generic.DetailView):
 class PlotListView(generic.ListView):
     """Generic class-based view for a list of plots."""
     model = Plot
-    paginate_by = 10
+    paginate_by = 12
     
 class PlotDetailView(generic.DetailView):
     """Generic class-based detail view for a plot."""
@@ -91,7 +87,7 @@ class CompanyPlotDetailView(generic.DetailView):
 class RealtorListView(generic.ListView):
     """Generic class-based list view for a list of realtors."""
     model = Realtor
-    paginate_by = 10 
+    paginate_by = 12 
 
 
 class RealtorDetailView(generic.DetailView):
@@ -101,13 +97,29 @@ class RealtorDetailView(generic.DetailView):
 class CompanyListView(generic.ListView):
     """Generic class-based list view for a list of companys."""
     model = Company
-    paginate_by = 10 
+    paginate_by = 12 
 
 
 class CompanyDetailView(generic.DetailView):
     """Generic class-based detail view for an author."""
     model = Company
 
+def add_contactus_to_company(request, pk):
+    Company = get_object_or_404(Company, pk=pk)
+    if request.method == "POST":
+        form = ContactusForm(request.POST)
+        if form.is_valid():
+            contactus = form.save(commit=False)
+            contactus.post = post
+            contactus.save()
+            return redirect('company_detail', pk=company.pk)
+    else:
+        form = ContactusForm()
+    return render(request, 'catalog/add_contactus_to_company.html', {'form': form})
+
+
+
+  
 
 class LoanedPlotsByUserListView(LoginRequiredMixin,generic.ListView):
     """Generic class-based view listing books on loan to current user."""
@@ -128,38 +140,6 @@ class LoanedPlotsAllListView(PermissionRequiredMixin,generic.ListView):
     def get_queryset(self):
         return PlotInstance.objects.filter(status__exact='o').order_by('next_payment_due_when')  
 
-
-@permission_required('catalog.can_mark_paid')
-def renew_loaninstallment_secretary(request, pk):
-    """View function for renewing  a specific PlotInstance by secretary."""
-    plot_instance = get_object_or_404(PlotInstance, pk = pk)
-
-    # If this is a town request then process the Form data
-    if request.method == 'town':
-
-        # Create a form instance and populate it with data from the request (binding):
-        form = TruckloanPlotForm(request.town)
-
-        # Check if the form is valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
-            plot_instance.due_back = form.cleaned_data['renewpayment_date']
-            plot_instance.save()
-
-            # redirect to a new URL:
-            return HttpResponseRedirect(reverse('all-loaned') )
-
-    # If this is a GET (or any other method) create the default form
-    else:
-        proposed_renewpayment_date = datetime.date.today() + datetime.timedelta(weeks=3)
-        form = TruckloanPlotForm(initial={'renewpayment_date': proposed_renewpayment_date,})
-
-    context = {
-        'form': form,
-        'plot_instance': plot_instance,
-    }
-
-    return render(request, 'catalog/plot_renewpayment_date_secretary.html', context)
 
 class RealtorCreate(PermissionRequiredMixin, CreateView):
     model = Realtor
@@ -252,3 +232,4 @@ def mobile(request):
 
 def tablet(request):
     return render(request, 'catalog/tablet.html') 
+

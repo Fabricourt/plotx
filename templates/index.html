@@ -2,13 +2,53 @@
 {% load static %}
 
 {% block content %}
-
-    <!--HEADER-->
     {% include 'partials/index/_header.html' %}
-    
-    <!--TOWNS-->
-    {% include 'partials/index/_towns.html' %}
 
+ 
+ 
+          <div>
+    <h2 class="w3-center w3-text-purple w3-hide-small"> Pick A Town Of Interest </h2>
     
-    
+    <div style="width:100%"> 
+      <input class="w3-input  col-sm-12 w3-hover-border-theme w3-margin-bottom" type="text" placeholder="Search towns..." id="myInput" onkeyup="myFunction()" >
+      <br>
+    </div>
+</div> 
+      <br>
+      {% if towns %}
+      <ul class="w3-row-padding" style="list-style-type: none;"  id="myUL">
+        {% for town in towns %}
+        <li class="w3-col l2 m3 s6 w3-margin-bottom ">
+          <a href="{{ town.get_absolute_url }}">
+            <span class="w3-hover-text-white w3-hover-shadow btn  w3-text-purple w3-hover-purple" style="width:150px; margin:5px;">{{ town.name }}</span></a> 
+        </li>
+        {% endfor %}
+      </ul>
+  
+      {% else %}
+        <p>There are no towns.</p>
+      {% endif %}
+  </div>
+      </div>
+ 
+
+  <script>
+    function myFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      ul = document.getElementById("myUL");
+      li = ul.getElementsByTagName("li");
+      for (i = 0; i < li.length; i++) {
+        txtValue = li[i].textContent || li[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+    </script>       
+
+  
 {% endblock %}

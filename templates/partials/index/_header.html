@@ -1,45 +1,68 @@
 {% load static %}
-<header class='section w3-padding'>
-  <div class="container jumbotron w3-theme-l5 w3-center">
+
+<style>
+  .cross {
+    color: -moz-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+    color: -webkit-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+    color: linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+  
+  }
+  
+  a:link {
+  text-decoration: none;
+  color: purple;
+
+}
+</style>
+
+<header class='w3-section w3-padding'>
+  <div class=" row w3-white">
     
-    <div class="row  w3-text-black ">
-      <div class="col-sm-12 w3-center">
-        <h1 >KATATA  </h1>
-        <h5 class="w3-center w3-text-theme w3-border-bottom w3-hide-large">Worlds Largest Plot Catalog</h5>
-        <p class='w3-small'>visit No:<span class="badge  w3-circle  w3-theme"> {{ num_visits }} </span></p>
-      </div>
-      <div class="w3-hide-medium w3-hide-small ">
-      <div class = "col-sm-2 w3-hover-shadow    w3-margin-left  w3-border w3-border-theme">
-        <br>
-        <p class="w3-center"><strong>Number of <br>Plots:</strong><br> <span class="w3-circle w3-margin badge w3-theme">{{ num_plots }}</span></p>
-      </div>
+     <h2 class="w3-xxlarge cross col-sm-12 w3-text-purple w3-center" > <img src="{% static 'img/favicon/favicon-32x32.png' %}" alt="home" style="width:64px; height:64px;"><br> 
+      <span class="w3-hide-small ">
+        ▁ ▂ ▄ ▆ ▇ <span class="w3-card-4">█</span>
+      </span>
 
-      <div class = "col-sm-2 w3-hover-shadow w3-border w3-margin-left w3-border-theme">
-        <br>
-        <p class="w3-center"><strong>Number of Companys:</strong><br><span class="w3-circle w3-margin badge w3-theme">{{ num_companys }}</span> </p>
-      </div>
-      <div class = "col-sm-2  w3-hover-shadow  w3-margin-left   w3-border  w3-border-theme">
-        <br>
-        <p class="w3-center"><strong>Number of Realtors:</strong><br><span class="w3-circle w3-margin badge w3-theme">{{ num_realtors }}</span> </p>
-      </div>
-      <div class = "col-sm-2 w3-hover-shadow  w3-margin-left  w3-border  w3-border-theme">
-        <br>
-        <p class="w3-center"><strong>Number of Towns:</strong><br><span class="w3-circle w3-margin badge w3-theme">{{ num_towns }}</span> </p>
-      </div>
-      <div class = "col-sm-2 w3-hover-shadow  w3-margin-left   w3-border w3-border-theme">
-        <br>
-        <p class="w3-center"><strong>Number of Locations:</strong><br><span class="w3-circle btn w3-margin badge w3-theme">{{ num_locations }}</span> </p>
-      </div>
-    </div>
- 
-    <div class="container w3-xlarge w3-hide-large">
-      <span class="btn  w3-border w3-hover-shadow w3-white col-sm" ><span class="w3-left">Plots</span> <span class="badge w3-theme w3-right">{{ num_plots }}</span></span>
-      <span class="btn w3-border w3-hover-shadow w3-white col-sm"><span class="w3-left">Companies</span> <span class="badge w3-theme w3-right">{{ num_companys }}</span></span>
-      <span class="btn w3-border w3-hover-shadow w3-white col-sm"><span class="w3-left">Realtors</span> <span class="badge w3-theme w3-right">{{ num_realtors }}</span></span>
-      <span class="btn w3-border w3-hover-shadow w3-white col-sm"><span class="w3-left">Areas</span> <span class="badge w3-theme w3-right">{{ num_locations }}</span></span>
+      <span class="w3-jumbo col-sm  w3-hide-small"> 𝐤ᗩ𝕥𝓪𝐓𝔞 </span>
+      <span class="w3-hide-small"><span class="w3-card-4">█</span> ▇ ▆ ▄ ▂ ▁</span>
+    </h2>
+     <div class="col-sm-12" style="width:100%">
+       <div class=" w3-large w3-text-black col-sm-12 w3-center">
+  
+        <div class="row w3-hide w3-text-purple w3-margin-top">
+           
+              <a href="{% url 'companys' %}" class="w3-text-grey w3-hover-text-purple w3-hover-light-grey w3-margin-left w3-margin-bottom  btn w3-large w3-card-4 col-sm  w3-round"><span class="">Companies</span></a>
+              
+              <a href="{% url 'plots' %}" class="w3-text-grey w3-hover-text-purple w3-hover-light-grey w3-margin-left w3-margin-bottom  btn w3-large w3-card-4 col-sm  w3-round"><span class="">Plots</span></a>
+            
+              <a href="{% url 'realtors' %}" class="w3-text-grey w3-hover-text-purple w3-hover-light-grey w3-margin-left w3-margin-bottom  btn w3-large w3-card-4 col-sm  w3-round"><span class="">Realtors</span></a>
+            
+              <a href="{% url 'towns' %}" class="w3-text-grey w3-hover-text-purple w3-hover-light-grey w3-margin-left w3-margin-bottom  btn w3-large w3-card-4 col-sm  w3-round"><span class="">Towns</span></a>
+            
+              <a href="{% url 'locations' %}" class="w3-text-grey w3-hover-text-purple w3-hover-light-grey w3-margin-left w3-margin-bottom  btn w3-large w3-card-4 col-sm  w3-round"><span class="">Areas</span></a> 
+              
 
-    </div>
-  </div>
+        </div>
+
+      </div>    
+      
+      </div>    
+      
+      <h3 class="w3-center   w3-text-grey w3-wide col-sm-12">
+          <strong CLASS="w3-hide-small">
+          We Make It Royal, Purple and Famous
+        </strong> 
+      
+        <strong class="w3-hide-large w3-small w3-hide-medium">KATATA CATALOG <br>
+        <span>Pick A Town Of Interest</span>
+        </strong>
+      </h3>
+
+      <div class="w3-center w3-hide">
+        <span class="w3-xlarge w3-hide-small  w3-round w3-padding" >ACCESS PLOTS THROUGH </span>
+        <span class="w3-small w3-hide-large w3-hide-medium">ACCESS PLOTS THROUGH </span>
+      </div>
+  <hr class="w3-purple  w3-hide" style="width: 100%; padding:1px;" >
   </div>
 </header>
 

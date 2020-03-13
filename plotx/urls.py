@@ -25,6 +25,7 @@ from users import views as user_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
+    path('contact/', include('contact.urls')),
     path('', RedirectView.as_view(url='/catalog/', permanent=True)),
     path('accounts/', include('django.contrib.auth.urls')),
     path('profile/', user_views.profile, name='profile' ),

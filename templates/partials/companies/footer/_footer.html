@@ -1,0 +1,43 @@
+  
+  <!-- Footer -->
+  <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+
+    <a href="{{company.absolute.u}}" class="w3-button w3-large w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+
+    <div class="w3-row-padding">
+      <div class="w3-col s4 {{company.text_color}} ">
+        <h4>{{company}} links</h4>
+        <p><a href="#plots">Plots</a></p>
+        <p><a href="#about">About us</a></p>
+        <p><a href="#services">Services</a></p>
+        <p><a href="#team">Team</a></p>
+        <p><a href="#realtor">Realtor</a></p>
+        <p><a href="#contact">Contact</a></p>
+      </div>
+     
+
+      <div class="w3-col s4 w3-right w3-text-purple">
+        <h4>Katata links</h4>
+        <p><a href="{% url 'index' %}">KATATA</a></p>
+        <p><a href="{% url 'companys' %">Company</a></p>
+        <p><a href="{% url 'towns' %}">Town</a></p>
+      </div>
+
+      <div class="w3-col s4 {{company.text_color}} ">
+        <h4>{{company}} Address</h4>
+        <p><i class="fa fa-fw fa-map-marker {{company.text_color}} "></i> {{company.town.name}} {{company.location.name}} </p>
+        <p><i class="fa fa-fw fa-phone {{company.text_color}} "></i> {{company.phone_1}} / {{company.phone_2}}</p>
+        <p><i class="fa fa-fw fa-envelope {{company.text_color}} "></i> {{company.email_1}}</p>
+        <br>
+        <i class="fa fa-facebook-official {{company.text_color}} w3-hover-opacity w3-large"></i>
+        <i class="fa fa-instagram {{company.text_color}} w3-hover-opacity w3-large"></i>
+        <i class="fa fa-snapchat {{company.text_color}} w3-hover-opacity w3-large"></i>
+        <i class="fa fa-pinterest-p {{company.text_color}} w3-hover-opacity w3-large"></i>
+        <i class="fa fa-twitter {{company.text_color}} w3-hover-opacity w3-large"></i>
+        <i class="fa fa-linkedin {{company.text_color}} w3-hover-opacity w3-large"></i>
+      </div>
+
+      </div>
+    </div>
+  </footer>
+  <div class="{{company.bg_color}} w3-center w3-padding-24">Powered by <a href="{% url 'index' %}" title="W3.CSS" target="_blank" class="w3-hover-opacity">KATATA</a></div>

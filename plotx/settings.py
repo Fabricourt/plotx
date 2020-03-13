@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
   
     # Local
     'abouts',
     'catalog',
+    'contact',
     'locations',
     'towns',
     'users',

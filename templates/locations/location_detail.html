@@ -5,18 +5,29 @@
 <!--style-->
 {% include 'partials/companies/_cocardscss.html' %}
 {% include 'partials/realtors/_realtorcss.html' %}
+{% include 'partials/plots/_plotcss.html' %}
 
-<h1 class=" w3-margin w3-center w3-padding">{{ location|capfirst }} </h1>
 
-
-<div class="container  ">
+<div class="row"></div>
+<div class="col-sm-12  w3-display-container">
+    {% if location.location_pic %}
+    <img src="{{ location.location_pic.url }}" class="w3-border " alt="" style="padding:9px; height: 65vh;">
+    {% endif %}
+    <div class="w3-display-middle ">
+        <h1 class="w3-xxxlarge w3-theme-d5 w3-border w3-card-4 w3-text-white w3-opacity-min  w3-padding w3-margin-left ">{{  location|capfirst }} </h2>
+              
+    </div>
+</div>
+</div>
+<br><br>
+<div class="container w3-padding w3-margin ">
     
-<div class="w3-container ">
+
     <div class="row">
 <!--Plots-->
-    <div class="w3-margin-bottom col-sm-4 container">
+    <div class="w3-margin-bottom  col-sm-4 container ">
     <h3 class="w3-center"><strong class="w3-text-theme">Plots In {{location|capfirst}}</strong> </h3>
-    <ul class="row w3-text-black" style="list-style-type: none;">
+    <ul class=" w3-text-black" style="list-style-type: none;">
     {% for plot in location.plot_set.all %}
     <li class=" w3-margin-bottom ">
         {% include 'partials/plots/_ploti.html' %}
@@ -30,7 +41,7 @@
 <!--Company-->
     <div class="w3-margin-bottom col-sm-3 ">
         <h3 class="w3-center"><strong class="w3-text-theme">Plot Companies in <br> {{location|capfirst}}</strong></h3>
-        <div class="row">
+        <div class="">
             {% for company in location.company_set.all %}
              <!--card-->
                 {% include 'partials/companies/_cocards.html' %}        
@@ -40,9 +51,9 @@
     </div>
 
 <!--Realtor-->
-    <div class="w3-margin-bottom  col-sm-4" >
+    <div class="w3-margin-bottom  col-sm-4 " >
         <h3 class="w3-center"><strong class="w3-text-theme">Plots Realtors in {{location|capfirst}}</strong></h3>
-        <ul class="row" style="list-style-type: none;">
+        <ul class="" style="list-style-type: none;">
             {% for realtor in location.realtor_set.all %}
             <!-- realtor Profile -->
             <li>
@@ -53,10 +64,11 @@
         </ul>          
     </div>
 </div>
-</div>
+
 </div>
   <!--js-->
   {% include 'partials/companies/_cocardsextra.html' %}
+  {% include 'partials/plots/_plotjs.html' %}
 
   <script>
     $(function () {

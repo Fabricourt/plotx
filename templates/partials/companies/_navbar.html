@@ -1,0 +1,20 @@
+{% load static %}
+<nav class="w3-sidebar w3-bar-block w3-card-4 w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:30%;min-width:300px" id="mySidebar">
+  
+    <a href="javascript:void(0)" onclick="w3_close()"
+    class="w3-bar-item {{company.bg_color}} {{plot.bg_color}}{{company.hover_color}} {{plot.hover_color}} w3-card-4 w3-button" style="text-decoration:none;">Close Menu</a>
+    <div class="w3-right">{% include 'partials/companies/_dropdown.html' %} </div>
+  
+    <div class="w3-margin-bottom ">
+    <a href="{{ company.get_absolute_url }}" onclick="w3_close()" class="w3-bar-item w3-button {{plot.text_color}} {{company.text_color}} w3-hover-shadow {{plot.hover_color}} {{company.hover_color}}" style="text-decoration:none;">Home</a>
+    <a href="#plots" onclick="w3_close()" class="w3-bar-item w3-button {{plot.text_color}} {{company.text_color}} w3-hover-shadow {{plot.hover_color}} {{company.hover_color}}" style="text-decoration:none;">Plots</a>    
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button {{plot.text_color}} {{company.text_color}} w3-hover-shadow {{plot.hover_color}} {{company.hover_color}}" style="text-decoration:none;">About</a>
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button {{plot.text_color}} {{company.text_color}} w3-hover-shadow {{plot.hover_color}} {{company.hover_color}}" style="text-decoration:none;">Services</a>
+    <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button {{plot.text_color}} {{company.text_color}} w3-hover-shadow {{plot.hover_color}} {{company.hover_color}}" style="text-decoration:none;">Team</a>   
+    <a href="#gallery" onclick="w3_close()" class="w3-bar-item w3-hide w3-button {{plot.text_color}} {{company.text_color}} w3-hover-shadow {{plot.hover_color}} {{company.hover_color}}" style="text-decoration:none;">Gallery</a>
+    <a href="#realtor" onclick="w3_close()" class="w3-bar-item w3-button {{plot.text_color}} {{company.text_color}} w3-hover-shadow {{plot.hover_color}} {{company.hover_color}}" style="text-decoration:none;">Realtor</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button {{plot.text_color}} {{company.text_color}} w3-hover-shadow {{plot.hover_color}} {{company.hover_color}}" style="text-decoration:none;">Contact</a>
+    </div>
+ 
+  </nav>
+  
