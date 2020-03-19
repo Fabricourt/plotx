@@ -20,13 +20,20 @@ from django.conf.urls.static import static
 from django.views.generic import RedirectView
 from django.contrib.auth import views as auth_views
 from users import views as user_views
+from django.conf.urls import url
 
 
 urlpatterns = [
+    path('', include('pages.urls')),
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
+    path('blog/', include('blog.urls')),
+    path('realtors/', include('realtors.urls')),  
+    path('companys/', include ('companys.urls')),  
     path('contact/', include('contact.urls')),
-    path('', RedirectView.as_view(url='/catalog/', permanent=True)),
+    path('listings/', include('listings.urls')),
+    path('towns/', include('towns.urls')),
+    path('locations/', include('locations.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('profile/', user_views.profile, name='profile' ),
     path('register/', user_views.register, name='register'),

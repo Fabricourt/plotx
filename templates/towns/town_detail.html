@@ -38,10 +38,10 @@
 <input class="w3-input w3-margin_bottom
      w3-hover-border-theme w3-padding" type="text" placeholder="Search company..." id="myInput" onkeyup="myFunction()" style ="width: 100%;">
 <ul class=" w3-margin-top w3-row-padding"  style="list-style-type: none;" id="myUL">  
-    {% for company in town.company_set.all %}
+    {% for business in town.business_set.all %}
   <li class="w3-col l4 m4 s12 w3-margin-bottom ">
-    <a href="{{ company.get_absolute_url }}">
-      <div class="btn  {{company.hover_color}} w3-white w3-large w3-card-4  w3-hover-shadow  w3-text-black" style="width:280px; margin:5px;">{{ company.company_name }}</div></a> 
+    <a href="{{ business.get_absolute_url }}">
+      <div class="btn  {{business.hover_color}} w3-white w3-large w3-card-4  w3-hover-shadow  w3-text-black" style="width:280px; margin:5px;">{{ business.business_name }}</div></a> 
   </li>
 
   {% endfor %}

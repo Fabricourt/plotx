@@ -1,0 +1,42 @@
+
+
+<figure class="snip1456 ">
+    {% if listing.photo_main.url %}
+  <img src="{{listing.photo_main.url}}" alt="sample50" style="height:320px; width:100%"/>
+    {% endif %}
+      <div class="title">
+        <div>
+          {% if listing.town %}
+          <h3 class="w3-text-white">{{listing.town}} </h3>
+          {% else %}
+          <p class="{{business.bg_color}}"><span class="w3-text-white">Type of plot:</span>{{listing.plot_type}}</p>
+          <h3>{{listing.location}}</h3>
+          {% endif %}
+          {% if listing.plot_status %}
+          <h4 class="w3-normal">{{listing.plot_status}}</h4>
+          {% endif %}
+          {% if listing.plot_size %}
+          <span class=" w3-green badge">{{ listing.plot_size }}</span>
+          {% endif %}
+          {% if listing.price %}
+          <span class="badge w3-amber">Ksh-{{ listing.price }}</span>
+          {% endif %}
+        </div>
+      </div>
+      <figcaption >
+        
+        <p class="{{business.bg_color}}"><span class="w3-text-white">Area in {{listing.town}}:</span> {{listing.location}}</p>
+        <p class="{{business.bg_color}}"><span class="w3-text-white">Payment Plan:</span> {{listing.payment_plan}}</p>
+        <h6 class=" {{business.bg_color}}"> {{listing.business}} </h6>
+        <h6 class="w3-amber w3-hover-yellow w3-text-black">view more details</h6>
+        <p class="w3-large"><span class="w3-blue badge ">{{listing.broker.first_name}}</span>:<span class="badge w3-red">{{listing.broker.phone}}</span></p>
+       
+      </figcaption>
+      <a href="{{ listing.get_absolute_url }}"></a>
+    </figure>
+    
+  
+    
+  
+    
+  

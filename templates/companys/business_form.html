@@ -1,0 +1,48 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% load humanize %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="w3-content" style="width:100%;">
+
+<div class="w3-container w3-margin ">
+    <div class=" w3-container  w3-hover-shadow  w3-white">
+            <div class="w3-panel  w3-topbar w3-border-purple">
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb ">
+                        <li class="breadcrumb-item">
+                          <a href="{% url 'businesss' %}">
+                            <i class=" "></i> Back To Companys</a>
+                        </li>
+                        <li class="breadcrumb-item active"> Create</li>
+                      </ol>
+                    </nav>
+            </div>
+      
+
+               
+            <div class="content-section ">
+              {% include 'partials/_alerts.html' %}
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Companys</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Post</button>
+                    </div>
+                </form>
+            </div>
+
+
+</div>
+
+<br /><br /><br /><br /><br /><br /><br />
+</div>
+
+{% endblock %}
+

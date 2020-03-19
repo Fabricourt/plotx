@@ -1,0 +1,155 @@
+{% extends "base_company.html" %}
+{% load static %}
+
+
+{% block content %}
+{% include 'companys/_navbar.html' %}
+{% include 'companys/_topbar.html' %}
+
+{% include 'companys/_brokercss.html' %}
+{% include 'companys/_ploticss.html' %}
+{% include 'companys/_headercss.html' %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+  a:link {
+    text-decoration: none;
+  }
+</style>
+
+
+{% include 'companys/_header.html' %}
+
+<div id="home"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main " style="max-width:100%;" id="plots">
+
+<!--business plots-->  
+
+<div id="plot">
+  <div class="w3-container" >
+    <h3 class="w3-xlarge w3-wide {{business.text_color}} wow fadeInDown" data-wow-duration="2.0s" >{{business|upper}} PLOTS</h3>
+    <p class="w3-large">Prime Property Locations</p>
+  </div>
+</div>
+
+<br>
+
+<section>
+  <div class="w3-row-padding">
+    {% for listing in business.listing_set.all %}
+      <div class="w3-col l4 m6 s12 w3-margin-bottom">
+        {% include 'companys/_ploti.html' %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="">
+<div class="w3-container" style="padding:68px 16px" id="about">
+  <h2 class="w3-center {{business.text_color}}">ABOUT {{business|upper}}</h3>
+  <p class="w3-center w3-large">Key features of our business</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
+      <i class="fa fa-desktop {{business.text_color}}  w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large ">Responsive</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
+      <i class="fa fa-heart {{business.text_color}} w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Passion</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
+      <i class="fa fa-diamond {{business.text_color}}  w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Design</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+    <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
+      <i class="fa fa-cog {{business.text_color}}  w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Support</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+  <!-- about services  Section -->
+<section class="">
+  <h3 class="w3-center {{business.text_color}}"> {{business|upper}} SERVICES</h3>
+  <div class="w3-row section w3-padding " id="services" style="margin-top:10px;" id="services">
+    <br>
+    <div class="w3-col l6 m6 ">
+     
+    <div class="w3-center w3-margin {{business.text_color}} "> {{ business.services|safe }}</div><br>
+    </div>
+    
+    <div class="w3-col l6 m6 ">
+      <img src="{{ business.service_pic.url }}" class="w3-round w3-xxxlarge w3-image  w3-border-white w3-opacity-min " alt="Menu" style="padding:10px; width:100%; height:100%">
+    </div>
+  </div>
+</section>
+
+
+
+
+
+  <!-- Team Section -->
+<section class="">
+  <div class="w3-row 4" id="team" style="margin-bottom:0px;">
+   <br><br><br>
+    <div class="w3-col m6 w3-hide-small ">
+     <img src="{{business.about_pic.url}}" class="w3-round w3-xxxlarge w3-image w3-border-white w3-opacity-min" alt="Table Setting" style="padding:10px; width:100%; height:100%">
+    </div>
+
+    <div class="w3-col l6 m6">
+      <h4 class="w3-center {{business.text_color}} ">{{business|upper}} TEAM <br></h4>
+     <div class="w3-margin" style="font-size: 14px;">
+      {{business.about_business|safe}}
+     </div>
+    </div>
+  </div>
+</section>
+
+
+<div id="realtor"></div>
+
+<section class=" w3-padding-64" style="width: 100%;" >
+  <h3 class="w3-center {{business.text_color}}"> {{business|upper}} REALTORS</h3>
+  {% for broker in business.broker_set.all %}
+  <div class=" w3-margin-bottom w3-container " id="realtor">
+        {% include 'companys/_broker.html' %}
+  </div>
+  {% endfor %}
+</section>
+
+ <div id="contact"></div>
+
+  <section class="w3-padding-64">
+    <div>
+      <h1 class="w3-xxlarge {{business.text_color}} w3-center">CONTACT</h1> 
+      <p class="w3-center">send us a message we would love to hear from you</p>
+ 
+    
+    </div>
+    <div class="container">
+      {% include 'companys/_ccontact.html' %}
+    </div>
+  </section>
+
+  <section class="{{business.bg_color}}">
+ 
+    {% include 'companys/_footer.html' %}
+
+  </section>
+
+  <!-- End page content -->
+</div>
+</div>
+{% include 'companys/_plotijs.html' %}
+
+  
+
+  {% endblock %}

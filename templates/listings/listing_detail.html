@@ -1,0 +1,138 @@
+{% extends "base_company.html" %}
+{% load static %}
+<style>
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+</style>
+
+{% block content %}
+
+{% include 'partials/plots/_plotcss.html' %}
+<!-- Sidebar (hidden by default) -->
+
+
+<!-- Top menu -->
+<div class="w3-top {{listing.bg_color}}">
+  <div class="w3-xlarge" style="max-width:100%; margin: 3px;" >
+    <div class="w3-button w3-padding-8 w3-left {{listing.bg_color}} {{listing.hover_color}}  w3-hover-text-amber {{listing.border_color}} w3-hover-border-white"  ><a class="w3-hover-text-amber" href="{% url 'business-detail' listing.business.pk  %}"><i class="fas fa-chevron-left "></i> Back</a></div>
+
+    <div class="w3-right w3-margin-left  {{listing.bg_color}}  {{business.bg_color}}">
+        <h1 class="w3-large btn w3-card-4 w3-hover-border-white {{listing.border_color}} {{business.border_color}} w3-margin-right {{listing.bg_color}} {{business.bg_color}}">
+        <a class="w3-hover-text-white" href="{% url 'business-detail' listing.business.pk  %}" style="text-decoration:none;">{{ listing.business|upper }}</a></h1></div>
+   
+  </div>
+</div>
+  
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding w3-margin-top" style="max-width:100%;">
+    <div class="w3-margin-bottom w3-padding-large col-sm-12 container">
+        <header>
+            <br><br>
+            <div class="w3-center">
+            <span class="w3-xlarge w3-padding w3-center"> {{ listing.title }} </span>
+            <span class="w3-large w3-padding w3-badge {{listing.bg_color}} w3-center">Size: {{ listing.listing_size }} </span><br>
+            <span class="w3-large w3-padding w3-center"><b>Listed on</b> {{ listing.list_date }} </span>
+            </div>
+            <hr class="w3-theme-l4 " style="width:95%; padding:1px;">
+            <div class="row ">
+            <div class="col-sm-3 w3-margin-bottom">
+            {% if listing.broker.profile.url %}
+            <span><a href=""><img src="{{ listing.broker.profile.url }}" class=" w3-border {{listing.bg_color}}  w3-card-4 " data-placement="bottom" title="View More From Me" style="height:250px; width:100%; padding:15px"></a></span>
+            {% endif %}
+            </div>
+
+            <div class="col-sm-8 w3-hide-small " style="height:230px; width:100%">
+            {% if listing.photo_main.url %}
+            <img src="{{listing.photo_main.url}}" alt="listing photo" class="w3-border "  style="height:230px; width:100%; padding:5px">
+            {% endif %}
+        </div>
+            </div>
+            <br><br>
+            <div class="row">
+            <div class="col-sm-3  w3-border-left">
+                <p></p>
+                <p><strong>business</strong><a href="{% url 'business-detail' listing.business.pk %}"> <span class="{{listing.text_color}}">{{ listing.business }}</span></a></p>
+                <p class="w3-red w3-card-4 badge"><strong class="w3-white">Realtor</strong><a href=""> <span class="w3-white">{{ listing.broker.first_name }}</span>
+                <i class=" fa fa-phone w3-border w3-large  w3-circle  w3-text-white"></i> <span class="w3-white">{{listing.broker.phone}}</span></a></p>
+            </div>
+            <div class="col-sm-3  w3-border-left">
+                <p></p>
+                <p><span class="badge w3-amber"><strong>Price:</strong> <span class="">Kes: {{ listing.price }}</span></span> </p> 
+                <p><span class="badge w3-blue"><strong>Installments:</strong>  <span class="">{{ listing.payment_plan }}</span></span></p> 
+            </div>
+            <div class="col-sm-3  w3-border-left">
+                <p></p>
+                <p><strong>Town:</strong> <a href=""><span class="{{listing.text_color}}">{{ listing.town }}</span></a></p>
+                <p><strong>Closest Center:</strong> <a href=""><span class="{{listing.text_color}}">{{ listing.location }}</span></a></p>
+            </div>
+            <div class="col-sm-3  w3-border-left">
+                <p class="w3-text-theme"></p>
+                <p><strong>Water:</strong> <i class="fas fa-tint w3-text-blue"></i> <span class="{{listing.text_color}}">{{ listing.water }}</span> </p>
+                <p><strong>Electricity:</strong> <i class="fas fa-lightbulb w3-text-amber"></i> <span class="{{listing.text_color}}">{{ listing.electricity }}</span> </p>
+            </div>
+            <br><br>
+            <hr class="w3-theme-l4 " style="width:95%; padding:1px;">
+            <div class="col-sm-2  w3-border-left">
+                <p class="w3-text-theme"><strong>Type of Road</strong></p>
+                <p><i class="fas fa-road w3-text-black"></i> <span class="{{listing.text_color}}">{{ listing.roads }}</span> </p>
+            </div>
+            <div class="col-sm-2  w3-border-left">
+                <p class="w3-text-theme"><strong>Residence Type</strong></p>
+                <p><i class="fab fa-houzz w3-text-pink"></i> <span class="{{listing.text_color}}">{{ listing.listing_type }}</span> </p>
+            </div>
+            <div class="col-sm-3  w3-border-left">
+                <p class="w3-text-theme"><strong>Development:</strong></p>
+                <p><span class="{{listing.text_color}}">{{ listing.development }}</span></p>
+            </div>
+            <div class="col-sm-2  w3-border-left">
+                <p class="w3-text-theme"><strong>Population:</strong></p>
+                <p> <i class="fas fa-users w3-text-theme"></i> <span class="{{listing.text_color}}">{{ listing.population}}</span> </p>
+            </div>
+            <div class="col-sm-2  w3-border-left">
+                <p class="w3-text-theme"><strong>closest neighbour:</strong></p>
+                <p><i class="fas fa-user-friends w3-text-green"></i> <span class="{{listing.text_color}}">{{listing.neighbor}}</span></span> </p>
+            
+            </div>
+            <br><br>
+            </div>
+            
+            </header>
+            
+        </div>
+    </div>            
+            
+                <section class="" >
+                <div class="w3-center">
+                <p><strong>business</strong><a href="{% url 'business-detail' listing.business.pk %}"> <span class="{{listing.text_color}}">{{ listing.business }}</span></a></p>
+                <p class="w3-xlarge"><strong>Call </strong></p>
+                <p class="w3-red badge"><strong class="w3-white">Realtor</strong><a href=""> <span class="w3-white">{{ listing.broker.first_name }}</span>
+                <i class=" fa fa-phone w3-border w3-large  w3-circle  w3-text-white"></i> <span class="w3-white">{{listing.broker.phone}}</span></a></p>
+                </div>   
+                <hr class="w3-theme-l4 " style="width:100%; padding:1px;">
+                    <h4 class="w3-center">In Pictures</h4>
+                    {% include 'partials/listings/_pdc.html' %}
+                </section>
+            
+                <div class="w3-main w3-content w3-padding" style="max-width:1200px;">
+            <div class="row">
+                <div class="col-sm-6  w3-margin-top">
+                    <p><strong>Summary:</strong> {{ listing.description|safe }}</p>
+               
+                
+                <p><strong>business</strong><a href="{% url 'business-detail' listing.business.pk %}"> <span class="{{listing.text_color}}">{{ listing.business }}</span></a></p>
+                <p class="w3-xlarge"><strong>Call </strong></p>
+                <p class="w3-red badge"><strong class="w3-white">Realtor</strong><a href=""> <span class="w3-white">{{ listing.broker.first_name }}</span>
+                <i class=" fa fa-phone w3-border w3-large  w3-circle  w3-text-white"></i> <span class="w3-white">{{listing.broker.phone}}</span></a></p>
+                </div>
+            </div>
+            </div>
+
+    <!-- End page content -->
+    
+
+  {% endblock %}

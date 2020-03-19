@@ -1,0 +1,18 @@
+{% load static %}
+<div class="card w3-col l3 m6 s12">
+  <img src="{{ broker.profile.url }}" alt="{{broker.first_name}}" style="width:100%">
+  <h4><strong>{{broker.first_name}} {{broker.last_name}}</strong></h4>
+ <i class="fas fa-award w3-center w3-xxlarge {{business.text_color}}"></i>
+  
+  <div style="margin: 16px 0;">
+    <a href="#"><i class="fa fa-youtube {{business.text_color}} w3-hover-text-red"></i></a> 
+    <a href="#"><i class="fa fa-twitter {{business.text_color}} w3-hover-text-blue"></i></a>  
+    <a href="#"><i class="fa fa-instagram {{business.text_color}} w3-hover-text-orange"></i></a>  
+    <a href="#"><i class="fa fa-facebook {{business.text_color}} w3-hover-text-blue"></i></a> 
+  </div>
+  <p><button class="{{business.bg_color}}">{{broker.phone}}
+    <br>
+    {{broker.email}}
+  </button></p>
+</div>
+

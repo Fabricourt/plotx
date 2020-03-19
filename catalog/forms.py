@@ -1,7 +1,8 @@
 from django import forms
-from .models import Company, Contactus
+from .models import Company, Plot
 
-class ContactusForm(forms.ModelForm):
+class PlotForm(forms.ModelForm):
     class Meta:
-        model = Contactus
-        fields = ('name',  'email', 'mobile', 'header', 'message')
+        model = Plot
+        fields = '__all__'
+

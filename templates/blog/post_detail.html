@@ -1,0 +1,89 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+
+{% load humanize %}
+
+{% block title %} Welcome {% endblock %}
+
+{% block content %}
+<head>
+<style>
+    .w3-lobster {
+      font-family: "Lobster", serif;
+    }
+</style>
+
+<script>
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+</head>
+<section class="galeria">
+  <div class="sesgoarriba"></div>
+  <div class="imagenes">
+      <img src="{% static 'img/malibu.jpg' %}" alt="" class="img-fluid">
+<div class="enmica">
+          <h2>GETMORE Going Beyond Your Limit</h2>
+          
+          <div></div>
+      </div>
+  </div>
+ 
+  <div class="sesgoabajo">
+
+
+    
+  </div>
+  
+</section>
+
+<div id="fb-root w3-card-4 w3-white"></div>
+<section>
+
+  
+  <div class="w3-padding-64 w3-margin-bottom w3-center front">
+    <br><br>
+    <h1 class="w3-card-4 w3-content w3-padding w3-border w3-xxlarge">{{ post.title }}</h1>
+  </div>
+  <div class="w3-row-padding w3-content" style="max-width:1400px">
+  <div class="w3-twothird ">
+   
+    <img src="{{ post.photo_blog.url }}" class="w3-card-4 w3-padding w3-border" alt="" style="width:100%; height:380px">
+  <div class="w3-justify ">
+  <br><br>
+   <div class="w3-container w3-card-4 w3-white w3-border w3-padding ">
+     <div class="w3-margin ">
+            
+    {% if object.author == user %}
+    <div>
+      <a href="{% url 'blog-home' %}" class="btn  btn-sm mt-1 mb-1 w3-border-amber w3-highway-yellow w3-right w3-hover-white">Back To Blog</a>
+      <a class="btn btn-sm mt-1 mb-1  w3-border-green w3-highway-green w3-hover-white" href="{% url 'post-update' object.id %}">Update</a>
+      <a class="btn btn-sm mt-1 mb-1  w3-border-red w3-highway-red  w3-hover-white" href="{% url 'post-delete' object.id %}">Delete</a>
+    </div>
+  {% endif %} 
+        <a class=" w3-xlarge" href="#" style="text-decoration:none;">Author: <span class="w3-text-red" >{{ object.author|capfirst }}<span></span></a>
+        <p class="text-muted ">{{ object.date_posted|date:"F d, Y" }}</p>
+        <br>  
+    <p class="article-content">{{ object.content|safe }}</p> 
+  </div>  
+  </div>
+  <br><br>
+  </div>
+  </div>
+  <div class="w3-third w3-padding w3-border">
+    
+  <div class="w3-card w3-media w3-white">
+    <div class="">
+      <div class="fb-comments  w3-text-white w3-hover-shadow " data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-numposts="12"></div>
+    </div>
+  </div>
+</section>
+
+
+  
+  {% endblock %}

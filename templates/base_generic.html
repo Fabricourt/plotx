@@ -3,7 +3,7 @@
 <head>
 {% load static %}
 {% load humanize %}
-{% block title %}<title>Katata</title>{% endblock %}
+<title>Katata{% block title %} {% endblock %}</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" type="image/jpg" href="{% static 'img/favicon/favicon.jpg' %}" class=" w3-border-white w3-circle" style="width:32px; height:32px;"/>

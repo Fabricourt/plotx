@@ -1,0 +1,71 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} | Contact {% endblock %}
+<!--TopBar-->
+
+{% block content %}
+
+  
+
+<section class="contact">
+<br><br>
+  <!-- Alerts -->
+  {% include 'partials/_alerts.html' %}
+<!-- Contact -->
+
+<div class=" " id="contact ">
+    <!--TopBar-->
+   
+    <div class="w3-center">
+        <h2 class="w3-text-purple "> <strong>CONTACT</strong></h2>
+        <p class="w3-text-purple ">we would love to hear from you, send us a message, or call us, we are here for you</p>
+    </div>
+      <div class="">
+        <form  method='POST' action="{% url 'contactk' %}" enctype='multipart/form-data'> {% csrf_token %}
+                        
+            <div class="form-row   ">
+                  <div class="col-sm-6">
+                    <div class="form-group 
+                     col-sm mb-0">
+                        <span class="">{{ form.name|as_crispy_field }}</span>
+                    </div>
+                    <div class="form-group col-sm mb-0">
+                        {{ form.email|as_crispy_field }}
+                    </div>
+                    <div class="form-group  col-sm mb-0">
+                        {{ form.phone|as_crispy_field }}
+                    </div>  
+                    <div class="form-group  col-sm mb-0">
+                      <h3 class="w3-text-purple">Contacts</h3>
+                      <p>
+                          <span class="w3-text-purple">Phone:</span><span> +254 780 980 /  +254 781 980</span><br>
+                          <span class="w3-text-purple">email:</span><span>info@katata.co.ke / katata@gmail.com</span><br>
+                          <span class="w3-text-purple">facebook</span> / <span class="w3-text-purple">twitter</span> / <span class="w3-text-purple">whatsapp</span>
+                      </p>
+                  </div> 
+                  </div> 
+                  <div class="col-sm-6">
+                    <div class="form-group  col-md-110 mb-0">
+                      {{ form.header|as_crispy_field }}
+                    </div>
+                    <div class="form-group  col-md-110 mb-0" >
+                        {{ form.message|as_crispy_field }}
+                    </div>
+                  </div>                
+            </div>
+              <!-- Alerts -->
+  {% include 'partials/_alerts.html' %}
+
+            <div class="w3-right w3-section"  class="form-actions">
+                <button class="btn  w3-hover-border-purple w3-hover-shadow" type="submit"><i class="fa fa-paper-plane w3-text-purple "></i> SEND MESSAGE</button>
+            </div>
+        </form>
+   </div>
+</div>
+ 
+</section>
+
+
+
+{% endblock %}

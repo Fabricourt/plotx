@@ -120,7 +120,8 @@ class Realtor(models.Model):
     twitter = models.CharField(max_length=100, blank=True, null=True)
     website = models.CharField(max_length=100, blank=True, null=True)
     instagram = models.CharField(max_length=100, blank=True, null=True)
-    created_on = models.DateField(null=True, blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=True)
+    created_on = models.DateField(default=timezone.now)
     is_published = models.BooleanField(default=True)
     
     
@@ -178,7 +179,8 @@ class Company(models.Model):
     website = models.CharField(max_length=100, blank=True, null=True)
     Instagram = models.CharField(max_length=100, blank=True, null=True)
     realtor = models.ManyToManyField(Realtor,  blank=True, help_text='realtors')
-    created_on = models.DateField(null=True, blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=True)
+    created_on = models.DateField(default=timezone.now)
     is_published = models.BooleanField(default=True)
 
  
@@ -261,16 +263,18 @@ class Plot(models.Model):
     photo_5 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_6 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     is_published = models.BooleanField(default=True)
-    list_date = models.DateTimeField(blank=True, null=True)
-    
-
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=True)
+    list_date = models.DateTimeField(default=timezone.now)
+   
     def get_absolute_url(self):
-        """Returns the url to access a particular company instance."""
         return reverse('plot-detail', args=[str(self.id)])
 
     def __str__(self):
         """String for representing the Model object."""
         return self.title
+
+    class Meta:
+        ordering = ['list_date']
 
 class PlotInstance(models.Model):
     """Model representing a specific plot (i.e. that can be bought)."""

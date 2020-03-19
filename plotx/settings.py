@@ -41,11 +41,16 @@ INSTALLED_APPS = [
   
     # Local
     'abouts',
+    'blog',
     'catalog',
     'contact',
+    'companys',
+    'listings',
     'locations',
+    'realtors',
     'towns',
     'users',
+    'pages',
 
     # Third-party
     'django_user_agents',
