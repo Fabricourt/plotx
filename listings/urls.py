@@ -11,7 +11,7 @@ from . import views
 
 
 urlpatterns = [
-    path('listings/', ListingListView.as_view(), name='listings-list'),
+    path('listings/', ListingListView.as_view(), name='listings'),
     path('user/<str:username>', UserListingListView.as_view(), name='user-listings'),
     path('listing/<int:pk>/', ListingDetailView.as_view(), name='listing-detail'),
     path('listing/new/', ListingCreateView.as_view(), name='listing-create'),

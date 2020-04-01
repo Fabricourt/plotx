@@ -1,0 +1,11 @@
+<p class="w3-center w3-large"></p>
+{% for video in church.video_set.all %}
+<div class="row">
+  <div class="col-sm " style="width:100%; height:400px;">
+    <h3 class="w3-center w3-text-white w3-xxlarge">Today's Sermon</h3>
+    <video controls style="width:100%; height:400px;"> <source src="{{video.videofile.url}}" style="width:100%; height:400px;"></video>
+  </div>
+{% endfor %}
+
+</div>
+<br><br>

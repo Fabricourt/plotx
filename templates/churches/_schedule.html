@@ -1,0 +1,108 @@
+<div class="w3-hide-small">
+{% for schedule in church.schedule_set.all %}
+<h3 class="w3-center w3-hide-samll w3-paddding {{church.text_color}}">ORDER OF SERVICES</h3>
+<h5 class="{{church.text_color}} w3-center">Sunday {{schedule.Service_date}}</h5>
+<div class="w3-row section w3-padding "  >
+  <br>
+
+
+  <div class="w3-col l6 m6 w3-border w3-sand w3-container {{church.border_color}} w3-rightbar" style="height: 500px;">
+    <br>
+    <div class="w3-center  {{church.text_color}} w3-margin"> {{ schedule.orderofservice|safe }}</div>
+  </div>
+  
+  <div class="w3-col l6 m6 w3-border w3-sand w3-card-4 {{church.border_color}} w3-leftbar" style="height: 500px;">
+    <br>
+    <div class="w3-center">
+     <div class="w3-margin">
+     {% if schedule.praiseandworship %}
+     <h5><u>Praise & Worship</u></h5>
+      <span class="{{church.text_color}} w3-large">{{schedule.praiseandworship}}</span>
+     {% endif %}
+      
+      
+      {% if schedule.ministering_choir %}
+      <h5><u>Ministering Choir</u></h5>
+      <span class="{{church.text_color}} w3-large">{{schedule.ministering_choir}}</span>
+      {% endif %}
+     </div>
+
+      <div class="w3-padding">
+      {% if schedule.first_service_leader %}
+      <h5><u>Service Leader</u></h5>
+      <span class="{{church.text_color}} w3-large">{{schedule.first_service_leader}}</span><br>
+      {% endif %}
+
+      {% if schedule.second_service_leader %}
+      <span class="{{church.text_color}} w3-large">{{schedule.second_service_leader}}</span>
+      {% endif %}
+      </div>
+
+      <div class="w3-padding">
+      {% if schedule.todays_speaker_1 %}
+      <h5><u>Today Speakers</u></h5>
+      <span class="{{church.text_color}} w3-large">{{schedule.todays_speaker_1}}</span><br>
+      {% endif %}
+
+      {% if schedule.todays_speaker_2 %}
+      <span class="{{church.text_color}} w3-large">{{schedule.todays_speaker_2}}</span>
+      {% endif %}
+    </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+
+<div class="w3-hide-large w3-hide-medium">
+  {% for schedule in church.schedule_set.all %}
+  <h3 class="w3-center w3-paddding {{church.text_color}}">ORDER OF SERVICES</h3>
+  <h5 class="{{church.text_color}} w3-center">Sunday {{schedule.Service_date}}</h5>
+  <div class="w3-row section w3-padding "  >
+    <br>
+    <div class="w3-col l6 m6  w3-white {{church.border_color}} w3-topbar" style="height: 500px;">
+      <br>
+      <div class="w3-center  {{church.text_color}} w3-margin"> {{ schedule.orderofservice|safe }}</div>
+    </div>
+    <div class="w3-col l6 m6  w3-white {{church.border_color}} w3-bottombar" style="height: 500px;">
+      <br>
+      <div class="w3-center">
+       <div class="w3-margin">
+       {% if schedule.praiseandworship %}
+       <h5><u>Praise & Worship</u></h5>
+        <span class="{{church.text_color}} w3-large">{{schedule.praiseandworship}}</span>
+       {% endif %}
+        
+        
+        {% if schedule.ministering_choir %}
+        <h5><u>Ministering Choir</u></h5>
+        <span class="{{church.text_color}} w3-large">{{schedule.ministering_choir}}</span>
+        {% endif %}
+       </div>
+  
+        <div class="w3-padding">
+        {% if schedule.first_service_leader %}
+        <h5><u>Service Leader</u></h5>
+        <span class="{{church.text_color}} w3-large">{{schedule.first_service_leader}}</span><br>
+        {% endif %}
+  
+        {% if schedule.second_service_leader %}
+        <span class="{{church.text_color}} w3-large">{{schedule.second_service_leader}}</span>
+        {% endif %}
+        </div>
+  
+        <div class="w3-padding">
+        {% if schedule.todays_speaker_1 %}
+        <h5><u>Today Speakers</u></h5>
+        <span class="{{church.text_color}} w3-large">{{schedule.todays_speaker_1}}</span><br>
+        {% endif %}
+  
+        {% if schedule.todays_speaker_2 %}
+        <span class="{{church.text_color}} w3-large">{{schedule.todays_speaker_2}}</span>
+        {% endif %}
+      </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  </div>

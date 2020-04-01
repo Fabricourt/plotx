@@ -6,15 +6,24 @@
     <div class="w3-right">{% include 'companys/_dropdown.html' %} </div>
   
     <div class="w3-margin-bottom ">
+    {% if object.created_by == user  %}
+      <div>
+        <a class="btn btn-secondary btn-sm mt-1 mb-1 w3-margin" href="{% url 'business-update' object.id %}">Update</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1 w3-margin"" href="{% url 'business-delete' object.id %}">Delete</a>
+        <a class="btn btn-warning btn-sm mt-1 mb-1 w3-margin"" href="{% url 'listing-create' %}">+  Plot</a>
+        <a class="btn btn-primary btn-sm mt-1 mb-1 w3-margin"" href="{% url 'broker-create' %}">+ Team</a>
+      </div>
+    {% endif %}
+    
     <a href="{{ business.get_absolute_url }}" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Home</a>
     <a href="#plots" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Plots</a>    
     <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">About</a>
     <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Services</a>
     <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Team</a>   
     <a href="#gallery" onclick="w3_close()" class="w3-bar-item w3-hide w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Gallery</a>
-    <a href="#realtor" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Realtor</a>
     <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Contact</a>
-    </div>
+    <a href="#footer" onclick="w3_close()" class="w3-bar-item w3-button  {{business.text_color}} w3-hover-shadow {{business.hover_color}}" style="text-decoration:none;">Bottom</a>
+  </div>
  
   </nav>
   

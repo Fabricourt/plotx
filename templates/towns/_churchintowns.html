@@ -1,0 +1,25 @@
+<!--Church-->
+<div class=" W3-hide">
+    <h4 class="w3-center w3-text-purple w3-hide">The Churches</h4>
+  
+  <ul class=" w3-margin-top w3-row-padding"  style="list-style-type: none;" id="myUL">  
+  {% for church in town.church_set.all %}
+  <li class="w3-col l4 m4 w3-margin-bottom">
+    <a href="{{ church.get_absolute_url }}">
+      <div class="btn  {{church.hover_color}} w3-hover-text-white w3-white w3-large w3-card-4 w3-border w3-hover-border-white w3-padding  w3-hover-shadow  w3-text-black" style="width:100%; margin:5px; padding:5px 2px;">
+        <div class="" style="width:20%; float:left">
+          <img src="{{ church.logo.url }}" alt="" class="w3-white " style="width: 100px; height:60px;">
+        </div>
+        <div class="" style="width:60%; float:right">
+          <span class="w3-hide-small w3-large">{{ church.church_name }}</span>
+          <span class="w3-small w3-hide-large w3-hide-medium">{{ church.church_name }}</span>
+          <br> <span class="w3-small">{{church.location}}</span>
+          <span class="w3-small">{{church.town}}</span>
+          <span class="w3-small w3-hide w3-right">reviews</span>
+        </div>
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+  </ul>
+  </div>

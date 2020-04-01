@@ -1,0 +1,29 @@
+<!-- Top menu -->
+<style>
+    a:link {
+    text-decoration: none;
+  }
+  </style>
+  <div class="w3-top  {{church.bg_color}}" id="home">
+    <div  style="max-width:100%; height:25px; margin: 4px;" >
+        <div class="w3-button w3-hover-border-white {{church.bg_color}} w3-hover-shadow {{church.hover_color}}  w3-left" onclick="w3_open()">
+            
+            <!--large view-->
+            <h1 class="w3-xlarge w3-text-white w3-hide-small {{church.hover_color}}">☰</h1>
+
+            <!--small view-->
+            <h3 class="w3-large w3-text-white w3-hide-large w3-hide-medium {{church.hover_color}}">☰</h3>
+        </div>
+        
+        <div class="w3-right w3-margin-left {{church.bg_color}}">
+
+            <!--large view-->
+            <h1 class="w3-large btn w3-hide-small w3-card-4 w3-hover-border-white  {{church.border_color}} w3-margin-right {{listing.bg_color}} {{church.bg_color}}" style="margin-top: 5px;">
+            <a class="w3-hover-text-white  w3-text-white" href="{{ church.get_absolute_url }} " style="text-decoration: none;">{{ church|upper }} </a></h1>
+            
+            <!--small view-->
+            <h3 class="w3-hide-large w3-hide-medium btn  w3-card-4 w3-hover-border-white  {{church.border_color}} w3-margin-right {{listing.bg_color}} {{church.bg_color}}" style="margin-top: 5px;">
+            <a class="w3-hover-text-white  w3-text-white" href="{{ church.get_absolute_url }} " style="text-decoration: none;">{{ church|upper }} </a></h3>           
+        </div> 
+    </div>  
+</div>

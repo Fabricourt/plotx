@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'catalog',
     'contact',
     'companys',
+    'churches',
     'listings',
     'locations',
     'realtors',

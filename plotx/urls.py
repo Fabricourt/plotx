@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
+    path('churches/', include('churches.urls')),
     path('blog/', include('blog.urls')),
     path('realtors/', include('realtors.urls')),  
     path('companys/', include ('companys.urls')),  
@@ -34,7 +35,6 @@ urlpatterns = [
     path('listings/', include('listings.urls')),
     path('towns/', include('towns.urls')),
     path('locations/', include('locations.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
     path('profile/', user_views.profile, name='profile' ),
     path('register/', user_views.register, name='register'),
     

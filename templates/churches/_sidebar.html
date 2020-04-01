@@ -1,0 +1,15 @@
+{% load static %}
+<nav class="w3-sidebar w3-light-grey  w3-bar-block w3-card-4 w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:30%;min-width:300px" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()"
+    class="w3-bar-item {{church.bg_color}}  {{church.hover_color}} w3-hover-text-sand w3-card-4 w3-button" style="text-decoration:none;">Close Menu</a>
+    <div class="w3-right">{% include 'churches/_dropdown.html' %} </div>
+    <div class="w3-margin-bottom ">
+        <a href="{{ church.get_absolute_url }}" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{church.text_color}} w3-hover-shadow  {{church.hover_color}}" style="text-decoration:none;">Top</a>
+        <a href="#schedule" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{church.text_color}} w3-hover-shadow  {{church.hover_color}}" style="text-decoration:none;">Schedule</a>    
+        <a href="#pastors weekly message" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{church.text_color}} w3-hover-shadow  {{church.hover_color}}" style="text-decoration:none;">Pastors weekly message</a>
+        <a href="#hymnoftheweek" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{church.text_color}} w3-hover-shadow  {{church.hover_color}}" style="text-decoration:none;">Hymn of the week</a>
+        <a href="#sermon" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{church.text_color}} w3-hover-shadow  {{church.hover_color}}" style="text-decoration:none;">Sermon</a>   
+        <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-hide w3-button {{listing.text_color}} {{church.text_color}} w3-hover-shadow  {{church.hover_color}}" style="text-decoration:none;">Contact</a>
+        <a href="#footer" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{church.text_color}} w3-hover-shadow  {{church.hover_color}}" style="text-decoration:none;">Bottom</a>
+    </div>
+  </nav>

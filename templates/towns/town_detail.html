@@ -2,53 +2,27 @@
 {% block content %}
 
 <!--style-->
-<div class="">
-    <div class="w3-margin-bottom row ">
-        <div class="col-sm-12 w3-display-container">
-            <img src="{{ town.town_pic.url }}" class="w3-border " alt="" style="padding:9px; height: 65vh;">
+
+    <div class="w3-padding row ">
+        <div class=" w3-display-container">
+            <img src="{{ town.town_pic.url }}" class="w3-border  w3-border-brown  w3-khaki w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="" style="padding:9px; width: 100%; height: 50vh;">
             <div class="w3-display-middle">
-                <h3 class="w3-xlarge w3-theme-d5 w3-hide-small w3-center w3-border w3-card-4 w3-text-white w3-opacity  w3-padding w3-margin-left ">
+                <h3 class="w3-xlarge w3-highway-green w3-hide-small w3-center w3-border w3-border-khaki w3-card-4 w3-text-white w3-opacity  w3-padding w3-margin-left ">
                     WELCOME TO
                     {{ town|upper}} </h3>
-                    <h3 class="w3-small w3-theme-d5 w3-hide-large w3-hide-medium w3-center w3-border w3-card-4 w3-text-white w3-opacity  w3-padding w3-margin-left ">
+                    <h3 class="w3-small w3-theme-d5 w3-hide-large w3-hide-medium w3-center w3-border w3-border-khaki w3-card-4 w3-text-white w3-opacity  w3-padding w3-margin-left ">
                         WELCOME TO
                         {{ town|upper}} </h3>
             </div>
         </div>
-        <div class="col-sm-11 w3-hide">
-            <h3 class="w3-margin-left"><strong class="w3-text-theme ">Areas to find Plots In {{town}}</strong></h3><br>
-            <div class="row w3-margin-left">
-                {% for location in town.location.all %}
-                    <div class="col-sm-2 btn  w3-bar-item w3-large w3-border-theme  w3-hover-shadow w3-hover-text-theme w3-white   w3-tag">
-                        <a href="{{ location.get_absolute_url }}"><span class="w3-text-black">{{location|capfirst}}</span></a> 
-                    </div> 
-                {% if not forloop.last %}, {% endif %}{% endfor %}
-            </div>
-        <hr style="width:100%">
-        </div>
-
+        
    </div>
 
-
 <!--main-->
-<div class="">
-    <h3 class="w3-center w3-hide-small w3-text-purple">COMPANIES SELLING PLOTS IN {{town|upper}}</h3>
-    <h3 class="w3-center w3-small w3-hide-large w3-hide-medium w3-text-purple">COMPANIES SELLING PLOTS IN {{town|upper}}</h3>
+<section></section>
+{% include 'towns/_companiesintowns.html' %}
 
-<input class="w3-input w3-margin_bottom
-     w3-hover-border-theme w3-padding" type="text" placeholder="Search company..." id="myInput" onkeyup="myFunction()" style ="width: 100%;">
-<ul class=" w3-margin-top w3-row-padding"  style="list-style-type: none;" id="myUL">  
-    {% for business in town.business_set.all %}
-  <li class="w3-col l4 m4 s12 w3-margin-bottom ">
-    <a href="{{ business.get_absolute_url }}">
-      <div class="btn  {{business.hover_color}} w3-white w3-large w3-card-4  w3-hover-shadow  w3-text-black" style="width:280px; margin:5px;">{{ business.business_name }}</div></a> 
-  </li>
 
-  {% endfor %}
-</ul>
-    
-
-</div>
 
 
 <script>

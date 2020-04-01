@@ -5,17 +5,29 @@
 <!--style-->
 
 <!--main-->
-  <div class="">
-      <h2 class="w3-center w3-text-purple">PLOT COMPANIES SELLING PLOTS</h1>
+  <div class="" style="">
+      <h2 class="w3-center  w3-text-khaki">COMPANIES SELLING PLOTS</h2>
   {% if business_list %}
   <input class="w3-input w3-margin_bottom
-       w3-hover-border-theme w3-padding" type="text" placeholder="Search business..." id="myInput" onkeyup="myFunction()" style ="width: 100%;">
+       w3-hover-border-theme w3-hide w3-padding" type="text" placeholder="Search business..." id="myInput" onkeyup="myFunction()" style ="width: 100%;">
 <ul class=" w3-margin-top w3-row-padding"  style="list-style-type: none;" id="myUL">  
     {% for business in business_list %} 
-    <li class="w3-col l3 m4 s12 w3-margin-bottom ">
+    <li class="w3-col l4 m4 s12 w3-margin-bottom">
       <a href="{{ business.get_absolute_url }}">
-        <div class="btn  {{business.hover_color}} w3-white w3-large w3-card-4  w3-hover-shadow  w3-text-black" style="width:250px; margin:5px;">{{ business.business_name }}</div></a> 
+        <div class="btn  {{business.hover_color}} w3-hover-text-white w3-white w3-large w3-card-4 w3-border w3-hover-border-white w3-padding  w3-hover-shadow  w3-text-black" style="width:300px; margin:5px; padding:5px 3px;">
+          <div class="" style="width:30%; float:left">
+            <img src="{{ business.logo.url }}" alt="" class="w3-white  w3-circle" style="width: 60px; height:60px;">
+          </div>
+          <div class="" style="width:60%; float:right">
+            <span class="w3-large w3-wide">{{ business.business_name }}</span>
+            <br> <span class="w3-small">{{business.business_type}}</span>
+            <span class="w3-small">{{business.town}}</span>
+            <span class="w3-small w3-hide w3-right">reviews</span>
+          </div>
+        </div>
+      </a>
     </li>
+
 
     {% endfor %}
 </ul>
@@ -44,7 +56,7 @@
     }
     </script>
   <!--js-->
-  {% include 'partials/companies/_cocardsextra.html' %}
+
  
 
 

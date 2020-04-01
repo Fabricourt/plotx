@@ -1,25 +1,17 @@
 {% load static %}
 
     <div class="w3-dropdown-click">
-      <span class=" w3-text-white  w3-theme-d5 w3-dropdown-hover">
-        <a class="w3-bar-item    w3-hover-shadow w3-hover-purple  w3-text-white " href=""> <i class="fa fa-map-marker w3-text-khaki w3-xlarge"></i> Towns   </a>
+      <span class=" w3-text-white  w3-white w3-dropdown-hover">
+        <a class="w3-bar-item    w3-hover-shadow   w3-hover-text-khaki w3-text-khaki " href=""> <i class="fa fa-map-marker w3-text-khaki w3-xlarge"></i> Towns   </a>
 
       <div id="Demo" class="w3-dropdown-content  w3-bar-block w3-small ">
-        <div>
-            <h2 class="w3-center w3-text-purple w3-hide-small"> Pick A Town Of Interest </h2>
-            
-            <div style="width:100%"> 
-              <input class="w3-input  col-sm-12 w3-hover-border-theme w3-margin-bottom" type="text" placeholder="Search towns..." id="myInput" onkeyup="myFunction()" >
-              <br>
-            </div>
-        </div> 
               <br>
               {% if towns %}
               <ol class="w3-row-padding" style="list-style-type: none;"  id="myUL">
                 {% for town in towns %}
                 <li class="w3-center">
                   <a href="{{ town.get_absolute_url }}">
-                    <span class="w3-hover-text-green w3-hover-border-purple w3-hover-shadow btn  w3-text-purple " style="width:150px; margin:5px;">{{ town.name }}</span></a> 
+                    <span class="w3-hover-text-khaki w3-hover-border-green w3-hover-shadow btn  w3-text-green " style="width:150px; margin:5px;">{{ town.name }}</span></a> 
                 </li>
                 {% endfor %}
               </ol>

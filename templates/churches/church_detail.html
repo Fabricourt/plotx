@@ -1,0 +1,74 @@
+{% extends "base_church.html" %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+<!--background images css-->
+{% include 'churches/_parallaxcss.html' %}
+
+<!--Navbar-->
+{% include 'churches/_sidebar.html' %}
+
+<!--Topbar-->
+{% include 'churches/_topbar.html' %}
+
+<!--Header-->
+{% include 'churches/_headercss.html' %}
+{% include 'churches/_header.html' %}
+
+
+
+<!-- !PAGE CONTENT! -->
+<div id="home"></div>
+<div class="w3-main " style="max-width:100%;" id="plots">
+<a href="{% url 'video-list' %}">videos</a>
+
+  <!-- Schedule  Section -->
+<section class="w3-content" id="schedule" style="padding:64px 16px">
+ {% include 'churches/_schedule.html' %}
+</section>
+
+
+ <!-- This Week Message From  The Pastor Section -->
+<section id="pastors weekly message">
+  {% include 'churches/_weeklytheme.html' %}
+</section>
+
+
+<!-- hymn of the week-->
+<section id="hymnoftheweek">
+  {% include 'churches/_hymnoftheweek.html' %}
+</section>
+
+
+<!-- Todays Sermon-->
+<section class="w3-container {{church.bg_color}}" style="padding:64px 16px" id="Sermon">
+  {% include 'churches/_todayssermon.html' %}
+</section>
+
+
+<!-- Announcements-->
+<section class="w3-container w3-white" style="padding:64px 16px" id="Announcements">   
+    {% include 'churches/_announcement.html' %}
+</section>
+
+
+<!--Contact-->
+<section class="w3-padding bgimg-3 w3-white" id="contact">
+        {% include 'churches/_churchcontact.html' %}
+</section>
+
+<!--Footer-->
+<section class="{{church.bg_color}}" id="footer">
+  {% include 'churches/_footer.html' %}
+</section>
+
+<!-- End page content -->
+</div>
+</div>
+
+
+  
+
+  {% endblock %}

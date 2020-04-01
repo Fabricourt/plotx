@@ -1,0 +1,79 @@
+
+<style>
+    .collapsible {
+
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      margin:2px;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 18px;
+  
+    }
+    
+    .active, .collapsible:hover {
+      
+    }
+    
+    .collapsible:after {
+      content: '\002B';
+      color: rgb(194, 175, 175);
+      font-weight: bold;
+      float: right;
+     
+    }
+    
+    .active:after {
+      content: "\2212";
+    }
+    
+    .content {
+      text-align: left;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    
+    }
+    .luxury {
+  color: #d4af37;
+}
+    </style>
+
+<h2 class="w3-center {{church.text_color}}">Announcements</h2>
+<div class="w3-content " style="margin-top:64px">
+<div class="row w3-margin-bottom">
+  {% for announcement in church.announcement_set.all %}
+  <div style="padding:0px; margin:0px" class="col-sm-12  w3-right">
+  <button class="w3-white  w3-hover-light-grey w3-card-4 w3-hover-light-grey collapsible  {{church.text_color}}  w3-left-align">
+      {{announcement.title}}</button>
+      <div  class=" w3-content content" style="height: 100%">
+          
+                {{ announcement.announcement|safe }}
+          
+      </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } 
+          });
+        }
+        </script>
+
+
+

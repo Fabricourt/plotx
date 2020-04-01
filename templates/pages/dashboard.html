@@ -1,0 +1,160 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+    .collapsible {
+      background-color: rgb(243, 232, 240);
+      color: rgb(44, 43, 43);
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+    }
+    
+    .active, .collapsible:hover {
+      background-color: rgb(243, 232, 240);
+    }
+    
+    .collapsible:after {
+      content: '\002B';
+      color: rgb(70, 68, 68);
+      font-weight: bold;
+      float: right;
+     
+    }
+    
+    .active:after {
+      content: "\2212";
+    }
+    
+    .content {
+     
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+      background-color: #f1f1f1;
+    }
+    </style>
+<h1>Dashboard</h1>
+
+
+
+
+<div style="padding:0px; margin:0px" class="col-sm-10 w3-right">
+<button class="w3-white w3-card-4 collapsible w3-white w3-left-align">
+    Kiambu</button>
+    <div id="Kiambu" class="content">
+       
+        {% if kiambu_businesss %}
+
+        <ul class="w3-row-padding" style="list-style-type: none;"  id="myUL">
+            <p class="w3-center w3-padding w3-small">Places to find a plot in Kiambu</p>
+        {% for business in kiambu_businesss %}
+        <li class="w3-col l4 m4 s12 w3-margin-bottom">
+            <a href="{{ business.get_absolute_url }}">
+              <div class="btn  {{business.hover_color}} w3-hover-text-white w3-white w3-large w3-border w3-hover-border-white   w3-hover-shadow  w3-text-black" style="width:290px; ">
+                <div class="" style="width:30%; float:left">
+                  <img src="{{ business.logo.url }}" alt="" class="w3-white  w3-circle" style="width: 60px; height:60px;">
+                </div>
+                <div class="" style="width:60%; float:right">
+                  <span class="w3-large w3-wide">{{ business.business_name }}</span>
+                  <br> <span class="w3-small">{{business.business_type}}</span>
+                  <span class="w3-small">{{business.town}}</span>
+                  <span class="w3-small w3-hide w3-right">reviews</span>
+                </div>
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+    
+<div style="padding:0px; margin:0px" class="col-sm-9 w3-left">
+    <button  class="w3-white w3-card-4 collapsible  w3-left-align">
+        Ruiru</button>
+        <div id="Ruiru" class="content">
+           
+            {% if ruiru_businesss %}
+    
+            <ul class="w3-row-padding" style="list-style-type: none;"  id="myUL">
+                <p class="w3-center w3-padding w3-small">Places to find a plot in Ruiru</p>
+            {% for business in ruiru_businesss %}
+            <li class="w3-col l4 m4 s12 w3-margin-bottom">
+                <a href="{{ business.get_absolute_url }}">
+                  <div class="btn  {{business.hover_color}} w3-hover-text-white w3-white w3-large  w3-border w3-hover-border-white  w3-hover-shadow  w3-text-black" style="width:290px;">
+                    <div class="" style="width:30%; float:left">
+                      <img src="{{ business.logo.url }}" alt="" class="w3-white  w3-circle" style="width: 60px; height:60px;">
+                    </div>
+                    <div class="" style="width:60%; float:right">
+                      <span class="w3-large w3-wide">{{ business.business_name }}</span>
+                      <br> <span class="w3-small">{{business.business_type}}</span>
+                      <span class="w3-small">{{business.town}}</span>
+                      <span class="w3-small w3-hide w3-right">reviews</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+             {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+
+    <div style="padding:0px; margin:0px" class="col-sm-11 w3-right">
+        <button  class="w3-white w3-card-4 collapsible w3-white w3-left-align">
+            Thika</button>
+            <div id="Thika" class="content">
+               
+                {% if thika_businesss %}
+        
+                <ul class="w3-row-padding" style="list-style-type: none;"  id="myUL">
+                    <p class="w3-center w3-padding w3-small">Places to find a plot in Thika</p>
+                {% for business in thika_businesss %}
+                <li class="w3-col l4 m4 s12 w3-margin-bottom">
+                    <a href="{{ business.get_absolute_url }}">
+                      <div class="btn  {{business.hover_color}} w3-hover-text-white w3-white w3-large  w3-border w3-hover-border-white w3-hover-shadow  w3-text-black" style="width:290px;">
+                        <div class="" style="width:30%; float:left">
+                          <img src="{{ business.logo.url }}" alt="" class="w3-white  w3-circle" style="width: 60px; height:60px;">
+                        </div>
+                        <div class="" style="width:60%; float:right">
+                          <span class="w3-large w3-wide">{{ business.business_name }}</span>
+                          <br> <span class="w3-small">{{business.business_type}}</span>
+                          <span class="w3-small">{{business.town}}</span>
+                          <span class="w3-small w3-hide w3-right">reviews</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                {% endfor %}
+                </ul> 
+                {% endif %}
+            </div>
+    
+    
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } 
+          });
+        }
+        </script>
+
+
+
+{% endblock %}

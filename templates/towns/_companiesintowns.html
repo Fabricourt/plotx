@@ -1,0 +1,23 @@
+<div class="">
+    <h4 class="w3-center w3-text-green">PLACES TO FIND PLOTS</h4>
+
+<ul class=" w3-margin-top w3-row-padding"  style="list-style-type: none;" id="myUL">  
+{% for business in town.business_set.all %}
+  <li class="w3-col l4 m4 w3-margin-bottom">
+    <a href="{{ business.get_absolute_url }}">
+      <div class="btn  {{business.hover_color}} w3-hover-text-white w3-white w3-large w3-card-4 w3-border w3-hover-border-white w3-padding  w3-hover-shadow  w3-text-black" style="width:290px; margin:5px; padding:5px 2px;">
+        <div class="" style="width:30%; float:left">
+          <img src="{{ business.logo.url }}" alt="" class="w3-white  w3-circle" style="width: 60px; height:60px;">
+        </div>
+        <div class="" style="width:60%; float:right">
+          <span class="w3-large w3-wide">{{ business.business_name }}</span>
+          <br> <span class="w3-small">{{business.business_type}}</span>
+          <span class="w3-small">{{business.town}}</span>
+          <span class="w3-small w3-hide w3-right">reviews</span>
+        </div>
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+</div>

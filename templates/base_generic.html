@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<purple>
 <head>
 {% load static %}
 {% load humanize %}
@@ -23,12 +24,14 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" />
 <script src="https://kit.fontawesome.com/e0b77ee52f.js" crossorigin="anonymous"></script>
-       <!-- Bootstrap -->
+ 
+<!-- Bootstrap -->
        <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 
 
@@ -63,20 +66,18 @@
  
     }
    
-    .w3-theme {color:#fff !important;background-color:#9c27b0 !important}
-    .w3-btn {background-color:#9c27b0;margin-bottom:4px}
-    .w3-code{border-left:4px solid #9c27b0}
+  
+   
     .myMenu {margin-bottom:150px}
+
+ 
 
        </style>
 
 
     <!-- Add additional CSS in static file -->
-
-
-
   </head>
-<body class="w3-white" style="list-style-type: none;">
+<body class="w3-flat-alizarin" style="list-style-type: none;">
 <!--topbar-->
 {% include 'partials/layout/_topbar.html' %}
 
@@ -89,7 +90,7 @@
 
 
 <!-- Main content: shift it to the right by 230 pixels when the sidebar is visible -->
-<div class="w3-main container" style=";margin-top:60px;">
+<div class="w3-main container" style="margin-top:60px;">
   <!-- header -->
 
   {% block content %}{% endblock %}
@@ -114,7 +115,11 @@
     {% endif %}
   {% endblock %} 
   
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
 
+  <script src="{% static 'js/w3.js' %}"></script>
  
   <script>
   w3CodeColor();
@@ -126,4 +131,5 @@
   })
   </script>
 </body>
+</purple>
 </html>

@@ -1,4 +1,6 @@
 {% load static %}
+<link rel="stylesheet" href="{% static 'css/w3-colors-win8.css' %}">
+<link rel="stylesheet" href="{% static 'css/w3-colors-highway.css' %}">
 <style>
   a:link {
     text-decoration: none;
@@ -7,70 +9,55 @@
 <!-- Sidebar -->
   <!-- Sidebar (hidden by default) -->
 
-  <nav class="w3-sidebar w3-card-4  w3-bar-block w3-theme-d5  w3-top w3-xlarge w3-animate-right" style="display:none; right:0;width:20%;min-width:350px" id="mySidebar">
+  <nav class="w3-sidebar  w3-card-4  w3-bar-block w3-highway-green w3-border w3-border-khaki w3-top w3-xlarge w3-animate-right" style="display:none; right:0;width:20%;min-width:350px" id="mySidebar">
 
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-padding-large"><span class="w3-right w3-xxlarge w3-text-white w3-margin">X</span></a>
     <a href="{% url 'index' %}">
-      <div class="  w3-padding-16  w3-left w3-xlarge" ">
+      <div class="  w3-padding-16 w3-hide w3-left w3-xlarge" ">
           <span class="w3-theme  w3-round w3-margin w3-hover-shadow "><img class="w3-hover-shadow" src="{% static 'img/favicon/favicon-32x32.png' %}" alt="home" style="width:40px; height:40px;">𝐤ᗩ𝕥𝓪𝐓𝔞..</span>
       </div>
     </a><br><br>
-    <a class="w3-bar-item    w3-hover-shadow w3-hover-purple  w3-text-white " href="{% url 'index' %}">  <i class="fa fa-home w3-text-khaki w3-xlarge"></i> Home</a>
-    <a class="w3-bar-item w3-hover-purple w3-text-white" href="{% url 'business-list' %}"> <i class=" fas fa-award w3-text-khaki  w3-xlarge"></i> Companies</a>
-    <a class="w3-bar-item w3-hide w3-hover-purple w3-text-white" href="{% url 'plots' %}">    <i class=" fa fa-certificate  w3-text-khaki  w3-xlarge"></i> Plots</a>
-    <a class="w3-bar-item w3-hide  w3-hover-purple w3-text-white" href="{% url 'realtors' %}"> <i class="fa fa-user w3-text-khaki w3-xlarge"></i> Realtors</a>
-    
-    <a class="w3-bar-item  w3-hide  w3-hover-purple w3-text-white" href="{% url 'locations' %}"> <i class=" fa fa-map-pin w3-text-khaki w3-xlarge"></i> Areas</a>
- 
-    <a class="w3-bar-item   w3-hover-purple w3-text-white " href="{% url 'contactk' %}"> <i class=" fa fa-link w3-text-khaki w3-xlarge"></i> Contact </a>  
-    {% include 'pages/_townsdrop.html'%} 
-    {% if user.is_staff %}
-    <div class="w3-center w3-hide w3-text-yellow">
-      <h4>CREATE</h4>
-      <a class="w3-bar-item   w3-hover-purple w3-text-white " href="{% url 'listing-create' %}"> <i class=" fa fa-plus w3-text-khaki w3-xlarge"></i> Listing</a>
-      <a class="w3-bar-item   w3-hover-purple w3-text-white " href="{% url 'business-create' %}"> <i class=" fa fa-plus w3-text-khaki w3-xlarge"></i> Business</a>
-      <a class="w3-bar-item   w3-hover-purple w3-text-white " href="{% url 'broker-create' %}"> <i class=" fa fa-plus w3-text-khaki w3-xlarge"></i>  Realtor</a>
-  
-    </div>
-    {% endif %}
-   
+    <a class="w3-bar-item  w3-hover-shadow w3-hover-green  w3-text-white " href="{% url 'index' %}">  <i class="fa fa-home w3-text-khaki w3-xlarge"></i> Home</a>
+    <a class="w3-bar-item   w3-hover-green w3-text-white " href="{% url 'contactk' %}"> <i class=" fa fa-link w3-text-khaki w3-xlarge"></i> Contact </a>  
     {% if user.is_authenticated %}
-    <a class="w3-bar-item w3-button w3-white w3-text-khaki" href="{% url 'logout'%}?next={{request.path}}">logout</a> 
-    {% else %}
-    <a class="w3-bar-item w3-button w3-white w3-text-khaki" href="{% url 'login'%}">Login</a>
-    <a class="w3-bar-item w3-purple w3-button w3-text-khaki" href="{% url 'register'%}?next={{request.path}}">Register</a>
-    {%  endif %}
+    <a class="w3-bar-item   w3-hover-green w3-hide w3-text-white " href="{% url 'dashboard' %}"> <i class=" fa fa-th w3-text-khaki w3-xlarge"></i> Dashboard </a>  
+    {% endif %}
+    {% if user.is_staff %}
+    <a class="w3-bar-item   w3-hover-green w3-text-white " href="{% url 'business-create' %}"> <i class=" fa fa-plus w3-text-khaki w3-xlarge"></i> Add Company</a>
+    {% endif %}
+
+    <div class="">{% include 'pages/_townsdrop.html'%}</div> 
   </nav>
-<nav class="w3-sidebar w3-white w3-bar-block n w3-hide w3-center" style="width:100px">
+<nav class="w3-sidebar w3-highway-green w3-bar-block n w3-hide w3-center" style="width:100px">
   <!-- Avatar image in top left corner -->
 
-  <a href="{% url 'index' %}" class="w3-bar-item w3-hover-text-purple w3-hide w3-button w3-hover-white w3-padding-large ">
-    <i class="fa fa-home w3-text-purple w3-hover-text-purple w3-xlarge"></i>
+  <a href="{% url 'index' %}" class="w3-bar-item w3-hover-text-green w3-hide w3-button w3-hover-white w3-padding-large ">
+    <i class="fa fa-home w3-text-white w3-hover-text-green w3-xlarge"></i>
     <p>HOME</p>
   </a>
   
-  <a href="{% url 'companys' %}" class="w3-bar-item w3-hover-text-purple w3-button w3-padding-large w3-hover-white">
-    <i class=" fas fa-award w3-text-purple w3-hover-text-purple w3-xlarge"></i>
+  <a href="{% url 'companys' %}" class="w3-bar-item w3-hover-text-green w3-button w3-padding-large w3-hover-white">
+    <i class=" fas fa-award w3-text-white w3-hover-text-green w3-xlarge"></i>
    
     <p> <span class="  w3-tiny "><strong>{{ num_companys }}</strong></span> Companies </p>
   </a>
-  <a href="{% url 'plots' %}" class="w3-bar-item w3-hover-text-purple w3-button w3-padding-large w3-hover-white">
-    <i class=" fa fa-certificate w3-hover-text-purple w3-text-purple  w3-xlarge"></i>
+  <a href="{% url 'plots' %}" class="w3-bar-item w3-hover-text-green w3-button w3-padding-large w3-hover-white">
+    <i class=" fa fa-certificate w3-hover-text-green w3-text-white  w3-xlarge"></i>
     
     <p><span class=" w3-tiny"><strong>{{ num_plots }}</strong></span> plots</p>
   </a>
-  <a href="{% url 'realtors' %}" class="w3-bar-item w3-hide w3-hover-text-purple w3-button w3-padding-large w3-hover-white">
-    <i class="fa fa-user w3-text-purple w3-hover-text-purple w3-xlarge"></i>
+  <a href="{% url 'realtors' %}" class="w3-bar-item w3-hide w3-hover-text-green w3-button w3-padding-large w3-hover-white">
+    <i class="fa fa-user w3-text-white w3-hover-text-green w3-xlarge"></i>
 
     <p><span class=" w3-tiny "><strong>{{ num_plots }}</strong></span> Realtors</p>
   </a>
-  <a href="{% url 'towns' %}" class="w3-bar-item w3-hover-text-purple w3-button w3-padding-large w3-hover-white">
-    <i class="fa fa-map-marker w3-text-purple w3-hover-text-purple w3-xlarge"></i>
+  <a href="{% url 'towns' %}" class="w3-bar-item w3-hover-text-green w3-button w3-padding-large w3-hover-white">
+    <i class="fa fa-map-marker w3-text-white w3-hover-text-green w3-xlarge"></i>
 
     <p>    <span class=" w3-tiny "><strong>{{ num_towns }}</strong></span> Towns</p>
   </a>
-  <a href="{% url 'locations' %}" class="w3-bar-item w3-button w3-hover-text-purple w3-padding-large w3-hover-white">
-    <i class=" fa fa-map-pin w3-text-purple w3-hover-text-purple w3-xlarge"></i>
+  <a href="{% url 'locations' %}" class="w3-bar-item w3-button w3-hover-text-green w3-padding-large w3-hover-white">
+    <i class=" fa fa-map-pin w3-text-white w3-hover-text-green w3-xlarge"></i>
 
     <p><span class="  w3-tiny"><strong>{{ num_locations }}</strong></span> Areas</p>
   </a>

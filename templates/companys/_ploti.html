@@ -1,8 +1,12 @@
-
-
-<figure class="snip1456 ">
+<div class="w3-container" style="padding:64px 3px" id="plot">
+  <h3 class="w3-center {{business.text_color}}">OUR PRODUCTS</h3>
+  <p class="w3-center w3-large">Prime property locations</p>
+  <div class="w3-row-padding " style="margin-top:64px" >
+    {% for listing in business.listing_set.all %}
+<div class="w3-col l3 m6 s12 w3-margin-bottom ">
+<figure class="snip1456 w3-card-4">
     {% if listing.photo_main.url %}
-  <img src="{{listing.photo_main.url}}" alt="sample50" style="height:320px; width:100%"/>
+  <img src="{{listing.photo_main.url}}" alt="sample50" style="height:330px; width:100%"/>
     {% endif %}
       <div class="title">
         <div>
@@ -34,8 +38,10 @@
       </figcaption>
       <a href="{{ listing.get_absolute_url }}"></a>
     </figure>
-    
-  
+  </div>
+  {% endfor %}
+  </div>
+  </div>
     
   
     

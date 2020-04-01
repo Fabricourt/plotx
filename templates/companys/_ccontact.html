@@ -1,5 +1,11 @@
 {% load static %}
- 
+<div>
+  <h1 class="w3-xxlarge {{business.text_color}} w3-center">CONTACT</h1> 
+  <p class="w3-center">send us a message we would love to hear from you</p>
+
+
+</div>
+<div class="container ">
         <div class="modal-body">
           <form action="{% url 'contact' %}" method="POST">
             {% csrf_token %}
@@ -56,3 +62,4 @@
       </div>
     </div>
   </div>
+</div>

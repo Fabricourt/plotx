@@ -1,0 +1,33 @@
+{% load static %}
+<div class="w3-margin-top" >
+    <div class="w3-dropdown-click">
+      <button  class="btn w3-text-purple w3-card-4 w3-white w3-dropdown-hover">
+        <a href="" class="w3-text-white w3-large">
+          <div class="w3-right  w3-text-purple">
+            
+             <img src="{% static 'img/favicon/favicon-32x32.png' %}" class="w3-circle "  alt="home" 
+            style="width:32px; height:32px;">𝐤ᗩ𝕥𝓪𝐓𝔞..<span>Menu</span>
+          </div>
+        </a>
+   
+      <div id="Demo" class="w3-dropdown-content w3-card-4 w3-bar-block w3-small ">
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-hover-white" ><i class="fa fa-home w3-text-purple w3-xlarge"></i> <span class="w3-text-white">--</span>Katata</a>
+        <a href="{% url 'church-list' %}" class="w3-bar-item w3-button w3-hover-white"><i class=" fas fa-award w3-text-purple  w3-xlarge"></i> <span class="w3-text-white">--</span>Church</a>
+        <a href="{% url 'realtors' %}" class="w3-bar-item w3-hide w3-button w3-hover-white"><i class="fa fa-user w3-text-purple w3-xlarge"></i> <span class="w3-text-white">--</span>Sermons</a>
+        <a href="{% url 'listings-list' %}" class="w3-bar-item w3-hide w3-button w3-hover-white"><i class=" fa fa-certificate  w3-text-purple  w3-xlarge"></i> <span class="w3-text-white">--</span>Pastors</a>
+        <a href="{% url 'towns' %}" class="w3-bar-item   w3-button  w3-hover-white"><i class=" fa fa-map-pin w3-text-purple w3-xlarge"></i> <span class="w3-text-white">--</span>towns</a>
+        
+        
+      </div>
+    </span>
+    </div>
+
+  
+        
+      </div>
+    </button>
+    </div>
+  </div>
+  
+
+  

@@ -1,0 +1,13 @@
+{% for hymn_of_the_week in church.hymn_of_the_week_set.all %}
+<div class="w3-display-container bgimg-2" style="padding:64px 16px; min-height: 400px;" >
+  <div class="w3-white  w3-opacity-min">
+    <h2 class="w3-center {{church.bg_color}} w3-text-white">Hymn Of The Week</h2>
+    <h4 class="w3-center w3-wide">{{hymn_of_the_week.hymn.hymn_title}}<br></h4>
+    <div class="w3-padding-48 ">
+    <div class="w3-center w3-text-white">
+    <strong class=""> {{hymn_of_the_week.hymn.hymn|safe}}</strong>
+   </div>
+  </div>
+  </div>
+ </div>
+{% endfor %}

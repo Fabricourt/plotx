@@ -1,0 +1,68 @@
+<div class="w3-display-container">
+  <div class=" {{church.bg_color}} w3-margin-top w3-opacity-min">
+    <div class="w3-padding w3-margin">
+      <h1 class="w3-xxlarge w3-text-white w3-center">Contact</h1> 
+      <p class="w3-center w3-text-white">send us a message we would love to hear from you</p>
+    </div>
+    <div class="container">
+        <div class="modal-body">
+          <form action="{% url 'church-contact' %}" method="POST">
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+              <input type="hidden" name="user_id" value="{{ user.id }}">
+            {% else %}
+              <input type="hidden" name="user_id" value="0">
+            {% endif %}
+            <input type="hidden" name="church_email" value="{{ church.email }}">
+            <input type="hidden" name="church_id" value="{{ church.id }}">
+            
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label for="church_name" class="col-form-label">church:</label>
+                                    <input type="text" name="church" class="form-control" value="{{ church.church_name }}">
+                                </div>
+                                <div class="col-sm-12"> 
+                                    <label for="name" class="col-form-label">First Name:</label>
+                                    <input type="text" name="name" class="form-control" {% if user.is_authenticated %} value="{{ user.username }}" {% endif %} required>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <label for="phone" class="col-form-label">Phone:</label>
+                                    <input type="text" name="phone" class="form-control">
+                                </div>
+                                <div class="col-sm-12"> 
+                                    <label for="email" class="col-form-label">Email:</label>
+                                    <input type="email" name="email" class="form-control" {% if user.is_authenticated %} value="{{ user.email }}" {% endif %} required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="row">  
+                                    <label for="header" class="col-form-label">Message heading:</label>
+                                    <input type="text" name="header" class="form-control">
+                                    <br>
+                                    <label for="message" class="col-form-label">Message:</label>
+                                    <textarea name="message" class="form-control" style="min-height:180px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <input type="submit" value="Send" class="btn btn-block w3-hover-white w3-hover-shadow w3-border w3-border-white {{church.hover_text_color}} {{church.bg_color}}">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div>
+
+</div>
