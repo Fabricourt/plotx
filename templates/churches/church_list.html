@@ -1,0 +1,6 @@
+
+{% for church in church_list %}
+
+<a href="{{ church.get_absolute_url }}">{{church.church_name}}</a><br>
+
+{% endfor %}

@@ -9,6 +9,8 @@ class Town(models.Model):
     population = models.IntegerField(blank=False, null=True)
     about_town = RichTextField(blank=False, null=True)
     town_pic = models.ImageField(upload_to='photos/%Y/%m/%d/',null=True, blank=False)
+    tytube_video_link = models.CharField(max_length=1000, blank=True, null=True)
+    town_video = models.FileField(upload_to='videos/', null=True, blank=True)
     location = models.ManyToManyField(Location, blank=True,  help_text="Select The  Locations found in this Town")
     is_published = models.BooleanField(default=True)
 

@@ -21,6 +21,12 @@
 
 <!-- !PAGE CONTENT! -->
 <div id="home"></div>
+
+<!-- Todays Sermon-->
+<section class="w3-container {{church.bg_color}}" style="padding:64px 16px" id="Sermon">
+  {% include 'churches/_todayssermon.html' %}
+</section>
+
 <div class="w3-main " style="max-width:100%;" id="plots">
 <a href="{% url 'video-list' %}">videos</a>
 
@@ -42,10 +48,7 @@
 </section>
 
 
-<!-- Todays Sermon-->
-<section class="w3-container {{church.bg_color}}" style="padding:64px 16px" id="Sermon">
-  {% include 'churches/_todayssermon.html' %}
-</section>
+
 
 
 <!-- Announcements-->

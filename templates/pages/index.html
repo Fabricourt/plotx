@@ -6,32 +6,26 @@
     {% include 'partials/index/_header.html' %}
 </section>
 
- 
- <hr style="width: 100%;" class="w3-theme-l2">
 <div>
-  <h2 class="w3-center w3-text-green w3-hide-small"> Pick A Town Of Interest </h2>
+  <h2 class="w3-center w3-text-emerald w3-hide-small"> Pick A Town Of Interest </h2>
 </div> 
 
-
- 
-      <br>
       {% if towns %}
-<ul class="w3-row-padding "  style="list-style-type: none;" >     
+      <div class="w3-margin-right">
+        <ul class="w3-row-padding "  style="list-style-type: none;" > 
+
         {% for town in towns %}
         <li class="w3-col l2 m3 s6 w3-margin-bottom ">
           <a href="{{ town.get_absolute_url }}">
-            <span class="w3-hover-text-green w3-hover-border-green btn  w3-text-black w3-hover-shadow cursor:pointer" style="width:150px; margin:5px;">{{ town.name }}</span></a> 
+            <span class="w3-hover-text-green w3-hover-border-green btn w3-card-4  w3-text-black w3-hover-shadow cursor:pointer" style="width:140px; margin:9px">{{ town.name }}</span></a> 
         </li>
         {% endfor %}
-    </ul>
+        </ul>
   
       {% else %}
         <p>There are no towns.</p>
+      </div>
       {% endif %}
     
- 
-<script src="https://www.w3schools.com/lib/w3.js"></script>
-    
-
-
+  
 {% endblock %}

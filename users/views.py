@@ -31,7 +31,7 @@ def login(request):
       return redirect('index')
     else:
       messages.error(request, 'Invalid credentials')
-      return redirect('login')
+      return redirect('profile')
   else:
     return render(request, 'users/login.html')
 

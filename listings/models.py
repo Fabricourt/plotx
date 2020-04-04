@@ -138,6 +138,8 @@ class Listing(models.Model):
     photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True)
     photo_5 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True)
     photo_6 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True)
+    pytube_video_link = models.CharField(max_length=1000, blank=True, null=True)
+    plot_video = models.FileField(upload_to='videos/', null=True, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=True)
     date_posted = models.DateTimeField(default=timezone.now)
     is_published = models.BooleanField(default=True)

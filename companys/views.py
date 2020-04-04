@@ -9,6 +9,7 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Business
+from django.db.models import Q
 from towns.models import Town
 from django.contrib.auth.models import User
 
@@ -25,6 +26,23 @@ class BusinessListView(ListView):
         context['towns'] = Town.objects.all()
         return context
   
+class SearchResultsListView(ListView):
+    model = Business
+    context_object_name = 'business_list'
+    template_name = 'companys/search_results.html'
+
+    def get_queryset(self): # new
+        query = self.request.GET.get('q')
+        return Business.objects.filter(
+            Q(business_name__icontains=query) 
+        )
+    
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the towns
+        context['towns'] = Town.objects.all()
+        return context
 
 
 class BusinessDetailView(DetailView):
@@ -94,7 +112,8 @@ class BusinessUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the towns
         context['towns'] = Town.objects.all()
-        return context
+        return context   
+  
   
 
 

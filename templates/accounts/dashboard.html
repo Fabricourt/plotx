@@ -1,0 +1,52 @@
+{% extends 'base_generic.html' %}
+
+{% block title %} | User Dashboard {% endblock %}
+
+{% block content %}
+
+
+
+
+
+  <!-- Alerts -->
+  {% include 'partials/_alerts.html' %}
+
+  <section id="dashboard" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Welcome {{ user.first_name }}</h2>
+          {% if contacts %}
+            <p>Here are the messages you have sent and the companies and realtors you have reached out to.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Sent To</th>
+                  <th scope="col">CC Heading</th>
+                  <th scope="col"></th>
+                
+                </tr>
+              </thead>
+              <tbody>
+                {% for contact in contacts %}
+                  <tr>
+                    <td>{{ contact.id }}</td>
+                    <td>{{ contact.business }}</td>
+                    <td>{{ contact.header }}</td>
+                    <td>
+                      <a class="btn btn-light" href="{% url 'business-detail' contact.business_id %}">link</a>
+                    </td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <p>You have not made any inquiries</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+

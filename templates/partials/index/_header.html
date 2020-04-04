@@ -29,24 +29,45 @@
 .luxury {
   color: #d4af37;
 }
-
+.w3-border-emerald,.w3-hover-border-emerald:hover{border-color:#008a00!important}
+.w3-text-emerald,.w3-hover-text-emerald:hover{color:#008a00!important}
+.w3-emerald,.w3-hover-emerald:hover{color:#fff!important;background-color:#008a00!important}
 </style>
 
 <header class='w3-section w3-padding' style: width:100%">
   <div class=" row">
     
      <h2 class="w3-xxlarge cross  col-sm-12 w3-text-white w3-center" > <img class="w3-hide" src="{% static 'img/favicon/favicon-32x32.png' %}" class="" alt="home" style="width:64px; height:64px;"><br> 
-      <span class="w3-hide ">
-        ▁ ▂ ▄ ▆ ▇ <span class="">█</span>
-      </span>
 
-      <span class="w3-jumbo col-sm w3-highway-green w3-border w3-border-gold luxe w3-text-gold    w3-wide ">
+      <!--small view-->
+      <a href="{% url 'index' %}">
+      <button class="w3-xxxlarge w3-hide-large w3-hover-gold w3-hover-text-gold w3-hide-medium btn w3-highway-green w3-border w3-border-gold luxe w3-text-gold   ">
         <strong>
+          <span>
+          <img src="{% static 'img/logo.png' %}" style="width:60px; height:60px; margin-bottom: 8px;" logo" class="w3-white  w3-border  w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="">
+        </span>
+        <span style="">
+          KATATA </span>
+        </strong>
+      </button>
+    </a>
+
+      <!--Large View-->
+      <a href="{% url 'index' %}">
+
+      <span class="w3-jumbo w3-hide-small w3-round w3-hover-gold w3-hover-text-gold w3-hover-shadow  w3-highway-green  w3-border w3-border-gold luxe w3-text-gold   " style="padding-right:10px;">
+        <strong>
+        
+          <img src="{% static 'img/logo.png' %}" style="width:115px; height:110px; margin-left:10px; margin-bottom:17px; " logo" class="w3-white  w3-border w3-hover-border-gold w3-hover-gold w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="">
+     
+
           KATATA 
         </strong>
       </span>
-      <span class="w3-hide"><span class="">█</span> ▇ ▆ ▄ ▂ ▁</span>
+    </a>
+
     </h2>
+    
      <div class="col-sm-12" style="width:100%">
        <div class=" w3-large w3-text-black col-sm-12 w3-center">
   
@@ -85,5 +106,6 @@
       </div>
   <hr class="w3-green  w3-hide" style="width: 100%; padding:3px;" >
   </div>
+  
 </header>
 

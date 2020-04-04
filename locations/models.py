@@ -5,6 +5,8 @@ from django.urls import reverse
 class Location(models.Model):
     name = models.CharField(max_length=100)
     location_pic = models.ImageField(upload_to='photos/%Y/%m/%d/',null=True, blank=True)
+    lytube_video_link = models.CharField(max_length=1000, blank=True, null=True)
+    location_video = models.FileField(upload_to='videos/', null=True, blank=True)
     is_published = models.BooleanField(default=True)
 
     def get_absolute_url(self):

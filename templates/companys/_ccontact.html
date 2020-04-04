@@ -1,11 +1,13 @@
 {% load static %}
-<div>
-  <h1 class="w3-xxlarge {{business.text_color}} w3-center">CONTACT</h1> 
-  <p class="w3-center">send us a message we would love to hear from you</p>
-
+<div class-="{% if business.bgimg_3 %} {{business.bg_color}} {% endif %} w3-text-white w3-opacity-min">
 
 </div>
-<div class="container ">
+<div class="container w3-opacity-min {{business.bg_color}}">
+  <br>
+  <h1 class="w3-xxlarge w3-center">CONTACT</h1> 
+  <p class="w3-center w3-text-white">send us a message we would love to hear from you <br>or<br>
+    CALL US ON <br> {{business.phone_1}} /  {{business.phone_2}}
+  </p>
         <div class="modal-body">
           <form action="{% url 'contact' %}" method="POST">
             {% csrf_token %}
@@ -55,8 +57,8 @@
                     </div>
                 </div>
 
-            <hr>
-            <input type="submit" value="Send" class="btn btn-block {{business.bg_color}}">
+    
+            <input type="submit" value="Send" class="btn btn-block w3-light-grey w3-hover-grey w3-large w3-hover-border-grey">
           </form>
         </div>
       </div>

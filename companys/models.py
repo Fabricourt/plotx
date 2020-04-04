@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from towns.models import Town
 from locations.models import Location
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Bg_color(models.Model):
     color = models.CharField(max_length=100)
@@ -82,11 +84,13 @@ class Business(models.Model):
     logo = models.ImageField(default='logo.png', upload_to='logos/%Y/%m/%d/', blank=True, null=True)
     about_pic = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True )
     service_pic = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True )
-    bimg_1 =  models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True )
+    bgimg_1 =  models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True )
     bgimg_2 =  models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True )
-    bgimg_3 =  models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True )
+    bgimg_3 =  models.ImageField(upload_to='photos/%Y/%m/%d/', blank=False, null=True )
     about_business = RichTextField(max_length=1500, blank=False, null=True, help_text="Max 200 words")
     services = RichTextField(max_length=1500, blank=False, null=True, help_text="Max 200 words")
+    bytube_video_link = models.CharField(max_length=1000, blank=True, null=True)
+    business_video = models.FileField(upload_to='videos/', null=True, blank=True)
     bg_color = models.ForeignKey(Bg_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
     hover_color = models.ForeignKey(Hover_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
     border_color = models.ForeignKey(Border_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
@@ -118,3 +122,5 @@ class Business(models.Model):
 
     def __str__(self):
         return self.business_name
+
+

@@ -1,26 +1,54 @@
-<div class="w3-container">
-    <h3 class="w3-center {{business.text_color}}">ABOUT</h3>
-    <p class="w3-center w3-large">Key features of our business</p>
-    <div class="w3-row-padding w3-center" style="margin-top:64px">
-      <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
-        <i class="fa fa-desktop {{business.text_color}}  w3-margin-bottom w3-jumbo w3-center"></i>
-        <p class="w3-large ">{{business.f_title1}}</p>
-        <p>{{business.features_1}}</p>
+
+
+<div class="w3-row section"  id="services" style="margin:10px;" id="services">
+  <br>
+  <h3 class="w3-center ">ABOUT US</h3>
+  <p class="w3-large w3-center">About us in 1 minute</p>
+  
+
+  <div class="w3-col l6 m6 " style="height:420px;">
+    <img src="{{ business.service_pic.url }}" class="w3-round w3-xxxlarge w3-image w3-hide  w3-border-white w3-opacity-min " alt="Menu" style="width:100%; height:400px">
+    {% if business.business_video %}
+      <div class="col-sm w3-margin w3-hide-small" style="width:100%; height:400px;">
+        <br><br>
+            <video controls width="100%"> <source src="{{business.business_video.url}}" style="height:400px; width:100%"></video>
       </div>
-      <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
-        <i class="fa fa-heart {{business.text_color}} w3-margin-bottom w3-jumbo"></i>
-        <p class="w3-large ">{{business.f_title2}}</p>
-        <p>{{business.features_2}}</p>
+      <div class=" w3-hide-large w3-hide-medium" style="width:100%; height:auto;">
+        
+            <video controls width="340px"> <source src="{{business.business_video.url}}" style="height:400px; width:100%"></video>
       </div>
-      <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
-        <i class="fa fa-diamond {{business.text_color}}  w3-margin-bottom w3-jumbo"></i>
-        <p class="w3-large ">{{business.f_title3}}</p>
-        <p>{{business.features_3}}</p>
-      </div>
-      <div class="w3-quarter wow fadeInUp" data-wow-duration="1.5s">
-        <i class="fa fa-cog {{business.text_color}}  w3-margin-bottom w3-jumbo"></i>
-        <p class="w3-large ">{{business.f_title4}}</p>
-        <p>{{business.features_4}}</p>
-      </div>
-    </div>
+    {% else %}
+      <img src="{{ business.service_pic.url }}" class="w3-round w3-xxxlarge w3-image  w3-border-white w3-opacity-min " alt="Menu" style=" width:100%; height:400px">
+    {% endif %}
+    <div class="w3-center w3-margin w3-hide-large w3-hide-medium w3-text-white" style="font-size:14px;"> {{business.about_business|safe}} </div>
+    
   </div>
+  <div class="w3-col l6 m6  " style="height:420px;">
+   <br><br>
+    <div class="w3-center w3-margin w3-hide-small w3-text-white" style="font-size:14px;"> {{business.about_business|safe}} </div><br>
+    </div>
+</div>
+
+
+<section class="w3-hide-small">
+  {% include 'companys/_features.html' %}
+  </section>
+
+<section class="w3-section  {{business.bg_color}}" style="padding:64px 16px" >
+  <h3 class="w3-center w3-text-white">HISTORY</h3>
+  <p class="w3-center w3-text-white w3-large">How far we have come</p>
+<div class="w3-row 4" id="history" style="margin-bottom:0px;">
+  <div class="w3-col l6 m6 {{business.bg_color}}" style="height:420px;">
+    <div class="w3-margin   w3-text-white" style="font-size: 18px;">
+     {{ business.services|safe }}
+    </div>
+   </div>
+  <div class="w3-col m6 w3-hide-small {{ business.bg_color }}" style="height:420px;">
+    
+   <img src="{{business.about_pic.url}}" class="w3-round w3-xxxlarge w3-image w3-border-white w3-opacity-min" alt="Table Setting" style="padding:10px; width:100%; height:400px;">
+
+  </div>
+
+  
+</div>
+</section>

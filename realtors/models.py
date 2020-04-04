@@ -16,6 +16,8 @@ class Broker(models.Model):
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING, blank=True, null=True, help_text="Select The  Locations where this realtor  is found in the choosen Town")
     business = models.ForeignKey(Business, on_delete=models.DO_NOTHING, blank=True, null=True, help_text="Select The Company this realtor belongs to")
     profile = models.ImageField(default='avatar.jpg', upload_to='profiles/%Y/%m/%d/', blank=True)
+    rytube_video_link = models.CharField(max_length=1000, blank=True, null=True)
+    realtor_video = models.FileField(upload_to='videos/', null=True, blank=True)
     about_realtor = models.TextField(max_length=1000, blank=True, null=True, help_text="Enter a brief description of the Realtor.")
     email = models.CharField(max_length=100, blank=True, null=True)
     phone = models.CharField(max_length=100, blank=True, null=True)

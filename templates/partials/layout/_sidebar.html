@@ -20,6 +20,7 @@
     <a class="w3-bar-item  w3-hover-shadow w3-hover-green  w3-text-white " href="{% url 'index' %}">  <i class="fa fa-home w3-text-khaki w3-xlarge"></i> Home</a>
     <a class="w3-bar-item   w3-hover-green w3-text-white " href="{% url 'contactk' %}"> <i class=" fa fa-link w3-text-khaki w3-xlarge"></i> Contact </a>  
     {% if user.is_authenticated %}
+    <a class="w3-bar-item   w3-hide w3-hover-green w3-text-white " href="{% url 'church-list' %}"> <i class=" fa fa-link w3-text-khaki w3-xlarge"></i>Church </a>  
     <a class="w3-bar-item   w3-hover-green w3-hide w3-text-white " href="{% url 'dashboard' %}"> <i class=" fa fa-th w3-text-khaki w3-xlarge"></i> Dashboard </a>  
     {% endif %}
     {% if user.is_staff %}

@@ -1,0 +1,131 @@
+{% load static %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light  sticky-top">
+    <div class="container">
+      
+      {% if '/' == request.path %}
+      <a class="navbar-brand" href="{% url 'index' %}">   
+      <span class="nav-item w3-padding w3-highway-green w3-hide w3-large w3-border w3-border-gold luxe w3-text-gold    w3-wide " style="">
+        <strong>
+          KATATA 
+        </strong>
+      </span>
+      </a>
+      {% else %}
+      <a class="navbar-brand" href="{% url 'index' %}">  
+      <span class="nav-item w3-padding  w3-hover-shadow w3-highway-green btn w3-large w3-border w3-border-gold luxe w3-text-gold   w3-wide " style="">
+        <strong>
+            <img src="{% static 'img/logo.png' %}" style="width:32px; height:32px;" logo" class="w3-white w3-border  w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="">
+          KATATA 
+        </strong>
+      </span>
+      </a>
+    {% endif %}
+      
+
+ 
+      <button class="navbar-toggler w3-text-black w3-border w3-border-white" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <ul class="navbar-nav">
+          <li
+            {% if '/' == request.path %}
+              class="nav-item active  mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+          >
+            <a class="nav-link" href="{% url 'index' %}"> Home</a>
+          </li>
+
+         <li
+          {% if '/' == request.path %}
+            class="nav-item active  mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+        >
+        <a class="nav-link" href="{% url 'business-list' %}">Companies</a>
+         
+        </li>
+
+        <li
+        {% if '/' == request.path %}
+          class="nav-item active  mr-3"
+        {% else %}
+          class="nav-item mr-3"
+        {% endif %}
+        >
+        <a class="nav-link w3-hide" href="">Real Estate  Reviews</a>
+        
+        </li>
+
+  
+          <li class=" nav-item active  mr-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Towns
+            </a>
+            <div class="dropdown-menu w3-margin " aria-labelledby="navbarDropdown"  style="width:85vw">
+             {% include 'pages/_townsdrop.html' %}
+            </div>
+      
+          </li>
+       
+        </ul>
+        
+       
+          
+        <ul class="navbar-nav ml-auto">
+          <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get">
+            <input name="q" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          {% if user.is_authenticated %}
+            <li
+            {% if 'dashboard' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+            >
+              <a class="nav-link w3-hide" href="{% url 'dashboard' %}">
+               Welcome {{ user.username }} (Dashboard)</a>
+            </li>
+            <li class="nav-item mr-3">
+              <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+              <form action="{% url 'logout' %}" method="POST" id="logout">
+                {% csrf_token %}
+                <input type="hidden">
+              </form>
+            </li>
+          {% else %}
+            <li
+            {% if 'register' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+            >
+              <a class="nav-link" href="{% url 'register' %}">
+                <i class="fas fa-user-plus"></i> Register</a>
+            </li>
+            <li
+            {% if 'login' in request.path %}
+              class="nav-item active mr-3"
+            {% else %}
+              class="nav-item mr-3"
+            {% endif %}
+            >
+              <a class="nav-link" href="{% url 'login' %}">
+                <i class="fas fa-sign-in-alt"></i>
+
+                Login</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>

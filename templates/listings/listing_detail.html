@@ -34,8 +34,8 @@
         <header>
             <br><br>
             <div class="w3-center">
-            <span class="w3-xlarge w3-padding w3-center"> {{ listing.title }} </span>
-            <span class="w3-large w3-padding w3-badge {{listing.bg_color}} w3-center">Size: {{ listing.listing_size }} </span><br>
+            <span class="w3-xlarge w3-padding w3-center"> {{ listing.title }} </span><br>
+<br>
             <span class="w3-large w3-padding w3-center"><b>Listed on</b> {{ listing.list_date }} </span>
             </div>
             <hr class="w3-theme-l4 " style="width:95%; padding:1px;">
@@ -50,9 +50,14 @@
             {% if listing.photo_main.url %}
             <img src="{{listing.photo_main.url}}" alt="listing photo" class="w3-border "  style="height:230px; width:100%; padding:5px">
             {% endif %}
+     
+            
         </div>
             </div>
             <br><br>
+            <div class="w3-center">
+            <span class="w3-large w3-margin w3-padding badge {{listing.bg_color}} w3-center">Plot Size: {{ listing.plot_size }} </span>
+            </div>
             <div class="row">
             <div class="col-sm-3  w3-border-left">
                 <p></p>
@@ -114,7 +119,7 @@
                 <i class=" fa fa-phone w3-border w3-large  w3-circle  w3-text-white"></i> <span class="w3-white">{{listing.broker.phone}}</span></a></p>
                 </div>   
                 <hr class="w3-theme-l4 " style="width:100%; padding:1px;">
-                    <h4 class="w3-center">In Pictures</h4>
+                    <h3 class="w3-center">In Pictures</h3>
                     {% include 'partials/listings/_pdc.html' %}
                 </section>
             

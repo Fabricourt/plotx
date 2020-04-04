@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
   
     # Local
+    'accounts',
     'abouts',
     'blog',
     'catalog',
@@ -52,15 +53,15 @@ INSTALLED_APPS = [
     'towns',
     'users',
     'pages',
+    'reviews',
+    
 
     # Third-party
     'django_user_agents',
     'tracking_analyzer',
     'crispy_forms',
     'ckeditor',
-
-
-    
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -154,6 +155,7 @@ STATICFILES_DIRS = [
 GEOIP_PATH = '/path/to/your/geoip/datafiles'
 
 
+
 # Media Folder Settings
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -183,6 +185,11 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 
 LOGIN_URL = 'login'
+
+CKEDITOR_BASEPATH = STATIC_ROOT+"/ckeditor/ckeditor"
+
+CKEDITOR_UPLOAD_PATH = "ck_uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -248,6 +255,7 @@ CKEDITOR_CONFIGS = {
             'dialog',
             'dialogui',
             'elementspath'
+            
         ]),
     }
 }

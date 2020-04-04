@@ -5,18 +5,18 @@
 {% load static %}
 {% load humanize %}
 <title>Katata{% block title %} {% endblock %}</title>
+<link rel="shortcut icon" type="image/ico" href="{% static 'img/favicon.ico' %}" />
+<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon-32x32.png' %}" class=" w3-border-white w3-circle" style="width:32px; height:32px;"/>
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+<link rel="manifest" href="{% static 'img/site.webmanifest' %}">
+<link rel="mask-icon" href="{% static 'img/safari-pinned-tab.svg' %}" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" type="image/jpg" href="{% static 'img/favicon/favicon.jpg' %}" class=" w3-border-white w3-circle" style="width:32px; height:32px;"/>
-<link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicon/apple-touch-icon.png' %}" class="w3-circle">
-<link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon/favicon-32x32.png' %}" class="w3-circle">
-<link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon/favicon-16x16.png' %}" class="w3-circle">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" class="w3-circle">
-<meta name="msapplication-TileColor" content="#da532c" class="w3-circle">
-<meta name="theme-color" content="#ffffff" class="w3-circle">
-
-
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
@@ -24,7 +24,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://www.w3schools.com/lib/w3.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,7 +32,7 @@
 <script src="https://kit.fontawesome.com/e0b77ee52f.js" crossorigin="anonymous"></script>
  
 <!-- Bootstrap -->
-       <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+
 
 
 
@@ -54,6 +54,7 @@
      
        <link rel="stylesheet" href="{% static 'css/w3-colors-highway.css' %}">
        <link rel="stylesheet" href="{% static 'css/w3-colors-ios.css' %}">
+       <link rel="stylesheet" href="{% static 'css/w3-colors-signal.css' %}">
        <link rel="stylesheet" href="{% static 'css/w3-colors-win8.css' %}">
        <link rel="stylesheet" href="{% static 'css/w3-theme-purple.css' %}">
    
@@ -77,9 +78,10 @@
 
     <!-- Add additional CSS in static file -->
   </head>
-<body class="w3-flat-alizarin" style="list-style-type: none;">
+<body class="w3-signal-white" style="list-style-type: none;">
 <!--topbar-->
-{% include 'partials/layout/_topbar.html' %}
+{% include 'partials/_navbar.html' %}
+
 
 
 
@@ -130,6 +132,13 @@
     $('[data-toggle="tooltip"]').tooltip()
   })
   </script>
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+
+  
+    
 </body>
 </purple>
 </html>

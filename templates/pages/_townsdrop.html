@@ -1,33 +1,29 @@
 {% load static %}
 
-    <div class="w3-dropdown-click">
-      <span class=" w3-text-white  w3-white w3-dropdown-hover">
-        <a class="w3-bar-item    w3-hover-shadow   w3-hover-text-khaki w3-text-khaki " href=""> <i class="fa fa-map-marker w3-text-khaki w3-xlarge"></i> Towns   </a>
-
-      <div id="Demo" class="w3-dropdown-content  w3-bar-block w3-small ">
-              <br>
+   
+          <input class="w3-input  col-sm-12 w3-hover-border-theme w3-padding" type="text" placeholder="Search towns..." id="myInput" onkeyup="myFunction()" >
+          
+      
+              
               {% if towns %}
-              <ol class="w3-row-padding" style="list-style-type: none;"  id="myUL">
+              <ol class="row " id="myUL">
                 {% for town in towns %}
-                <li class="w3-center">
+                <li class="dropdown-item col-sm ">
                   <a href="{{ town.get_absolute_url }}">
-                    <span class="w3-hover-text-khaki w3-hover-border-green w3-hover-shadow btn  w3-text-green " style="width:150px; margin:5px;">{{ town.name }}</span></a> 
-                </li>
+                    <span class=" w3-hover-text-green  w3-text-black  "  style="width:150px; margin:5px;">{{ town.name|capfirst }}</span></a>
+                  </li>
+                
+              
                 {% endfor %}
               </ol>
           
               {% else %}
                 <p>There are no towns.</p>
               {% endif %}
-          </div>
-              </div>
+      
          
         
         
-        
-      </div>
-    </span>
-    </div>
 
   
     <script>

@@ -7,7 +7,7 @@
     }
     
     /* Create a Parallax Effect */
-    .bgimg-1, .bgimg-2, .bgimg-3 {
+    .bgimg_1, .bgimg_2, .bgimg_3 {
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
@@ -15,21 +15,26 @@
     }
     
     /* First image (Logo. Full height) */
-    .bgimg-1 {
+    .bgimg_1 {
+      {% if business.bgimg_1 %}
       background-image: url('{{business.bgimg_1.url}}');
+      {% endif %}
     
     }
     
     /* Second image (Portfolio) */
-    .bgimg-2 {
+    .bgimg_2 {
+      {% if business.bgimg_2 %}
       background-image: url('{{business.bgimg_2.url}}');
+      {% endif %}
 
     }
     
     /* Third image (Contact) */
-    .bgimg-3 {
+    .bgimg_3 {
+      {% if business.bgimg_3 %}
       background-image: url('{{business.bgimg_3.url}}');
-    
+      {% endif %}
     }
     
     .w3-wide {letter-spacing: 10px;}
@@ -37,7 +42,7 @@
     
     /* Turn off parallax scrolling for tablets and phones */
     @media only screen and (max-device-width: 1600px) {
-      .bgimg-1, .bgimg-2, .bgimg-3 {
+      .bgimg_1, .bgimg_2, .bgimg_3 {
         background-attachment: scroll;
     
       }

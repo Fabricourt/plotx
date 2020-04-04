@@ -1,6 +1,6 @@
  3716 4270 219
 
- magnet:?xt=urn:btih:BD1458F5675E9B1DC45EC54A95C1A6BBCD34BFF4&dn=Fractured.2019.720p.WEBRip.800MB.x264-GalaxyRG+%E2%AD%90&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.si%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce
+
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -589,3 +589,187 @@ def contact(request):
         {% if church.service_pic.url %}
       <img src="{{ church.service_pic.url }}" class="w3-round w3-xxxlarge w3-image  w3-border-white w3-opacity-min " alt="Menu" style="padding:10px; width:100%; min-height:400px; max-height:500px">
     {% endif %}
+
+
+
+
+    &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+    {% extends "base_generic.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+{% block content %}
+<div class="w3-container card-4 w3-light-grey w3-padding-64  ">
+<form class=" w3-margin-top" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class=" w3-light-grey ">
+      <legend class="border-bottom w3-text-green w3-center w3-xxlarge mb-4">Register A New Member Company </legend>
+    <div class="form-row ">
+        <div class="form-group col-sm-4">
+            {{ form.business_name|as_crispy_field }}
+        </div>
+        <div class="form-group col-sm-4">
+            {{ form.business_type|as_crispy_field }}
+        </div>
+        <div class="form-group col-sm-4">
+            {{ form.contact_person|as_crispy_field }}
+        </div> 
+        <div class="form-group col-sm-6">
+            {{ form.logo|as_crispy_field }}  
+        </div>
+        <div class="form-group col-sm-6">
+            {{ form.business_slogan|as_crispy_field }}  
+        </div>
+
+    </div>
+    <fieldset class="w3-padding-64 w3-margin-top">
+        <legend class="w3-text-green"> Address </legend>
+    <div class="form-row">      
+   
+    <div class="form-group col-sm-4">
+        {{ form.phone_1|as_crispy_field }}
+    </div>  
+    <div class="form-group col-sm-4">
+        {{ form.phone_2|as_crispy_field }}
+    </div>  
+    <div class="form-group col-sm-4">
+        {{ form.phone_3|as_crispy_field }}
+    </div>  
+    <div class="form-group col-sm-6">
+        {{ form.email_1|as_crispy_field }}
+    </div>   
+    <div class="form-group col-sm-6">
+        {{ form.email_2|as_crispy_field }}
+    </div> 
+
+    <div class="form-group col-sm-4">
+        {{ form.town|as_crispy_field }}
+    </div>
+    <div class="form-group col-sm-4">
+        {{ form.location|as_crispy_field }}
+    </div>
+    <div class="form-group col-sm-4">
+        {{ form.contact_person|as_crispy_field }}
+    </div>  
+
+        <div class="form-group col-sm-3">
+            <span>{{ form.facebook|as_crispy_field }}</span>
+        </div>
+        <div class="form-group col-sm-3">    
+            <span>{{ form.twitter|as_crispy_field }}</span>
+        </div>
+        <div class="form-group col-sm-3">
+            <span>{{ form.Instagram|as_crispy_field }}</span>
+        </div>
+        <div class="form-group col-sm-3">
+            <span>{{ form.website|as_crispy_field }}</span>
+        </div>
+
+        <div class="form-group col-sm-12">
+            {{ form.created_by|as_crispy_field }}
+        </div> 
+        <div class="form-group col-sm-12">
+          {{ form.date_posted|as_crispy_field }}
+      </div>  
+    </div>
+</fieldset>
+    <fieldset class="w3-padding-64  w3-margin-top">
+        <legend class="w3-text-green">About Company</legend>
+        <div class="w3-center w3-margin-bottom w">
+            <h4 class="">Company features</h4>
+            </div>
+            <p class="w3-center w3-text-blue">please input at least four featuress about your company  [pls:note] short is always better</p>
+            <p><span class="w3-text-red">KEY</span> <span class="w3-green">F_title1</span> = <span class="w3-text-green">features title 1</span> which refers to features 1</p>
+        <div class="form-row w3-margin w3-padding">
+
+            <div class="form-group col-sm-3">
+                {{ form.f_title1|as_crispy_field }}
+            </div>   
+            <div class="form-group col-sm-9">
+            {{ form.features_1|as_crispy_field }}
+            </div>  
+            <div class="form-group col-sm-3">
+                {{ form.f_title2|as_crispy_field }}
+            </div>   
+            <div class="form-group col-sm-9">
+            {{ form.features_2|as_crispy_field }}
+            </div>  
+            <div class="form-group col-sm-3">
+            {{ form.f_title3|as_crispy_field }}
+            </div>   
+            <div class="form-group col-sm-9">
+            {{ form.features_3|as_crispy_field }}
+            </div>  
+            <div class="form-group col-sm-3">
+            {{ form.f_title4|as_crispy_field|safe }}
+            </div>   
+            <div class="form-group col-sm-9">
+            {{ form.features_4|as_crispy_field|safe }}
+            </div>
+</div>  
+
+    <div class="form-row">
+        <div class="form-group col-sm-12 w3-margin w3-padding" style="width:600px ">{{form.services|as_crispy_field}}</div>
+    <div class="form-row">
+        <div class="form-group col-sm-12 w3-margin w3-padding">{{form.about_business|as_crispy_field}}</div>
+    </div>
+
+    </fieldset>
+    <fieldset class="w3-padding-64  w3-margin-top">
+        <legend class="w3-text-green">Company Pics</legend>
+        <div class='form-row'>
+            <div class="form-group col-sm-6">
+                {{ form.business_pic|as_crispy_field }}  
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form.about_pic|as_crispy_field }}  
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form.service_pic|as_crispy_field }}  
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form.bgimg_1|as_crispy_field }}  
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form.bgimg_2|as_crispy_field }}  
+            </div>
+            <div class="form-group col-sm-6">
+                {{ form.bgimg_3|as_crispy_field }}  
+            </div>
+
+
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend class="w3-text-green">Colors</legend>
+        <div class="form-row ">
+            <h4>! important</h4>
+            <div class="form-group col-sm-12">
+                <p>pick a color that strongly represents you company</p>
+                {{ form.bg_color|as_crispy_field }}  
+            </div>
+            <div class="form-group col-sm-3">
+                {{ form.hover_color|as_crispy_field }}  
+            </div>
+    
+            <div class="form-group col-sm-3">
+                {{ form.border_color|as_crispy_field }}  
+            </div>
+            <div class="form-group col-sm-3">
+                {{ form.text_color|as_crispy_field }}  
+            </div>
+            <div class="form-group col-sm-3">
+                {{ form.footer_color|as_crispy_field }}  
+            </div>
+        </div>
+    </fieldset>
+   
+    <input class=" w3-bar w3-button w3-wide w3-border w3-margin-top w3-green w3-border-green w3-hover-white w3-hover-shadow" type="submit" value="Submit" />
+  </fieldset>
+</form>
+
+{% endblock %}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

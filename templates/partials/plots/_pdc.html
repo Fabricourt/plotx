@@ -10,32 +10,33 @@
 
 </style>
 
-<section class="w3-section w3-display-container {{plot.bg_color}} w3-border {{plot.border_color}}" styles="">
+<section class=" w3-display-container row  {{plot.bg_color}} w3-border {{plot.border_color}}">
 {% if plot.photo_main %}
-  <img class="mySlides" src="{{ plot.photo_main.url }}" style="width:100%;">
+  <img class="mySlides col-sm-6" src="{{ plot.photo_main.url }}" style="width:100%;">
 {% endif %}
 {% if plot.photo_1 %}
-  <img class="mySlides" src="{{ plot.photo_1.url }}" style="width:100%">
+  <img class="mySlides col-sm-6" src="{{ plot.photo_1.url }}" style="width:100%">
 {% endif %}
 {% if plot.photo_2 %}
-  <img class="mySlides" src="{{ plot.photo_2.url }}" style="width:100%">
+  <img class="mySlides col-sm-6" src="{{ plot.photo_2.url }}" style="width:100%">
 {% endif %}
 {% if plot.photo_3 %}
-  <img class="mySlides" src="{{ plot.photo_3.url }}" style="width:100%">
+  <img class="mySlides col-sm-6" src="{{ plot.photo_3.url }}" style="width:100%">
 {% endif %}
 {% if plot.photo_4 %}
-  <img class="mySlides" src="{{ plot.photo_4.url }}" style="width:100%">
+  <img class="mySlides col-sm-6" src="{{ plot.photo_4.url }}" style="width:100%">
 {% endif %}
 {% if plot.photo_5 %}
-  <img class="mySlides" src="{{ plot.photo_5.url }}" style="width:100%">
+  <img class="mySlides col-sm-6" src="{{ plot.photo_5.url }}" style="width:100%">
 {% endif %}
 {% if plot.photo_6 %}
-  <img class="mySlides" src="{{ plot.photo_6.url }}" style="width:100%">
+  <img class="mySlides col-sm-6" src="{{ plot.photo_6.url }}" style="width:100%">
 {% endif %}
 
   <button class="w3-button w3-theme-l3 w3-card-4 w3-hover-green w3-circle w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
   <button class="w3-button w3-theme-l3 w3-hover-green w3-card-4 w3-circle w3-display-right" onclick="plusDivs(1)">&#10095;</button>
 </section>
+
 
 <script>
 var slideIndex = 1;
