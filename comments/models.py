@@ -1,4 +1,5 @@
 from django.db import models
+from django.db import models
 from django.utils import timezone
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -8,8 +9,8 @@ from locations.models import Location
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 
-
-class review(models.Model):
+"""
+class Review(models.Model):
     RATING_CHOICES = (
         (1, '1'),
         (2, '2'),
@@ -26,4 +27,4 @@ class review(models.Model):
 
     
     def __str__(self):
-        return self.business.busines_name
+        return self.business.busines_name"""

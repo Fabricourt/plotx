@@ -40,7 +40,7 @@
           </li>
 
          <li
-          {% if '/' == request.path %}
+          {% if 'business-list' == request.path %}
             class="nav-item active  mr-3"
           {% else %}
             class="nav-item mr-3"
@@ -51,13 +51,13 @@
         </li>
 
         <li
-        {% if '/' == request.path %}
+        {% if 'reviews' == request.path %}
           class="nav-item active  mr-3"
         {% else %}
           class="nav-item mr-3"
         {% endif %}
         >
-        <a class="nav-link w3-hide" href="">Real Estate  Reviews</a>
+        <a class="nav-link w3-hide" href="">Reviews</a>
         
         </li>
 

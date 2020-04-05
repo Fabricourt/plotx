@@ -32,6 +32,7 @@ urlpatterns = [
     path('churches/', include('churches.urls')),
     path('blog/', include('blog.urls')),
     path('realtors/', include('realtors.urls')),  
+ 
     path('companys/', include ('companys.urls')),  
     path('contact/', include('contact.urls')),
     path('listings/', include('listings.urls')),

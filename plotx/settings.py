@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'towns',
     'users',
     'pages',
-    'reviews',
+    'breviews',
+    
     
 
     # Third-party

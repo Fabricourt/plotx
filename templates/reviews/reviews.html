@@ -1,0 +1,26 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block title %} | Review {% endblock %}
+{% block content %}
+
+
+<h2>Latest reviews</h2>
+
+{% if reviews %}
+<div>
+    {% for review in reviews %}
+    <div>
+        <h4><a href="">
+        {{ review.business}}
+        </a></h4>
+        <h6>rated {{ review.rating }} of 5 by {{ review.user_name }}</h6>
+        <p>{{ review.comment }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No reviews are available.</p>
+{% endif %}
+
+
+{% endblock %}
