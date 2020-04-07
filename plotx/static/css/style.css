@@ -1,0 +1,13 @@
+img {width:100%;}
+.carousel-inner img {width: 100%;}
+.carousel-caption {color:#ccc;top:140px; bottom: auto; text-align:left;}
+.carousel-caption h1 {color:#fff;}
+.code-info h4 {color:#fff;}
+.services-box1:hover {background: ; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);}
+.trust {color:#fff; background-image: url("http://insignia-themes.website/roofing/wp-content/uploads/2017/12/roofing-bg.jpg?id=42");}
+.fa {color:#dd0000;}
+hr {border-color:#dd0000; width:30%;}
+.cta {color:#fff;}
+a {color:#dd0000;}
+a:hover {color:#dd0000;}
+.footer {color:#ccc;}
