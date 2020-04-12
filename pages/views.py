@@ -118,3 +118,6 @@ def tablet(request):
 @staff_member_required
 def laptop(request):
     return render(request, 'pages/laptop.html') 
+
+def churchdetail(request):
+    return render(request, 'pages/churchdetail.html') 

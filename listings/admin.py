@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Listing, Bg_color, Color, Text_color, Border_color, Hover_color, Footer_color, Hover_border_color, Hover_text_color, Plot_size, Plot_status, Plot_type, Payment_plan, Road, Population, Development, Neighbor
+from .models import Listing, Videolisting, Bg_color, Color, Text_color, Border_color, Hover_color, Footer_color, Hover_border_color, Hover_text_color, Plot_size, Plot_status, Plot_type, Payment_plan, Road, Population, Development, Neighbor
 
 
 admin.site.register(Listing)
@@ -21,3 +21,4 @@ admin.site.register(Road)
 admin.site.register(Population)
 admin.site.register(Development)
 admin.site.register(Neighbor)
+admin.site.register(Videolisting)

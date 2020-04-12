@@ -26,13 +26,12 @@ from django.conf.urls import url
 urlpatterns = [
     path('', include('pages.urls')),
     path('accounts/', include('accounts.urls')),
-    path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
     path('churches/', include('churches.urls')),
     path('blog/', include('blog.urls')),
     path('realtors/', include('realtors.urls')),  
- 
     path('companys/', include ('companys.urls')),  
     path('contact/', include('contact.urls')),
     path('listings/', include('listings.urls')),

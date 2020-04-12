@@ -1,19 +1,20 @@
 {% load static %}
 <div class="w3-margin-top" >
     <div class="w3-dropdown-click">
-      <button  class="btn w3-text-green w3-card-4 w3-white w3-dropdown-hover">
+      <button  class=" w3-dropdown-hover">
       <a href="" class="w3-text-white w3-large">
-        <div class="w3-right  w3-text-green">
-            <img src="{% static 'img/favicon-32x32.png' %}" class="w3-circle w3-large"  alt="home" 
-          style="width:32px; height:32px;">𝐤ᗩ𝕥𝓪𝐓𝔞..<span>Menu</span>
-        </div>
+        <span class="nav-item  w3-hover-shadow w3-highway-green btn w3-large w3-border w3-border-gold luxe w3-text-gold   w3-wide " style="">
+          <strong>
+              <img src="{% static 'img/logo.png' %}" style="width:32px; height:32px;" logo" class="w3-white w3-border  w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="">
+            KATATA 
+          </strong>
+        </span>
       </a>
       <div id="Demo" class="w3-dropdown-content w3-card-4 w3-bar-block w3-small ">
-        <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-hover-white" ><i class="fa fa-home w3-text-green w3-xlarge"></i> <span class="w3-text-white">--</span>Katata</a>
-        <a href="{% url 'business-list' %}" class="w3-bar-item w3-hide  w3-button w3-hover-white"><i class=" fas fa-award w3-text-green  w3-xlarge"></i> <span class="w3-text-white">--</span>companys</a>
-        <a href="{% url 'listings' %}" class="w3-bar-item w3-hide w3-button w3-hover-white"><i class=" fa fa-certificate  w3-text-green  w3-xlarge"></i> <span class="w3-text-white">--</span>plots</a>
-        
-        <div class="">{% include 'pages/_townsdrop.html'%}</div> 
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-hover-white w3-small" ><i class="fa fa-home w3-text-green w3-small"></i> <span class="w3-text-white">--</span>Katata-Home</a>
+        <a href="{% url 'business-list' %}" class="w3-bar-item w3-button w3-hover-white w3-small" ><i class="fas fa-award w3-text-green w3-small"></i> <span class="w3-text-white">--</span>Companies</a>
+        <a href="{% url 'business-list' %}" class="w3-bar-item w3-hide  w3-button w3-hover-white"><i class=" fas fa-award w3-text-green  w3-xlarge"></i> <span class="w3-text-white">--</span>companys</a>       
+        <div class="w3-left">{% include 'pages/_townsdrop.html'%}</div> 
       </div>
     </span>
 </div>

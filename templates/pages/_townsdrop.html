@@ -8,9 +8,9 @@
               {% if towns %}
               <ol class="row " id="myUL">
                 {% for town in towns %}
-                <li class="dropdown-item col-sm ">
+                <li class="dropdown-item col-sm">
                   <a href="{{ town.get_absolute_url }}">
-                    <span class=" w3-hover-text-green  w3-text-black  "  style="width:150px; margin:5px;">{{ town.name|capfirst }}</span></a>
+                    <span class=" w3-hover-text-green w3-small w3-text-black  "  style="width:100px; margin:5px;">{{ town.name|capfirst }}</span></a>
                   </li>
                 
               

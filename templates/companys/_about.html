@@ -9,13 +9,31 @@
   <div class="w3-col l6 m6 " style="height:420px;">
     <img src="{{ business.service_pic.url }}" class="w3-round w3-xxxlarge w3-image w3-hide  w3-border-white w3-opacity-min " alt="Menu" style="width:100%; height:400px">
     {% if business.business_video %}
-      <div class="col-sm w3-margin w3-hide-small" style="width:100%; height:400px;">
+      <div class="col-sm w3-margin w3-hide-small" style="width:100%; height:400px;"">
         <br><br>
-            <video controls width="100%"> <source src="{{business.business_video.url}}" style="height:400px; width:100%"></video>
+            <video controls width="100%" poster="{{ business.service_pic.url }}"> 
+              <source src="{{business.business_video.url}}" style="height:400px; width:100%">
+                <source src="video.mp4#t=0.01" type="video/mp4">     
+                  <source src="video.ogg" type="video/ogg">
+                  <source src="video.webm" type="video/webm">
+                  <object data="video.mp4" width="470" height="255">
+                  <embed src="video.swf" width="470" height="255">
+                  </object>
+                  Your browser does not support the video tag.
+              </video>
       </div>
       <div class=" w3-hide-large w3-hide-medium" style="width:100%; height:auto;">
         
-            <video controls width="340px"> <source src="{{business.business_video.url}}" style="height:400px; width:100%"></video>
+            <video controls width="340px"> 
+              <source src="{{business.business_video.url}}" style="height:400px; width:100%">
+                <source src="video.mp4#t=0.01" type="video/mp4">     
+                  <source src="video.ogg" type="video/ogg">
+                  <source src="video.webm" type="video/webm">
+                  <object data="video.mp4" width="470" height="255">
+                  <embed src="video.swf" width="470" height="255">
+                  </object>
+                  Your browser does not support the video tag.
+              </video>
       </div>
     {% else %}
       <img src="{{ business.service_pic.url }}" class="w3-round w3-xxxlarge w3-image  w3-border-white w3-opacity-min " alt="Menu" style=" width:100%; height:400px">
@@ -38,7 +56,13 @@
   <h3 class="w3-center w3-text-white">HISTORY</h3>
   <p class="w3-center w3-text-white w3-large">How far we have come</p>
 <div class="w3-row 4" id="history" style="margin-bottom:0px;">
-  <div class="w3-col l6 m6 {{business.bg_color}}" style="height:420px;">
+  <div class="w3-col l6 m6 {{business.bg_color}} w3-hide-small" style="height:420px;">
+    <div class="w3-margin   w3-text-white" style="font-size: 18px;">
+     {{ business.services|safe }}
+    </div>
+   </div>
+
+   <div class="w3-col l6 m6 {{business.bg_color}} w3-hide-large w3-hide-medium" style="height:auto;">
     <div class="w3-margin   w3-text-white" style="font-size: 18px;">
      {{ business.services|safe }}
     </div>

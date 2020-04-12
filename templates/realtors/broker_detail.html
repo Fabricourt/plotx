@@ -1,0 +1,97 @@
+{% extends "base_company.html" %}
+{% block content %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+{% include 'realtors/brokercss.html' %}
+
+<div class="w3-top {{broker.bg_color}}">
+  <div class="w3-xlarge" style="max-width:100%; margin: 3px;" >
+    <div class="w3-button w3-padding-8 w3-left {{broker.bg_color}} {{broker.hover_color}}  w3-hover-text-amber {{broker.border_color}} w3-hover-border-white"  ><a class="w3-hover-text-amber" href="{% url 'business-detail' broker.business.pk  %}"><i class="fas fa-chevron-left "></i> Back</a></div>
+
+    <div class="w3-right w3-margin-left  {{broker.bg_color}}  {{business.bg_color}}">
+        <h1 class="w3-large btn w3-card-4 w3-hover-border-white {{broker.border_color}} {{business.border_color}} w3-margin-right {{broker.bg_color}} {{business.bg_color}}">
+        <a class="w3-hover-text-white" href="{% url 'business-detail' broker.business.pk  %}" style="text-decoration:none;">{{ broker.business|upper }}</a></h1></div>
+   
+  </div>
+</div>
+
+<div id="mainwrap">
+    <header class="w3-padding-48">
+      <h1><a href="" class="{{broker.hover_text_color}}">{{broker|upper}}</a></h1>
+      <h2>{{broker.title}}</h2>
+      {% if object.created_by == user  %}
+      <div>
+        <button  class="w3-large  w3-round w3-hover-green w3-hover-text-white w3-text-black w3-hover-shadow w3-orange"><a class="w3-hover-text-white w3-text-black w3-margin" href="{% url 'listing-update' object.id %}">Update</a></button>
+
+        
+        <a class="btn btn-danger w3-hide btn-sm mt-1 mb-1 w3-margin"" href="{% url 'listing-delete' object.id %}">Delete</a>
+
+      </div>
+    {% endif %}
+    
+    </header>
+    <div style="clear:both"></div>
+    <div id="content" class="w3-margin-bottom {{broker.bg_color}}">
+      <div id="profile" class="section">
+        <div class="column col3">
+          <table id="bioinfo">
+            <tbody>
+              <tr>
+                <td class="odd">Name</td>
+                <td class="even">{{broker.first_name|capfirst}} {{broker.last_name|capfirst}}</td>
+              </tr>
+              <tr>
+                <td class="odd">Town</td>
+                <td class="even">{{broker.town|capfirst}}</td>
+              </tr>
+              <tr>
+                <td class="odd">Area</td>
+                <td class="even">{{broker.location|capfirst}}</td>
+              </tr>
+              <tr>
+                <td class="odd">Phone</td>
+                <td class="even">{{broker.phone}}</td>
+              </tr>
+              <tr>
+                <td class="odd">email</td>
+                <td class="even">{{broker.email}}</td>
+              </tr>
+              <tr>
+                <td class="odd">Company</td>
+                <td class="even">{{broker.business}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <ul class="social">
+        
+
+            <li><a href="https://facebook.com" class="100008152065270"><img src="https://cdn1.iconfinder.com/data/icons/social-media-2285/512/Colored_Facebook3_svg-512.png" alt="Facebook" /></a></li>
+
+            <li><a href="https://www.twitter.com" class="HTERCUMANP"><img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Twitter3_colored_svg-512.png" alt="Twitter" /></a></li>
+
+            <li><a href="https://www.linkedin.com" class="harun-pehlivan-0aa34252"><img src="http://andreasviklund.com/files/demo/cv-template-tpy/img/icons/linkedin.png" alt="Linkedin" /></a></li>
+
+            <li class=""><a href="https://instagram.com" class="harunpehlivan "><img src="https://cdn4.iconfinder.com/data/icons/instagram-new/512/instagram-square-3d-color-shadow-512.png" alt="flickr" /></a></li>
+          </ul>
+        </div>
+        <div class="column col5 pl-50">
+          <img src="{{ broker.profile.url }}" alt="{{broker.first_name|capfirst}} {{broker.last_name|capfirst}}" width="100" height="330px" />
+          <p></p>
+        </div>
+      </div>
+</div>
+
+ 
+
+
+
+<br><br><br>
+
+
+
+
+{% include 'realtors/brokerjs.html' %}
+{% endblock %}

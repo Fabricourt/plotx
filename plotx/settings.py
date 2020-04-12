@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'abouts',
     'blog',
     'catalog',
+    'colors',
     'contact',
     'companys',
     'churches',
@@ -187,6 +188,8 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 LOGIN_URL = 'login'
 
+CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
+
 CKEDITOR_BASEPATH = STATIC_ROOT+"/ckeditor/ckeditor"
 
 CKEDITOR_UPLOAD_PATH = "ck_uploads/"
@@ -262,6 +265,7 @@ CKEDITOR_CONFIGS = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+#CRISPY_TEMPLATE_PACK = 'uni_form'
 
 try:
     from .local_settings import *

@@ -150,3 +150,16 @@ class Listing(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Videolisting(models.Model):
+    title = models.CharField(max_length=100)
+    videofile= models.FileField(upload_to='videos/', blank=False, null=True, )
+    Business = models.ForeignKey(Business, on_delete=models.DO_NOTHING, blank=False, null=True)
+    listing = models.ForeignKey(Listing, on_delete=models.DO_NOTHING, blank=False, null=True)
+    broker = models.ForeignKey(Broker, on_delete=models.DO_NOTHING, blank=False, null=True)
+    created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=False, null=True)
+    description = RichTextField(blank=False, null=True)
+
+    def __str__(self):
+        return self.listing.title

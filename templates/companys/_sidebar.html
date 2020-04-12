@@ -9,9 +9,10 @@
     {% if object.created_by == user  %}
       <div>
         <a class="btn btn-secondary btn-sm mt-1 mb-1 w3-margin" href="{% url 'business-update' object.id %}">Update</a>
-        <a class="btn btn-danger btn-sm mt-1 mb-1 w3-margin"" href="{% url 'business-delete' object.id %}">Delete</a>
-        <a class="btn btn-warning btn-sm mt-1 mb-1 w3-margin"" href="{% url 'listing-create' %}">+  Plot</a>
-        <a class="btn btn-primary btn-sm mt-1 mb-1 w3-margin"" href="{% url 'broker-create' %}">+ Team</a>
+
+        
+        <a class="btn btn-danger w3-hide btn-sm mt-1 mb-1 w3-margin"" href="{% url 'business-delete' object.id %}">Delete</a>
+
       </div>
     {% endif %}
     
