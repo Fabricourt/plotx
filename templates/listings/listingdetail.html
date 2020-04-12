@@ -23,7 +23,8 @@
 <!-- Top menu -->
 <div class="w3-top {{listing.bg_color}}">
   <div class="w3-xlarge" style="max-width:100%; margin: 3px;" >
-    <div class="w3-button w3-padding-8 w3-left {{listing.bg_color}} {{listing.hover_color}}  w3-hover-text-amber {{listing.border_color}} w3-hover-border-white"  ><a class="w3-hover-text-amber" href="{% url 'business-detail' listing.business.pk  %}"><i class="fas fa-chevron-left "></i> Back</a></div>
+    <div class="w3-button w3-padding-8 w3-left {{listing.bg_color}} {{listing.hover_color}}  w3-hover-text-amber {{listing.border_color}} w3-hover-border-white"  >
+        <a class="w3-hover-text-amber" href="{% url 'business-detail' listing.business.pk  %}"><i class="fas fa-chevron-left "></i> Back</a></div>
 
     <div class="w3-right w3-margin-left  {{listing.bg_color}}  {{business.bg_color}}">
         <h1 class="w3-large btn w3-card-4 w3-hover-border-white {{listing.border_color}} {{business.border_color}} w3-margin-right {{listing.bg_color}} {{business.bg_color}}">
