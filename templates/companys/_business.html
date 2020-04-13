@@ -2,7 +2,7 @@
 {% if business_list %}
 <ul class=" w3-margin-top w3-row-padding "  style="list-style-type: none;" id="myUL">  
     {% for business in business_list %} 
-    <li class="w3-col l4 m4 s12 w3-margin-bottom">
+    <li class="w3-col l6 w3-margin-bottom">
       <a href="{{ business.get_absolute_url }}">
         <div class="btn  {{business.hover_color}} w3-hover-text-white w3-white w3-large w3-card-4 w3-border w3-hover-border-white w3-padding  w3-hover-shadow  w3-text-black" style="width:300px; margin:5px; padding:5px 3px;">
           <div class="" style="width:30%; float:left">

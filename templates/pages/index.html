@@ -2,20 +2,20 @@
 {% load static %}
 
 {% block content %}
-<section class="">
-    {% include 'partials/index/_header.html' %}
-</section>
+<section>
 
-<div>
-  <h2 class="w3-center w3-text-emerald w3-hide-small"> Pick A Town Of Interest </h2>
-</div> 
+  {% include 'partials/index/_header.html' %}
 
-      {% if towns %}
-      <div class="w3-margin-right">
+  <div>
+    <h2 class="w3-center w3-text-emerald w3-hide-small"> Pick A Town Of Interest </h2>
+  </div> 
+
+  {% if towns %}
+    <div class="w3-margin-right">
         <ul class="w3-row-padding "  style="list-style-type: none;" > 
 
         {% for town in towns %}
-        <li class="w3-col l2 m3 s6 w3-margin-bottom ">
+        <li class="w3-col l2 m4 s6 w3-margin-bottom ">
           <a href="{{ town.get_absolute_url }}">
             <span class="w3-hover-text-green w3-hover-border-green btn w3-card-4  w3-text-black w3-hover-shadow cursor:pointer" style="width:140px; margin:9px">{{ town.name }}</span></a> 
         </li>
@@ -24,8 +24,7 @@
   
       {% else %}
         <p>There are no towns.</p>
-      </div>
-      {% endif %}
-    
-  
+    </div>
+  {% endif %}
+</section>
 {% endblock %}
