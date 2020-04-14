@@ -53,18 +53,7 @@
           Companys</a>
         
         </li>
-        <li
-        {% if 'churchdetail' == request.path %}
-          class="nav-item active  mr-3"
-        {% else %}
-          class="nav-item mr-3"
-        {% endif %}
-        >
-        <a class="nav-link w3-hide" href="{% url 'churchdetail' %}">
-          <i class="fa fa-bullseye w3-text-emerald"></i>
-          Church</a>
         
-        </li>
 
         <li
         {% if 'towns' == request.path %}

@@ -7,6 +7,5 @@ urlpatterns = [
     path('mobile', views.mobile, name='mobile'), 
     path('tablet', views.tablet, name='tablet'),
     path('laptop', views.laptop, name='laptop'),
-    path('churchdetail', views.churchdetail, name='churchdetail'),
     path('dashboard', views.Dashboard, name='dashboard'),
 ]
