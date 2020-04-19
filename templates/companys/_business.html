@@ -1,24 +1,52 @@
 {% load static %}
 {% if business_list %}
-<ul class=" w3-margin-top w3-row-padding w3-content "  style="list-style-type: none;" id="myUL">  
+<div class=" w3-margin-top w3-margin-bottom w3-row-padding w3-content "  style="list-style-type: none;" id="myUL">  
+    <div class=" w3-content  w3-padding w3-text-black w3-margin-top w3-bottombar w3-border-teal">
+        <h3 class="w3-center w3-text-theme">KATATA</h3>
+        <h4 class="w3-center">Redifining Business Visibility</h4>
+    </div>
+    <div class="w3-padding"></div>
+    <form class="form-inline my-2 my-lg-0 w3-hide-large w3-hide-medium" action="{% url 'search_results' %}" method="get">
+        <input name="q" class="form-control w3-border w3-border-teal mr-sm-2" type="search" placeholder="Search companies" aria-label="Search">
+        <button class="btn w3-border w3-border-teal w3-hide-small w3-hover-teal my-2 my-sm-0" type="submit">Search</button>
+      </form>
     {% for business in business_list %} 
-    <li class="w3-col l4">
+    <!--large view-->
+    <div class="w3-col l4 m6 w3-hide-small">
       <a href="{{ business.get_absolute_url }}">
-        <div class="btn w3-border {{business.hover_border_color}}  w3-white w3-large w3-padding  w3-hover-shadow  w3-text-black" style="width:292px; margin:5px; padding:5px 3px;">
+        <div class="btn w3-border w3-container w3-white {{business.hover_border_color}}  w3-padding  w3-large  w3-hover-shadow  w3-text-black" style="width:300px; margin:5px; padding:5px 3px;">
+          <div class="" style="width:35%; float:left">
+            <img src="{{ business.logo.url }}" alt="" class="w3-white    " style="width: 80px; height:60px;">
+          </div>
+          <div class="" style="width:60%; float:right">
+            <span class="w3-large w3-wide {{business.text_color }}">{{ business.business_name }}</span>
+            <br> <span class="w3-small">{{business.business_type}}</span>    
+                <span class="w3-small">[{{business.town}}]</span>
+            <span class="w3-small w3-hide w3-right">reviews</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  
+  <!--small view-->
+  <div class="w3-col l4  w3-hide-large w3-hide-medium">
+      <a href="{{ business.get_absolute_url }}">
+        <div class="btn w3-white w3-border w3-container {{business.hover_border_color}}  w3-padding  w3-large  w3-hover-shadow  w3-text-black" style="width:250px; margin:5px; padding:5px 3px;">
           <div class="" style="width:35%; float:left">
             <img src="{{ business.logo.url }}" alt="" class="w3-white    " style="width: 80px; height:60px;">
           </div>
           <div class="" style="width:60%; float:right">
             <span class="w3-large w3-wide {{business.text_color }}">{{ business.business_name }}</span>
             <br> <span class="w3-small">{{business.business_type}}</span>
-            <span class="w3-small">[ {{business.town}} ]</span>
+                <span class="w3-small">[ {{business.town}} ]</span>
             <span class="w3-small w3-hide w3-right">reviews</span>
           </div>
         </div>
       </a>
-    </li>
+    </div>
+    
     {% endfor %}
-</ul>
+  </div>
       
   {% else %}
       <p>There are no businesss available.</p>

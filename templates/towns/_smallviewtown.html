@@ -1,0 +1,61 @@
+<section style="width:100%" class="w3-hide-large w3-hide-medium">   
+  
+<!--pic card small view-->
+<div class="w3-card w3-round">
+    <div class=" w3-display-container">
+        <img src="{{ town.town_pic.url }}" class="w3-border  w3-border-brown w3-hide-large w3-hide-medium w3-khaki w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="" style="padding:9px; width: 100%; height: 40vh;">
+        <div class="w3-display-bottommiddle" style="width: 93%;">
+            <h3 class="w3-small w3-theme-d5 w3-hide-large w3-hide-medium w3-center w3-border w3-border-khaki w3-text-white w3-opacity  w3-padding  w3-margin-bottom" style="width:100%">
+                WELCOME TO
+                    {{ town|upper}}  
+            </h3>
+        </div>
+
+    </div>
+</div>
+
+
+<!--Section Title-->
+{% include 'towns/_sectiontitle.html' %}
+
+
+<!--business in town --->
+{% for business in town.business_set.all %}
+    <div class="w3-container w3-card w3-hide-large w3-hide-medium w3-hover-shadow w3-white w3-round w3-margin-top"><br>
+            <a href="{{ business.get_absolute_url }}">
+                <img src="{{business.logo.url}}" alt="Avatar" class="w3-left w3-hide-large w3-hide-medium " style="width:50px">
+            </a>
+            <h4 class=" w3-center w3-hide-large w3-hide-medium  {{business.text_color}}" style="font-size: 14px;">
+            <a href="{{ business.get_absolute_url }}">
+                {{business|upper}} | {{business.business_type|upper}}
+            </a>
+            <div class="w3-hide-large   w3-hide-medium">
+                <div class="w3-center">
+                    <span class="w3-tiny w3-center w3-text-grey"><strong>Our Plot Locations:</strong></span>
+                        <br>
+                        {% for location in business.location.all %}
+                            <span class="w3-tiny w3-text-grey"> 
+                            <span class="{{business.text_color}}">#</span>{{location}}</span>
+                            {% if not forloop.last %}  {% endif %}
+                        {% endfor %}
+                </div>
+            </div>
+        </h4>
+
+        <!--locations where plots are in the business-->
+        {% include 'towns/_plotsinbusiness.html'   %}
+        <div class="w3-container w3-hide-large w3-hide-medium">
+            <div class="w3-center w3-hide-large  w3-light-grey w3-hide-medium">
+                {% if business.cp_img %}
+                <img src="{{business.cp_img.url}}" alt=""  class="w3-circle w3-card-4" style="width:28px; height:28px;">
+                {% endif %}
+            </div>
+        </div>
+        <span class=" w3-center w3-tiny w3-hide-large w3-hide-medium  w3-hover-text-green  btn"> {{business.contact_person}} | {{business.cp_phone_1}} <br> {{business.cp_email_1}}</span>
+            <span class="w3-right btn"><a href="{{ business.get_absolute_url }}"><i class='fas fa-eye w3-xlarge  w3-right w3-hover-text-green {{business.text_color}}'></i> </a></span>
+    </div>
+{% endfor %}
+      
+       
+
+</section>

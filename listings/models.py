@@ -9,6 +9,8 @@ from realtors.models import Broker
 from towns.models import Town
 from locations.models import Location
 from companys.models import Business
+from thumbnails.models import Thumbnail
+from PIL import Image
 
 
 class Bg_color(models.Model):
@@ -107,6 +109,9 @@ class Neighbor(models.Model):
     def __str__(self):
         return self.name
 
+
+
+
 # Create your models here.
 class Listing(models.Model):
     title = models.CharField(max_length=200, blank=False, null=True)
@@ -131,7 +136,8 @@ class Listing(models.Model):
     neighbor =  models.ForeignKey(Neighbor, on_delete=models.DO_NOTHING,  blank=False, null=True)
     plot_type =  models.ForeignKey(Plot_type, on_delete=models.DO_NOTHING,  blank=False, null=True)
     plot_size =  models.ForeignKey(Plot_size, on_delete=models.DO_NOTHING,  blank=False, null=True)
-    photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=False, null=True)
+    #thumbnail =  models.ForeignKey(Thumbnail, on_delete=models.DO_NOTHING,  blank=True, null=True)
+    photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True)
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True)
     photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True)
     photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True)
@@ -163,3 +169,5 @@ class Videolisting(models.Model):
 
     def __str__(self):
         return self.listing.title
+
+

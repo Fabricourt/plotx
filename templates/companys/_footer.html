@@ -1,19 +1,20 @@
   
   <!-- Footer -->
-  <footer class="w3-padding-64 w3-light-grey w3-text-grey w3-small w3-center" id="footer">
+  <footer class="w3-padding-64 w3-light-grey w3-text-grey w3-small w3-center w3-small" id="footer">
 
     <a href="{{business.absolute.u}}" class="w3-button w3-large w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
 
     <div class="row">
-      <div class="col-sm-4 {{business.text_color}} ">
+      <div class="col-sm-4  {{business.text_color}} ">
         <h4>{{business}} links</h4>
         <div class="w3-text-grey">
-        <p><a href="#plots">Plots</a></p>
-        <p><a href="#about">About us</a></p>
-        <p><a href="#services">Services</a></p>
-        <p><a href="#team">Team</a></p>
-        <p><a href="#realtor">Realtor</a></p>
-        <p><a href="#contact">Contact</a></p>
+        <span class="w3-button w3-border {{business.border_color}} {{business.text_color}}  btn" style="width: 100px; margin:2px;"><a href="#plots" class="w3-small">Plots</a></span>
+        <span class="w3-button w3-border {{business.border_color}} {{business.text_color}}  btn" style="width: 100px; margin:2px; "><a href="#about" class="w3-small">About us</a></span>
+        <span class="w3-button w3-border {{business.border_color}} {{business.text_color}}  btn" style="width: 100px; margin:2px;"><a href="#services" class="w3-small">Services</a></span>
+        <br>
+        <span class="w3-button w3-border {{business.border_color}} {{business.text_color}}  btn" style="width: 100px; margin:2px;"><a href="#team" class="w3-small">Team</a></span>
+        <span class="w3-button w3-border {{business.border_color}} {{business.text_color}}  btn" style="width: 100px; margin:2px;"><a href="#realtor" class="w3-small">Realtor</a></span>
+        <span class="w3-button w3-border {{business.border_color}} {{business.text_color}}  btn" style="width: 100px; margin:2px;"><a href="#contact" class="w3-small">Contact</a></span>
         </div>
       </div>
      
@@ -21,9 +22,15 @@
       <div class="col-sm-4 w3-right w3-text-emerald">
         <h4>Katata links</h4>
         <div class="w3-text-grey">
-        <p><a href="{% url 'index' %}">KATATA</a></p>
-        <p><a href="{% url 'business-list' %">Companys</a></p>
-        <p><a href="{% url 'towns' %}">Town</a></p>
+          <div class="w3-large">
+            <span >
+              <a href="{% url 'index' %}" class="w3-large">KATATA</a> 
+            </span>
+            |
+            <span> 
+              <a href="{% url 'business-list' %" class="w3-large">COMPANYS</a>
+            </span>        
+          </div>
         </div>
       </div>
 

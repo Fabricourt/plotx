@@ -1,0 +1,88 @@
+
+<style>
+    .collapsible {
+
+      cursor: pointer;
+      padding: 5px;
+      width: 100%;
+      margin:2px;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 18px;
+  
+    }
+    
+    .active, .collapsible:hover {
+        
+      
+    }
+    
+    .collapsible:after {
+      content: '\002B';
+      color: {{business.text_color}};
+      font-weight: bold;
+      float: right;
+     
+    }
+    
+    .active:after {
+      color: {{business.text_color}};
+      content: "\2212";
+    }
+    
+    .content {
+      text-align: left;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+    
+    }
+    .luxury {
+  color: #d4af37;
+}
+    </style>
+
+
+ 
+  <div style="padding:10px; margin-top:5px" class="col-sm-12  ">
+  <button class="w3-white w3-round w3-large w3-border {{business.border_color}} w3-hover-border-grey collapsible  {{business.text_color}}  w3-left-align">
+       Plots For Sale</button>
+      <div  class=" w3-content content" style="height: 100%">
+          
+        <div class="w3-row-padding" style="margin:0 -16px">
+            
+            <ul class="w3-ul w3-tiny">
+              {% for listing in business.listing_set.all %}
+                <li class="w3-half">
+                    <a href="{{ listing.get_absolute_url }}">{{listing.title}}</a>
+                </li>
+              {% endfor %}
+            </ul>
+       
+        </div>
+          
+      </div>
+  </div>
+  
+
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } 
+          });
+        }
+        </script>
+
+
+

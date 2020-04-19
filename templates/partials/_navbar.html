@@ -37,7 +37,7 @@
             {% endif %}
           >
             <a class="nav-link" href="{% url 'index' %}">
-              <i class="fas fa-home w3-text-emerald"></i> Home</a>
+              <i class="fas fa-home w3-text-teal"></i> Home</a>
           </li>
      
 
@@ -49,7 +49,7 @@
         {% endif %}
         >
         <a class="nav-link" href="{% url 'business-list' %}">
-          <i class="fa fa-bullseye w3-text-emerald"></i>
+          <i class="fa fa-bullseye w3-text-teal"></i>
           Companys</a>
         
         </li>
@@ -63,7 +63,7 @@
         {% endif %}
         >
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-crosshairs w3-text-emerald"></i>
+              <i class="fas fa-crosshairs w3-text-teal"></i>
 
               Towns
             </a>
@@ -79,8 +79,8 @@
           
         <ul class="navbar-nav ml-auto">
           <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get">
-            <input name="q" class="form-control mr-sm-2" type="search" placeholder="Search companies" aria-label="Search">
-            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+            <input name="q" class="form-control w3-border w3-border-teal mr-sm-2" type="search" placeholder="Search companies" aria-label="Search">
+            <button class="btn w3-border w3-border-teal w3-hide-small w3-hover-teal my-2 my-sm-0" type="submit">Search</button>
           </form>
           {% if user.is_authenticated %}
             <li
@@ -95,7 +95,7 @@
             </li>
             <li class="nav-item mr-3">
               <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
-                <i class="fas fa-sign-out-alt w3-text-emerald"></i> Logout
+                <i class="fas fa-sign-out-alt w3-text-teal"></i> Logout
               </a>
               <form action="{% url 'logout' %}" method="POST" id="logout">
                 {% csrf_token %}
@@ -111,7 +111,7 @@
             {% endif %}
             >
               <a class="nav-link" href="{% url 'register' %}">
-                <i class="fas fa-user-plus w3-text-emerald"></i> Register</a>
+                <i class="fas fa-user-plus w3-text-teal"></i> Register</a>
             </li>
             <li
             {% if 'login' in request.path %}
@@ -121,7 +121,7 @@
             {% endif %}
             >
               <a class="nav-link" href="{% url 'login' %}">
-                <i class="fas fa-sign-in-alt w3-text-emerald"></i>
+                <i class="fas fa-sign-in-alt w3-text-teal"></i>
 
                 Login</a>
             </li>

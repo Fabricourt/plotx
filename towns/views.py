@@ -23,7 +23,7 @@ class TownListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['locations']  = Location.objects.order_by('name').filter(is_published=True)
-        context['listings']  = Listing.objects.order_by('name').filter(is_published=True) 
+        context['listings']  = Listing.objects.order_by('name').filter(is_published=True)
         context['kiambu_businesss'] = Business.objects.all().filter(is_kiambu=True)
         context['ruiru_businesss'] = ruiru_businesss = Business.objects.all().filter(is_ruiru=True)
         context['thika_businesss'] = thika_businesss = Business.objects.all().filter(is_thika=True)
@@ -42,3 +42,5 @@ class TownDetailView(generic.DetailView):
         # Add in a QuerySet of all the Towns
         context['towns'] = Town.objects.all()
         return context
+
+    

@@ -8,8 +8,9 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from .models import Listing
+
 from towns.models import Town
+from .models import Listing
 from django.contrib.auth.models import User
 
 
@@ -19,6 +20,8 @@ class ListingListView(ListView):
     context_object_name = 'listings'
     ordering = ['-date_posted']
     paginate_by = 5
+
+
 
 
 class ListingDetailView(DetailView):

@@ -14,10 +14,12 @@ from towns.models import Town
 from django.contrib.auth.models import User
 
 
+
 class BusinessListView(ListView):
     model = Business
     ordering = ['-date_posted']
     paginate_by = 49
+
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
@@ -25,6 +27,8 @@ class BusinessListView(ListView):
         # Add in a QuerySet of all the towns
         context['towns'] = Town.objects.all()
         return context
+
+        
   
 class SearchResultsListView(ListView):
     model = Business
@@ -54,6 +58,7 @@ class BusinessDetailView(DetailView):
         # Add in a QuerySet of all the townss
         context['towns'] = Town.objects.all()
         return context
+
 
 
 class UserBusinessListView(ListView):
