@@ -5,7 +5,7 @@
       
       {% if '/' == request.path %}
       <a class="navbar-brand" href="{% url 'index' %}">   
-      <span class="nav-item w3-padding w3-highway-green w3-hide w3-large w3-border w3-border-gold luxe w3-text-gold    w3-wide " style="">
+      <span class="nav-item w3-padding w3-highway-green w3-hide w3-large w3-border w3-border-gold luxe w3-text-gold    w3-wide " style="color:gold;">
         <strong>
           KATATA 
         </strong>
@@ -13,9 +13,9 @@
       </a>
       {% else %}
       <a class="navbar-brand" href="{% url 'index' %}">  
-      <span class="nav-item w3-padding  w3-hover-shadow w3-highway-green btn w3-large w3-border w3-border-gold luxe w3-text-gold   w3-wide " style="">
-        <strong>
-            <img src="{% static 'img/logo.png' %}" style="width:32px; height:32px;" logo" class="w3-white w3-border  w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="">
+      <span class="nav-item w3-padding  w3-hover-shadow w3-highway-green btn w3-large w3-border w3-border-gold luxe w3-text-gold   w3-wide " style="color:gold;">
+        <strong style="color:gold;">
+            <img src="{% static 'img/logo.png' %}" style="width:32px; height:32px;" logo" class="w3-white w3-border  w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="katata logo" >
           KATATA 
         </strong>
       </span>
@@ -39,7 +39,7 @@
             <a class="nav-link" href="{% url 'index' %}">
               <i class="fas fa-home w3-text-teal"></i> Home</a>
           </li>
-     
+     <i class></i>
 
         <li
         {% if 'business-list' == request.path %}

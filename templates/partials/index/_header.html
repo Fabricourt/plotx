@@ -21,7 +21,7 @@
                #5B3900 0 -1px 2px,
                #5B3900 1px 1px 1px,
                #322500 1px 3px 4px;
-  color:#d4af37 ;
+  color:gold ;
   font-size: 5em;
 	font-weight: 400;
 }
@@ -31,17 +31,70 @@
 .w3-border-emerald,.w3-hover-border-emerald:hover{border-color:#008a00!important}
 .w3-text-emerald,.w3-hover-text-emerald:hover{color:#008a00!important}
 .w3-emerald,.w3-hover-emerald:hover{color:#fff!important;background-color:#008a00!important}
+
+div.demotx {
+        display: inline-block;
+        width: 100%;
+       
+        
+        --aug-border: 5px;
+        --aug-inset: 5px;
+        padding: 10px; /* mind the gap */
+        text-align: center;
+       
+        
+    }
+
+    div.demosx {
+        display: inline-block;
+        
+       
+        
+        --aug-border: 5px;
+        --aug-inset: 5px;
+        padding: 10px; /* mind the gap */
+        text-align: center;
+        
+       
+
+    }
+
+    div.demotx0 {
+        --aug-tl-width: 50%;
+    }
+
+    div.demotx1 {
+        --aug-bl: 25px;
+        --aug-r-width: 33%;
+        --aug-r-height: 10px;
+    }
+
+    div.demotx2 {
+        --aug-b-width: 75%;
+        --aug-t-width: 75%;
+        --aug-b-height: 10px;
+        --aug-t-height: 10px;
+
+        --aug-r-width: 75%;
+        --aug-l-width: 75%;
+        --aug-r-height: 10px;
+        --aug-l-height: 10px;
+    }
+
 </style>
 
-<header class='w3-section w3-signal-white w3-padding' style: width:100%">
-  <div class=" row">
-    
+{% include 'pages/_parallaxcss.html' %}
+<header class='w3-section  w3-signal-white w3-padding' >
+  <div class="" style="width:100%; ">
+  <div class="demotx2 demotx bgimg_3  w3-hide-small w3-card-4 row" augmented-ui="t-clip-x r-clip-y l-clip-y b-clip-x exe">
+    {% include 'partials/index/_pulse.html' %}
+    <div class="">
      <h2 class="w3-xxlarge cross  col-sm-12 w3-text-white w3-center" > <img class="w3-hide" src="{% static 'img/favicon/favicon-32x32.png' %}" class="" alt="home" style="width:64px; height:64px;"><br> 
 
       <!--small view-->
       <a href="{% url 'index' %}">
      
-        <span class="w3-xxlarge w3-hide-large w3-hide-medium w3-round w3-hover-gold  w3-hover-text-gold w3-hover-shadow  w3-highway-green  w3-border w3-border-gold luxe w3-text-gold   " style="padding-right:10px;">
+        <span class="w3-xxlarge w3-hide-large w3-hide-medium w3-round bgimg_1 w3-hover-gold  w3-hover-text-gold w3-hover-shadow  w3-highway-green  w3-border w3-border-gold luxe w3-text-gold   " style="padding-right:10px;">
           <strong>
           
             <img src="{% static 'img/logo.png' %}" style="width:65px; height:65px; margin-left:10px; margin-bottom:13px; " logo" class="w3-white  w3-border w3-hover-border-gold w3-hover-gold w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="">
@@ -53,16 +106,18 @@
       </a>
     </a>
 
-      <!--Large View-->
+      <!--Large logo View-->
       <a href="{% url 'index' %}">
 
-      <span class="w3-jumbo w3-hide-small w3-round w3-hover-gold w3-hover-text-gold w3-hover-shadow  w3-highway-green  w3-border w3-border-gold luxe w3-text-gold   " style="padding-right:10px;">
+      <span class="w3-jumbo w3-hide-small w3-round w3-hover-gold w3-hover-text-gold w3-hover-shadow  w3-highway-green  bgimg_1 w3-border w3-border-gold luxe w3-text-gold   " style="padding-right:10px;">
+        
         <strong>
         
           <img src="{% static 'img/logo.png' %}" style="width:115px; height:110px; margin-left:10px; margin-bottom:17px; " logo" class="w3-white  w3-border w3-hover-border-gold w3-hover-gold w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="">
      
 
           KATATA 
+          
         </strong>
       </span>
     </a>
@@ -91,13 +146,13 @@
       
       </div>    
       
-      <h3 class="w3-center   w3-text-khaki w3-wide col-sm-12">
-          <strong class="w3-hide-small">
-            We Make It Royal  & We Make It Famous
+      <h3 class="w3-center   w3-text-teal w3-wide col-sm-12">
+          <strong class="w3-hide-large w3-hide-medium">
+          Redifining Visibility - Welcome To The Future 
         </strong> 
       
-        <strong class="w3-hide-large w3-hide-medium">
-        <span class="w3-small"> We Make It Royal  & We Make It Famous</span>
+        <strong class="w3-black w3-opacity-min">
+        <span class="w3-small"> Redifining visibility <i class="fa fa-chain w3-text-gold w3-small"></i> Welcome To The Future </span>
         </strong>
       </h3>
 
@@ -105,8 +160,76 @@
         <span class="w3-xlarge w3-hide-small  w3-round w3-padding" >ACCESS PLOTS THROUGH </span>
         <span class="w3-small w3-hide-large w3-hide-medium">ACCESS PLOTS THROUGH </span>
       </div>
-  <hr class="w3-green  w3-hide" style="width: 100%; padding:3px;" >
+  <hr class="w3-green w3-card w3-hide  w3-border-gold w3-border double" style="width: 100%; border:3px; border-color:gold; border-style:double; padding:10px;" >
+  </div>
+</div>
   </div>
   
+
+   <!--small view-->
+  <div class= "" style="">
+  <div class="demotx2 demosx  w3-border-teal bgimg_3 w3-hide-large w3-hide-medium w3-card-4 row" augmented-ui="t-clip-x b-clip-x r-clip-y l-clip-y exe">
+    {% include 'partials/index/_pulses.html' %}
+      <h2 class="w3-xxlarge cross  col-sm-12 w3-text-white w3-center" > <img class="w3-hide" src="{% static 'img/favicon/favicon-32x32.png' %}" class="" alt="home" style="width:64px; height:64px;"><br> 
+        <br><br>
+      
+       <a href="{% url 'index' %}">
+      
+         <span class="w3-xxlarge w3-hide-large w3-hide-medium w3-round w3-hover-gold bgimg_1 w3-hover-text-gold w3-hover-shadow  w3-highway-green  w3-border w3-border-gold luxe" style="padding-right:10px; color:gold">
+           <strong>
+           
+             <img src="{% static 'img/logo.png' %}" style="width:65px; height:65px; margin-left:10px; margin-bottom:13px; " logo" class="w3-white  w3-border w3-hover-border-gold w3-hover-gold w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="">
+        
+   
+             KATATA 
+           </strong>
+         </span>
+       </a>
+     </a>
+ 
+
+ 
+     </h2>
+     
+      <div class="col-sm-12" style="width:100%">
+        <div class=" w3-large w3-text-black col-sm-12 w3-center">
+   
+         <div class="row w3-hide w3-text-white w3-margin-top">
+            
+               <a href="{% url 'companys' %}" class="w3-text-grey w3-hover-text-green w3-hover-light-grey w3-margin-left w3-margin-bottom  btn w3-large w3-card-4 col-sm  w3-round"><span class="">Companies</span></a>
+               
+               <a href="{% url 'plots' %}" class="w3-text-grey w3-hover-text-green w3-hover-light-grey w3-margin-left w3-margin-bottom  btn w3-large w3-card-4 col-sm  w3-round"><span class="">Plots</span></a>
+             
+               <a href="{% url 'realtors' %}" class="w3-text-grey w3-hover-text-green w3-hover-light-grey w3-margin-left w3-margin-bottom  btn w3-large w3-card-4 col-sm  w3-round"><span class="">Realtors</span></a>
+             
+               <a href="{% url 'towns' %}" class="w3-text-grey w3-hover-text-green w3-hover-light-grey w3-margin-left w3-margin-bottom  btn w3-large w3-card-4 col-sm  w3-round"><span class="">Towns</span></a>
+             
+               <a href="{% url 'locations' %}" class="w3-text-grey w3-hover-text-green w3-hover-light-grey w3-margin-left w3-margin-bottom  btn w3-large w3-card-4 col-sm  w3-round"><span class="">Areas</span></a> 
+               
+ 
+         </div>
+ 
+       </div>    
+       
+       </div>    
+       
+       <h3 class="w3-center   w3-text-white w3-wide col-sm-12">
+           <strong class="w3-hide-small">
+           Redifining Visibility - Welcome To The Future 
+         </strong> 
+       
+         <strong class="w3-hide-large  w3-black w3-opacity-min w3-hide-medium">
+         <span class="w3-tiny"> Redifining visibility <i class="fa fa-chain w3-text-gold w3-tiny"></i> Welcome To The Future </span>
+         </strong>
+       </h3>
+ 
+       <div class="w3-center w3-hide">
+         <span class="w3-xlarge w3-hide-small  w3-round w3-padding" >ACCESS PLOTS THROUGH </span>
+         <span class="w3-small w3-hide-large w3-hide-medium">ACCESS PLOTS THROUGH </span>
+       </div>
+   <hr class="w3-green  w3-hide" style="width: 100%; padding:3px;" >
+   </div>
+  </div>
+   
 </header>
 

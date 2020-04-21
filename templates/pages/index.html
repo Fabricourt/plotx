@@ -2,12 +2,13 @@
 {% load static %}
 
 {% block content %}
+
 <section>
 
   {% include 'partials/index/_header.html' %}
 
   <div>
-    <h2 class="w3-center w3-text-emerald w3-hide-small"> Pick A Town Of Interest </h2>
+    <h4 class="w3-center w3-text-emerald w3-large w3-hide-small"> PICK A TOWN OF INTEREST </h4>
   </div> 
 
   {% if towns %}
@@ -17,7 +18,7 @@
         {% for town in towns %}
         <li class="w3-col l2 m4 s6 w3-margin-bottom ">
           <a href="{{ town.get_absolute_url }}">
-            <span class="w3-hover-text-green w3-hover-border-green btn w3-card-4  w3-text-black w3-hover-shadow cursor:pointer" style="width:140px; margin:9px">{{ town.name }}</span></a> 
+            <span  class="w3-hover-text-green w3-hover-border-green btn  w3-card-4 w3-white  w3-text-black w3-hover-shadow cursor:pointer" style="width:140px; margin:9px">{{ town.name }}</span></a> 
         </li>
         {% endfor %}
         </ul>
