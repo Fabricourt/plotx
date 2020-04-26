@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import  Bg_color, Color, Text_color, Border_color, Hover_color, Hover_text_color, Hover_border_color, Footer_color
+from .models import  Bg_color, Bg_color_2, Bg_color_3, Color, Text_color, Border_color, Hover_color, Hover_text_color, Hover_border_color, Footer_color
 
 # Register your models here.
 admin.site.register(Bg_color)
