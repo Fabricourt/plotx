@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.shortcuts import render, get_object_or_404 
 from django.views.generic import (
     ListView,
@@ -18,8 +18,10 @@ class ChurchListView(ListView):
     ordering = ['-date_posted']
     paginate_by = 12
 
-class ChurchDetailView(DetailView):
+class ChurchDetailView(DetailView, LoginRequiredMixin,
+PermissionRequiredMixin):
     model = Church
+    permission_required = 'churches.view_church'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context

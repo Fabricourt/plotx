@@ -26,7 +26,9 @@
 {% if business_list %}
 <div class=" w3-margin-top w3-margin-bottom w3-row-padding"  style="list-style-type: none;" id="myUL">  
     <div class="w3-padding"></div>
+  
     {% for business in business_list %} 
+ 
     <!--large view-->
     <div class="w3-col l4 m6 w3-hide-small">
       <a href="{{ business.get_absolute_url }}">
@@ -44,14 +46,15 @@
       </a>
     </div>
   
-  
+
     
     {% endfor %}
   </div>
-      
+ 
   {% else %}
       <p>There are no businesss available.</p>
   {% endif %}
+
 
   <!--Small View-->
 

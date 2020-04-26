@@ -1,0 +1,90 @@
+
+
+{% load static %}
+<style>
+    div.bz {
+        display: inline-block;
+        /*--width: 110px;
+        height: 110px;
+        margin: 10px;--*/
+        --aug-border: 5px;
+        --aug-inset: 5px;
+        padding: 10px; /* mind the gap */
+        text-align: center;
+        /*--aug-border-bg: gold;
+        --aug-inset-bg: gold;*/
+    }
+    div.bz0 {
+        --aug-tr-height: 30%;
+    }
+
+    div.bz1 {
+        --aug-tr-height: 30%;
+        --aug-border-radius-fallback-inset: 20px 0px 5px 0px;
+    }
+
+    div.bz2 {
+        --aug-br: 25px;
+        --aug-l-height: 57%;
+        --aug-l-width: 10px;
+    }
+
+</style>
+
+{% if church_list %}
+<div class=" w3-margin-top w3-margin-bottom w3-row-padding"  style="list-style-type: none;" id="myUL">  
+    <div class="w3-padding"></div>
+  
+    {% for church in church_list %} 
+ 
+    <!--large view-->
+    <div class="w3-col l6 m6 w3-hide-small">
+      <a href="{{ church.get_absolute_url }}">
+        <div augmented-ui="br-clip-y l-clip-y  exe" class="btn bz bz2 w3-border w3-container {{church.bg_color }} {{church.border_color}}  w3-card-4 w3-padding  w3-large  w3-hover-shadow " style="width:100%; margin:5px; padding:5px 3px;">
+          <div class="" style="width:20%; float:left">
+            <img src="{{ church.logo.url }}" alt="" class="w3-white w3-circle w3-border w3-padding w3-border-khaki w3-card-4 " style="width: 80px; height:70px;">
+          </div>
+          <div class="" style="width:80%; float:right">
+            <span class="w3-large w3-wide ">{{ church.church_name }}</span>
+            <br> <span class="w3-small">{{church.church_type}}</span>    
+                <span class="w3-small">[{{church.town}}]</span>
+            <span class="w3-small w3-hide w3-right">reviews</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  
+
+    
+    {% endfor %}
+  </div>
+ 
+  {% else %}
+      <p>There are no churchs available.</p>
+  {% endif %}
+
+
+  <!--Small View-->
+
+  {% if church_list %}
+ <div class=" w3-hide-large w3-hide-medium">
+  {% for church in church_list %} 
+ 
+      <a href="{{ church.get_absolute_url }}">
+        <div augmented-ui="br-clip-y l-clip-y  exe"  class="btn  w3-border bz bz2 {{church.bg_color}}  {{church.border_color}}  w3-margin-bottom w3-large  w3-hover-shadow" style="width:100%; ">
+          <div class="" style="width:20%; float:left">
+            <img src="{{ church.logo.url }}" alt="" class="w3-white   w3-circle w3-card-4 w3-border w3-padding w3-border-khaki " style="width: 75px; height:65px;">
+          </div>
+          <div class="" style="width:80%; float:right">
+            <span class="w3-large ">{{ church.church_name }}</span>
+            <br> <span class="w3-small">{{church.church_type}}</span>
+                <span class="w3-small">[ {{church.town}} ]</span>
+            <span class="w3-small w3-hide w3-right">reviews</span>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+  {% else %}
+      <p>There are no churchs available.</p>
+  {% endif %}

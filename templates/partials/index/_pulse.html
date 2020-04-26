@@ -1,15 +1,7 @@
 {% load static %}
 <style>
 
-    .bodyx {
-        margin: 0;
-        padding: 0;
-      
-        background: url('{% static "img/img1.jpg" %}');
-        height:300px;
-        background-size: cover;
-        animation: animateBg 60s linear infinite;
-      }
+  
       
       .pulse
       {
@@ -21,7 +13,7 @@
         height: 260px;
         background: url('{% static "img/globit.png" %}');
         background-size: cover;
-        animation: animateEarth 12s linear infinite;
+        animation: animateEarth 40s linear infinite;
         border-radius: 50%;
         box-shadow: inset 0 0 40px rgba(255, 255, 255, 0.5);
       }
@@ -38,16 +30,16 @@
         background: transparent;
         border: 2px solid #fff;
         box-sizing: border-box;
-        animation: animate 6s linear infinite;
+        animation: animate 10s linear infinite;
       }
       
       .pulse span:nth-child(1) {
         animation-delay: 0s;
       }
-      .pulse span:nth-child(2) {
+      .pulse span:nth-child(1) {
         animation-delay: -2s;
       }
-      .pulse span:nth-child(3) {
+      .pulse span:nth-child(1) {
         animation-delay: -4s;
       }
       
@@ -89,9 +81,9 @@
     
     
     <div class=" pulse " >
+  <!----<span></span>
         <span></span>
-        <span></span>
-        <span></span>
+        <span></span>-->
 
        
       </div>

@@ -15,7 +15,7 @@
       <a class="navbar-brand" href="{% url 'index' %}">  
       <span class="nav-item w3-padding  w3-hover-shadow w3-highway-green btn w3-large w3-border w3-border-gold luxe w3-text-gold   w3-wide " style="color:gold;">
         <strong style="color:gold;">
-            <img src="{% static 'img/logo.png' %}" style="width:32px; height:32px;" logo" class="w3-white w3-border  w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="katata logo" >
+            <img src="{% static 'img/favicon.png' %}" style="width:32px; height:32px;" logo" class="w3-white w3-border  w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="katata logo" >
           KATATA 
         </strong>
       </span>
@@ -72,16 +72,33 @@
             </div>
       
           </li>
+        
+          <li
+          {% if 'churches' == request.path %}
+            class="nav-item active  mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+          <a class="nav-link w3-hide" href="{% url 'church-list' %}">
+            <i class="fas fa-church w3-text-teal"></i>
+            Churches</a>
+          
+          </li>
        
         </ul>
         
        
           
         <ul class="navbar-nav ml-auto">
-          <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get">
+
+         
+          <form class="form-inline my-2 my-lg-0 w3-hide" action="{% url 'search_results' %}" method="get">
             <input name="q" class="form-control w3-border w3-border-teal mr-sm-2" type="search" placeholder="Search companies" aria-label="Search">
             <button class="btn w3-border w3-border-teal w3-hide-small w3-hover-teal my-2 my-sm-0" type="submit">Search</button>
           </form>
+       
+
           {% if user.is_authenticated %}
             <li
             {% if 'dashboard' in request.path %}

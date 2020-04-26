@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{{business}} {% block title %} {% endblock %}</title>
 {% load static %}
 {% load humanize %}
+  <title>{{business}} {% block title %} {% endblock %}</title>
+
+<!--favicon-->
+<link rel="shortcut icon" href="{{ buiseness.logo.url}}" style="width:48px; height:48px"/>
+
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,8 +60,7 @@
        <!-- w3.css -->
        <link rel="stylesheet" href="{% static 'css/w3.css' %}">
    
-       <!--favicon-->
-       <link rel="shortcut icon" href="{{ buiseness.logo.url}}" style="width:48px; height:48px"/>
+
    
 
      <style>

@@ -1,0 +1,31 @@
+Postgres Database & User Setup
+# sudo -u postgres psql
+
+ SELECT katata_prod();
+
+
+You should now be logged into the pg shell
+
+Create a database
+CREATE DATABASE btre_prod;
+Create user
+CREATE USER kbadmin WITH PASSWORD 'abc123!';
+Set default encoding, tansaction isolation scheme (Recommended from Django)
+
+ALTER ROLE dbadmin SET client_encoding TO 'utf8';
+ALTER ROLE dbadmin SET default_transaction_isolation TO 'read committed';
+ALTER ROLE dbadmin SET timezone TO 'UTC';
+Give User access to database
+GRANT ALL PRIVILEGES ON DATABASE btre_prod TO dbadmin;
+Quit out of Postgres
+\q
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'katata_prod',
+        'USER': 'kdbadmin',
+        'PASSWORD': 'josphatkiniaru02122013',
+        'HOST': 'localhost'
+    }

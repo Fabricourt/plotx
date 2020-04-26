@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from towns.models import Town
+from members.models import Member
 from locations.models import Location
 from datetime import datetime
 
@@ -72,6 +73,7 @@ class Church(models.Model):
     church_name = models.CharField(max_length=100, blank=True, null=True, unique=True)
     church_denomination = models.ForeignKey(Church_denomination, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
     contact_person = models.CharField(max_length=100, blank=False, null=True)
+    churchmember = models.ManyToManyField(Member, blank=True, help_text="Select this church members")
     church_slogan = models.CharField(max_length=200, blank=True, null=True)
     town = models.ForeignKey(Town, on_delete=models.DO_NOTHING, blank=True, null=True,  help_text="Select The exact towns where this church is located")
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING, blank=True, null=True, help_text="Select The exact locations where this Church  is found in the choosen Town")
@@ -225,8 +227,7 @@ class Church_group(models.Model):
         return self.name
 
 class Church_member(models.Model):
-    first_name = models.CharField(max_length=100, blank=True, null=True)
-    last_name = models.CharField(max_length=100, blank=True, null=True)
+    member = models.ForeignKey(User, on_delete=models.CASCADE, blank=False, null=True)
     title = models.CharField(max_length=100, blank=True, null=True)
     town = models.ForeignKey(Town, on_delete=models.DO_NOTHING, blank=True, null=True,  help_text="Select the towns where this realtor is found")
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING, blank=True, null=True, help_text="Select The  Locations where this realtor  is found in the choosen Town")
@@ -241,12 +242,11 @@ class Church_member(models.Model):
     twitter = models.CharField(max_length=100, blank=True, null=True)
     website = models.CharField(max_length=100, blank=True, null=True)
     instagram = models.CharField(max_length=100, blank=True, null=True)
-    created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=False, null=True)
     date_posted = models.DateTimeField(default=timezone.now)
     is_published = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.first_name
+        return self.member.username
     
 
 class Church_choir(models.Model):

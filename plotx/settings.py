@@ -44,12 +44,13 @@ INSTALLED_APPS = [
     'abouts',
     'blog',
     'catalog',
+    'churches',
     'colors',
     'contact',
     'companys',
-    'churches',
     'listings',
     'locations',
+    'members',
     'realtors',
     'towns',
     'users',
@@ -130,6 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
