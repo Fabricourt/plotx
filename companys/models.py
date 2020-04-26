@@ -6,7 +6,7 @@ from towns.models import Town
 from locations.models import Location
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
-from colors.models import Bg_color, Color, Text_color, Border_color, Hover_color, Hover_text_color, Hover_border_color, Footer_color
+from colors.models import Bg_color, Bg_color_2, Bg_color_3, Color, Text_color, Border_color, Hover_color, Hover_text_color, Hover_border_color, Footer_color
 
 class Bg_color(models.Model):
     color = models.CharField(max_length=100)
@@ -96,6 +96,8 @@ class Business(models.Model):
     bytube_video_link = models.CharField(max_length=1000, blank=True, null=True)
     business_video = models.FileField(upload_to='videos/', null=True, blank=True)
     bg_color = models.ForeignKey(Bg_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    bg_color_2 = models.ForeignKey(Bg_color_2, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    bg_color_3 = models.ForeignKey(Bg_color_3, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
     hover_color = models.ForeignKey(Hover_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
     border_color = models.ForeignKey(Border_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
     color = models.ForeignKey(Color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
