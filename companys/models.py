@@ -6,6 +6,7 @@ from towns.models import Town
 from locations.models import Location
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from colors.models import Bg_color, Color, Text_color, Border_color, Hover_color, Hover_text_color, Hover_border_color, Footer_color
 
 class Bg_color(models.Model):
     color = models.CharField(max_length=100)
