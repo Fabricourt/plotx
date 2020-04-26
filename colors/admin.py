@@ -3,6 +3,8 @@ from .models import  Bg_color, Color, Text_color, Border_color, Hover_color, Hov
 
 # Register your models here.
 admin.site.register(Bg_color)
+admin.site.register(Bg_color_2)
+admin.site.register(Bg_color_3)
 admin.site.register(Hover_color)
 admin.site.register(Hover_text_color)
 admin.site.register(Hover_border_color)
