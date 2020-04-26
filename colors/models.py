@@ -2,8 +2,19 @@ from django.db import models
 from django.urls import reverse
 # Create your models here.
 
-
 class Bg_color(models.Model):
+    color = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.color
+
+class Bg_color_2(models.Model):
+    color = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.color
+        
+class Bg_color_3(models.Model):
     color = models.CharField(max_length=100)
 
     def __str__(self):

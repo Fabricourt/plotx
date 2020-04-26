@@ -1,8 +1,8 @@
 {% load static %}
-<nav class="w3-sidebar w3-bar-block w3-card-4 w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:30%;min-width:330px" id="mySidebar">
+<nav class="w3-sidebar {{business.bg_color}} w3-bar-block w3-card-4 w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:30%;min-width:330px" id="mySidebar">
   
     <a href="javascript:void(0)" onclick="w3_close()"
-    class="w3-bar-item {{business.bg_color}} {{listing.bg_color}}{{business.hover_color}} {{listing.hover_color}}  w3-card-4 w3-button" style="text-decoration:none;">Close Menu</a>
+    class="w3-bar-item {{business.bg_color}} {{business.hover_color}}   w3-card-4 w3-button" style="text-decoration:none;">Close Menu</a>
     <div class="w3-right">{% include 'companys/_dropdown.html' %} </div>
   
     <div class="w3-margin-bottom ">
@@ -16,13 +16,13 @@
       </div>
     {% endif %}
     
-    <a href="{{ business.get_absolute_url }}" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Home</a>
-    <a href="#plots" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Plots</a>    
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">About</a>
-    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Services</a>
-    <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Team</a>   
-    <a href="#gallery" onclick="w3_close()" class="w3-bar-item w3-hide w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Gallery</a>
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button {{listing.text_color}} {{business.text_color}} w3-hover-shadow {{listing.hover_color}} {{business.hover_color}}" style="text-decoration:none;">Contact</a>
+    <a href="{{ business.get_absolute_url }}" onclick="w3_close()" class="w3-bar-item w3-button  {{business.text_color}} w3-hover-shadow  {{business.hover_color}}" style="text-decoration:none;">Home</a>
+    <a href="#plots" onclick="w3_close()" class="w3-bar-item w3-button  {{business.text_color}} w3-hover-shadow  {{business.hover_color}}" style="text-decoration:none;">Plots</a>    
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button  {{business.text_color}} w3-hover-shadow  {{business.hover_color}}" style="text-decoration:none;">About</a>
+    <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button  {{business.text_color}} w3-hover-shadow  {{business.hover_color}}" style="text-decoration:none;">Services</a>
+    <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button  {{business.text_color}} w3-hover-shadow  {{business.hover_color}}" style="text-decoration:none;">Team</a>   
+    <a href="#gallery" onclick="w3_close()" class="w3-bar-item w3-hide w3-button  {{business.text_color}} w3-hover-shadow  {{business.hover_color}}" style="text-decoration:none;">Gallery</a>
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button  {{business.text_color}} w3-hover-shadow  {{business.hover_color}}" style="text-decoration:none;">Contact</a>
     <a href="#footer" onclick="w3_close()" class="w3-bar-item w3-button  {{business.text_color}} w3-hover-shadow {{business.hover_color}}" style="text-decoration:none;">Bottom</a>
   </div>
  
