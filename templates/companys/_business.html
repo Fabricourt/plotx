@@ -1,4 +1,5 @@
 {% load static %}
+{% include 'companys/_parallaxcss.html' %}
 <style>
     div.bz {
         display: inline-block;
@@ -21,6 +22,12 @@
         --aug-border-radius-fallback-inset: 20px 0px 5px 0px;
     }
 
+    .bgimg3 {
+      {% if business.bgimg3 %}
+        background-image: url('{{business.bgimg3.url}}');
+      {% endif %}
+    }
+
 </style>
 
 {% if business_list %}
@@ -32,12 +39,12 @@
     <!--large view-->
     <div class="w3-col l4 m6 w3-hide-small">
       <a href="{{ business.get_absolute_url }}">
-        <div augmented-ui="tl-clip-y br-clip exe" class="btn bz bz1 w3-border w3-container {{business.bg_color }} {{business.border_color}}  w3-card-4 w3-padding  w3-large  w3-hover-shadow " style="width:300px; margin:5px; padding:5px 3px;">
+        <div augmented-ui="tl-clip-y br-clip exe" class="btn  bz bz1 w3-border  w3-container {{business.bg_color }} {{business.border_color}}  w3-card-4 w3-padding  w3-large  w3-hover-shadow " style="width:300px; margin:5px; padding:5px 3px;">
           <div class="" style="width:35%; float:left">
             <img src="{{ business.logo.url }}" alt="" class="w3-white w3-circle w3-border w3-padding w3-border-khaki w3-card-4 " style="width: 80px; height:70px;">
           </div>
           <div class="" style="width:60%; float:right">
-            <span class="w3-large w3-wide ">{{ business.business_name }}</span>
+            <span class="w3-large  ">{{ business.business_name }}</span>
             <br> <span class="w3-small">{{business.business_type}}</span>    
                 <span class="w3-small">[{{business.town}}]</span>
             <span class="w3-small w3-hide w3-right">reviews</span>
@@ -62,12 +69,12 @@
  <div class="w3-container w3-hide-large w3-hide-medium">
   {% for business in business_list %} 
       <a href="{{ business.get_absolute_url }}">
-        <div augmented-ui="tl-clip-y br-clip exe"  class="btn  w3-border bz bz1 {{business.bg_color}}  {{business.border_color}}  w3-margin-bottom w3-large  w3-hover-shadow" style="width:100%; ">
+        <div augmented-ui="tl-clip-y br-clip exe"  class="btn  w3-border bz bz1 {{business.bg_color}} {{business.border_color}}  w3-margin-bottom w3-large  w3-hover-shadow" style="width:100%;">
           <div class="" style="width:35%; float:left">
             <img src="{{ business.logo.url }}" alt="" class="w3-white   w3-circle w3-card-4 w3-border w3-padding w3-border-khaki " style="width: 80px; height:70px;">
           </div>
           <div class="" style="width:60%; float:right">
-            <span class="w3-large w3-wide ">{{ business.business_name }}</span>
+            <span class="w3-large  ">{{ business.business_name }}</span>
             <br> <span class="w3-small">{{business.business_type}}</span>
                 <span class="w3-small">[ {{business.town}} ]</span>
             <span class="w3-small w3-hide w3-right">reviews</span>

@@ -15,25 +15,25 @@
     }
     
     /* First image (Logo. Full height) */
-    .bgimg_1 {
-      {% if business.bgimg_1 %}
-      background-image: url('{{business.bgimg_1.url}}');
+    .bgimg1 {
+      {% if business.bgimg1 %}
+      background-image: url('{{business.bgimg1.url}}');
       {% endif %}
     
     }
     
     /* Second image (Portfolio) */
-    .bgimg_2 {
-      {% if business.bgimg_2 %}
-      background-image: url('{{business.bgimg_2.url}}');
+    .bgimg2 {
+      {% if business.bgimg2 %}
+      background-image: url('{{business.bgimg2.url}}');
       {% endif %}
 
     }
     
     /* Third image (Contact) */
-    .bgimg_3 {
-      {% if business.bgimg_3 %}
-      background-image: url('{{business.bgimg_3.url}}');
+    .bgimg3 {
+      {% if business.bgimg3 %}
+      background-image: url('{{business.bgimg3.url}}');
       {% endif %}
     }
     
@@ -42,7 +42,7 @@
     
     /* Turn off parallax scrolling for tablets and phones */
     @media only screen and (max-device-width: 1600px) {
-      .bgimg_1, .bgimg_2, .bgimg_3 {
+      .bgimg1, .bgimg2, .bgimg3 {
         background-attachment: scroll;
     
       }
