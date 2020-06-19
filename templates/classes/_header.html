@@ -1,0 +1,6 @@
+<header class="w3-container  w3-center w3-padding"> 
+    <h1 class="w3-wide" ><b>{{class|upper}}</b></h1>
+    {% if user.is_authenticated %}
+      <p class="w3-border-top w3-large w3-border-theme">Welcome to class <span class="">{{user.username|capfirst}}</span></p>
+    {% endif %}
+  </header>

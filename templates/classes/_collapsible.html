@@ -1,0 +1,41 @@
+<div class="w3-container">
+  <div  class="w3-dropdown-hover {{subject.text_color}} w3-hover-shadow w3-hover-white w3-card w3-white w3-border {{subject.border_color}} " style="width:100%; height:40px"> 
+    <span class="w3-padding w3-large w3-margin-top">Pick A Strand/Topic</span>
+    <div class="w3-dropdown-content  w3-padding" style="width:100%">
+      <ol class="">
+        {% for topic in subject.topic_set.all %}
+         <li class="{{subject.border_color}} w3-border-bottom  w3-large  {{subject.text_color}}"><strong>
+
+         {{topic}}</strong></li>
+           <ul class="">
+             {% for lesson in topic.lesson_set.all %}
+               <li class="w3-text-black">
+                 <a href="{{lesson.get_absolute_url}}">
+                   {{lesson}}
+                 </a>
+               </li>
+             {% endfor %}
+           </ul>
+         
+ 
+
+           <ol class="w3-ul">
+       
+           {% for exercise in topic.exercise_set.all  %}
+             <li class="w3-large">
+               <a href="{% url 'exercise' exercise.slug %}">
+                 Exercise on {{exercise.topic}} 
+               </a>
+             </li>  
+           {% endfor %}
+           </ol>
+          
+           
+          
+          
+         {% endfor %}
+        
+     </ol>
+    </div>
+  </div>
+</div>

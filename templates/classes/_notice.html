@@ -1,0 +1,12 @@
+{% for notice in class.notice_set.all  %}
+<div class="w3-panel w3-margin w3-khaki w3-display-container">
+  <span onclick="this.parentElement.style.display='none'"
+  class="w3-button w3-hover-yellow w3-large w3-display-topright">&times;</span>
+  <h2>Notice</h2>
+  <br><br>
+  <h4 class="w3-center">{{notice}}!</h4>
+  {{notice.notice|safe|slice:150}}
+  <a href="{{notice.get_absolute_url}}" class="w3-right btn btn-outline-dark ">Notice Detail</a>
+  <br><br>
+</div>
+{% endfor %}

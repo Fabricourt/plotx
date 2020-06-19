@@ -1,0 +1,11 @@
+<ul>
+{% if lessons %}
+    {% for lesson in lessons %}
+    <li>
+        <a href="{{lesson.get_absolute_url}}">{{lesson.lesson_title}}</a>
+    
+    </li>
+    {% endfor %}
+{% endif %}
+
+</ul>

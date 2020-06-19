@@ -1,0 +1,84 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %} |  Homework|{{exercise|capfirst}} {% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="">
+  {% if exercise.teacher == user %}
+  <a href="{% url 'user-exercises' exercise.teacher.username %}">
+    {{exercise.teacher}}
+    </a>
+  {% endif %}
+  <div class="w3-row-padding">
+    <div class="w3-col l8">
+     <div class="w3-container">
+      {% if new_answer %}
+      <div class="alert alert-success" role="alert">
+        Message success
+      </div>
+      {% else %}
+            <h1 class="{{exercise.subject.text_color}} w3-center w3-border-bottom w3-border-green"> {{ exercise.title }} </h1>
+            <p class=" text-muted">{{ exercise.teacher }} | {{ exercise.created_on }} |
+                                   {{exercise.subject}} |{{exercise.topic}}
+            </p>
+            {% if exercise.file_name %}
+            <div class="w3-container">
+                <a href="{{exercise.file_name.url}}">
+                    <button class="w3-round w3-blue w3-hover-emerald  w3-block w3-panel w3-large">
+                        <span class="w3-xlarge"> Download Exercise File</span>
+                    </button>
+                </a>
+            </div>
+            {% endif %}
+            <p class="card-text ">{{ exercise.questions | safe }}</p>
+            <div class="card-body">
+
+                <h3 class="w3-text-theme">Paste or Type Your Answers below</h3>
+                <form method="post" style="margin-top: 1.3em;" enctype="multipart/form-data">
+                  <div style="width:100%;">{{ answer_form|crispy }}</div>
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-primary w3-panel w3-block btn-lg" style="width:100%">Submit</button>
+                </form>
+                {% endif %}
+              </div>
+
+      </div>
+    </div>
+    <div class="w3-col l4">
+      <div class="w3-border-left w3-border-green w3-margin-top">
+        <!-- answerss -->
+        {% with answers.count as total_answers %}
+        <h3 class="w3-card w3-green w3-padding"><span class="w3-margin">{{ total_answers }} Marked Answers</span></h3>
+
+        <p>
+          {% endwith %}
+
+        </p>
+        <ol>
+        {% for answer in answers %}
+      <li class="">
+        <div class="answers w3-padding w3-border w3-hover-shadow w3-margin-bottom" >
+          <span class="font-weight-bold">
+           <a href="{% url 'answer' answer.id %}">{{ answer.name.first_name}} {{ answer.name.last_name }}
+            <span class=" text-muted font-weight-normal">
+              {{ answer.created_on }}
+            </span>
+          </a> 
+        </span>
+ 
+        </div>
+      </li>
+        {% endfor %}
+      </ol>
+      </div>
+    </div>
+   <br>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

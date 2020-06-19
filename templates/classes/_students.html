@@ -1,0 +1,86 @@
+<style>
+  .collapsible {
+
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    margin:2px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+
+  }
+  
+  .active, .collapsible:hover {
+      
+    
+  }
+  
+  .collapsible:after {
+    content: '\002B';
+    color: {{business.text_color}};
+    font-weight: bold;
+    float: right;
+   
+  }
+  
+  .active:after {
+    color: {{business.text_color}};
+    content: "\2212";
+  }
+  
+  .content {
+    text-align: left;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+  
+  }
+  .luxury {
+color: #d4af37;
+}
+  </style>
+<div style="" class="w3-margin ">
+      <button class="w3-round w3-button w3-block w3-theme  w3-button w3-hover-shadow w3-hover-white w3-hover-text-teal w3-border w3-border-white w3-hover-border-theme collapsible {{business.text_color}}">
+          <span class="w3-large">
+            {{class}} Students
+          </span>
+      </button>
+      <div  class=" w3-content content" style="height: 100%"> 
+        {% for student in class.student_set.all %} 
+        <a href="{{student.get_absolute_url}}" class="">
+          <li class="w3-border w3-hover-white w3-padding w3-hover-shadow w3-round w3-margin"> 
+              <div class="w3-row-padding">
+                  <span class="w3-third">
+                  {% if student.profile %}
+                  <img src="{{student.profile.url}}" alt="" class="w3-circle" style="height: 35px; width: 35px;">
+                  {% endif %}
+                  </span>
+                 <span class="w3-twothirds"> {{ student.first_name}} {{student.last_name}} <br>
+                  <span class="w3-text-green">{{student.class_name}}</span> </span>
+              </div>
+        </li>
+        </a>
+        {% endfor %}
+        
+            
+      </div>
+  </div>
+  
+  <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+      
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          } 
+        });
+      }
+      </script>

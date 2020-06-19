@@ -1,0 +1,92 @@
+{% load static %}
+
+<section>
+
+    
+<script>
+    $(document).ready(function()
+    {
+       $("#but1").click(function() 
+       {
+        $(".rb").show();
+        $(".rb").attr("disabled",true);
+       });
+       
+
+    });
+
+
+    function getanswers()
+    {
+        document.getElementById("UserAnswers").innerHTML="";
+        var e=document.getElementsByTagName('input');
+        for(i=0;i<=e.length;i++)
+            {
+                if(e[i].type=="radio")
+                {
+                    if(e[i].checked)
+                    {
+                        document.getElementById("UserAnswers").innerHTML+="Q "+e[i].name+" The Answer You Selected Is :"+e[i].value+"</br>";
+                    }
+                }
+            }
+    }
+</script>
+
+<center>
+    {% for lesson_exercise in lesson_exercises %}
+        <h3 class="{{lesson_exercise.ex_subject.text_color}}  w3-padding-16">
+        <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-left {{lesson_exercise.ex_subject.text_color}}"></i>{{lesson_exercise.ex_lesson|capfirst}} Lesson  Excercises</h3>
+   
+    <h6 class="{{lesson_exercise.ex_subject.border_color}} {{lesson_exercise.ex_subject.text_color}}  w3-topbar +
+    ">This are the questions that would most likely come from this   
+         {% for lesson_exercise in lesson_exercises %}
+                  <span>{{lesson_exercise.ex_lesson}} Lesson  </span> 
+       {% endfor %} in an exam setting</h6>
+    {% endfor %} 
+  </center>
+<div class="w3-container">
+    <div style="padding-left:30px">
+    <ol class="w3-content  ">
+        {% for result in results %}
+            <li> {{result.question}}?
+                <ul style="list-style: none;" class="w3-ul">
+                    <li>A. <input id="option1"  class="rb  w3-border" name="{{result.id}}" type="radio" value={{result.option1}} style="width:20px">{{result.option1}}</li>
+                    <li>B.<input id="option2" class="rb" name="{{result.id}}" type="radio" value={{result.option2}}>{{result.option2}}</li>
+                    <li>C.<input id="option2"  class="rb" name="{{result.id}}" type="radio" value={{result.option4}}>{{result.option3}}</li>        
+                    <li>D.<input id="option3" class="rb" name="{{result.id}}" type="radio" value={{result.option4}}>{{result.option4}}</li>
+                    <li>
+                        <div id="corrans" class="rb w3-khaki w3-card w3-border w3-padding" style="display:none;">
+                            <span class="w3-green w3-padding w3-card">The answer for this questions is</span>
+                            {{result.corrans|safe}}
+                        </div>
+                    </li>
+                  
+                </ul>
+            </li>
+       
+        {% endfor %}      
+    </ol>
+        <br>
+        <span>
+            <input style="width:100%"  type="submit" value="Click For Results" id="but1" class="btn w3-hover-border-blue w3-hover-white btn-info"  onclick="getanswers();"/>
+        <span>
+
+
+        <br>
+
+        <p class="w3-hide" id="UserAnswers">
+            Your Answers<br>
+        </p>
+   
+        <br><br>
+    </div>
+</div>
+
+
+
+
+
+
+
+

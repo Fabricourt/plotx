@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.shortcuts import render
+from django.views.generic.base import TemplateView
 from django.http import HttpResponse
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.shortcuts import render, get_object_or_404
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
@@ -11,10 +12,12 @@ from towns.models import Town
 from churches.models import Church
 from locations.models import Location
 from listings.models import Listing,  Bg_color, Color, Text_color, Border_color, Hover_color, Footer_color, Hover_border_color, Hover_text_color, Plot_size, Plot_status, Plot_type, Payment_plan, Road, Population, Development, Neighbor
-
 from companys.models import Business, Business_type, Bg_color, Color, Text_color, Border_color, Hover_color, Footer_color, Hover_border_color, Hover_text_color
-
 from realtors.models import Broker
+from classes.models import Class
+from students.models import *
+
+
 
 # Create your views here.
 def index(request):
@@ -32,6 +35,8 @@ def index(request):
     num_visits = request.session.get('num_visits', 0)
     request.session['num_visits'] = num_visits+1
     towns = Town.objects.order_by('name').filter(is_published=True)
+    classes = Class.objects.order_by('class_name').filter(is_published=True)
+    students = Student.objects.order_by('first_name').filter(is_published=True)
     churches = Church.objects.order_by('church_name').filter(is_published=True)
     locations = Location.objects.order_by('name').filter(is_published=True)
     listings = Listing.objects.order_by('name').filter(is_published=True) 
@@ -56,6 +61,8 @@ def index(request):
             'num_realtors':num_realtors,
             'num_visits':num_visits,
             'towns':towns,
+            'classes':classes,
+            'students':students,
             'churches':churches,
             'locations': locations,
             'companys' : companys,
@@ -68,6 +75,10 @@ def index(request):
 
             },
     )
+
+
+
+
 
 
 def Dashboard(request):
@@ -89,6 +100,8 @@ def Dashboard(request):
     thika_businesss = Business.objects.all().filter(is_thika=True)
     maimahiu_businesss = Business.objects.all().filter(is_maimahiu=True)
     gatundu_businesss = Business.objects.all().filter(is_gatundu=True)
+    classes = Class.objects.order_by('class_name').filter(is_published=True)
+    
 
     context = {
         'num_towns':num_towns,
@@ -104,11 +117,18 @@ def Dashboard(request):
         'kiambu_businesss': kiambu_businesss,
         'gatundu_businesss': gatundu_businesss,
         'maimahiu_businesss': maimahiu_businesss,
-        'ruiru_businesss': ruiru_businesss        
+        'ruiru_businesss': ruiru_businesss,   
+        'classes':classes,    
 
     }
     return render(request, 'pages/dashboard.html', context) 
 
+def homework(request):
+    return render(request, 'pages/homework.html') 
+
+
+def gallery(request):
+    return render(request, 'pages/gallery.html') 
 
 @staff_member_required
 def mobile(request):

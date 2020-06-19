@@ -6,7 +6,14 @@
 {% block content %}
     <div class="w3-content  ">
       <br><br>
-     
+    <a href="{% url 'account-list' %}">account</a>
+{% for class in user.class_set.all %}
+      
+<li class="w3-col l3 m4  w3-margin-bottom ">
+  <a href="{{ class.get_absolute_url }}">
+    <span  class=" w3-hover-border-green btn w3-text-emerald w3-xlarge w3- w3-card-4 w3-white {{class.bg_color}}   w3-hover-shadow cursor:pointer " style="width:250px; height:50px; margin:9px">{{ class.class_name|upper }}</span></a> 
+</li>
+{% endfor %}
        
         <div class="w3-container w3-card-4 w3-dark-grey ">
            

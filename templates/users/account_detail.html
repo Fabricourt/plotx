@@ -1,0 +1,8 @@
+
+{% for account in class.account.all %}
+
+<a href="{{class.get_absolute_url}}">
+{{account}}</a>
+
+{% if not forloop.last %}{% endif %}
+{% endfor %}

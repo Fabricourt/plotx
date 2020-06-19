@@ -1,0 +1,32 @@
+{% if subjects %}
+<ul>
+    
+    {% for subject in subjects %}
+        <li>
+            <a href="{{subject.get_absolute_url}}">
+                {{subject.subject_name}}
+            </a>
+            
+             <ul>
+                 {% for topic in subject.topic_set.all %}
+                 <li>
+                     {{topic}}
+                     {% for lesson in topic.lesson_set.all %}
+                        <ul>
+                            <li>
+                                <a href="{{lesson.get_absolute_url}}">
+                                    {{lesson}}
+                                </a>
+                            </li>
+                        </ul>   
+                     
+                     {% endfor %}
+                 </li>  
+                 {% endfor %}
+             </ul>
+              
+          
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}

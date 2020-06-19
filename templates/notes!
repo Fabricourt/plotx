@@ -1,196 +1,78 @@
-IMPORTANT NOTES:
- - Congratulations! Your certificate and chain have been saved at:
-   /etc/letsencrypt/live/www.katata.co.ke/fullchain.pem
-   Your key file has been saved at:
-   /etc/letsencrypt/live/www.katata.co.ke/privkey.pem
-   Your cert will expire on 2020-07-06. To obtain a new or tweaked
-   version of this certificate in the future, simply run certbot again
-   with the "certonly" option. To non-interactively renew *all* of
-   your certificates, run "certbot renew"
- - If you like Certbot, please consider supporting our work by:
-
-   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
-   Donating to EFF:                    https://eff.org/donate-le
-
-
-
-<link rel="shortcut icon" href="{% static 'img/favicon.ico' type='image/x-icon' %}">
-<link rel="shortcut icon" type="image/ico" href="{% static 'img/favicon.ico' %}" />
-<link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
-<link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
-<link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
-<link rel="manifest" href="{% static 'img/site.webmanifest' %}">
-<link rel="mask-icon" href="{% static 'img/safari-pinned-tab.svg' %}" color="#5bbad5">
-<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon-32x32.png' %}" class=" w3-border-white w3-circle" style="width:32px; height:32px;"/>
-
-
-
-{% extends "base_generic.html" %}
+{% extends 'admin/base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+{% block extrahead %}
+<script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
+    <!-- Open Sans Font -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-{% block content %}
-<div class="w3-container  w3-light-grey w3-padding-64  ">
-<form class=" w3-margin-top" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <fieldset class=" w3-light-grey ">
-      <legend class="border-bottom w3-text-green w3-center w3-xxlarge mb-4">Register A New Member Company </legend>
-    <div class="form-row ">
-        <div class="form-group col-sm-4">
-            {{ form.business_name|as_crispy_field }}
-        </div>
-        <div class="form-group col-sm-4">
-            {{ form.business_type|as_crispy_field }}
-        </div>
-        <div class="form-group col-sm-4">
-            {{ form.contact_person|as_crispy_field }}
-        </div> 
-        <div class="form-group col-sm-6">
-            {{ form.logo|as_crispy_field }}  
-        </div>
-        <div class="form-group col-sm-6">
-            {{ form.business_slogan|as_crispy_field }}  
-        </div>
+   <!-- Font Awesome -->
+   <link rel="stylesheet" href="{% static 'css/all.css' %}">
+   <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+   <link rel="stylesheet" href="{% static 'css/fontawesom.min.css' %}">
 
-    </div>
-    <div class="w3-padding-64 w3-margin-top">
-        <legend class="w3-text-green"> Address </legend>
-    <div class="form-row">      
-   
-    <div class="form-group col-sm-4">
-        {{ form.phone_1|as_crispy_field }}
-    </div>  
-    <div class="form-group col-sm-4">
-        {{ form.phone_2|as_crispy_field }}
-    </div>  
-    <div class="form-group col-sm-4">
-        {{ form.phone_3|as_crispy_field }}
-    </div>  
-    <div class="form-group col-sm-6">
-        {{ form.email_1|as_crispy_field }}
-    </div>   
-    <div class="form-group col-sm-6">
-        {{ form.email_2|as_crispy_field }}
-    </div> 
+   <!--augmented -->
+   <link rel="stylesheet" href="{% static 'css/augmented.css' %}">
+  
 
-    <div class="form-group col-sm-4">
-        {{ form.town|as_crispy_field }}
-    </div>
-    <div class="form-group col-sm-4">
-        {{ form.location|as_crispy_field }}
-    </div>
-    <div class="form-group col-sm-4">
-        {{ form.contact_person|as_crispy_field }}
-    </div>  
+   <!-- Bootstrap -->
+   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+   <!--Bootsrap-theme.css-->
 
-        <div class="form-group col-sm-3">
-            <span>{{ form.facebook|as_crispy_field }}</span>
-        </div>
-        <div class="form-group col-sm-3">    
-            <span>{{ form.twitter|as_crispy_field }}</span>
-        </div>
-        <div class="form-group col-sm-3">
-            <span>{{ form.Instagram|as_crispy_field }}</span>
-        </div>
-        <div class="form-group col-sm-3">
-            <span>{{ form.website|as_crispy_field }}</span>
-        </div>
+   <!-- Custom -->
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   <!-- Lightbox -->
+   <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+   <!-- Color -->
+ 
+   <link rel="stylesheet" href="{% static 'css/w3-colors-highway.css' %}">
+   <link rel="stylesheet" href="{% static 'css/w3-colors-ios.css' %}">
+   <link rel="stylesheet" href="{% static 'css/w3-colors-signal.css' %}">
+   <link rel="stylesheet" href="{% static 'css/w3-colors-win8.css' %}">
+   <link rel="stylesheet" href="{% static 'css/w3-colors-metro.css' %}">
+   <link rel="stylesheet" href="{% static 'css/w3-theme-teal.css' %}">
 
-        <div class="form-group col-sm-12">
-            {{ form.created_by|as_crispy_field }}
-        </div> 
-        <div class="form-group col-sm-12">
-          {{ form.date_posted|as_crispy_field }}
-      </div>  
-    </div>
-</div>
-    <div class="w3-padding-64  w3-margin-top">
-        <legend class="w3-text-green">About Company</legend>
-        <div class="w3-center w3-margin-bottom w">
-            <h4 class="">Company features</h4>
-            </div>
-            <p class="w3-center w3-text-blue">please input at least four featuress about your company  [pls:note] short is always better</p>
-            <p><span class="w3-text-red">KEY</span> <span class="w3-green">F_title1</span> = <span class="w3-text-green">features title 1</span> which refers to features 1</p>
-        <div class="form-row w3-margin w3-padding">
+   <!-- w3.css -->
+   <link rel="stylesheet" href="{% static 'css/w3.css' %}">
 
-            <div class="form-group col-sm-3">
-                {{ form.f_title1|as_crispy_field }}
-            </div>   
-            <div class="form-group col-sm-9">
-            {{ form.features_1|as_crispy_field }}
-            </div>  
-            <div class="form-group col-sm-3">
-                {{ form.f_title2|as_crispy_field }}
-            </div>   
-            <div class="form-group col-sm-9">
-            {{ form.features_2|as_crispy_field }}
-            </div>  
-            <div class="form-group col-sm-3">
-            {{ form.f_title3|as_crispy_field }}
-            </div>   
-            <div class="form-group col-sm-9">
-            {{ form.features_3|as_crispy_field }}
-            </div>  
-            <div class="form-group col-sm-3">
-            {{ form.f_title4|as_crispy_field|safe }}
-            </div>   
-            <div class="form-group col-sm-9">
-            {{ form.features_4|as_crispy_field|safe }}
-            </div>
-</div>  
+   <!--augmented css
+   <link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css">-->
 
-    <div class="w3-padding-64  w3-margin-top">
-        <legend class="w3-text-green">Company Pics</legend>
-        <div class='form-row'>
-            <div class="form-group col-sm-6">
-                {{ form.business_pic|as_crispy_field }}  
-            </div>
-            <div class="form-group col-sm-6">
-                {{ form.about_pic|as_crispy_field }}  
-            </div>
-            <div class="form-group col-sm-6">
-                {{ form.service_pic|as_crispy_field }}  
-            </div>
-            <div class="form-group col-sm-6">
-                {{ form.bgimg_1|as_crispy_field }}  
-            </div>
-            <div class="form-group col-sm-6">
-                {{ form.bgimg_2|as_crispy_field }}  
-            </div>
-            <div class="form-group col-sm-6">
-                {{ form.bgimg_3|as_crispy_field }}  
-            </div>
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
 
+ <style>
+ a:link {text-decoration: none;}
+.myMenu {margin-bottom:150px}
+.w3-text-emerald,.w3-hover-text-emerald:hover{color:#4CAF50!important}
+.w3-emerald,.w3-hover-emerald:hover{color:#fff!important;background-color:#008a00!important}
+.w3-border-emerald,.w3-hover-border-emerald:hover{border-color:#008a00!important}
+</style>
+{% block branding %}
+  <h1 id="head" style="color:gold">
 
-        </div>
-    </div>
-    <div>
-        <legend class="w3-text-green">Colors</legend>
-        <div class="form-row ">
-            <h4>! important</h4>
-            <div class="form-group col-sm-12">
-                <p>pick a color that strongly represents you company</p>
-                {{ form.bg_color|as_crispy_field }}  
-            </div>
-            <div class="form-group col-sm-3">
-                {{ form.hover_color|as_crispy_field }}  
-            </div>
-    
-            <div class="form-group col-sm-3">
-                {{ form.border_color|as_crispy_field }}  
-            </div>
-            <div class="form-group col-sm-3">
-                {{ form.text_color|as_crispy_field }}  
-            </div>
-            <div class="form-group col-sm-3">
-                {{ form.footer_color|as_crispy_field }}  
-            </div>
-        </div>
-    </div>
-   
-    <input class=" w3-bar w3-button w3-wide w3-border w3-margin-top w3-green w3-border-green w3-hover-white w3-hover-shadow" type="submit" value="Submit" />
-  </fieldset>
-</form>
+        <b>KATATA</b>  ADMIN AREA
 
+  </h1>
 {% endblock %}
+
+notes;;;
+<ul>
+    <li>
+
+  {% for class in classes %}
+  {{class }}<br>
+  <ul>
+  	<li>
+  		  {% for student in class.student_set.all %}
+
+    	{{ student }}
+
+    	{% endfor %}
+ 
+  	</li>
+  </ul>
+   {% endfor %}
+      
+    </li>
+</ul>

@@ -1,0 +1,36 @@
+{% load static %}
+
+
+{% for subject in class.subject_set.all %}
+
+
+  <div class="w3-border w3-margin w3-white w3-card  {{subject.text_color}} w3-hover-shadow {{subject.border_color}} w3-hover-white">
+    <div class="w3-container">
+      <span class="">
+        <a href="{{subject.teacher.get_absolute_url}}"></a>
+        <span>
+
+          <img src="{{subject.teacher.profile.url}}" class="w3-circle w3-margin-top" style="width:50px; height:50px" alt="Avatar">
+       
+        </span>
+  
+        <span class=" w3-button w3-margin-top w3-hover-white w3-hover-text-green">{{subject.teacher.first_name}} {{subject.teacher.last_name}}</span>
+      
+      </span>
+
+      <h3 class="w3-center"><b>{{subject.subject_name|upper}}</b></h3>
+      
+    </div>
+
+    <div class="w3-container ">
+            {% include 'classes/_collapsible.html' %}
+        <br>
+        <span class="w3-opacity w3-right">{{subject.date_posted}}</span>
+    
+        
+    </div>
+  </div>
+
+  {% endfor %}
+ 
+

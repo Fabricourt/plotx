@@ -1,0 +1,10 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block title %} | {{student.last_name}} {% endblock %}
+{% block content %}
+<span>
+    <img src="{{student.profile.url}}" alt="" style="height: 100px; width: 100px;">
+    </span>
+    {{ student.first_name}} {{student.last_name}} created by = {{student.created_by.first_name}} {{student.created_by.last_name}}
+
+    {% endblock %}

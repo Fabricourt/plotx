@@ -1,0 +1,24 @@
+
+
+<section>
+{% for class in class_list %}
+      
+<div  class="w3-col l3 m4  w3-margin-bottom ">
+  <a href="{{ class.get_absolute_url }}">
+    <span  class=" w3-hover-border-green btn w3-text-emerald w3-xlarge w3- w3-card-4 w3-white {{class.bg_color}}   w3-hover-shadow cursor:pointer " style="width:250px; height:50px; margin:9px"></span></a> 
+  <div>
+     {% for account in class.account.all %}
+     {% if account.accountname == user %}
+		<a href="{{class.get_absolute_url}}">
+    Enter Your Classroom <span class="w3-hide">{{account}}</span>
+    {% endif %}
+    </a>
+    <br>
+		{% if not forloop.last %}{% endif %}
+		{% endfor %}
+  </div>
+</div>
+
+{% endfor %}
+
+</section>

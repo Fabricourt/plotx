@@ -45,27 +45,39 @@ INSTALLED_APPS = [
     'blog',
     'catalog',
     'churches',
+    'classes',
     'colors',
     'contact',
     'companys',
+    'exam_room',
     'listings',
+    'lessons',
     'locations',
     'members',
     'realtors',
+    'students',
+    'subjects',
+    'teachers',
     'towns',
     'users',
     'pages',
     'breviews',
     'thumbnails',
+    'notice_board',
+    'grade4',
+    'exercises',
+    'parents',
+
     
     
 
     # Third-party
     'django_user_agents',
-    'tracking_analyzer',
+    #'tracking_analyzer',
     'crispy_forms',
     'ckeditor',
     'ckeditor_uploader',
+    'fieldsets_with_inlines',
 ]
 
 MIDDLEWARE = [
@@ -153,6 +165,7 @@ USE_TZ = True
 
 STATIC_ROOT= os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'plotx/static')
 ]
@@ -178,6 +191,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
+
+
 # Email config
 #EMAIL_HOST = 'smtp.gmail.com'
 #EMAIL_PORT = 587
@@ -190,6 +205,11 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 
 LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'index'
+
+
+
 
 CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
 
@@ -204,6 +224,7 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
         'skin': 'moono',
         # 'skin': 'office2013',
+
         'toolbar_Basic': [
             ['Source', '-', 'Bold', 'Italic']
         ],
@@ -239,13 +260,13 @@ CKEDITOR_CONFIGS = {
             ]},
         ],
         'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
-        # 'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
-        # 'height': auto,
-        # 'width': 'auto',
-        # 'filebrowserWindowHeight': 725,
-        # 'filebrowserWindowWidth': 940,
-        # 'toolbarCanCollapse': True,
-        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+        'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
+        'height': 'auto',
+        'width': 'auto',
+        'filebrowserWindowHeight': 725,
+        'filebrowserWindowWidth': 940,
+        'toolbarCanCollapse': True,
+        'mathJaxLib': '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML',
         'tabSpaces': 4,
         'extraPlugins': ','.join([
             'uploadimage', # the upload image feature
@@ -261,7 +282,8 @@ CKEDITOR_CONFIGS = {
             'clipboard',
             'dialog',
             'dialogui',
-            'elementspath'
+            'elementspath',
+            'mathjax',
             
         ]),
     }

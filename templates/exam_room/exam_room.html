@@ -1,0 +1,88 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block title %} |  Exam Room {% endblock %}
+
+
+{% block content %}
+
+<script>
+    $(document).ready(function()
+    {
+       $("#but1").click(function() 
+       {
+        $(".rb").show();
+        $(".rb").attr("disabled",true);
+       });
+
+    });
+    function getanswers()
+    {
+        document.getElementById("UserAnswers").innerHTML="";
+        var e=document.getElementsByTagName('input');
+        for(i=0;i<=e.length;i++)
+            {
+                if(e[i].type=="radio")
+                {
+                    if(e[i].checked)
+                    {
+                        document.getElementById("UserAnswers").innerHTML+="Q "+e[i].name+" The Answer You Selected Is :"+e[i].value+"</br>";
+                    }
+                }
+            }
+    }
+</script>
+
+<section>
+    <center>
+      <h1>Excercises</h1>
+    </center>
+    <hr>
+    <div style="padding-left:30px">
+ 
+        {% for result in Exam %}
+        <table ="w3-table">
+            <tr>
+                <td>{{result.id}} {{result.question}}?</td>
+                
+                <tr>
+                    <td><input id="option1"  class="rb" name="{{result.id}}" type="radio" value={{result.option1}}>{{result.option1}}</td>
+
+                </tr>
+                <tr>
+                    <td><input id="option2" class="rb" name="{{result.id}}" type="radio" value={{result.option2}}>{{result.option2}}</td>
+
+                </tr>
+                <tr>
+                    <td><input id="option2"  class="rb" name="{{result.id}}" type="radio" value={{result.option4}}>{{result.option3}}</td>
+
+                </tr>
+                <tr>
+                    <td><input id="option3" class="rb" name="{{result.id}}" type="radio" value={{result.option4}}>{{result.option4}}</td>
+
+                </tr>
+            
+                <tr>
+                    <td><label id="corrans" class="rb" style="display:none; color:green"><b> The Correct Answer Is: {{result.corrans}}</b></label></td>
+                
+                </tr>
+            </tr>
+            <hr>
+        </table>
+        
+        {% endfor %} 
+        <p id="UserAnswers">
+            Your Answers<br>
+        </p>
+        <hr>
+        <input  type="submit" value="Click For Results" id="but1"  onclick="getanswers();"/>
+        <hr>
+ 
+   
+        <br><br>
+    </div>
+
+  </section>
+
+{% endblock %}

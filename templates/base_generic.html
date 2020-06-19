@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" class="w3-signal-white">
-<purple>
-<head>
 {% load static %}
 {% load humanize %}
+<!DOCTYPE html>
+<html lang="en" class="">
+<purple>
+<head>
+
 <title>Katata{% block title %} {% endblock %}</title>
-<!--favicon-->
-<link rel="icon" type="image/png"  style="width:40px; height:40px;" href="{% static 'img/favicon.png' %}" >
+<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
 
 
 <meta name="msapplication-TileColor" content="#da532c">
@@ -63,6 +63,7 @@
        <link rel="stylesheet" href="{% static 'css/w3-colors-ios.css' %}">
        <link rel="stylesheet" href="{% static 'css/w3-colors-signal.css' %}">
        <link rel="stylesheet" href="{% static 'css/w3-colors-win8.css' %}">
+       <link rel="stylesheet" href="{% static 'css/w3-colors-metro.css' %}">
        <link rel="stylesheet" href="{% static 'css/w3-theme-teal.css' %}">
    
        <!-- w3.css -->
@@ -84,7 +85,7 @@
 
     <!-- Add additional CSS in static file -->
   </head>
-<body class="w3-signal-white" style="list-style-type: none;">
+<body class="w3-white bgimg_6" style="list-style-type: none;">
 {% include 'pages/_parallaxcss.html' %}
 <!--topbar-->
 {% include 'partials/_navbar.html' %}
@@ -144,9 +145,6 @@
 <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
 <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 
-
-  
-    
 </body>
 </purple>
 </html>

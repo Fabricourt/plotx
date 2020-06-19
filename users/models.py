@@ -1,8 +1,10 @@
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
+from classes.models import *
 from django.utils import timezone
 from django.db import models
 from PIL import Image
+from django.urls import reverse
 
 
 
@@ -18,9 +20,6 @@ class Profile(models.Model):
     twitter = models.CharField(max_length=100, blank=True, null=True)
     linkedin = models.CharField(max_length=100, blank=True, null=True)
     instagram = models.CharField(max_length=100, blank=True, null=True)
-    is_realtor = models.BooleanField(default=False)
-    is_company = models.BooleanField(default=False)
-    is_buyer = models.BooleanField(default=False) 
     timestamp = models.DateTimeField(default=timezone.now)
     is_published = models.BooleanField(default=True)
 
@@ -37,3 +36,20 @@ class Profile(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+
+class Account(models.Model):
+    accountname = models.ForeignKey(User, on_delete=models.CASCADE,)
+    created_on = models.DateTimeField(default=timezone.now)
+     
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return self.accountname.username
+    
+    def get_absolute_url(self):
+        return reverse('account-detail', kwargs={'pk': self.pk})
+
+
+

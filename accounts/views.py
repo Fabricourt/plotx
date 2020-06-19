@@ -3,6 +3,7 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from contact.models import Contact
 
+"""
 def register(request):
   if request.method == 'POST':
     # Get form values
@@ -48,10 +49,10 @@ def login(request):
 
     if user is not None:
       auth.login(request, user)
-      messages.success(request, 'You are now logged in')
+      messages.success(request, 'You are now signed in')
       return redirect('index')
     else:
-      messages.error(request, 'Invalid credentials')
+      messages.error(request, 'Invalid credentials plesase signup if you do not have an account')
       return redirect('login')
   else:
     return render(request, 'accounts/login.html')
@@ -59,8 +60,9 @@ def login(request):
 def logout(request):
   if request.method == 'POST':
     auth.logout(request)
-    messages.success(request, 'You are now logged out')
+    messages.success(request, 'You are now signed out')
     return redirect('index')
+"""
 
 def dashboard(request):
   user_contacts = Contact.objects.order_by('-timestamp').filter(user_id=request.user.id)

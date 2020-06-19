@@ -1,6 +1,16 @@
-{% extends "admin/base_site.html" %}
+{% extends 'admin/base.html' %}
+{% load static %}
 
+{% block branding %}
+  <h1 id="head">
+    <span style="color:gold"><b>KATATA</b></span>
+    Admin Area
+  </h1>
+{% endblock %}
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}
 {% block extrahead %}
 <script>window.CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/';</script>
-{{ block.super }}
+{{block.super}}
 {% endblock %}

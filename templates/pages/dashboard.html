@@ -3,158 +3,96 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<section class="bgimg_6">
+  
+
 <style>
-    .collapsible {
-      background-color: rgb(243, 232, 240);
-      color: rgb(44, 43, 43);
-      cursor: pointer;
-      padding: 18px;
-      width: 100%;
-      border: none;
-      text-align: left;
-      outline: none;
-      font-size: 15px;
+  div.demox {
+        display: inline-block;
+        width: 100%;
+        height: 145px;
+        margin: 10px;
+        --aug-border: 5px;
+        --aug-inset: 5px;
+        padding: 10px; /* mind the gap */
+        text-align: center;
+        --aug-border-bg: teal;
+        --aug-inset-bg: teal;
+        color: white;
+        text-shadow: 8px 8px 16px #630f0f;
+        
     }
-    
-    .active, .collapsible:hover {
-      background-color: rgb(243, 232, 240);
+
+ div.demo {
+        display: inline-block;
+        width: 100%;
+        height: 115px;
+        margin: 10px;
+        --aug-border: 5px;
+        --aug-inset: 5px;
+        padding: 10px; /* mind the gap */
+        text-align: center;
+        --aug-border-bg: #a20025;
+        --aug-inset-bg: #a20025;
     }
-    
-    .collapsible:after {
-      content: '\002B';
-      color: rgb(70, 68, 68);
-      font-weight: bold;
-      float: right;
-     
+    div.demo0 {
+        --aug-tr-height: 30%;
     }
-    
-    .active:after {
-      content: "\2212";
+
+    div.demo1 {
+        --aug-tr-height: 30%;
+        --aug-border-radius-fallback-inset: 30px 0px 7px 0px;
     }
-    
-    .content {
-     
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.2s ease-out;
-      background-color: #f1f1f1;
+
+    a:link {
+      text-decoration: none;
     }
-    </style>
-<h1>Dashboard</h1>
+</style>
 
 
+<div class="bgimg_5">
+  {% if user.is_authenticated %}
+  {% if classes %}
+    <div class="w3-margin-right">
+    <div class="w3-container"  style="list-style-type: none;" > 
 
-
-<div style="padding:0px; margin:0px" class="col-sm-10 w3-right">
-<button class="w3-white w3-card-4 collapsible w3-white w3-left-align">
-    Kiambu</button>
-    <div id="Kiambu" class="content">
-       
-        {% if kiambu_businesss %}
-
-        <ul class="w3-row-padding" style="list-style-type: none;"  id="myUL">
-            <p class="w3-center w3-padding w3-small">Places to find a plot in Kiambu</p>
-        {% for business in kiambu_businesss %}
-        <li class="w3-col l4 m4 s12 w3-margin-bottom">
-            <a href="{{ business.get_absolute_url }}">
-              <div class="btn  {{business.hover_color}} w3-hover-text-white w3-white w3-large w3-border w3-hover-border-white   w3-hover-shadow  w3-text-black" style="width:290px; ">
-                <div class="" style="width:30%; float:left">
-                  <img src="{{ business.logo.url }}" alt="" class="w3-white  w3-circle" style="width: 60px; height:60px;">
-                </div>
-                <div class="" style="width:60%; float:right">
-                  <span class="w3-large w3-wide">{{ business.business_name }}</span>
-                  <br> <span class="w3-small">{{business.business_type}}</span>
-                  <span class="w3-small">{{business.town}}</span>
-                  <span class="w3-small w3-hide w3-right">reviews</span>
-                </div>
-              </div>
-            </a>
-          </li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    </div>
-</div>
-    
-<div style="padding:0px; margin:0px" class="col-sm-9 w3-left">
-    <button  class="w3-white w3-card-4 collapsible  w3-left-align">
-        Ruiru</button>
-        <div id="Ruiru" class="content">
-           
-            {% if ruiru_businesss %}
-    
-            <ul class="w3-row-padding" style="list-style-type: none;"  id="myUL">
-                <p class="w3-center w3-padding w3-small">Places to find a plot in Ruiru</p>
-            {% for business in ruiru_businesss %}
-            <li class="w3-col l4 m4 s12 w3-margin-bottom">
-                <a href="{{ business.get_absolute_url }}">
-                  <div class="btn  {{business.hover_color}} w3-hover-text-white w3-white w3-large  w3-border w3-hover-border-white  w3-hover-shadow  w3-text-black" style="width:290px;">
-                    <div class="" style="width:30%; float:left">
-                      <img src="{{ business.logo.url }}" alt="" class="w3-white  w3-circle" style="width: 60px; height:60px;">
-                    </div>
-                    <div class="" style="width:60%; float:right">
-                      <span class="w3-large w3-wide">{{ business.business_name }}</span>
-                      <br> <span class="w3-small">{{business.business_type}}</span>
-                      <span class="w3-small">{{business.town}}</span>
-                      <span class="w3-small w3-hide w3-right">reviews</span>
-                    </div>
-                  </div>
-                </a>
-              </li>
-             {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
+      {% for class in classes %}
+      {% for account in class.account.all %}
+      {% if account.accountname == user %}
+     <center>
+      
+      <div augmented-ui="tl-clip-y bl-clip-y tr-clip-y br-clip-y   exe" 
+      class="demox demo1 bgimg_6 w3-hide-small w3-border-bottom w3-border-white w3-padding-large w3-round 
+      w3-hover-shadow  w3-hover-text-theme w3-border-red" >
+      <a class="w3-wide w3-jumbo w3-hover-text-theme" href="{{class.get_absolute_url}}" 
+      >
+        <strong>CLASSROOM </strong> <span class="w3-hide">{{account}}</span><br>
+      </a>
     </div>
 
-    <div style="padding:0px; margin:0px" class="col-sm-11 w3-right">
-        <button  class="w3-white w3-card-4 collapsible w3-white w3-left-align">
-            Thika</button>
-            <div id="Thika" class="content">
-               
-                {% if thika_businesss %}
-        
-                <ul class="w3-row-padding" style="list-style-type: none;"  id="myUL">
-                    <p class="w3-center w3-padding w3-small">Places to find a plot in Thika</p>
-                {% for business in thika_businesss %}
-                <li class="w3-col l4 m4 s12 w3-margin-bottom">
-                    <a href="{{ business.get_absolute_url }}">
-                      <div class="btn  {{business.hover_color}} w3-hover-text-white w3-white w3-large  w3-border w3-hover-border-white w3-hover-shadow  w3-text-black" style="width:290px;">
-                        <div class="" style="width:30%; float:left">
-                          <img src="{{ business.logo.url }}" alt="" class="w3-white  w3-circle" style="width: 60px; height:60px;">
-                        </div>
-                        <div class="" style="width:60%; float:right">
-                          <span class="w3-large w3-wide">{{ business.business_name }}</span>
-                          <br> <span class="w3-small">{{business.business_type}}</span>
-                          <span class="w3-small">{{business.town}}</span>
-                          <span class="w3-small w3-hide w3-right">reviews</span>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                {% endfor %}
-                </ul> 
-                {% endif %}
-            </div>
-    
-    
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-        
-        for (i = 0; i < coll.length; i++) {
-          coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight){
-              content.style.maxHeight = null;
-            } else {
-              content.style.maxHeight = content.scrollHeight + "px";
-            } 
-          });
-        }
-        </script>
+     <div augmented-ui="tl-clip-y bl-clip-y tr-clip-y br-clip-y   exe" 
+     class="demo demo1 w3-hide-medium w3-hide-large w3-border-bottom w3-border-white  w3-round 
+     w3-hover-shadow w3-padding-large w3-xxxlarge w3-crimson w3-border-red" 
+      <a href="{{class.get_absolute_url}}">
+        Classroom <span class="w3-hide">{{account}}</span><br>
+      </a>
+    </div>
+    </center>
+    {% endif %}
+     {% if not forloop.last %}{% endif %}
+     {% endfor %}
+      {% endfor %}
+    </div>
+  
+      {% else %}
+        <p>There are no classes.</p>
+    </div>
+  {% endif %}
+  {% else %}
+  <a href="{% url 'login' %}" class="w3-panel w3-xlarge w3-text-emerald w3-center btn " style="width:100%">Sign In To Proceed To Classroom</a>
+  {% endif %}
+  </div>
 
-
+</section>
 
 {% endblock %}

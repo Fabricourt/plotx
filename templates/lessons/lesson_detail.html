@@ -1,0 +1,58 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block title %} |  {{lesson|capfirst}} {% endblock %}
+
+
+{% block content %}
+    
+
+
+
+
+<!-- Page Container -->
+
+
+ 
+    
+      <div class="w3-container w3-margin-bottom">
+        {% include 'lessons/_header.html' %}
+      </div>
+ 
+    
+    <div class="w3-metro-darken w3-margin-bottom" style="padding:10px 10px">
+        {% include 'lessons/_video.html' %}
+    </div>
+
+      
+    <div class="row">
+
+
+    <div id="notes" class="col-sm-7 w3-container w3-white w3-margin-bottom">
+       {% include 'lessons/_lesson.html' %}
+        <br>
+      <span id="exercises"></span>
+    <br><br><br>
+    </div>
+
+    
+      <div class="w3-container col-sm-5 w3-white w3-margin-bottom">
+            {% include 'lessons/_exercises.html' %}
+            
+      </div>
+    </div>
+
+      <div id="" class="w3-container w3-card w3-white w3-margin-bottom">
+
+
+  </div>
+
+ 
+
+
+
+
+
+
+{% endblock %}

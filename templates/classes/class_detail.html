@@ -1,0 +1,66 @@
+<!-- {% extends "base_generic.html" %} -->
+
+{% load static %}
+
+{% block title %} |  {{class|capfirst}} {% endblock %}
+
+
+{% block content %}
+<div class="w3-content" style="max-width:1400px">
+<!-- Header-->
+{% include 'classes/_header.html' %}
+
+{% for account in class.account_set.all %}
+	{{account}}
+{% endfor %}
+
+
+<!-- Grid -->
+<div class="w3-row">
+
+<!-- Introduction menu -->
+<div class="w3-col l4">
+  <!-- class Teacher -->
+    {% include 'classes/_class_teacher.html' %}
+
+   <!-- class students -->
+   {% include 'classes/_students.html' %}
+
+
+
+  {% include 'classes/_notice.html' %}
+
+  <!-- Announcement -->
+    {% include 'classes/_announcement.html' %}
+
+<!-- END Introduction Menu -->
+</div>
+
+<!-- Subjects -->
+<div class="w3-col l8 s12">
+<!--exercises-->
+{% include 'classes/_exercises.html' %}
+
+<!-- Subject entry -->
+
+{% include 'classes/_subjects.html' %}
+<hr>
+
+<!-- END Subject ENTRIES -->
+</div>
+
+
+
+  
+
+
+<!-- END GRID -->
+</div><br>
+
+<!-- END w3-content -->
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base_generic.html' %}
+{% load static %}
+{% block title %} | Students {% endblock %}
+{% block content %}
+{% if students %}
+
+{% for student in class.student_set.all %}
+      
+<li class="w3-col l3 m4  w3-margin-bottom ">
+  <a href="{{ class.get_absolute_url }}">
+    <span  class=" w3-hover-border-green btn w3-text-emerald w3-xlarge w3- w3-card-4 w3-white {{class.bg_color}}   w3-hover-shadow cursor:pointer " style="width:250px; height:50px; margin:9px">{{ class.class_name|upper }}</span></a> 
+</li>
+{% endfor %}
+
+......
+<ol class="w3-ul">
+ <h1>Students</h1>
+    {% for student in students %}
+        <a href="{{student.get_absolute_url}}" class="">
+        <li class="w3-card w3-hover-shadow w3-hover-white w3-col l4 m6 w3-round w3-margin"> 
+            <div class="w3-row-padding">
+                <span class="w3-third">
+                {% if student.profile %}
+                <img src="{{student.profile.url}}" alt="" class="w3-circle" style="height: 50px; width: 50px;">
+                {% endif %}
+                </span>
+               <span class="w3-twothirds"> {{ student.first_name}} {{student.last_name}} <br>
+                <span class="w3-text-green">{{student.class_name}}</span> </span>
+            </div>
+      </li>
+      </a>
+   
+        {% endfor %}
+</ol>
+
+{% endif %}
+
+{% endblock %}

@@ -1,7 +1,26 @@
 from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from classes.models import *
+from students.models import *
+from django.views.generic.base import TemplateView
+from subjects.models import *
+from lessons.models import *
+from exercises.models import *
+from users.models import *
+from django.shortcuts import render, get_object_or_404 
+from django.views import generic
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView
+)
+
 
 
 
@@ -28,16 +47,18 @@ def login(request):
     if user is not None:
       auth.login(request, user)
       messages.success(request, 'You are now logged in')
-      return redirect('index')
+      return redirect('classes')
     else:
       messages.error(request, 'Invalid credentials')
-      return redirect('profile')
+      return redirect('login')
   else:
     return render(request, 'users/login.html')
 
 
 @login_required
 def profile(request):
+    classes = Class.objects.order_by('class_name').filter(is_published=True)
+    students = Student.objects.order_by('first_name').filter(is_published=True)
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
@@ -54,8 +75,46 @@ def profile(request):
         p_form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
+        'classes':classes,
+        'students':students,
         'u_form': u_form,
         'p_form': p_form
     }
 
     return render(request, 'users/profile.html', context)
+
+class AccountListView(ListView):
+    model = Account
+    queryset = Account.objects.all().order_by("-created_on")
+    template_name = "account_list.html"
+    paginate_by = 10
+
+
+class AccountDetailView(DetailView):
+    model = Account
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['answers'] = Answer.objects.all()
+        context['students'] = Student.objects.all()
+        context['exercises'] = Exercise.objects.all()
+        context['classes'] = Class.objects.all()
+        return context
+
+class UserAccountListView(ListView):
+    model = Account
+    template_name = 'users/user_accounts.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'accounts'
+      
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['answers'] = Answer.objects.all()
+        context['students'] = Student.objects.all()
+        context['exercises'] = Exercise.objects.all()
+        context['classes'] = Class.objects.all()
+        return context
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Account.objects.filter(accountname=user).order_by("-created_on") 
+

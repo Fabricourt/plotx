@@ -1,6 +1,8 @@
 {% load static %}
+
+
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light w3-signal-white  sticky-top">
+<nav class="navbar navbar-expand-lg w3-theme-d5 w3-topbar w3-card-4 w3-border-grey w3-text-white   sticky-top">
     <div class="container">
       
       {% if '/' == request.path %}
@@ -13,9 +15,9 @@
       </a>
       {% else %}
       <a class="navbar-brand" href="{% url 'index' %}">  
-      <span class="nav-item w3-padding  w3-hover-shadow w3-highway-green btn w3-large w3-border w3-border-gold luxe w3-text-gold   w3-wide " style="color:gold;">
+      <span class="nav-item w3-padding  w3-hover-shadow w3-highway-green btn w3-large w3-border bgimg_2  w3-border-gold luxe w3-text-gold   w3-wide " style="color:gold;">
         <strong style="color:gold;">
-            <img src="{% static 'img/favicon.png' %}" style="width:32px; height:32px;" logo" class="w3-white w3-border  w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="katata logo" >
+            <img src="{% static 'img/logo.png' %}" style="width:32px; height:32px;" logo" class="w3-white w3-border  w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="katata logo" >
           KATATA 
         </strong>
       </span>
@@ -29,121 +31,120 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
-          <li
-            {% if '/' == request.path %}
-              class="nav-item active  mr-3"
-            {% else %}
-              class="nav-item mr-3"
-            {% endif %}
-          >
-            <a class="nav-link" href="{% url 'index' %}">
-              <i class="fas fa-home w3-text-teal"></i> Home</a>
-          </li>
-     <i class></i>
-
-        <li
-        {% if 'business-list' == request.path %}
-          class="nav-item active  mr-3"
-        {% else %}
-          class="nav-item mr-3"
-        {% endif %}
-        >
-        <a class="nav-link" href="{% url 'business-list' %}">
-          <i class="fa fa-bullseye w3-text-teal"></i>
-          Companys</a>
+ 
         
-        </li>
-        
+  
+    
 
-        <li
-        {% if 'towns' == request.path %}
-          class="nav-item active  mr-3"
-        {% else %}
-          class="nav-item mr-3"
-        {% endif %}
-        >
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-crosshairs w3-text-teal"></i>
-
-              Towns
-            </a>
-            <div class="dropdown-menu w3-margin " aria-labelledby="navbarDropdown"  style="width:85vw">
-             {% include 'pages/_townsdrop.html' %}
-            </div>
-      
-          </li>
-        
-          <li
-          {% if 'churches' == request.path %}
-            class="nav-item active  mr-3"
-          {% else %}
-            class="nav-item mr-3"
-          {% endif %}
-          >
-          <a class="nav-link w3-hide" href="{% url 'church-list' %}">
-            <i class="fas fa-church w3-text-teal"></i>
-            Churches</a>
+          <li 
           
-          </li>
-       
+          {% if '/' == request.path %}
+            <button type="button" class="btn w3-border mr-3 nav-item w3-card w3-hide w3-hover-text-green w3-padding w3-theme-d5 w3-border-grey w3-hover-shadow w3-hover-white w3-hover-border-white" data-toggle="collapse" data-target="#demo1">
+            <i class="fas fa-chalkboard-teacher w3-hover-text-green w3-xlarge"></i> <span class="w3-hover-text-green"> Pick Another Lesson</span></button>
+         
+          {% elif 'login' in request.path %}
+            
+            <button type="button" class="btn w3-border mr-3 nav-item w3-card w3-hide w3-hover-text-green w3-padding w3-theme-d5 w3-border-grey w3-hover-shadow w3-hover-white w3-hover-border-white" data-toggle="collapse" data-target="#demo1">
+            <i class="fas fa-chalkboard-teacher w3-hover-text-green w3-xlarge"></i> <span class="w3-hover-text-green"> Pick Another Lesson</span></button>
+         
+          {% elif 'register' in request.path %}
+
+            <button type="button" class="btn w3-border mr-3 nav-item w3-card w3-hide w3-hover-text-green w3-padding w3-theme-d5 w3-border-grey w3-hover-shadow w3-hover-white w3-hover-border-white" data-toggle="collapse" data-target="#demo1">
+            <i class="fas fa-chalkboard-teacher w3-hover-text-green w3-xlarge"></i> <span class="w3-hover-text-green"> Pick Another subject or Lesson</span></button>
+          
+          {% elif 'classes' in request.path %}
+
+            <button type="button" class="btn w3-border mr-3 nav-item w3-card w3-hide w3-hover-text-green w3-padding w3-theme-d5 w3-border-grey w3-hover-shadow w3-hover-white w3-hover-border-white" data-toggle="collapse" data-target="#demo1">
+            <i class="fas fa-chalkboard-teacher w3-hover-text-green w3-xlarge"></i> <span class="w3-hover-text-green"> Pick Another subject or Lesson</span></button>
+          
+          {% else %}
+
+            <button type="button" class="btn w3-border w3-hide mr-3  nav-item w3-card  w3-hover-text-green w3-padding w3-theme-d5 w3-border-grey w3-hover-shadow w3-hover-white w3-hover-border-white w3-dropdown-hover">
+            <i class="fas fa-chalkboard-teacher w3-hover-text-green w3-xlarge"></i> <span class="w3-hover-text-green"> Pick Another subject or Lesson</span>
+          </button>
+          {% endif %}
+           
+            </li>
         </ul>
         
-       
-          
+      
         <ul class="navbar-nav ml-auto">
-
-         
           <form class="form-inline my-2 my-lg-0 w3-hide" action="{% url 'search_results' %}" method="get">
             <input name="q" class="form-control w3-border w3-border-teal mr-sm-2" type="search" placeholder="Search companies" aria-label="Search">
             <button class="btn w3-border w3-border-teal w3-hide-small w3-hover-teal my-2 my-sm-0" type="submit">Search</button>
           </form>
        
-
+          {% if user.is_staff %}
+          <li
+          {% if 'register' in request.path %}
+            class="nav-item active w3-hide w3-white  w3-round w3-text-green w3-border w3-card mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+            <a class="nav-link w3-round w3-hover-shadow w3-hide w3-hover-white w3-hover-text-blue  w3-border" href="{% url 'register' %}">
+              <i class="fas fa-user-plus"></i> Sign up </a>
+          </li>
+          {% endif %}
           {% if user.is_authenticated %}
+
             <li
             {% if 'dashboard' in request.path %}
-              class="nav-item active mr-3"
+              class="nav-item active w3-white w3-round w3-text-green w3-border w3-card mr-3"
             {% else %}
               class="nav-item mr-3"
             {% endif %}
             >
-              <a class="nav-link w3-hide" href="{% url 'dashboard' %}">
+              <a class="nav-link w3-round w3-hover-shadow w3-text-white w3-hover-white w3-hover-text-black w3-border"
+               href="{% url 'dashboard' %}">
                Welcome {{ user.username }} (Dashboard)</a>
             </li>
-            <li class="nav-item mr-3">
+
+            <li class="nav-item  w3-white w3-round w3-text-green w3-hover-text-red w3-border w3-card mr-3">
               <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
-                <i class="fas fa-sign-out-alt w3-text-teal"></i> Logout
+                <i class="fas fa-sign-out-alt"></i> Signout
               </a>
               <form action="{% url 'logout' %}" method="POST" id="logout">
                 {% csrf_token %}
                 <input type="hidden">
               </form>
             </li>
+         
+            
           {% else %}
-            <li
-            {% if 'register' in request.path %}
-              class="nav-item active mr-3"
-            {% else %}
-              class="nav-item mr-3"
-            {% endif %}
-            >
-              <a class="nav-link" href="{% url 'register' %}">
-                <i class="fas fa-user-plus w3-text-teal"></i> Register</a>
-            </li>
+
+
+
             <li
             {% if 'login' in request.path %}
-              class="nav-item active mr-3"
+              class="nav-item active w3-white w3-round w3-text-green w3-border w3-card mr-3"
             {% else %}
               class="nav-item mr-3"
             {% endif %}
             >
-              <a class="nav-link" href="{% url 'login' %}">
-                <i class="fas fa-sign-in-alt w3-text-teal"></i>
-
-                Login</a>
+              <a class="nav-link w3-round w3-text-white w3-hover-shadow w3-hover-white w3-hover-text-green  w3-border" href="{% url 'login' %}">
+                <i class="fas fa-sign-in-alt"></i> Sign In</a>
             </li>
+
           {% endif %}
         </ul>
-      </div>
+
     </div>
-  </nav>
+  </nav>        
+  <div id="myModal1"  class="modal">
+    <!-- Modal Header -->
+   
+      <button type="button" class="close" data-dismiss="modal"></button>
+      <div class='w3-margin-top w3-container'>
+        
+      </div>
+
+
+
+</div>
+
+  <div   class="w3-dropdown-content">
+    {% include 'classes/_subjects.html' %}
+  </div> 
+
+</div>

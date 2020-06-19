@@ -152,10 +152,11 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-cobalt,.w3-hover-cobalt:hover{color:#fff!important;background-color:#0050ef!important}
 .w3-light-blue,.w3-hover-light-blue:hover{color:#000!important;background-color:#87CEEB!important}
 .w3-brown,.w3-hover-brown:hover{color:#fff!important;background-color:#341d08!important}
+.w3-brownt,.w3-hover-brown:hover{color:#fff!important;background-color:#795548!important}
 .w3-cyan,.w3-hover-cyan:hover{color:#000!important;background-color:#00bcd4!important}
 .w3-blue-grey,.w3-hover-blue-grey:hover,.w3-blue-gray,.w3-hover-blue-gray:hover{color:#fff!important;background-color:#607d8b!important}
 .w3-green,.w3-hover-green:hover{color:#fff!important;background-color:#4CAF50!important}#008a00
-.w3-green,.w3-hover-green:hover{color:#fff!important;background-color:#008a00!important}
+.w3-emerald,.w3-hover-emerald:hover{color:#fff!important;background-color:#008a00!important}
 .w3-light-green,.w3-hover-light-green:hover{color:#000!important;background-color:#8bc34a!important}
 .w3-indigo,.w3-hover-indigo:hover{color:#fff!important;background-color:#3f51b5!important}
 .w3-khaki,.w3-hover-khaki:hover{color:#000!important;background-color:#f0e68c!important}
@@ -186,6 +187,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-text-light-blue,.w3-hover-text-light-blue:hover{color:#87CEEB!important}
 .w3-text-cobalt,.w3-hover-text-cobalt:hover{color:#0050ef!important}
 .w3-text-brown,.w3-hover-text-brown:hover{color:#341d08!important}
+.w3-text-brownt,.w3-hover-text-brown:hover{color:#795548!important}
 .w3-text-cyan,.w3-hover-text-cyan:hover{color:#00bcd4!important}
 .w3-text-blue-grey,.w3-hover-text-blue-grey:hover,.w3-text-blue-gray,.w3-hover-text-blue-gray:hover{color:#607d8b!important}
 .w3-text-green,.w3-hover-text-green:hover{color:#008a00!important}
@@ -216,6 +218,7 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-border-cobalt,.w3-hover-border-cobalt:hover{border-color:#0050ef!important}
 .w3-border-light-blue,.w3-hover-border-light-blue:hover{border-color:#87CEEB!important}
 .w3-border-brown,.w3-hover-border-brown:hover{border-color:#341d08!important}
+.w3-border-brownt,.w3-hover-border-brown:hover{border-color:#795548!important}
 .w3-border-cyan,.w3-hover-border-cyan:hover{border-color:#00bcd4!important}
 .w3-border-blue-grey,.w3-hover-border-blue-grey:hover,.w3-border-blue-gray,.w3-hover-border-blue-gray:hover{border-color:#607d8b!important}
 .w3-border-green,.w3-hover-border-green:hover{border-color:#4CAF50!important}

@@ -1,0 +1,66 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block title %} |  Answers {% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section class="w3-margin-bottom">
+    <span class="w3-left w3-text-green">{{answer.exercise.classname}}</span>
+    <span class="w3-right w3-text-green">{{answer.created_on}}</span>
+</section>
+<section>
+    <div class="w3-row-padding">
+        <div class="w3-col l8">
+            <center>
+                <div class="w3-container">
+                    <h2 class="w3-center ">
+                        {{answer.first_name}} {{answer.last_name}} <br>
+
+                    </h2> 
+                    <h3 class="w3-opacity w3-margin-top w3-center w3-border-bottom w3-border-green">
+                        <span class="w3-text-black">
+                            <b>Subject:</b>
+                        </span>
+                        {{answer.excercise.subject}} | 
+                        <span class="w3-text-black">
+                            <b>Topic:</b>
+                        </span>
+                        {{answer.excercise.topic }}
+                    </h3>
+
+                </div>
+            </center>
+
+            <div class="w3-container">
+
+                {{answer.answers|safe}}
+            </div>
+
+            {% if answer.file_name %}
+            <div class="w3-container w3-hide">
+                <a href="{{answer.file_name.url}}">
+                    <button class="w3-round w3-blue w3-hover-emerald  w3-block w3-panel w3-large">
+                        <span class="w3-xlarge">Answer File</span>
+                    <br>
+                    Download File
+                    </button>
+                </a>
+            </div>
+            {% endif %}
+
+        </div>
+    <div class="w3-col l4 w3-border-left w3-border-green">
+        <div class="w3-container">
+            <h5 class="w3-center w3-border-bottom w3-border-green">
+                <b>Answered Questions</b> | {{answer.exercise}}
+            </h5>
+        </div>
+        <div class="w3-container">
+            <div class="w3-small w3-margin-top">
+                {{answer.exercise.questions|safe}}
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+{% endblock %}
