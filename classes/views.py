@@ -34,20 +34,16 @@ class ClassListView(generic.ListView):
         context['classes'] = Class.objects.all()
         return context
 
-  
 
-
-
-   
 
 class ClassDetailView(LoginRequiredMixin, generic.DetailView):
     login_url = '/accounts/login'
     redirect_field_name = '/accounts/login'
     model = Class
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['classes'] = Class.objects.all()
         context['accounts'] = Account.objects.all()
         context['notices'] = Notice.objects.all()
         context['subjects'] = Subject.objects.all()
@@ -56,6 +52,7 @@ class ClassDetailView(LoginRequiredMixin, generic.DetailView):
         context['students'] = Student.objects.all()
         context['exercises'] = Exercise.objects.order_by("-created_on").filter(is_published=True)[:10]
         return context
+
 
 
 class UserClassListView(ListView):

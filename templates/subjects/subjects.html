@@ -10,15 +10,19 @@
              <ul>
                  {% for topic in subject.topic_set.all %}
                  <li>
+                    <a href="{{topic.get_absolute_url}}">
                      {{topic}}
+                    </a>
                      {% for lesson in topic.lesson_set.all %}
                         <ul>
                             <li>
                                 <a href="{{lesson.get_absolute_url}}">
-                                    {{lesson}}
+                                    {{lesson}
+
                                 </a>
                             </li>
                         </ul>   
+
                      
                      {% endfor %}
                  </li>  

@@ -2,7 +2,7 @@
 
 {% if exercises %}
 
-<div class="w3-panel w3-margin w3-yellow w3-display-container">
+<div class="w3-panel w3-margin w3-crimson w3-display-container">
   <span onclick="this.parentElement.style.display='none'"
   class="w3-button w3-hover-black w3-xlarge w3-display-topright">&times;</span>
   <h2 class="w3-center">Homework</h2>
@@ -10,16 +10,16 @@
   <ol class="">
   {% for exercise in class.exercise_set.all  %}
     <li class="w3-border-bottom w3-border-theme w3-large">
-      <a href="{% url 'exercise' exercise.slug %}" class="w3-hover-text-green">
+      <a href="{% url 'exercise' exercise.slug %}" class="w3-hover-text-khaki">
         Exercise on {{exercise.topic}} 
 
-        <span class="w3-right w3-text-green"> {{exercise.classname.class_name}}</span>
-        <span class="w3-text-green w3-right"> {{exercise.created_on}}</span> 
+        <span class="w3-right w3-text-amber"> {{exercise.classname.class_name}}</span>
+        <span class="w3-text-amber w3-right"> {{exercise.created_on}}</span> 
       </a>
 
     </li> 
     {% if exercise.teacher == user %}
-    <span "><a class="w3-right w3-tag w3-theme"  href="{% url 'user-exercises' exercise.teacher.username %}">
+    <span "><a class="w3-right w3-tag w3-khaki"  href="{% url 'user-exercises' exercise.teacher.username %}">
     teacher: {{exercise.teacher}}..
       </a></span>
     {% endif %} 

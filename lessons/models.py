@@ -7,6 +7,8 @@ from classes.models import Class
 from teachers.models import Teacher
 from subjects.models import Subject
 from students.models import *
+from embed_video.fields import EmbedVideoField
+from videos.models import *
 
 
 class Topic(models.Model):
@@ -22,8 +24,12 @@ class Topic(models.Model):
         verbose_name_plural = 'Strands'
         ordering = ['date_posted']
 
+    def get_absolute_url(self):
+        return reverse('topic-detail', kwargs={'slug': self.slug})
+
     def __str__(self):
         return self.title
+
 
 class Lesson(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
@@ -31,15 +37,11 @@ class Lesson(models.Model):
     lesson_title = models.CharField(max_length=100, blank=False, null=True)
     slug = models.SlugField(max_length=250, blank=False, null=True, unique_for_date='date_posted')
     class_name = models.ForeignKey(Class, on_delete=models.CASCADE)
-
+    video = models.ForeignKey(Video, on_delete=models.DO_NOTHING, blank=False, null=True)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True, blank=False)
     content = models.TextField(blank=False, null=True)
     lesson_pic = models.ImageField(upload_to='lesson_pics/%Y/%m/%d/',null=True, blank=True)
-    lesson_video_link = models.CharField(max_length=1000, blank=True, null=True)
-    lesson_video = models.FileField(upload_to='lesson_videos/', null=True, blank=True)
-
     date_posted = models.DateTimeField(default=timezone.now)
-    
     created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING,  blank=False, null=True)
 
     is_mvp = models.BooleanField(default=False)
@@ -54,6 +56,8 @@ class Lesson(models.Model):
 
     def __str__(self):
         return self.lesson_title
+
+
 
 
 

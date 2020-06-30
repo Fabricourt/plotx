@@ -10,6 +10,8 @@ from django.urls import reverse
 
 
 
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
@@ -39,17 +41,22 @@ class Profile(models.Model):
 
 
 class Account(models.Model):
-    accountname = models.ForeignKey(User, on_delete=models.CASCADE,)
+    accountname = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE,)
+    fullname = models.CharField(max_length=250, blank=False, null=True)
+    slug = models.SlugField(max_length=250, null=True, blank=False)
+    user_class = models.CharField(max_length=100, blank=True, null=True)
+    created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="created_by",  blank=False, null=True)
     created_on = models.DateTimeField(default=timezone.now)
-     
+    is_published = models.BooleanField(default=True)
+
     class Meta:
         ordering = ["-created_on"]
 
     def __str__(self):
-        return self.accountname.username
+        return self.fullname
     
     def get_absolute_url(self):
-        return reverse('account-detail', kwargs={'pk': self.pk})
+        return reverse('account-detail',  kwargs={'slug': self.slug})
 
 
 

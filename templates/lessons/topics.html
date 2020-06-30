@@ -1,0 +1,10 @@
+
+{% for topic in topics %}
+
+{% for lesson in topic.lesson_set.all %}
+
+{{lesson}}
+
+{% endfor %}
+
+{% endfor %}

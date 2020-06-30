@@ -44,6 +44,7 @@ class Answer(models.Model):
     answers = RichTextField(blank=False, null=True)
     file_name = models.FileField(upload_to='files/%Y/%m/%d/', blank=True, null=True,)
     diagram = models.ImageField(upload_to='diagrams/%Y/%m/%d/', null=True, blank=True)
+    video = models.ForeignKey(Video, on_delete=models.DO_NOTHING, blank=False, null=True)
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE, related_name="answers")
     #classname = models.ForeignKey(Class, on_delete=models.DO_NOTHING, related_name="ansclass", blank=True, null=True, help_text="Pick your class")
     #subject = models.ForeignKey(Subject, on_delete=models.DO_NOTHING,  blank=True, null=True)

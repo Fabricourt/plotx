@@ -3,36 +3,44 @@
 {% block title %} |  Answers {% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-<section class="w3-margin-bottom">
-    <span class="w3-left w3-text-green">{{answer.exercise.classname}}</span>
-    <span class="w3-right w3-text-green">{{answer.created_on}}</span>
+<section class="w3-margin-bottom  w3-opacity-min">
+    <div class="row">
+    <div class="col-sm-2 w3-margin">
+        <a href="{% url 'exercise' answer.exercise.slug  %}" class=" btn {{answer.exercise.subject.bg_color}}">
+        
+          <span>Go Back To Exercise</span> </a>
+      </div>
+      <div class="col-sm-3 w3-margin">
+        <a href="{% url 'class-detail' answer.exercise.classname.slug  %}" class=" btn w3-hover-green w3-highway-orange">
+        
+          <span>Go Back To Classroom</span> </a>
+      </div>
+    </div>
+    <span class="w3-large  w3-text-black"><b>{{answer.exercise.classname}}</b></span>
+    |<span class="w3-large w3-text-black"><b>{{answer.created_on}}</b></span>
 </section>
 <section>
     <div class="w3-row-padding">
         <div class="w3-col l8">
             <center>
-                <div class="w3-container">
+                <div class="w3-container w3-border-bottom w3-border-green">
                     <h2 class="w3-center ">
                         {{answer.first_name}} {{answer.last_name}} <br>
 
                     </h2> 
-                    <h3 class="w3-opacity w3-margin-top w3-center w3-border-bottom w3-border-green">
+                    <h3 class="w3-opacity w3-margin-top w3-center ">
                         <span class="w3-text-black">
-                            <b>Subject:</b>
+                            <b>Answers</b>
                         </span>
-                        {{answer.excercise.subject}} | 
-                        <span class="w3-text-black">
-                            <b>Topic:</b>
-                        </span>
-                        {{answer.excercise.topic }}
+                       
+                      
                     </h3>
 
                 </div>
             </center>
 
-            <div class="w3-container">
-
-                {{answer.answers|safe}}
+            <div class="w3-container w3-light-grey w3-opacity-min">
+                    {{answer.answers|safe}}
             </div>
 
             {% if answer.file_name %}
@@ -49,18 +57,22 @@
 
         </div>
     <div class="w3-col l4 w3-border-left w3-border-green">
-        <div class="w3-container">
+        <div class="w3-container w3-theme-d5 w3-opacity-min">
             <h5 class="w3-center w3-border-bottom w3-border-green">
                 <b>Answered Questions</b> | {{answer.exercise}}
             </h5>
         </div>
-        <div class="w3-container">
-            <div class="w3-small w3-margin-top">
+        <div class="w3-container w3-light-grey w3-opacity-min">
+            <div class="w3-small ">
                 {{answer.exercise.questions|safe}}
             </div>
         </div>
     </div>
     </div>
 </section>
-
+<footer class="w3-theme-d5">
+    <div class=" w3-margin">
+      <a href="{% url 'exercise' answer.exercise.slug  %}" class=" w3-teal btn">Go Back To exercise </a>
+    </div>
+  </footer>
 {% endblock %}

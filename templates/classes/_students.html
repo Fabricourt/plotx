@@ -49,8 +49,8 @@ color: #d4af37;
       </button>
       <div  class=" w3-content content" style="height: 100%"> 
         {% for student in class.student_set.all %} 
-        <a href="{{student.get_absolute_url}}" class="">
-          <li class="w3-border w3-hover-white w3-padding w3-hover-shadow w3-round w3-margin"> 
+        <a href="" class="">
+          <li class="w3-border w3-hover-white w3-light-gray w3-padding w3-hover-shadow w3-round w3-margin"> 
               <div class="w3-row-padding">
                   <span class="w3-third">
                   {% if student.profile %}

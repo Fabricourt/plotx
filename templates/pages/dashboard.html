@@ -10,7 +10,7 @@
   div.demox {
         display: inline-block;
         width: 100%;
-        height: 145px;
+        height: 125px;
         margin: 10px;
         --aug-border: 5px;
         --aug-inset: 5px;
@@ -63,10 +63,11 @@
       
       <div augmented-ui="tl-clip-y bl-clip-y tr-clip-y br-clip-y   exe" 
       class="demox demo1 bgimg_6 w3-hide-small w3-border-bottom w3-border-white w3-padding-large w3-round 
-      w3-hover-shadow  w3-hover-text-theme w3-border-red" >
-      <a class="w3-wide w3-jumbo w3-hover-text-theme" href="{{class.get_absolute_url}}" 
+      w3-hover-shadow  w3-hover-text-amber w3-border-red" >
+      <a class="w3-wide w3-xxxlarge w3-hover-text-amber" href="{{class.get_absolute_url}}" 
       >
-        <strong>CLASSROOM </strong> <span class="w3-hide">{{account}}</span><br>
+        <strong> Click To Enter {{account.user_class}} </strong> <span class="w3-hide">{{account}}</span><br>
+      
       </a>
     </div>
 
@@ -74,7 +75,8 @@
      class="demo demo1 w3-hide-medium w3-hide-large w3-border-bottom w3-border-white  w3-round 
      w3-hover-shadow w3-padding-large w3-xxxlarge w3-crimson w3-border-red" 
       <a href="{{class.get_absolute_url}}">
-        Classroom <span class="w3-hide">{{account}}</span><br>
+       Welcome To {{account.user_class}} <span class="w3-hide">{{account}}</span><br>
+       
       </a>
     </div>
     </center>
@@ -93,6 +95,16 @@
   {% endif %}
   </div>
 
+</section>
+<section class="w3-padding-large">
+  <div   class="w3-container w3-opacity-min w3-white w3-padding-64">
+  <blockquote class=" w3-margin w3-xlarge  ">
+    “Aim for success, not perfection. Never give up your right to be wrong, because then you will lose the ability to learn new things and move forward with your life. Remember that fear always lurks behind perfectionism.”
+<b class="">
+  <i>David M. Burns</i>
+  </b>
+  </blockquote>
+</div>
 </section>
 
 {% endblock %}

@@ -31,6 +31,7 @@ def exercise(request, slug):
     template_name = "exercise.html"
     exercise = get_object_or_404(Exercise, slug=slug)
     answers = exercise.answers.filter(active=True).order_by("-created_on")
+    classes = Class.objects.order_by('class_name').filter(is_published=True)
     new_answer = None
     # answer exercise
     if request.method == "POST":
@@ -45,6 +46,7 @@ def exercise(request, slug):
     else:
         answer_form = AnswerForm()
     context = {
+            "classes": classes,
             "exercise": exercise,
             "answers": answers,
             "new_answer": new_answer,
@@ -57,9 +59,12 @@ def exercise(request, slug):
 def answer(request, answer_id):
   answer = get_object_or_404(Answer, pk=answer_id)
   queryset = Exercise.objects.filter(status=1).order_by("-created_on")
+  classes = Class.objects.order_by('class_name').filter(is_published=True)
   
   context = {
-    'answer': answer
+    'queryset': queryset,
+    'answer': answer,
+    "classes": classes,
   }
   return render(request, 'exercises/answer.html', context)
 

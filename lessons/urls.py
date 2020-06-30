@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import (
     TeacherLessonListView,
+    TopicListView,
+    TopicDetailView,
     LessonListView,
     LessonDetailView,
     LessonCreateView,
@@ -11,6 +13,8 @@ from . import views
 
 
 urlpatterns = [
+    path('topics', TopicListView.as_view(), name='topics'),
+    path('topic/<slug:slug>/', TopicDetailView.as_view(), name='topic-detail'),
     path('lessons', LessonListView.as_view(), name='lessons'),
     path('user/<str:username>', TeacherLessonListView.as_view(), name='teacher-lessons'),
     path('lesson/<slug:slug>/', LessonDetailView.as_view(), name='lesson-detail'),

@@ -134,7 +134,7 @@ class Photo(models.Model):
     photo_6 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True, null=True)
     church = models.ForeignKey(Church, on_delete=models.DO_NOTHING, blank=True, null=True)
     created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=False, null=True)
-    def __str__(self):
+    def __str__0(self):
         return self.name
 
 class Video(models.Model):

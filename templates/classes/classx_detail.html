@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+  {{ object.title }}
+{% endblock %}
+
+{% block content %}
+  
+      {% if request.user.is_staff %}
+        <form action="{% url "account_enroll_classx" %}" method="post">
+          {{ enroll_form }}
+          {% csrf_token %}
+          <input type="submit" value="Enroll now">
+        </form
+      {% endif %}
+   
+{% endblock %}

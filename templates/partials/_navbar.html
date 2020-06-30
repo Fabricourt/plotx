@@ -2,7 +2,7 @@
 
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg w3-theme-d5 w3-topbar w3-card-4 w3-border-grey w3-text-white   sticky-top">
+<nav class="navbar navbar-expand-lg w3-theme-d5 w3-topbar w3-card-4 w3-border-amber w3-text-white   sticky-top">
     <div class="container">
       
       {% if '/' == request.path %}
@@ -24,17 +24,27 @@
       </a>
     {% endif %}
       
-
+    <li
+    {% if 'contack' in request.path %}
+      class="nav-item active  w3-text-amber   w3-card mr-3"
+    {% else %}
+      class="nav-item mr-3"
+    {% endif %}
+    >
+      <a class="nav-link w3-text-white  w3-hover-text-amber  w3-border" href="{% url 'contactk' %}">
+        <i class="fas fa-user-plus"></i> Contact</a>
+    </li>
  
-      <button class="navbar-toggler w3-text-black w3-border w3-border-white" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
-        <span class="navbar-toggler-icon "></span>
+      <button class="navbar-toggler w3-text-black w3-border w3-amber w3-hover-green w3-border-white" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class=>
+          <i class="navbar-toggler-icon w3-text-amber"></i>
+        </span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
- 
-        
-  
-    
+   
+
+      
 
           <li 
           
@@ -77,31 +87,30 @@
           {% if user.is_staff %}
           <li
           {% if 'register' in request.path %}
-            class="nav-item active w3-hide w3-white  w3-round w3-text-green w3-border w3-card mr-3"
+            class="nav-item active  w3-text-amber   w3-card mr-3"
           {% else %}
             class="nav-item mr-3"
           {% endif %}
           >
             <a class="nav-link w3-round w3-hover-shadow w3-hide w3-hover-white w3-hover-text-blue  w3-border" href="{% url 'register' %}">
-              <i class="fas fa-user-plus"></i> Sign up </a>
+              <i class="fas fa-user-plus"></i> Sign up new school member</a>
           </li>
           {% endif %}
           {% if user.is_authenticated %}
 
             <li
             {% if 'dashboard' in request.path %}
-              class="nav-item active w3-white w3-round w3-text-green w3-border w3-card mr-3"
+              class="nav-item active w3-round  w3-text-amber w3-card mr-3"
             {% else %}
               class="nav-item mr-3"
             {% endif %}
             >
-              <a class="nav-link w3-round w3-hover-shadow w3-text-white w3-hover-white w3-hover-text-black w3-border"
-               href="{% url 'dashboard' %}">
+              <a class="nav-link w3-round w3-hover-text-amber   " href="{% url 'dashboard' %}">
                Welcome {{ user.username }} (Dashboard)</a>
             </li>
 
-            <li class="nav-item  w3-white w3-round w3-text-green w3-hover-text-red w3-border w3-card mr-3">
-              <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+            <li class="nav-item  w3-hover-text-red w3-text-amber   mr-3">
+              <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link w3-text-amber">
                 <i class="fas fa-sign-out-alt"></i> Signout
               </a>
               <form action="{% url 'logout' %}" method="POST" id="logout">
@@ -117,12 +126,12 @@
 
             <li
             {% if 'login' in request.path %}
-              class="nav-item active w3-white w3-round w3-text-green w3-border w3-card mr-3"
+              class="nav-item active w3-card  w3-text-amber  mr-3"
             {% else %}
-              class="nav-item mr-3"
+              class="nav-item mr-3 "
             {% endif %}
             >
-              <a class="nav-link w3-round w3-text-white w3-hover-shadow w3-hover-white w3-hover-text-green  w3-border" href="{% url 'login' %}">
+              <a class="nav-link    w3-hover-text-amber" href="{% url 'login' %}">
                 <i class="fas fa-sign-in-alt"></i> Sign In</a>
             </li>
 
@@ -136,7 +145,7 @@
    
       <button type="button" class="close" data-dismiss="modal"></button>
       <div class='w3-margin-top w3-container'>
-        
+          {% include 'pages/_classesdrop.html' %}
       </div>
 
 

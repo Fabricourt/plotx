@@ -17,15 +17,11 @@ from lessons.models import *
 
 from django.contrib.auth.models import User
 
-class TopicListView(ListView):
-    model = Topic
 
-        
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['Lessons'] = Lesson.objects.all()
-        context['topics'] = Topic.objects.all()
-        return context
+
+class SubjectDetailView(DetailView):
+    model = Subject
+
 
 
 class SubjectListView(ListView):
@@ -33,7 +29,7 @@ class SubjectListView(ListView):
     template_name = 'Subjects/subjects.html' 
     context_object_name = 'subjects'
     ordering = ['-date_posted']
-    paginate_by = 5
+    paginate_by = 1
 
     
     def get_context_data(self, **kwargs):

@@ -1,17 +1,13 @@
 {% load static %}
 
-<br>
-
-      <h1 class="{{lesson.subject.text_color}}">{{lesson}}</h1>
-
-      <h3><b>{{lesson.subject_name|upper}}</b></h3>
-      <div>
-       
-        <hr class="" style="width:100%; ">
+<div class="w3-light-gray w3-opacity-min">
+      <div class="container">
+        <h3 class="{{lesson.subject.text_color}}  "> 
+          <strong>{{lesson|capfirst}}</strong>
+        </h3>
         {{lesson.content|safe}}
       </div>
-    
-
+</div>
     
   
   

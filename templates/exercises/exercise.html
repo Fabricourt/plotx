@@ -5,23 +5,25 @@
 {% block content %}
 
 <div class="">
-  {% if exercise.teacher == user %}
-  <a href="{% url 'user-exercises' exercise.teacher.username %}">
-    {{exercise.teacher}}
-    </a>
-  {% endif %}
+  <div class=" w3-margin">
+    <a href="{% url 'class-detail' exercise.classname.slug  %}" class=" btn w3-hover-green {{exercise.subject.bg_color}}">
+    
+      <span>Go Back To Classroom</span> </a>
+  </div>
   <div class="w3-row-padding">
     <div class="w3-col l8">
-     <div class="w3-container">
+     <div class="w3-container ">
       {% if new_answer %}
       <div class="alert alert-success" role="alert">
         Message success
       </div>
       {% else %}
-            <h1 class="{{exercise.subject.text_color}} w3-center w3-border-bottom w3-border-green"> {{ exercise.title }} </h1>
-            <p class=" text-muted">{{ exercise.teacher }} | {{ exercise.created_on }} |
+      <div class="w3-opacity-min w3-black">
+            <h1 class="{{exercise.subject.text_color}}  w3-center w3-border-bottom w3-border-green"> {{ exercise.title }} </h1>
+            <p class=" text-muted ">{{ exercise.teacher }} | {{ exercise.created_on }} |
                                    {{exercise.subject}} |{{exercise.topic}}
             </p>
+      </div>
             {% if exercise.file_name %}
             <div class="w3-container">
                 <a href="{{exercise.file_name.url}}">
@@ -31,14 +33,14 @@
                 </a>
             </div>
             {% endif %}
-            <p class="card-text ">{{ exercise.questions | safe }}</p>
-            <div class="card-body">
+            <div class="card-text w3-light-gray w3-opacity-min">{{ exercise.questions | safe }}</div>
+            <div class="card-body w3-light-gray w3-opacity-min">
 
-                <h3 class="w3-text-theme">Paste or Type Your Answers below</h3>
+                <h3 class="w3-text-teal">Paste or Type Your Answers below</h3>
                 <form method="post" style="margin-top: 1.3em;" enctype="multipart/form-data">
                   <div style="width:100%;">{{ answer_form|crispy }}</div>
                   {% csrf_token %}
-                  <button type="submit" class="btn btn-primary w3-panel w3-block btn-lg" style="width:100%">Submit</button>
+                  <button type="submit" class="btn w3-teal w3-panel w3-block btn-lg" style="width:100%">Submit</button>
                 </form>
                 {% endif %}
               </div>
@@ -49,7 +51,9 @@
       <div class="w3-border-left w3-border-green w3-margin-top">
         <!-- answerss -->
         {% with answers.count as total_answers %}
-        <h3 class="w3-card w3-green w3-padding"><span class="w3-margin">{{ total_answers }} Marked Answers</span></h3>
+        <h3 class="w3-card w3-green w3-padding">
+          <span class="w3-margin">{{ total_answers }} Marked Exercises</span>
+        </h3>
 
         <p>
           {% endwith %}
@@ -57,10 +61,10 @@
         </p>
         <ol>
         {% for answer in answers %}
-      <li class="">
-        <div class="answers w3-padding w3-border w3-hover-shadow w3-margin-bottom" >
+      <li class="answers w3-padding w3-border w3-light-gray w3-hover-shadow w3-margin-bottom"">
+        <div class="" >
           <span class="font-weight-bold">
-           <a href="{% url 'answer' answer.id %}">{{ answer.name.first_name}} {{ answer.name.last_name }}
+           <a href="{% url 'answer' answer.id %}" class="w3-hover-text-green">{{ answer.name.first_name}} {{ answer.name.last_name }}
             <span class=" text-muted font-weight-normal">
               {{ answer.created_on }}
             </span>
@@ -79,6 +83,10 @@
   </div>
 </div>
 
-
+<footer class="w3-theme-d5">
+  <div class=" w3-margin">
+    <a href="{% url 'class-detail' exercise.classname.slug  %}" class=" w3-teal w3-hover-green btn">Go Back To Classroom </a>
+  </div>
+</footer>
 
 {% endblock %}

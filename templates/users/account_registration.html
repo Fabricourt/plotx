@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% block title %}
+ Sign up
+{% endblock %}
+
+{% block content %}
+<style>
+    .module p {
+    margin:10px 0 20px;
+    width:100%;
+    float:left;
+}
+
+</style>
+    <h1>
+    Sign up
+    </h1>
+    <div class="module">
+        <p>Enter your details to create an account:</p>
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+        <p><input type="submit" value="Create my account"></p>
+        </form>
+    </div>
+{% endblock %}

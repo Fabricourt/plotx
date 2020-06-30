@@ -67,6 +67,8 @@ INSTALLED_APPS = [
     'grade4',
     'exercises',
     'parents',
+    'videos',
+  
 
     
     
@@ -78,6 +80,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'fieldsets_with_inlines',
+    'embed_video',
+    'markdownify',
 ]
 
 MIDDLEWARE = [
@@ -208,7 +212,10 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'index'
 
-
+MARKDOWNIFY_STRIP = False
+MARKDOWNIFY_WHITELIST_TAGS = [
+    'a', 'blockquote', 'code', 'em', 'h1', 'h2', 'h3','h4','h5','h6', 'h7', 'li', 'ol', 'p', 'strong', 'ul',
+]
 
 
 CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'

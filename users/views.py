@@ -1,8 +1,13 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import FormView
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from classes.models import *
 from students.models import *
@@ -117,4 +122,34 @@ class UserAccountListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Account.objects.filter(accountname=user).order_by("-created_on") 
+
+
+
+"""
+class AccountRegistrationView(CreateView):
+    template_name = 'users/account_registration.html'
+    form_class = UserCreationForm
+    success_url = reverse_lazy('dashboard')
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        cd = form.cleaned_data
+        user = authenticate(username=cd['username'],
+                            password=cd['password1'])
+        login(self.request, user)
+        return result
+
+class AccountEnrollClassxView(LoginRequiredMixin, FormView):
+    classx = None
+    form_class = ClassxEnrollForm
+
+    def form_valid(self, form):
+        self.classx = form.cleaned_data['classx']
+        self.classx.accounts.add(self.request.user)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('dashboard',
+        args=[self.classx.slug])
+"""
 

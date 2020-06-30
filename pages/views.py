@@ -16,7 +16,7 @@ from companys.models import Business, Business_type, Bg_color, Color, Text_color
 from realtors.models import Broker
 from classes.models import Class
 from students.models import *
-
+from .models import *
 
 
 # Create your views here.
@@ -101,7 +101,7 @@ def Dashboard(request):
     maimahiu_businesss = Business.objects.all().filter(is_maimahiu=True)
     gatundu_businesss = Business.objects.all().filter(is_gatundu=True)
     classes = Class.objects.order_by('class_name').filter(is_published=True)
-    
+    backgrounds = Background.objects.order_by('-reload').filter(is_published=True)    
 
     context = {
         'num_towns':num_towns,
@@ -110,6 +110,7 @@ def Dashboard(request):
         'num_realtors':num_realtors,
         'num_visits':num_visits,
         'towns' : towns,
+        'backgrounds': backgrounds,
         'locations': locations,
         'businesss' :businesss,
         'listings' : listings,
@@ -126,6 +127,8 @@ def Dashboard(request):
 def homework(request):
     return render(request, 'pages/homework.html') 
 
+def about(request):
+    return render(request, 'pages/about.html') 
 
 def gallery(request):
     return render(request, 'pages/gallery.html') 

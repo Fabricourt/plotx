@@ -6,49 +6,66 @@
 
 
 {% block content %}
+
+
+  <div class=" w3-margin">
+    <a href="{% url 'class-detail' lesson.class_name.slug  %}" class=" btn w3-hover-green {{lesson.subject.bg_color}}">
     
+      <span>Go Back To classroom</span> </a>
+  </div>
 
 
-
-
-<!-- Page Container -->
-
-
- 
-    
-      <div class="w3-container w3-margin-bottom">
-        {% include 'lessons/_header.html' %}
+<section>
+  <div class='w3-row-padding'>
+    <div class=" w3-margin-bottom">
+      {% include 'lessons/_header.html' %}
+    </div>
+   
+    <div class="w3-col l9">
+  
+      <div class="w3-metro-darken w3-margin-bottom" style="padding:10px 10px">
+          {% include 'lessons/_video.html' %}
       </div>
- 
-    
-    <div class="w3-metro-darken w3-margin-bottom" style="padding:10px 10px">
-        {% include 'lessons/_video.html' %}
-    </div>
 
-      
-    <div class="row">
-
-
-    <div id="notes" class="col-sm-7 w3-container w3-white w3-margin-bottom">
-       {% include 'lessons/_lesson.html' %}
-        <br>
-      <span id="exercises"></span>
-    <br><br><br>
-    </div>
-
-    
-      <div class="w3-container col-sm-5 w3-white w3-margin-bottom">
-            {% include 'lessons/_exercises.html' %}
-            
+      <div class="row">
+          <div id="notes" class="col-sm w3-container  w3-margin-bottom">
+            {% include 'lessons/_lesson.html' %}
+            <br>
+            <span id="exercises"></span>
+            <br><br><br>
+          </div>
+          <div class="w3-container col-sm w3-hide w3-white w3-margin-bottom">
+                {% include 'lessons/_exercises.html' %}
+          </div>
       </div>
     </div>
 
-      <div id="" class="w3-container w3-card w3-white w3-margin-bottom">
+  <div class="w3-col l3">
+      {% include 'lessons/_lessontopicslinks.html' %}
+   
+  </div>
+  
 
-
+    </div>
   </div>
 
  
+</section>
+<footer class="w3-theme-d5">
+  <div class=" w3-margin">
+    <a href="{% url 'class-detail' lesson.class_name.slug  %}" class="w3-hover-green w3-teal btn">Go Back To classroom </a>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
 
 
 

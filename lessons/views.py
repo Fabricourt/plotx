@@ -11,15 +11,68 @@ from django.views.generic import (
 from .models import *
 from django.contrib.auth.models import User
 from exercises.models import *
+from videos.models import *
+from users.models import *
 
 
+class TopicListView(ListView):
+    model = Topic
+    template_name = 'lessons/topics.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'lessons'
+    ordering = ['-date_posted']
+    paginate_by = 1
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['accounts'] = Account.objects.all()
+        context['classes'] = Class.objects.all()
+        context['subjects'] = Subject.objects.all()
+        context['topics'] = Topic.objects.all()
+        context['videos'] = Video.objects.all()
+        context['lessons'] = Lesson.objects.all()
+        context['exercises'] = Exercise.objects.filter(status=1).order_by("-created_on")
+        context['results'] = Exercise_question.objects.all()
+        return context
+
+class TopicDetailView(DetailView):
+    model = Topic
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['accounts'] = Account.objects.all()
+        context['classes'] = Class.objects.all()
+        context['subjects'] = Subject.objects.all()
+        context['topics'] = Topic.objects.all()
+        context['videos'] = Video.objects.all()
+        context['lessons'] = Lesson.objects.all()
+        context['exercises'] = Exercise.objects.filter(status=1).order_by("-created_on")
+        context['results'] = Exercise_question.objects.all()
+        return context
+
+        
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['Lessons'] = Lesson.objects.all()
+        context['topics'] = Topic.objects.all()
+        return context
 class LessonListView(ListView):
     model = Lesson
     template_name = 'lessons/lessons.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'lessons'
     ordering = ['-date_posted']
-    paginate_by = 5
+    paginate_by = 1
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['accounts'] = Account.objects.all()
+        context['classes'] = Class.objects.all()
+        context['subjects'] = Subject.objects.all()
+        context['topics'] = Topic.objects.all()
+        context['videos'] = Video.objects.all()
+        context['lessons'] = Lesson.objects.all()
+        context['exercises'] = Exercise.objects.filter(status=1).order_by("-created_on")
+        context['results'] = Exercise_question.objects.all()
+        return context
 
 
 class LessonDetailView(DetailView):
@@ -27,15 +80,17 @@ class LessonDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['accounts'] = Account.objects.all()
         context['classes'] = Class.objects.all()
         context['subjects'] = Subject.objects.all()
         context['topics'] = Topic.objects.all()
+        context['videos'] = Video.objects.all()
         context['lessons'] = Lesson.objects.all()
         context['exercises'] = Exercise.objects.filter(status=1).order_by("-created_on")
         context['results'] = Exercise_question.objects.all()
         return context
-    
 
+ 
 
 class TeacherLessonListView(ListView):
     model = Lesson

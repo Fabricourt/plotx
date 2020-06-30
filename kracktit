@@ -1,3 +1,4 @@
+stima ----- >>>> 37164270219
 Postgres Database & User Setup
 # sudo -u postgres psql
 
@@ -169,3 +170,205 @@ admin.site.register(Topic, TopicAdmin)
     </div>
   </div>
 </div>
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+     <form class="form-inline my-2 my-lg-0 w3-hide" action="{% url 'search_results' %}" method="get">
+            <input name="q" class="form-control w3-border w3-border-teal mr-sm-2" type="search" placeholder="Search companies" aria-label="Search">
+            <button class="btn w3-border w3-border-teal w3-hide-small w3-hover-teal my-2 my-sm-0" type="submit">Search</button>
+          </form>
+       
+          {% if user.is_staff %}
+          <li
+          {% if 'register' in request.path %}
+            class="nav-item active w3-hide w3-white  w3-round w3-text-green w3-border w3-card mr-3"
+          {% else %}
+            class="nav-item mr-3"
+          {% endif %}
+          >
+            <a class="nav-link w3-round w3-hover-shadow w3-hide w3-hover-white w3-hover-text-blue  w3-border" href="{% url 'register' %}">
+              <i class="fas fa-user-plus"></i> Sign up </a>
+          </li>
+          {% endif %}
+          {% if user.is_authenticated %}
+
+            <li
+            {% if 'dashboard' in request.path %}
+              class="nav-item active  w3-round w3-text-green w3-white w3-border w3-card mr-3"
+            {% else %}
+              class="nav-item mr-3 w3-text-white"
+            {% endif %}
+            >
+              <a class="nav-link w3-round w3-hover-shadow   w3-hover-white w3-hover-text-black w3-border"
+               href="{% url 'dashboard' %}">
+               Welcome {{ user.username }} (Dashboard)</a>
+            </li>
+
+            <li class="nav-item  w3-yellow w3-round w3-text-green w3-hover-text-red w3-border w3-card mr-3">
+              <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i> Signout
+              </a>
+              <form action="{% url 'logout' %}" method="POST" id="logout">
+                {% csrf_token %}
+                <input type="hidden">
+              </form>
+            </li>
+         
+            
+          {% else %}
+
+
+
+            <li
+            {% if 'login' in request.path %}
+              class="nav-item active w3-white w3-round w3-text-green w3-border w3-card mr-3"
+            {% else %}
+              class="nav-item mr-3 w3-text-"
+            {% endif %}
+            >
+              <a class="nav-link w3-round  w3-hover-shadow w3-hover-white w3-hover-text-green  w3-border" href="{% url 'login' %}">
+                <i class="fas fa-sign-in-alt"></i> Sign In</a>
+            </li>
+
+          {% endif %}
+        </ul>
+
+        &&&&&&&&&&&&&&&&&&&&&&&&
+        {% load static %}
+<style>
+  .cross {
+    color: -moz-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+    color: -webkit-linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+    color: linear-gradient(90deg, #700877 0%, #ff2759 100%, #ff2759 100%);
+  
+  }
+  
+  a:link {
+  text-decoration: none;
+  color: green;
+
+}
+
+
+.luxe {
+  text-shadow: #FFF572 0 -2px 0,
+							 #D59F02 1px -3px 1px,
+               #B58800 2px 1px 0,
+               #5B3900 0 -1px 2px,
+               #5B3900 1px 1px 1px,
+               #322500 1px 3px 4px;
+  color:gold ;
+  font-size: 5em;
+	font-weight: 400;
+}
+.luxury {
+  color: #d4af37;
+}
+.w3-border-emerald,.w3-hover-border-emerald:hover{border-color:#008a00!important}
+.w3-text-emerald,.w3-hover-text-emerald:hover{color:#008a00!important}
+.w3-emerald,.w3-hover-emerald:hover{color:#fff!important;background-color:#008a00!important}
+
+div.demotx {
+        display: inline-block;
+        width: 100%;
+       
+        
+        --aug-border: 5px;
+        --aug-inset: 5px;
+        padding: 10px; /* mind the gap */
+        text-align: center;
+       
+        
+    }
+
+    div.demosx {
+        display: inline-block;
+        
+       
+        
+        --aug-border: 5px;
+        --aug-inset: 5px;
+        padding: 10px; /* mind the gap */
+        text-align: center;
+        
+       
+
+    }
+
+    div.demotx0 {
+        --aug-tl-width: 50%;
+    }
+
+    div.demotx1 {
+        --aug-bl: 25px;
+        --aug-r-width: 33%;
+        --aug-r-height: 10px;
+    }
+
+    div.demotx2 {
+        --aug-b-width: 75%;
+        --aug-t-width: 75%;
+        --aug-b-height: 10px;
+        --aug-t-height: 10px;
+
+        --aug-r-width: 75%;
+        --aug-l-width: 75%;
+        --aug-r-height: 10px;
+        --aug-l-height: 10px;
+    }
+
+</style>
+
+{% include 'pages/_parallaxcss.html' %}
+<header class='w3-section  w3-padding' >
+  <div class="" style="width:100%; ">
+    <div class="row"  >
+      <div class="">
+        {% include 'partials/index/_pulse.html' %}
+      </div>
+        <div class="">
+          <h2 class="w3-xxlarge cross  col-sm-12 w3-text-white w3-center" > 
+
+            <!--small logo view-->
+            <a href="{% url 'index' %}" class="w3-display-container">
+              
+              <span class="w3-xxlarge w3-hide-large   w3-hide-medium w3-round bgimg_1x w3-hover-gold  w3-hover-text-gold w3-hover-shadow  w3-highway-green  w3-border w3-border-gold luxe w3-text-gold   " style="padding-right:10px; width:100%">
+                <strong>
+                  <img src="{% static 'img/logo.png' %}" style="width:65px; height:65px; margin-left:10px; margin-bottom:13px; " logo" class="w3-white  w3-border w3-hover-border-gold w3-hover-gold w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="">
+                  KATATA 
+                </strong>
+                
+              </span>
+            </a>
+          
+        
+
+            <!--Large logo View-->
+            <a href="{% url 'index' %}">
+              <br><br>
+              <span class="w3-jumbo w3-hide-small  w3-round w3-hover-gold w3-hover-text-gold w3-hover-shadow  w3-highway-green  bgimg_1 w3-border w3-border-gold luxe w3-text-gold   " style="padding-right:10px; ">   
+                <strong> 
+                  <img src="{% static 'img/logo.png' %}" style="width:65px; height:65px; margin-left:10px; margin-bottom:17px; " logo" class="w3-white  w3-border w3-hover-border-gold w3-hover-gold w3-circle w3-border-green w3-topbar w3-bottombar w3-leftbar w3-rightbar " alt="">
+                  KATATA 
+                </strong>
+                <strong>
+              </span>
+            </a>
+          </h2>
+        
+          <h4 class="w3-center w3-hide-small w3-theme-d5 w3-padding-large w3-card-4 w3-border-green w3-rightbar w3-leftbar w3-opacity-min   w3-wide col-sm-12">
+            <strong class=" ">
+              <span  style="color:gold"> Education Portal</span>
+                <i class="fa fa-chain w3-text-gold w3-small" style="color:gold;"></i>
+                2020
+              </span>
+            </strong>
+          </h4>
+
+      </div>
+    </div>
+  </div>
+-
+
+  
+</header>
+

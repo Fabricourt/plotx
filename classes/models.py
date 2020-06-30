@@ -24,7 +24,7 @@ class Class(models.Model):
     class_teacher =  models.ForeignKey(Teacher, on_delete=models.DO_NOTHING,  blank=True, null=True, related_name='class_teacher')
     class_monitor = models.CharField(max_length=200, blank=True, null=True)
     class_prefect = models.CharField(max_length=200, blank=True, null=True)
-    account = models.ManyToManyField(Account, blank=True, help_text="pick authorized personel to view class")
+    account = models.ManyToManyField(Account, blank=True,  help_text="pick authorized personel to view class")
 
     about_class = RichTextField(blank=False, null=True)
     class_pic = models.ImageField(upload_to='class_pics/%Y/%m/%d/',null=True, blank=True)
@@ -44,7 +44,6 @@ class Class(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=False, null=True)
     date_posted = models.DateTimeField(default=timezone.now)
     is_published = models.BooleanField(default=True)
-
 
     class Meta:
         verbose_name = 'Grade'

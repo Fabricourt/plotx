@@ -1,6 +1,6 @@
 #header {
     height: 50px;
-    background: #10284e;
+    background: #004a43; 
     color: #fff;
   }
   
@@ -10,12 +10,12 @@
   
   a:link,
   a:visited {
-    color:#10284e;
+    color:#004a43; 
   }
   
   div.breadcrumbs {
     background: #30caa0;
-    color: #10284e;
+    color: #004a43 
   }
   
   div.breadcrumbs a {
@@ -27,6 +27,6 @@
   }
   
   .button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #10284e;
+    background: #004a43; 
     color: #fff;
   }

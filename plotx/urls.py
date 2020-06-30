@@ -9,6 +9,7 @@ from users.views import *
 from django.conf.urls import url
 
 
+
 urlpatterns = [
     path('', include('pages.urls')),
     #path('accounts/', include('accounts.urls')),
@@ -32,6 +33,7 @@ urlpatterns = [
     path('students/', include('students.urls')),
     path('subjects/', include('subjects.urls')),
     path('teachers/', include('teachers.urls')),
+    path('videos/', include('videos.urls')),
     path('register/', user_views.register, name='register'),
     path('profile/', user_views.profile, name='profile'),
   

@@ -6,6 +6,8 @@ from blog.models import *
   #model = Post
   
 
+
+
 class ClassAdmin(admin.ModelAdmin):
   list_display = ('class_name', 'class_teacher', 'class_prefect', 'class_monitor',  'is_published', )
   list_display_links = ('class_name','class_prefect', 'class_monitor')

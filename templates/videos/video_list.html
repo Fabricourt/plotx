@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="row">
+{% for video in video_list %}
+<div class="col-sm-6 w3-black">
+<a href="{{video.get_absolute_url}}">
+    {{video}}
+
+
+<video controls style="width:100%; height:400px;" class=""> 
+    <source src="{{video.videofile.url}}" style="width:100%; height:400px;">
+</video>
+</a>
+</div>
+<br><br>
+{% endfor %}
+</div>
+{% endblock %}

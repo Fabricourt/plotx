@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from colors.models import *
 from ckeditor.fields import RichTextField
-from classes.models import Class
+from classes.models import *
 from teachers.models import Teacher
 
 
