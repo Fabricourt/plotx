@@ -5,8 +5,7 @@ class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ( 
-            'answers',
             'file_name',
-            'diagram',
+            'answers',
             'name',
             )

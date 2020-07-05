@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from .models import Class
+from .models import *
 from subjects.models import Subject
 from students.models import Student
 from lessons.models import *
@@ -65,8 +65,21 @@ class UserClassListView(ListView):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-date_posted')   
   
+class Class_nameListView(generic.ListView):
+    model = Class_name
+    paginate_by = 50
+    template_name = 'classes/class_names.html'
+    context_name = 'class_names'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['class_names'] = Class_name.objects.all()
+        return context
 
 
-
+class Class_nameDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Class_name
+    template_name = 'classes/class_name.html'
+    context_name = 'class_name'
 
 

@@ -30,6 +30,6 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 
-#class ClassxEnrollForm(forms.Form):
-    #classx = forms.ModelChoiceField(queryset=Classx.objects.all(), widget=forms.HiddenInput)       
-      
+class Class_nameEnrollForm(forms.Form):
+    class_name = forms.ModelChoiceField(queryset=Class_name.objects.all(),
+                                    widget=forms.HiddenInput)     

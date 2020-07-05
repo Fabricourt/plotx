@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-
+{% block title %} | Dashboard {% endblock %}
 {% block content %}
 <section class="bgimg_6">
   
@@ -52,59 +52,68 @@
 
 <div class="bgimg_5">
   {% if user.is_authenticated %}
-  {% if classes %}
-    <div class="w3-margin-right">
-    <div class="w3-container"  style="list-style-type: none;" > 
 
-      {% for class in classes %}
-      {% for account in class.account.all %}
-      {% if account.accountname == user %}
-     <center>
-      
-      <div augmented-ui="tl-clip-y bl-clip-y tr-clip-y br-clip-y   exe" 
-      class="demox demo1 bgimg_6 w3-hide-small w3-border-bottom w3-border-white w3-padding-large w3-round 
-      w3-hover-shadow  w3-hover-text-amber w3-border-red" >
-      <a class="w3-wide w3-xxxlarge w3-hover-text-amber" href="{{class.get_absolute_url}}" 
-      >
-        <strong> Click To Enter {{account.user_class}} </strong> <span class="w3-hide">{{account}}</span><br>
-      
-      </a>
-    </div>
 
-     <div augmented-ui="tl-clip-y bl-clip-y tr-clip-y br-clip-y   exe" 
-     class="demo demo1 w3-hide-medium w3-hide-large w3-border-bottom w3-border-white  w3-round 
-     w3-hover-shadow w3-padding-large w3-xxxlarge w3-crimson w3-border-red" 
-      <a href="{{class.get_absolute_url}}">
-       Welcome To {{account.user_class}} <span class="w3-hide">{{account}}</span><br>
-       
-      </a>
-    </div>
-    </center>
-    {% endif %}
-     {% if not forloop.last %}{% endif %}
-     {% endfor %}
+    {% if classes %}
+      <div class="w3-margin-right">
+      <div class="w3-container"  style="list-style-type: none;" > 
+
+        {% for class in classes %}
+        {% for account in class.account.all %}
+          {% if account.accountname == user %}
+            <center>
+              <div augmented-ui="tl-clip-y bl-clip-y tr-clip-y br-clip-y   exe" 
+              class="demox demo1 bgimg_6 w3-hide-small w3-border-bottom w3-border-white w3-padding-large w3-round 
+              w3-hover-shadow  w3-hover-text-amber w3-border-red" >
+                <a class="w3-wide w3-xxxlarge w3-hover-text-amber" href="{{class.get_absolute_url}}" 
+                >
+                  <strong> Click To Enter {{account.user_class}} </strong> <span class="w3-hide">{{account}}</span><br>
+                </a>
+              </div>
+              <div augmented-ui="tl-clip-y bl-clip-y tr-clip-y br-clip-y   exe" 
+              class="demo demo1 w3-hide-medium w3-hide-large w3-border-bottom w3-border-white  w3-round 
+              w3-hover-shadow w3-padding-large w3-xxxlarge w3-crimson w3-border-red" 
+                <a href="{{class.get_absolute_url}}">
+                Welcome To {{account.user_class}} <span class="w3-hide">{{account}}</span><br>
+                </a>
+              </div>
+            </center>
+        {% endif %}
+      {% if not forloop.last %}{% endif %}
       {% endfor %}
-    </div>
-  
-      {% else %}
-        <p>There are no classes.</p>
-    </div>
-  {% endif %}
-  {% else %}
-  <a href="{% url 'login' %}" class="w3-panel w3-xlarge w3-text-emerald w3-center btn " style="width:100%">Sign In To Proceed To Classroom</a>
+        {% endfor %}
+
+        {% else %}
+        <p>Welcome to your dashboard, Once your account is activated further directions will be presented here.
+          Please contact the school for your account to be activated</p>
+       
+    {% endif %}
   {% endif %}
   </div>
-
+</div>
 </section>
 <section class="w3-padding-large">
   <div   class="w3-container w3-opacity-min w3-white w3-padding-64">
   <blockquote class=" w3-margin w3-xlarge  ">
-    “Aim for success, not perfection. Never give up your right to be wrong, because then you will lose the ability to learn new things and move forward with your life. Remember that fear always lurks behind perfectionism.”
+    “Aim for success, not perfection. Never give up your right to be wrong, 
+    because then you will lose the ability to learn new things and move forward with your life. 
+    Remember that fear always lurks behind perfectionism.”
 <b class="">
   <i>David M. Burns</i>
   </b>
   </blockquote>
 </div>
+
+
+<center class="w3-xlarge w3-camo-dark-green w3-padding-64 w3-margin-top   w3-opacity-min">
+  <strong>
+  Please Proceed to the classroom, in the button Above.
+</strong> 
+  
+  <span class="w3-text-amber">
+  If A button does not exist. Please contact the Admin for Admission</span>
+ 
+</center>
 </section>
 
 {% endblock %}

@@ -43,6 +43,7 @@ class Teacher(models.Model):
 
     created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=False, null=True)
     date_posted = models.DateTimeField(default=timezone.now)
+    is_mvp = models.BooleanField(default=False)
     is_published = models.BooleanField(default=True)
 
     

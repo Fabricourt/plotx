@@ -1,9 +1,10 @@
 {% extends "base_generic.html" %}
 {% load crispy_forms_tags %}
+{% block title %} | Sign In {% endblock %}
 {% block content %}
-<div class="container">
+<div class="container  w3-opacity-min">
     <br> <br>
-    <div class="row">
+    <div class="row w3-camo-dark-green">
        
         <div class="col-sm-6">
         <form method="POST">
@@ -13,7 +14,7 @@
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Login</button>
+                <button class="btn btn-success" type="submit">Login</button>
                 <small class="text-muted ml-2">
                     <a href="{% url 'password_reset' %}">Forgot Password?</a>
                 </small>
@@ -27,8 +28,12 @@
     </div>
 
     
-<div class="col-sm-5 bgimg_1 w3-opacity-max w3-margin-bottom w3-border"></div>
-
+<div class="col-sm-5  w3-text-white w3-margin-bottom ">
+    <blockquote class="w3-margin w3-padding-64 w3-xlarge">
+        “Education is the passport to the future, for tomorrow belongs to those who prepare for it today.”
+        <span class="w3-text-teal">
+            <strong>Malcom X</strong></span>
+    </blockquote>
 </div>
 
 </div>

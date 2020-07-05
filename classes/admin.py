@@ -6,7 +6,7 @@ from blog.models import *
   #model = Post
   
 
-
+admin.site.register(Class_name)
 
 class ClassAdmin(admin.ModelAdmin):
   list_display = ('class_name', 'class_teacher', 'class_prefect', 'class_monitor',  'is_published', )

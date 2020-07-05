@@ -12,6 +12,7 @@ from django.urls import reverse
 
 
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
@@ -48,6 +49,9 @@ class Account(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="created_by",  blank=False, null=True)
     created_on = models.DateTimeField(default=timezone.now)
     is_published = models.BooleanField(default=True)
+    is_parent = models.BooleanField(default=False)
+    is_student = models.BooleanField(default=False)
+    is_teacher = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-created_on"]

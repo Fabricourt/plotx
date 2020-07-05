@@ -6,7 +6,7 @@
 
   <div class="w3-border w3-margin w3-white w3-card  {{subject.text_color}} w3-hover-shadow {{subject.border_color}} w3-hover-white">
     <div class="w3-container">
-      <span class="">
+      <div class="">
         
         <span>
 
@@ -14,9 +14,10 @@
        
         </span>
   
-        <span class=" w3-button w3-margin-top w3-hover-white w3-hover-text-green">{{subject.teacher.first_name}} {{subject.teacher.last_name}}</span>
-      
-      </span>
+        <span class=" w3-button w3-margin-top w3-hover-white w3-hover-text-green">{{subject.teacher.first_name}} {{subject.teacher.last_name}} | <span class="">{{subject.teacher.phone}}</span> |
+        <span>{{subject.teacher.email}}</span></span>
+
+      </div>
 
       <h3 class="w3-center"><b>{{subject.subject_name|upper}}</b></h3>
       

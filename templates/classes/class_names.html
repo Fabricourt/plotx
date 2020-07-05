@@ -1,0 +1,7 @@
+<section>
+{% for class_name in class_name_list %}
+<a href="{{ class_name.get_absolute_url}}"> 
+{{class_name}}</a> <br><br>
+{% endfor %}
+    
+    </section>

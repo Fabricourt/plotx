@@ -11,9 +11,14 @@ from users.models import *
 
 
 
+
 # Create your models here.
 class Class_name(models.Model):
     name = models.CharField(max_length=100)
+    account = models.ManyToManyField(Account, blank=True,  help_text="pick authorized personel to view class")
+
+    def get_absolute_url(self):
+        return reverse('class_name-detail', args=[str(self.id)])
 
     def __str__(self):
         return self.name
@@ -26,20 +31,20 @@ class Class(models.Model):
     class_prefect = models.CharField(max_length=200, blank=True, null=True)
     account = models.ManyToManyField(Account, blank=True,  help_text="pick authorized personel to view class")
 
-    about_class = RichTextField(blank=False, null=True)
-    class_pic = models.ImageField(upload_to='class_pics/%Y/%m/%d/',null=True, blank=True)
-    class_video_link = models.CharField(max_length=1000, blank=True, null=True)
-    class_video = models.FileField(upload_to='class_videos/', null=True, blank=True)
+    #about_class = RichTextField(blank=False, null=True)
+    #class_pic = models.ImageField(upload_to='class_pics/%Y/%m/%d/',null=True, blank=True)
+    #class_video_link = models.CharField(max_length=1000, blank=True, null=True)
+    #class_video = models.FileField(upload_to='class_videos/', null=True, blank=True)
 
-    bg_color = models.ForeignKey(Bg_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
-    bg_color_2 = models.ForeignKey(Bg_color_2, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
-    bg_color_3 = models.ForeignKey(Bg_color_3, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
-    hover_color = models.ForeignKey(Hover_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
-    border_color = models.ForeignKey(Border_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
-    color = models.ForeignKey(Color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
-    text_color = models.ForeignKey(Text_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
-    hover_text_color = models.ForeignKey(Hover_text_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
-    footer_color = models.ForeignKey(Footer_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    #bg_color = models.ForeignKey(Bg_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    #bg_color_2 = models.ForeignKey(Bg_color_2, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    #bg_color_3 = models.ForeignKey(Bg_color_3, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    #hover_color = models.ForeignKey(Hover_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    #border_color = models.ForeignKey(Border_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    #color = models.ForeignKey(Color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    #text_color = models.ForeignKey(Text_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    #hover_text_color = models.ForeignKey(Hover_text_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
+    #footer_color = models.ForeignKey(Footer_color, on_delete=models.DO_NOTHING,  blank=True, null=True, help_text='optional')
 
     created_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, blank=False, null=True)
     date_posted = models.DateTimeField(default=timezone.now)
@@ -54,4 +59,5 @@ class Class(models.Model):
 
     def __str__(self):
         return self.class_name
+
 

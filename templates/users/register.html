@@ -1,8 +1,9 @@
 {% extends "base_generic.html" %}
 {% load crispy_forms_tags %}
+{% block title %} | Signup {% endblock %}
 {% block content %}
     <div class="container">
-        <div class="row">
+        <div class="row w3-camo-dark-green w3-opacity-min">
             <div class="col-sm-6">
         <form method="POST">
             {% csrf_token %}
@@ -11,17 +12,23 @@
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+                <button class="btn btn-success" type="submit">Sign Up</button>
             </div>
         </form>
         <div class="border-top pt-3">
-            <small class="text-muted">
+            <small class="">
                 Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
             </small>
         </div>
         </div>
     
-            <div class="col-sm-5  bgimg_1 w3-opacity-max  w3-margin-bottom w3-border"></div>
+            <div class="col-sm-5     w3-margin-bottom ">
+                <br><br><br>
+               <blockquote class="w3-padding-64 w3-xxlarge w3-margin">
+                “The difference between school and life? In school, you're taught a lesson and then given a test. In life, you're given a test that teaches you a lesson.”
+                <span class="w3-text-teal">Tom Bodett</span>
+               </blockquote> 
+            </div>
             
         </div>
         <br><br><br>
