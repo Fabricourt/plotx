@@ -10,12 +10,12 @@ STATUS = ((0, "Wrong"), (1, "Correct"))
 class ExamPaper(models.Model):
     title = models.CharField(max_length=100, null=True, blank=False)
     slug = models.SlugField(max_length=200, blank=False, null=True, unique=True)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name="Subject")
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, blank=False, null=True,)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, blank=True, null=True,)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, blank=False, null=True,)
     created_on = models.DateTimeField(default=timezone.now)
     marked = models.IntegerField(choices=MARKED, default=0)
-    score = models.FloatField()
+    score = models.FloatField(blank=True, null=True,)
 
 
 

@@ -11,13 +11,14 @@
   {% for exercise in class.exercise_set.all  %}
     <li class="w3-border-bottom w3-border-theme w3-large">
       <a href="{% url 'exercise' exercise.slug %}" class="w3-hover-text-khaki">
-        Exercise on {{exercise.topic}} 
+        {{exercise.title}} | {{exercise.topic}}
 
-        <span class="w3-right w3-text-amber"> {{exercise.classname.class_name}}</span>
-        <span class="w3-text-amber w3-right"> {{exercise.created_on}}</span> 
+
       </a>
 
     </li> 
+    <span class=" w3-text-amber"> {{exercise.classname.class_name}}</span>
+    <span class="w3-text-amber "> {{exercise.created_on}}</span> 
     {% if exercise.teacher == user %}
     <span "><a class="w3-right w3-tag w3-khaki"  href="{% url 'user-exercises' exercise.teacher.username %}">
     teacher: {{exercise.teacher}}..
