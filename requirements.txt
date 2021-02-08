@@ -38,7 +38,7 @@ django-wysiwyg==0.8.0
 feedparser==5.2.1
 geoip2==3.0.0
 google-api-python-client==1.4.1
-httplib2==0.15.0
+httplib2==0.19.0
 idna==2.8
 kombu==3.0.37
 libsass==0.19.4
